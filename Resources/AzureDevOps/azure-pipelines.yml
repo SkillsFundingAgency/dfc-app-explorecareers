@@ -1,5 +1,5 @@
 variables:
-    SolutionBaseName: '__SolutionBaseName__'
+    SolutionBaseName: 'DFC.App.ExploreCareers'
     BuildPlatform: 'any cpu'
     BuildConfiguration: 'release'
 
@@ -29,3 +29,5 @@ stages:
         BuildPlatform: $(BuildPlatform)
         BuildConfiguration: $(BuildConfiguration)
         DotNetCoreVersion: '3.1.100'
+        PublishWebApp: true
+        TestSuffix: UnitTests

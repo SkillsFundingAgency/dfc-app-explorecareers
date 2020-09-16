@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ProjectGuid>{33578197-7B26-46DF-9148-31B0F5C684C4}</ProjectGuid>
+  </PropertyGroup>
+</Project>
