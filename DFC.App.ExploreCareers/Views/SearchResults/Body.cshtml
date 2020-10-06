@@ -1,0 +1,76 @@
+﻿@using Microsoft.Extensions.Configuration
+@model DFC.App.ExploreCareers.ViewModels.SearchResults.SearchResultsViewModel
+@inject IConfiguration Configuration
+<div class="sfPublicWrapper" id="PublicWrapper">
+
+    <div class="govuk-width-container">
+            <form action="/explore-careers/search-results" class="js-live-search-form" id="header-search" method="post">
+                <div class="search-header">
+                    <div class="searchfield">
+                        <div class="search-input ui-front">
+                            <label class="govuk-visually-hidden" for="SearchTerm">Enter a job title</label>
+                            <input placeholder="Enter a job title" class="search-input js-search-focus js-autocomplete ui-autocomplete-input" data-autocomplete-fuzzysearch="True" data-autocomplete-maxlength="7" data-autocomplete-maxnumberdisplyed="5" data-autocomplete-minlength="2" data-autocomplete-source="@Configuration["AutoCompleteEndpoint"]" id="SearchTerm" name="SearchTerm" type="search" value="@Model.SearchTerm" autocomplete="off">
+                        </div>
+                        <div class="search-submit">
+                            <button type="submit" class="button">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div id="results">
+                <div class="results-block">
+                    <div class="inner-block">
+                        <div class="result-count">
+                            @if (Model.JobProfiles.Any())
+                            {
+                                @( Model.TotalResults == 1 ? "1 result found": $"{Model.TotalResults} results found")
+                            }
+                        </div>
+                        <ol class="results-list">
+                            @for (int i = 0; i < Model.JobProfiles.Count(); i++)
+                            {
+                                <li class="dfc-code-search-resultitem">
+                                    <h3><a class="govuk-link" href="/job-profiles/@Model.JobProfiles[i].UrlName">@Model.JobProfiles[i].Title</a></h3>
+                                    <p class="meta dfc-code-search-jpAltTitle"><span class="govuk-visually-hidden">Alternative titles for this job include </span>@string.Join(",", Model.JobProfiles[i].AlternativeTitle)</p>
+                                    <p class="result-description dfc-code-search-jpOverview">@Model.JobProfiles[i].Overview</p>
+                                    <p class="results-salary">
+                                        Salary:
+                                        <span class="dfc-code-search-jpSalary">
+                                            £@((int)Model.JobProfiles[i].SalaryStarter) to £@((int)Model.JobProfiles[i].SalaryExperienced)
+                                        </span>
+                                    </p>
+                                    <p class="results-categories">
+                                        Found in:
+                                        @foreach (var category in Model.JobProfiles[i].JobProfileCategoriesWithUrl)
+                                        {
+                                            var split = category.Split("|");
+                                            <a href="/job-categories/@split.LastOrDefault()">@split.FirstOrDefault()</a>
+                                        }
+                                    </p>
+                                </li>
+                            }
+                        </ol>
+                        <ul class="previous-next-navigation">
+                            <li class="dfc-code-search-next next">
+                                <a class="dfc-code-search-nextlink" href="/explore-careers/search-results?SearchTerm=@Model.SearchTerm&page=@(Model.CurrentPage+1)" id="nextBtn">
+                                    <span class="pagination-label">Next</span>
+                                    <span class="visuallyhidden">page</span>
+                                    <span class="page-numbers">@(Model.CurrentPage + 1) of @Model.TotalPages</span>
+                                </a>
+                            </li>
+                            @if (Model.CurrentPage > 1)
+                            {
+                                <li class="dfc-code-search-previous previous">
+                                    <a class="dfc-code-search-previouslink" href="/explore-careers/search-results?SearchTerm=@Model.SearchTerm&page=@(Model.CurrentPage-1)" id="prevBtn">
+                                        <span class="pagination-label">Previous</span>
+                                        <span class="visuallyhidden">page</span>
+                                        <span class="page-numbers">@(Model.CurrentPage-1) of @Model.TotalPages</span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
