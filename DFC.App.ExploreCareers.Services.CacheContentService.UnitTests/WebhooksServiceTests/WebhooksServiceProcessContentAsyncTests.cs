@@ -16,12 +16,10 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.Webhooks
             // Arrange
             const HttpStatusCode expectedResponse = HttpStatusCode.Created;
             var expectedValidApiContentModel = BuildValidJobCategoryHtmlString();
-            var expectedValidContentPageModel = BuildValidContentPageModel();
             var url = new Uri("https://somewhere.com");
             var service = BuildWebhooksService();
 
             A.CallTo(() => FakeApiExtensions.LoadDataAsync()).Returns(expectedValidApiContentModel);
-            A.CallTo(() => FakeMapper.Map<ContentPageModel>(A<SampleApiDataModel>.Ignored)).Returns(expectedValidContentPageModel);
             A.CallTo(() => FakeEventMessageService.DeleteAllAsync()).Returns(HttpStatusCode.OK);
             A.CallTo(() => FakeEventMessageService.CreateOrUpdateAsync(A<JobCategory>.Ignored)).Returns(HttpStatusCode.Created);
 
@@ -42,7 +40,6 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.Webhooks
             // Arrange
             const HttpStatusCode expectedResponse = HttpStatusCode.BadRequest;
             var expectedValidApiContentModel = BuildValidJobCategoryHtmlString();
-            var expectedValidContentPageModel = new ContentPageModel();
             var url = new Uri("https://somewhere.com");
             var service = BuildWebhooksService();
 

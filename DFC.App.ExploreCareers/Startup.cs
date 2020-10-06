@@ -76,7 +76,6 @@ namespace DFC.App.ExploreCareers
             services.AddAutoMapper(typeof(Startup).Assembly);
             services.AddHostedServiceTelemetryWrapper();
             services.AddSubscriptionBackgroundService(configuration);
-            services.AddTransient<IDocumentService<JobCategory>, DocumentService<JobCategory>>();
             services.AddTransient<IWebhooksService, WebhooksService>();
 
             if (bool.Parse(configuration["ExploreCareers:LoadDataOnStartup"]))

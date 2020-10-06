@@ -44,13 +44,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.ApiService", "DFC.App.ExploreCareers.PageService\DFC.App.ExploreCareers.ApiService.csproj", "{B2F590C8-8C2B-451F-B164-74B1E30E8BB1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{85A29534-37DD-476C-B236-3FF6F3255671}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.Services.CacheContentService", "DFC.App.ExploreCareers.Services.CacheContentService\DFC.App.ExploreCareers.Services.CacheContentService.csproj", "{BC3E5FB8-EDF0-4FD7-9E82-89C775981FC8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.Services.CacheContentService.UnitTests", "DFC.App.ExploreCareers.Services.CacheContentService.UnitTests\DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.csproj", "{C5C5C892-BD81-43EA-ABB0-0EC7BD4D4217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DFC.App.ExploreCareers.Services.ApiService.UnitTests", "DFC.App.ExploreCareers.Services.ApiService.UnitTests\DFC.App.ExploreCareers.Services.ApiService.UnitTests.csproj", "{0FAA1254-066A-4C65-8958-55973AE109F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.Services.ApiService.UnitTests", "DFC.App.ExploreCareers.Services.ApiService.UnitTests\DFC.App.ExploreCareers.Services.ApiService.UnitTests.csproj", "{0FAA1254-066A-4C65-8958-55973AE109F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

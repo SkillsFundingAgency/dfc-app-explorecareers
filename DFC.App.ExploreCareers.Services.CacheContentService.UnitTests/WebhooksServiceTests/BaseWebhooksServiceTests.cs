@@ -31,13 +31,7 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.Webhooks
         protected Guid ContentIdForUpdate { get; } = Guid.NewGuid();
 
         protected Guid ContentIdForDelete { get; } = Guid.NewGuid();
-
-        protected Guid ContentItemIdForCreate { get; } = Guid.NewGuid();
-
-        protected Guid ContentItemIdForUpdate { get; } = Guid.NewGuid();
-
-        protected Guid ContentItemIdForDelete { get; } = Guid.NewGuid();
-
+        
         protected ILogger<WebhooksService> Logger { get; }
 
         protected IApiExtensions FakeApiExtensions { get; }
@@ -49,40 +43,6 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.Webhooks
         protected static string BuildValidJobCategoryHtmlString()
         {
             return "<div>testing<div>";
-        }
-
-        protected ContentPageModel BuildValidContentPageModel()
-        {
-            var model = new ContentPageModel()
-            {
-                Id = ContentIdForUpdate,
-                CanonicalName = "an-article",
-                IncludeInSitemap = true,
-                Version = Guid.NewGuid(),
-                Url = new Uri("https://localhost"),
-                Content = null,
-                ContentItems = new List<ContentItemModel>
-                {
-                    BuildValidContentItemModel(ContentItemIdForCreate),
-                    BuildValidContentItemModel(ContentItemIdForUpdate),
-                    BuildValidContentItemModel(ContentItemIdForDelete),
-                },
-                LastReviewed = DateTime.UtcNow,
-            };
-
-            return model;
-        }
-
-        protected ContentItemModel BuildValidContentItemModel(Guid contentItemId)
-        {
-            var model = new ContentItemModel()
-            {
-                ItemId = contentItemId,
-                Version = Guid.NewGuid(),
-                LastReviewed = DateTime.Now,
-            };
-
-            return model;
         }
 
         protected WebhooksService BuildWebhooksService()
