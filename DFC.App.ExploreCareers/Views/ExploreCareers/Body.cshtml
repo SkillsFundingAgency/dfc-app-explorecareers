@@ -1,0 +1,32 @@
+﻿@using Microsoft.Extensions.Configuration
+@model DFC.App.ExploreCareers.ViewModels.ExploreCareers.BodyViewModel
+@inject IConfiguration Configuration
+
+<form action="/explore-careers/search-results" class="site-search ui-front" id="header-search" method="post">
+    <section id="EC-search-banner" class="primary-hero">
+        <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl" id="site-header">Explore careers</h1>
+                    <p class="govuk-body-lead">Find out what a job involves and if it's right for you.</p>
+
+
+                    <div class="header-search-content">
+                        <label class="govuk-visually-hidden" for="SearchTerm">Enter a job title</label>
+
+                        <div class="input-wrapper">
+                            <input placeholder="Enter a job title" class="govuk-input input-search-item input-search js-search-focus js-autocomplete" data-autocomplete-fuzzysearch="True" data-autocomplete-maxlength="7" data-autocomplete-maxnumberdisplyed="5" data-autocomplete-minlength="2" data-autocomplete-source="@Configuration["AutoCompleteEndpoint"]" id="SearchTerm" name="SearchTerm" type="search" value="" autocomplete="off">
+                            <div class="input-search-item input-submit-wrapper">
+                                <button data-module="govuk-button" type="submit" class="input-search-submit" id="search-button">Search</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+<div class="govuk-width-container">
+    @Html.Raw(Model.JobCategory.Html)
+</div>

@@ -1,26 +1,33 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-namespace DFC.App.ExploreCareers
+﻿namespace DFC.App.ExploreCareers
 {
-    public class Program
+    using System.Diagnostics.CodeAnalysis;
+    using DFC.Compui.Telemetry.HostExtensions;
+    using Microsoft.AspNetCore;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Logging.ApplicationInsights;
+
+    [ExcludeFromCodeCoverage]
+    public static class Program
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var webHost = CreateWebHostBuilder(args);
+
+            webHost.Build().AddApplicationTelemetryInitializer().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            var webHost = WebHost.CreateDefaultBuilder(args)
+                .ConfigureLogging((webHostBuilderContext, loggingBuilder) =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                });
+                    //This filter is for app insights only
+                    loggingBuilder.AddFilter<ApplicationInsightsLoggerProvider>(string.Empty, LogLevel.Trace);
+                })
+                .UseStartup<Startup>();
+
+            return webHost;
+        }
     }
 }

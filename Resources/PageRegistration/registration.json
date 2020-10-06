@@ -1,0 +1,28 @@
+[
+  {
+    "Path": "explore-careers",
+    "TopNavigationText": "Explore careers",
+    "TopNavigationOrder": 4000,
+    "Layout": 4,
+    "IsOnline": true,
+    "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
+    "SitemapUrl": "https://__AppServiceName__.__appServiceDomain__/sitemap.xml",
+    "RobotsUrl": "https://__AppServiceName__.__appServiceDomain__/robots.txt",
+    "ExternalURL": null,
+    "Regions": [
+      {
+        "PageRegion": 1,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/{0}/breadcrumb",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      },
+      {
+        "PageRegion": 2,
+        "HealthCheckRequired": false,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/{0}/body",
+        "OfflineHtml": "<div class=\"govuk-width-container\"><H3>Explore Careers Service Unavailable</H3></div>",
+        "IsHealthy": true
+      }
+    ]
+  }
+]
