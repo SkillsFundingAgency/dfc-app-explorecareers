@@ -37,8 +37,8 @@ stages:
       - task: PublishPipelineArtifact@0
         displayName: Publish Pipeline Artifact
         inputs:
-          targetPath: ${{ parameters.ArmTemplateRoot }}
-          artifactName: ${{ parameters.SolutionBaseName }}.Resources.ArmTemplates
+          targetPath: $(ArmTemplateRoot)
+          artifactName: $(SolutionBaseName).Resources.ArmTemplates
 
     - job: BuildDotNetCore
       displayName: Build .Net Core
