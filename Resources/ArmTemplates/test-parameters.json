@@ -1,0 +1,63 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appSharedResourceGroup": {
+            "value": "dfc-dev-app-sharedresources-rg"
+        },
+        "aspInstances": {
+            "value": 2
+        },
+        "aspTier": {
+            "value": "Standard"
+        },
+        "aspSize": {
+            "value": 2
+        },
+        "cosmosAccountName": {
+            "value": "dfc-dev-app-sharedresources-cdb"
+        },
+        "cosmosKey": {
+            "value": "key"
+        },
+        "cosmosResourceGroup": {
+            "value": "dfc-dev-app-sharedresources-rg"
+        },
+        "environment": {
+            "value": "dev"
+        },
+        "cosmosContainerName": {
+            "value": "container"
+        },
+        "cosmosNeedsCreation": {
+            "value": true
+        },
+        "cosmosThroughput": {
+            "value": 2
+        },
+        "jobCategoryApiClientOptionsBaseAddress": {
+            "value": "jobCategoryApiClientOptionsBaseAddress"
+        },
+        "enableAlerts": {
+            "value": false
+        },
+        "jobProfileApiKey": {
+            "value": "jobProfileApiKey"
+        },
+        "jobProfileBaseAddress": {
+            "value": "jobProfileBaseAddress"
+        },
+        "jobCategorySearchClientOptionsBaseAddress": {
+            "value": "jobCategorySearchClientOptionsBaseAddress"
+        },
+        "subscriptionEndpoint": {
+            "value": "subscriptionEndpoint"
+        },
+        "subscriptionServiceEndpoint": {
+            "value": "subscriptionServiceEndpoint"
+        },
+        "autoCompleteEndpoint": {
+            "value": "autoCompleteEndpoint"
+        }
+    }
+}

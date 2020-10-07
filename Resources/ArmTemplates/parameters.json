@@ -1,0 +1,72 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appSharedResourceGroup": {
+            "value": "__appSharedResourceGroup__"
+        },
+        "aseHostingEnvironmentName": {
+            "value": "__aseServiceName__"
+        },
+        "aseResourceGroup": {
+            "value": "__aseResourceGroup__"
+        },
+        "aspInstances": {
+            "value": __aspInstances__
+        },
+        "aspTier": {
+            "value": "__aspTier__"
+        },
+        "aspSize": {
+            "value": "__aspSize__"
+        },
+        "cosmosAccountName": {
+            "value": "__appSharedCosmosDBName__"
+        },
+        "cosmosKey": {
+            "value": "__appSharedCosmosPrimaryKey__"
+        },
+        "cosmosResourceGroup": {
+            "value": "__appSharedResourceGroup__"
+        },
+        "environment": {
+            "value": "__releaseEnvironmentName__",
+            "metadata": {
+                "comment": "Bug in tokenisation task prevents referencing Release.EnvironmentName directly.  https://github.com/TotalALM/VSTS-Tasks/issues/29"
+            }
+        },
+        "cosmosContainerName": {
+            "value": "__cosmosContainerName__"
+        },
+        "cosmosNeedsCreation": {
+            "value": __cosmosNeedsCreation__
+        },
+        "cosmosThroughput": {
+            "value": __cosmosThroughput__
+        },
+        "jobCategoryApiClientOptionsBaseAddress": {
+            "value": "__jobCategoryApiClientOptionsBaseAddress__"
+        },
+        "enableAlerts": {
+            "value": __enableAzureMonitorAlerting__
+        },
+        "jobProfileApiKey": {
+            "value": "__jobProfileSearchKey__"
+        },
+        "jobProfileBaseAddress": {
+            "value": "__jobProfileBaseAddress__"
+        },
+        "jobCategorySearchClientOptionsBaseAddress": {
+            "value": "__jobCategoryBaseAddress__"
+        },
+        "subscriptionEndpoint": {
+            "value": "__subscriptionEndpoint__"
+        },
+        "subscriptionServiceEndpoint": {
+            "value": "__subscriptionServiceEndpoint__"
+        },
+        "autoCompleteEndpoint": {
+            "value": "__autoCompleteEndpoint__"
+        }
+    }
+}

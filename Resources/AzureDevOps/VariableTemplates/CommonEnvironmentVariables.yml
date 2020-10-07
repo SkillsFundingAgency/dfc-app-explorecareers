@@ -1,0 +1,21 @@
+variables:
+- name: ResourceGroup
+  value: $(ResourcePrefix)-rg
+- name: AppServiceName
+  value: $(ResourcePrefix)-as
+- name: EnableAzureMonitorAlerting
+  value: true
+- name: cosmosContainerName
+  value: explorecareers-integrationtest
+- name: cosmosThroughput
+  value: 400
+- name: jobCategoryApiClientOptionsBaseAddress
+  value: $(PublishedAppPrefix)/Pages/explore-careers
+- name: jobProfileBaseAddress
+  value: $(jobProfileSearchAddress)/indexes/dfc-digital-jobprofiles/docs/
+- name: subscriptionEndpoint
+  value: $(AppServiceName).$(appServiceDomain)/api/webhook/ReceiveEvents
+- name: subscriptionServiceEndpoint
+  value: $(ApimProxyAddress)/composite-ui/subscription/api/Execute/
+- name: autoCompleteEndpoint
+  value: $(jobCategoryBaseAddress)searchautocomplete
