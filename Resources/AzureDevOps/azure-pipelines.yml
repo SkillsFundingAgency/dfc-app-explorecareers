@@ -53,7 +53,7 @@ stages:
           artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
   - stage: DeployToDev
-    condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+    #condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     displayName: Deploy to Dev
     variables:
     - group: dfc-shared-all
@@ -87,7 +87,7 @@ stages:
         AppRegistryClientOptionsBaseAddress: $(ApimProxyAddress)/composite-ui-appRegistry/pages/
 
   - stage: DeployToSIT
-    condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+    #condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     displayName: Deploy to SIT
     variables:
     - group: dfc-shared-all
