@@ -166,10 +166,6 @@
                 "value": "Trace"
               },
               {
-                "name": "AllowedHosts",
-                "value": "*"
-              },
-              {
                 "name": "Configuration__ApplicationName",
                 "value": "DFC.App.ExploreCareers"
               },
