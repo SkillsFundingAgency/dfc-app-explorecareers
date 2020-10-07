@@ -44,10 +44,10 @@
       "type": "string"
     },
     "cosmosThroughput": {
-      "type": "string"
+      "type": "int"
     },
     "cosmosNeedsCreation": {
-      "type": "string"
+      "type": "bool"
     },
     "jobCategoryApiClientOptionsBaseAddress": {
       "type": "string"
