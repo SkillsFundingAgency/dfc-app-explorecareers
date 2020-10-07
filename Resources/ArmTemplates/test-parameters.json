@@ -12,7 +12,7 @@
             "value": "Standard"
         },
         "aspSize": {
-            "value": 2
+            "value": "2"
         },
         "cosmosAccountName": {
             "value": "dfc-dev-app-sharedresources-cdb"
