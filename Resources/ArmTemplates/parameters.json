@@ -23,9 +23,6 @@
         "cosmosAccountName": {
             "value": "__appSharedCosmosDBName__"
         },
-        "cosmosDatabaseName": {
-            "value": "__cosmosDatabaseName__"
-        },
         "cosmosKey": {
             "value": "__appSharedCosmosPrimaryKey__"
         },
@@ -45,7 +42,7 @@
             "value": "__cosmosContainerName__"
         },
         "cosmosNeedsCreation": {
-            "value": __cosmosNeedsCreation__
+            "value": __CosmosDbDatabaseDoesntExist__
         },
         "cosmosThroughput": {
             "value": __cosmosThroughput__
