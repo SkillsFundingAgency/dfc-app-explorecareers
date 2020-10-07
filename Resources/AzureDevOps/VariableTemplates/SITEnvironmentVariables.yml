@@ -1,4 +1,6 @@
 variables:
+- name: ReleaseEnvironmentName
+  value: SIT
 - name: ResourcePrefix
   value: dfc-sit-app-explorecareers
 - name: aspTier
