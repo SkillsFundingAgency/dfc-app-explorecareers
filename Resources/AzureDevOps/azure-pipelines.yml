@@ -24,13 +24,13 @@ stages:
     displayName: Build
     jobs:
   
-    - job: TestArmTemplates
-      displayName: "Test and package ARM templates"
-      steps:
-      - template: AzureDevOpsTemplates\Build\StepTemplates\dfc-arm-build.yml@dfc-devops
-        parameters:
-          ArmTemplateRoot: '${{ variables.ArmTemplateRoot }}'
-          SolutionBaseName: '${{ variables.SolutionBaseName }}'
+    # - job: TestArmTemplates
+    #   displayName: "Test and package ARM templates"
+    #   steps:
+    #   - template: AzureDevOpsTemplates\Build\StepTemplates\dfc-arm-build.yml@dfc-devops
+    #     parameters:
+    #       ArmTemplateRoot: '${{ variables.ArmTemplateRoot }}'
+    #       SolutionBaseName: '${{ variables.SolutionBaseName }}'
 
     - job: BuildDotNetCore
       displayName: Build .Net Core
