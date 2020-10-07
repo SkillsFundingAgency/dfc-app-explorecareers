@@ -23,6 +23,9 @@
         "cosmosAccountName": {
             "value": "__appSharedCosmosDBName__"
         },
+        "cosmosDatabaseName": {
+            "value": "__cosmosDatabaseName__"
+        },
         "cosmosKey": {
             "value": "__appSharedCosmosPrimaryKey__"
         },
@@ -34,6 +37,9 @@
             "metadata": {
                 "comment": "Bug in tokenisation task prevents referencing Release.EnvironmentName directly.  https://github.com/TotalALM/VSTS-Tasks/issues/29"
             }
+        },
+        "cosmosDatabaseName": {
+            "value": "__cosmosDatabaseName__"
         },
         "cosmosContainerName": {
             "value": "__cosmosContainerName__"

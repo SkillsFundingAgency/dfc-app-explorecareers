@@ -26,6 +26,9 @@
         "environment": {
             "value": "dev"
         },
+        "cosmosDatabaseName": {
+            "value": "database"
+        },
         "cosmosContainerName": {
             "value": "container"
         },

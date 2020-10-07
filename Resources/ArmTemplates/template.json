@@ -37,6 +37,9 @@
     "cosmosResourceGroup": {
       "type": "string"
     },
+    "cosmosDatabaseName": {
+      "type": "string"
+    },
     "cosmosContainerName": {
       "type": "string"
     },
@@ -79,7 +82,6 @@
     "appServiceName": "[concat(variables('resourcePrefix'), '-as')]",
     "appInsightsName": "[concat(variables('resourcePrefix'), '-ai')]",
     "actionGroupName": "[concat('dfc-', replace(tolower(parameters('environment')), '-draft', ''), '-app-sharedresources-actgrp')]",
-    "cosmosDatabaseName": "dfc-app-explorecareers",
     "cosmosEndpoint": "[concat('https://', parameters('cosmosAccountName'), '.documents.azure.com:443/')]",
     "cosmosPartitionKey": "/PartitionKey"
   },
@@ -181,7 +183,7 @@
               },
               {
                 "name": "Configuration__CosmosDbConnections__ContentPages__DatabaseId",
-                "value": "[variables('cosmosDatabaseName')]"
+                "value": "[parameters('cosmosDatabaseName')]"
               },
               {
                 "name": "Configuration__CosmosDbConnections__ContentPages__CollectionId",
@@ -367,7 +369,7 @@
       }
     },
     {
-      "name": "[variables('cosmosDatabaseName')]",
+      "name": "[parameters('cosmosDatabaseName')]",
       "type": "Microsoft.Resources/deployments",
       "resourceGroup": "[parameters('cosmosResourceGroup')]",
       "apiVersion": "2017-05-10",
@@ -382,7 +384,7 @@
             "value": "[parameters('cosmosAccountName')]"
           },
           "databaseName": {
-            "value": "[variables('cosmosDatabaseName')]"
+            "value": "[parameters('cosmosDatabaseName')]"
           },
           "useSharedRequestUnits": {
             "value": true
@@ -412,7 +414,7 @@
             "value": "[parameters('cosmosAccountName')]"
           },
           "databaseName": {
-            "value": "[variables('cosmosDatabaseName')]"
+            "value": "[parameters('cosmosDatabaseName')]"
           },
           "collectionName": {
             "value": "[parameters('cosmosContainerName')]"
@@ -425,7 +427,7 @@
           }
         }
       },
-      "dependsOn": ["[variables('cosmosDatabaseName')]"]
+      "dependsOn": ["[parameters('cosmosDatabaseName')]"]
     }
   ],
   "outputs": {}

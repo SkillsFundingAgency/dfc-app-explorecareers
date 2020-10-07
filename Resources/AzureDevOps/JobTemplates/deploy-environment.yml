@@ -13,6 +13,7 @@ parameters:
   EnvironmentName: ''
   AppSharedResourceGroup: ''
   appSharedCosmosDBName: ''
+  cosmosDatabaseName: ''
   PageRegistrationDirectory: ''
   PageRegistrationPath: ''
   PageRegistrationFile: ''
@@ -43,6 +44,7 @@ jobs:
             ArmTemplateFolder: '${{ parameters.ArmTemplateFolder }}'
             AppSharedResourceGroup: '${{ parameters.AppSharedResourceGroup }}'
             appSharedCosmosDBName: '${{ parameters.appSharedCosmosDBName }}'
+            cosmosDatabaseName: '${{ parameters.cosmosDatabaseName }}'
 
 - deployment: DeployApplication
   displayName: "Deploy Application"

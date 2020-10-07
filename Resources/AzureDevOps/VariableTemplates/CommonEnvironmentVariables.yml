@@ -5,6 +5,8 @@ variables:
   value: $(ResourcePrefix)-as
 - name: EnableAzureMonitorAlerting
   value: true
+- name: cosmosDatabaseName
+  value: dfc-app-explorecareers
 - name: cosmosContainerName
   value: explorecareers-integrationtest
 - name: cosmosThroughput
