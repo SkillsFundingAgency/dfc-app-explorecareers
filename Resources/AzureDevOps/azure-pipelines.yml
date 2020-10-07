@@ -24,13 +24,21 @@ stages:
     displayName: Build
     jobs:
   
-    - job: TestArmTemplates
-      displayName: "Test and package ARM templates"
+    # - job: TestArmTemplates
+    #   displayName: "Test and package ARM templates"
+    #   steps:
+    #   - template: AzureDevOpsTemplates\Build\StepTemplates\dfc-arm-build.yml@dfc-devops
+    #     parameters:
+    #       ArmTemplateRoot: '${{ variables.ArmTemplateRoot }}'
+    #       SolutionBaseName: '${{ variables.SolutionBaseName }}'
+    - job: BuildArmNoTests
+      displayName: Build arm no tests
       steps:
-      - template: AzureDevOpsTemplates\Build\StepTemplates\dfc-arm-build-notests.yml@dfc-devops
-        parameters:
-          ArmTemplateRoot: '${{ variables.ArmTemplateRoot }}'
-          SolutionBaseName: '${{ variables.SolutionBaseName }}'
+      - task: PublishPipelineArtifact@0
+        displayName: Publish Pipeline Artifact
+        inputs:
+          targetPath: ${{ parameters.ArmTemplateRoot }}
+          artifactName: ${{ parameters.SolutionBaseName }}.Resources.ArmTemplates
 
     - job: BuildDotNetCore
       displayName: Build .Net Core
