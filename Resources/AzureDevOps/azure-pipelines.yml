@@ -67,7 +67,7 @@ stages:
     jobs:
     - template: JobTemplates/deploy-environment.yml
       parameters:
-        AzureSubscription: '$(AzureSubscription)'
+        AzureSubscription: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
         EnvironmentTag: '$(EnvironmentTag)'
         ParentBusiness: '$(ParentBusiness)'
         ServiceOffering: '$(ServiceOffering)'
@@ -101,7 +101,7 @@ stages:
     jobs:
     - template: JobTemplates/deploy-environment.yml
       parameters:
-        AzureSubscription: '$(AzureSubscription)'
+        AzureSubscription: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
         EnvironmentTag: '$(EnvironmentTag)'
         ParentBusiness: '$(ParentBusiness)'
         ServiceOffering: '$(ServiceOffering)'
