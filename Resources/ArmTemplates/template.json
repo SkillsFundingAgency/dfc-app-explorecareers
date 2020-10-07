@@ -251,7 +251,7 @@
               },
               {
                 "name": "SubscriptionSettings__Filter__IncludeEventTypes",
-                "value": "[ "published", "unpublished", "deleted" ]"
+                "value": "[[ "published", "unpublished", "deleted" ]"
               },
               {
                 "name": "AutoCompleteEndpoint",
