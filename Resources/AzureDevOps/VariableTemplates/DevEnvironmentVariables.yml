@@ -1,0 +1,11 @@
+variables:
+  - name: ReleaseEnvironmentName
+    value: DEV
+  - name: ResourcePrefix
+    value: dfc-dev-app-explorecareers
+  - name: aspTier
+    value: Standard
+  - name: aspInstances
+    value: 2
+  - name: aspSize
+    value: 2

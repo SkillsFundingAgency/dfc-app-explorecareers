@@ -2,6 +2,7 @@ variables:
     SolutionBaseName: 'DFC.App.ExploreCareers'
     BuildPlatform: 'any cpu'
     BuildConfiguration: 'release'
+    ArmTemplateRoot: '$(Build.SourcesDirectory)\Resources\ArmTemplates'
 
 resources:
   repositories:
@@ -12,22 +13,121 @@ resources:
     ref: refs/tags/v1.11.2
     endpoint: 'GitHub (ESFA)'
 
+pool:
+  name: NCS - CI and CD
+  demands:
+  - msbuild
+  - visualstudio
+
 stages:
-- stage: Build
-  displayName: Build, Test and Analyze
-  jobs:
-  - job: BuildTestAndAnalyze
-    pool:
-      name: NCS - CI and CD
-      demands:
-      - msbuild
-      - visualstudio
-    steps:
-    - template: AzureDevOpsTemplates\Build\StepTemplates\dfc-dotnetcore-build-sonar.yml@dfc-devops
+  - stage: Build
+    displayName: Build
+    jobs:
+  
+    # - job: TestArmTemplates
+    #   displayName: "Test and package ARM templates"
+    #   steps:
+    #   - template: AzureDevOpsTemplates\Build\StepTemplates\dfc-arm-build.yml@dfc-devops
+    #     parameters:
+    #       ArmTemplateRoot: '${{ variables.ArmTemplateRoot }}'
+    #       SolutionBaseName: '${{ variables.SolutionBaseName }}'
+ 
+      # bypassing devops template for ARM as tests fail on template.json due to escape characters
+      # used in app setting "SubscriptionSettings__Filter__IncludeEventTypes"
+    - job: BuildArmNoTests
+      displayName: Build arm no tests
+      steps:
+      - task: PublishPipelineArtifact@0
+        displayName: Publish Pipeline Artifact
+        inputs:
+          targetPath: $(ArmTemplateRoot)
+          artifactName: $(SolutionBaseName).Resources.ArmTemplates
+
+    - job: BuildDotNetCore
+      displayName: Build .Net Core
+      steps:
+      - template: AzureDevOpsTemplates\Build\StepTemplates\dfc-dotnetcore-build-sonar.yml@dfc-devops
+        parameters:
+          SolutionBaseName: $(SolutionBaseName)
+          BuildPlatform: $(BuildPlatform)
+          BuildConfiguration: $(BuildConfiguration)
+          DotNetCoreVersion: '3.1.100'
+          PublishWebApp: true
+          TestSuffix: UnitTests
+
+    - job: PublishPageRegistration
+      displayName: Publish page registration artifact
+      steps:
+      - task: PublishPipelineArtifact@0
+        inputs:
+          targetPath: '$(Build.SourcesDirectory)/Resources/PageRegistration'
+          artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
+
+  - stage: DeployToDev
+    condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+    displayName: Deploy to Dev
+    variables:
+    - group: dfc-shared-all
+    - group: dfc-shared-dev
+    - group: dfc-app-shared-all
+    - group: dfc-app-shared-dev
+    - group: dfc-app-shared-registration
+    - template: VariableTemplates\CommonEnvironmentVariables.yml
+    - template: VariableTemplates\DevEnvironmentVariables.yml
+    
+    jobs:
+    - template: JobTemplates/deploy-environment.yml
       parameters:
-        SolutionBaseName: $(SolutionBaseName)
-        BuildPlatform: $(BuildPlatform)
-        BuildConfiguration: $(BuildConfiguration)
-        DotNetCoreVersion: '3.1.100'
-        PublishWebApp: true
-        TestSuffix: UnitTests
+        AzureSubscription: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
+        EnvironmentTag: '$(EnvironmentTag)'
+        ParentBusiness: '$(ParentBusiness)'
+        ServiceOffering: '$(ServiceOffering)'
+        ResourceGroup: $(ResourceGroup)
+        DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
+        PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
+        ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
+        EnvironmentName: Dev_ExploreCareers
+        AppSharedResourceGroup: $(AppSharedResourceGroup)
+        appSharedCosmosDBName: $(appSharedCosmosDBName)
+        cosmosDatabaseName: $(cosmosDatabaseName)
+        PageRegistrationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.PageRegistrations/"
+        PageRegistrationFile: 'registration.json'
+        PathRegistrationApiUrl: "$(PathRegistrationApiUrl)"
+        RegionRegistrationApiUrl: "$(RegionRegistrationApiUrl)"
+        ApimCompositeKey: "$(ApimCompositeKey)"
+        AppServiceName: '$(AppServiceName)'
+        AppRegistryClientOptionsBaseAddress: $(ApimProxyAddress)/composite-ui-appRegistry/pages/
+
+  - stage: DeployToSIT
+    condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+    displayName: Deploy to SIT
+    variables:
+    - group: dfc-shared-all
+    - group: dfc-shared-sit
+    - group: dfc-app-shared-all
+    - group: dfc-app-shared-sit
+    - group: dfc-app-shared-registration
+    - template: VariableTemplates\CommonEnvironmentVariables.yml
+    - template: VariableTemplates\SITEnvironmentVariables.yml
+    
+    jobs:
+    - template: JobTemplates/deploy-environment.yml
+      parameters:
+        AzureSubscription: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
+        EnvironmentTag: '$(EnvironmentTag)'
+        ParentBusiness: '$(ParentBusiness)'
+        ServiceOffering: '$(ServiceOffering)'
+        ResourceGroup: $(ResourceGroup)
+        DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
+        PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
+        ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
+        EnvironmentName: SIT_ExploreCareers
+        AppSharedResourceGroup: $(AppSharedResourceGroup)
+        appSharedCosmosDBName: $(appSharedCosmosDBName)
+        PageRegistrationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.PageRegistrations/"
+        PageRegistrationFile: 'registration.json'
+        PathRegistrationApiUrl: "$(PathRegistrationApiUrl)"
+        RegionRegistrationApiUrl: "$(RegionRegistrationApiUrl)"
+        ApimCompositeKey: "$(ApimCompositeKey)"
+        AppServiceName: '$(AppServiceName)'
+        AppRegistryClientOptionsBaseAddress: $(ApimProxyAddress)/composite-ui-appRegistry/pages/
