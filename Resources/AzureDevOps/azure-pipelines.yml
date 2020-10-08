@@ -31,6 +31,9 @@ stages:
     #     parameters:
     #       ArmTemplateRoot: '${{ variables.ArmTemplateRoot }}'
     #       SolutionBaseName: '${{ variables.SolutionBaseName }}'
+ 
+      # bypassing devops template for ARM as tests fail on template.json due to escape characters
+      # used in app setting "SubscriptionSettings__Filter__IncludeEventTypes"
     - job: BuildArmNoTests
       displayName: Build arm no tests
       steps:
@@ -61,7 +64,7 @@ stages:
           artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
   - stage: DeployToDev
-    #condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+    condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     displayName: Deploy to Dev
     variables:
     - group: dfc-shared-all
@@ -96,7 +99,7 @@ stages:
         AppRegistryClientOptionsBaseAddress: $(ApimProxyAddress)/composite-ui-appRegistry/pages/
 
   - stage: DeployToSIT
-    #condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+    condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
     displayName: Deploy to SIT
     variables:
     - group: dfc-shared-all
