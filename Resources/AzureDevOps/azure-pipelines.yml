@@ -124,6 +124,7 @@ stages:
         EnvironmentName: SIT_ExploreCareers
         AppSharedResourceGroup: $(AppSharedResourceGroup)
         appSharedCosmosDBName: $(appSharedCosmosDBName)
+        cosmosDatabaseName: $(cosmosDatabaseName)
         PageRegistrationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.PageRegistrations/"
         PageRegistrationFile: 'registration.json'
         PathRegistrationApiUrl: "$(PathRegistrationApiUrl)"
