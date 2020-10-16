@@ -17,8 +17,7 @@ parameters:
   PageRegistrationDirectory: ''
   PageRegistrationPath: ''
   PageRegistrationFile: ''
-  PathRegistrationApiUrl: ''
-  RegionRegistrationApiUrl: ''
+  AppRegistryApiUrl: ''
   ApimCompositeKey: ''
   AppServiceName: ''
 
@@ -77,5 +76,5 @@ jobs:
             AzureSubscription: '${{ parameters.AzureSubscription }}'
             PageRegistrationPath: '${{ parameters.PageRegistrationPath }}'
             PageRegistrationFile: '${{ parameters.PageRegistrationFile }}'
-            AppRegistryApiUrl: '${{ parameters.PathRegistrationApiUrl }}'
+            AppRegistryApiUrl: '${{ parameters.AppRegistryApiUrl }}'
             ApimCompositeKey: '${{ parameters.ApimCompositeKey }}'
