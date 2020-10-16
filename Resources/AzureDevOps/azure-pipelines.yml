@@ -74,7 +74,7 @@ stages:
   - group: dfc-app-shared-registration
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\DevEnvironmentVariables.yml
-  
+
   jobs:
   - template: JobTemplates/deploy-environment.yml
     parameters:
@@ -92,8 +92,7 @@ stages:
       cosmosDatabaseName: $(cosmosDatabaseName)
       PageRegistrationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.PageRegistrations/"
       PageRegistrationFile: 'registration.json'
-      PathRegistrationApiUrl: "$(PathRegistrationApiUrl)"
-      RegionRegistrationApiUrl: "$(RegionRegistrationApiUrl)"
+      AppRegistryApiUrl: "$(AppRegistryApiUrl)"
       ApimCompositeKey: "$(ApimCompositeKey)"
       AppServiceName: '$(AppServiceName)'
       AppRegistryClientOptionsBaseAddress: $(ApimProxyAddress)/composite-ui-appRegistry/pages/
@@ -109,7 +108,7 @@ stages:
   - group: dfc-app-shared-registration
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\SITEnvironmentVariables.yml
-  
+
   jobs:
   - template: JobTemplates/deploy-environment.yml
     parameters:
@@ -127,8 +126,7 @@ stages:
       cosmosDatabaseName: $(cosmosDatabaseName)
       PageRegistrationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.PageRegistrations/"
       PageRegistrationFile: 'registration.json'
-      PathRegistrationApiUrl: "$(PathRegistrationApiUrl)"
-      RegionRegistrationApiUrl: "$(RegionRegistrationApiUrl)"
+      AppRegistryApiUrl: "$(AppRegistryApiUrl)"
       ApimCompositeKey: "$(ApimCompositeKey)"
       AppServiceName: '$(AppServiceName)'
       AppRegistryClientOptionsBaseAddress: $(ApimProxyAddress)/composite-ui-appRegistry/pages/
