@@ -1,15 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
-using System;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
 
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
+
 namespace DFC.App.ExploreCareers.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public static class ControllerExtensions
     {
-        public static IActionResult NegotiateContentResult(this Controller controller, object? viewModel, object? dataModel = null, string ViewName = "")
+        public static IActionResult NegotiateContentResult(this Controller controller, object? viewModel, object? dataModel = null)
         {
             if (controller == null)
             {
@@ -30,8 +33,8 @@ namespace DFC.App.ExploreCareers.Extensions
                     }
 
                     if (items.Contains(MediaTypeNames.Text.Html, StringComparer.OrdinalIgnoreCase) || items.Contains("*/*"))
-                    { 
-                        return string.IsNullOrEmpty(ViewName) ? controller.View(viewModel) : controller.View(ViewName, viewModel);
+                    {
+                        return controller.View(viewModel);
                     }
                 }
             }

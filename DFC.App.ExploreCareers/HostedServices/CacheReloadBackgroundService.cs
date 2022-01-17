@@ -1,45 +1,81 @@
-﻿using DFC.App.ExploreCareers.Data.Contracts;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+using System.Threading.Tasks;
+
+using DFC.App.ExploreCareers.Data.Contracts;
 using DFC.Compui.Telemetry.HostedService;
-using System;
-using DFC.App.ExploreCareers.ApiService.Extensions;
+using DFC.Content.Pkg.Netcore.Data.Models.ClientOptions;
+
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace DFC.App.ExploreCareers.HostedServices
 {
-    using DFC.App.ExploreCareers.Data.Models;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.Extensions.Logging;
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    public class CacheReloadBackgroundService : IHostedService
+    [ExcludeFromCodeCoverage]
+    public class CacheReloadBackgroundService : BackgroundService
     {
         private readonly ILogger<CacheReloadBackgroundService> logger;
-        private readonly IApiExtensions apiExtensions;
-        private readonly IEventMessageService<JobCategory> eventMessageService;
+        private readonly CmsApiClientOptions cmsApiClientOptions;
+        private readonly ICacheReloadService cacheReloadService;
         private readonly IHostedServiceTelemetryWrapper hostedServiceTelemetryWrapper;
 
-        public CacheReloadBackgroundService(ILogger<CacheReloadBackgroundService> logger, IApiExtensions apiExtensions, IEventMessageService<JobCategory> eventMessageService, IHostedServiceTelemetryWrapper hostedServiceTelemetryWrapper)
+        public CacheReloadBackgroundService(
+            ILogger<CacheReloadBackgroundService> logger,
+            CmsApiClientOptions cmsApiClientOptions,
+            ICacheReloadService sharedContentCacheReloadService,
+            IHostedServiceTelemetryWrapper hostedServiceTelemetryWrapper)
         {
             this.logger = logger;
-            this.apiExtensions = apiExtensions;
-            this.eventMessageService = eventMessageService;
+            this.cmsApiClientOptions = cmsApiClientOptions;
             this.hostedServiceTelemetryWrapper = hostedServiceTelemetryWrapper;
+            this.cacheReloadService = sharedContentCacheReloadService;
         }
 
-        public async Task StartAsync(CancellationToken cancellationToken)
+        public override Task StartAsync(CancellationToken cancellationToken)
         {
             logger.LogInformation("Cache reload started");
-            var jobCategories = await apiExtensions.LoadDataAsync().ConfigureAwait(false);
-            await hostedServiceTelemetryWrapper.Execute(() => eventMessageService.DeleteAllAsync(), nameof(CacheReloadBackgroundService)).ConfigureAwait(false);
 
-            await hostedServiceTelemetryWrapper.Execute(() => eventMessageService.CreateOrUpdateAsync(new JobCategory { Id = Guid.NewGuid(), Html = jobCategories, Version = Guid.NewGuid() }), nameof(CacheReloadBackgroundService)).ConfigureAwait(false);
+            return base.StartAsync(cancellationToken);
         }
 
-        public Task StopAsync(CancellationToken cancellationToken)
+        public override Task StopAsync(CancellationToken cancellationToken)
         {
             logger.LogInformation("Cache reload stopped");
 
-            return Task.CompletedTask;
+            return base.StopAsync(cancellationToken);
+        }
+
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            try
+            {
+                if (cmsApiClientOptions.BaseAddress is null)
+                {
+                    logger.LogInformation($"CMS Api Client Base Address is null, skipping Cache Reload");
+                }
+
+                logger.LogInformation($"Executing Telemetry wrapper with service {nameof(cacheReloadService)}");
+
+                var task = hostedServiceTelemetryWrapper.Execute(async () => await cacheReloadService.Reload(stoppingToken), nameof(CacheReloadBackgroundService));
+                await task;
+
+                if (!task.IsCompletedSuccessfully)
+                {
+                    logger.LogInformation($"An error occurred in the {nameof(hostedServiceTelemetryWrapper)}");
+
+                    if (task.Exception != null)
+                    {
+                        logger.LogError(task.Exception.ToString());
+                        throw task.Exception;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex.ToString());
+                throw;
+            }
         }
     }
 }

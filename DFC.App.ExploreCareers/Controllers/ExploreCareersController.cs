@@ -1,46 +1,90 @@
-﻿using DFC.App.ExploreCareers.Data.Models;
-using DFC.App.ExploreCareers.Extensions;
-using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
-using DFC.Compui.Cosmos.Contracts;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using AutoMapper;
+
+using DFC.App.ExploreCareers.Data.Models.ContentModels;
+using DFC.App.ExploreCareers.Extensions;
+using DFC.App.ExploreCareers.ViewModels;
+using DFC.Compui.Cosmos.Contracts;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 namespace DFC.App.ExploreCareers.Controllers
 {
-    public class ExploreCareersController : BasePagesController<ExploreCareersController>
+    [Route("explore-careers")]
+    public class ExploreCareersController : Controller
     {
-        private readonly IDocumentService<JobCategory> jobCategoryPageDocumentService;
+        public const string ExploreCareersViewCanonicalName = "explore-careers";
+        public const string DefaultPageTitleSuffix = "Explore Careers | National Careers Service";
 
-        public ExploreCareersController(ILogger<ExploreCareersController> logger, IDocumentService<JobCategory> jobCategoryPageDocumentService) : base(logger)
+        private readonly ILogger<ExploreCareersController> logger;
+        private readonly IMapper mapper;
+        private readonly IDocumentService<JobCategoryContentItemModel> documentService;
+
+        public ExploreCareersController(
+            ILogger<ExploreCareersController> logger,
+            IMapper mapper,
+            IDocumentService<JobCategoryContentItemModel> documentService)
         {
-            this.jobCategoryPageDocumentService = jobCategoryPageDocumentService;
+            this.logger = logger;
+            this.mapper = mapper;
+            this.documentService = documentService;
         }
 
-        [Route("/breadcrumb")]
-        public async Task<IActionResult> Breadcrumb()
+        [HttpGet]
+        [Route("head")]
+        public IActionResult Head()
         {
-            var viewModel = BuildBreadcrumb(RegistrationPath, null);
+            var viewModel = GetHeadViewModel();
 
+            logger.LogInformation($"{nameof(Head)} has returned content");
             return this.NegotiateContentResult(viewModel);
         }
 
         [HttpGet]
-        [Route("/body")]
-        public async Task<IActionResult> Body()
+        [Route("")]
+        [Route("document")]
+        public async Task<IActionResult> DocumentAsync()
         {
-            var viewModel = new BodyViewModel();
-            var jobCategories = await jobCategoryPageDocumentService.GetAllAsync().ConfigureAwait(false);
-
-            viewModel.JobCategory = new JobCategory();
-
-            if (jobCategories?.FirstOrDefault() != null)
+            var viewModel = new DocumentViewModel
             {
-                viewModel.JobCategory = jobCategories.FirstOrDefault();
-            }
+                Head = GetHeadViewModel(),
+                Body = await GetBodyViewModelAsync(),
+            };
 
+            logger.LogInformation($"{nameof(DocumentAsync)} has returned content");
             return this.NegotiateContentResult(viewModel);
+        }
+
+        [HttpGet]
+        [Route("body")]
+        public async Task<IActionResult> BodyAsync()
+        {
+            BodyViewModel viewModel = await GetBodyViewModelAsync();
+
+            logger.LogInformation($"{nameof(BodyAsync)} has returned content");
+            return this.NegotiateContentResult(viewModel);
+        }
+
+        private HeadViewModel GetHeadViewModel(string? pageTitle = null)
+        {
+            return new HeadViewModel
+            {
+                CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{ExploreCareersViewCanonicalName}", UriKind.RelativeOrAbsolute),
+                Title = string.IsNullOrWhiteSpace(pageTitle) ? DefaultPageTitleSuffix : $"{pageTitle} | {DefaultPageTitleSuffix}",
+            };
+        }
+
+        private async Task<BodyViewModel> GetBodyViewModelAsync()
+        {
+            var jobCategoryDocuments = await documentService.GetAllAsync() ?? Enumerable.Empty<JobCategoryContentItemModel>();
+            var jobCategories = mapper.Map<List<JobCategoryViewModel>>(jobCategoryDocuments);
+
+            return new BodyViewModel { JobCategories = jobCategories };
         }
     }
 }

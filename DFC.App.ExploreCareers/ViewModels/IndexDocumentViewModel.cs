@@ -1,7 +1,13 @@
-﻿namespace DFC.App.ExploreCareers.ViewModels
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace DFC.App.ExploreCareers.ViewModels
 {
+    [ExcludeFromCodeCoverage]
     public class IndexDocumentViewModel
     {
-        public string? CanonicalName { get; set; }
+        public Guid? Id { get; set; }
+
+        public string? Title { get; set; }
     }
 }

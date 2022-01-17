@@ -1,37 +1,35 @@
-﻿using AutoMapper;
-using DFC.App.ExploreCareers.ApiService;
-using DFC.App.ExploreCareers.ApiService.Extensions;
-using DFC.App.ExploreCareers.AzureSearch;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using AutoMapper;
+
+using DFC.App.ExploreCareers.Configuration;
 using DFC.App.ExploreCareers.Data.Contracts;
-using DFC.App.ExploreCareers.Data.Models;
-using DFC.App.ExploreCareers.Extensions;
+using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.HostedServices;
-using DFC.App.ExploreCareers.HttpClientPolicies;
-using DFC.App.ExploreCareers.Models;
 using DFC.App.ExploreCareers.Services.CacheContentService;
-using DFC.App.ExploreCareers.Services.EventProcessorService;
 using DFC.Compui.Cosmos;
 using DFC.Compui.Cosmos.Contracts;
 using DFC.Compui.Subscriptions.Pkg.Netstandard.Extensions;
 using DFC.Compui.Telemetry;
+using DFC.Content.Pkg.Netcore.Data.Models.ClientOptions;
+using DFC.Content.Pkg.Netcore.Extensions;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Diagnostics.CodeAnalysis;
 
 namespace DFC.App.ExploreCareers
 {
     [ExcludeFromCodeCoverage]
     public class Startup
     {
-        private const string CosmosDbContentPagesConfigAppSettings = "Configuration:CosmosDbConnections:ContentPages";
+        private const string CosmosDbSharedContentConfigAppSettings = "Configuration:CosmosDbConnections:JobCategoryContent";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
-        private static readonly string _corsPolicy = "CorsPolicy";
 
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -51,7 +49,6 @@ namespace DFC.App.ExploreCareers
                 app.UseHsts();
             }
 
-            app.UseCors(_corsPolicy);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
@@ -67,54 +64,29 @@ namespace DFC.App.ExploreCareers
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var cosmosDbConnectionContentPages = configuration.GetSection(CosmosDbContentPagesConfigAppSettings).Get<CosmosDbConnection>();
-            services.AddDocumentServices<JobCategory>(cosmosDbConnectionContentPages, env.IsDevelopment());
+            var cosmosDbConnectionSharedContent = configuration.GetSection(CosmosDbSharedContentConfigAppSettings).Get<CosmosDbConnection>();
+            services.AddDocumentServices<JobCategoryContentItemModel>(cosmosDbConnectionSharedContent, env.IsDevelopment());
 
             services.AddApplicationInsightsTelemetry();
             services.AddHttpContextAccessor();
-            services.AddTransient<IEventMessageService<JobCategory>, EventMessageService<JobCategory>>();
-            services.AddAutoMapper(typeof(Startup).Assembly);
-            services.AddHostedServiceTelemetryWrapper();
-            services.AddSubscriptionBackgroundService(configuration);
+            services.AddTransient<ICacheReloadService, CacheReloadService>();
             services.AddTransient<IWebhooksService, WebhooksService>();
 
-            if (bool.Parse(configuration["ExploreCareers:LoadDataOnStartup"]))
+            services.AddAutoMapper(typeof(Startup).Assembly);
+            services.AddSingleton(configuration.GetSection(nameof(CmsApiClientOptions)).Get<CmsApiClientOptions>() ?? new CmsApiClientOptions());
+            services.AddSingleton(configuration.GetSection(nameof(JobProfileSearchClientOptions)).Get<JobProfileSearchClientOptions>() ?? new JobProfileSearchClientOptions());
+            services.AddHostedServiceTelemetryWrapper();
+
+            if (bool.TryParse(configuration["Configuration:ReloadCache"], out bool reload) && reload)
             {
                 services.AddHostedService<CacheReloadBackgroundService>();
             }
 
-            services.AddTransient<IApiExtensions, ApiExtensions>();
+            services.AddSubscriptionBackgroundService(configuration);
 
-            services.AddSingleton(configuration.GetSection(nameof(JobCategoryApiClientOptions)).Get<JobCategoryApiClientOptions>());
-            services.AddSingleton(configuration.GetSection(nameof(JobProfileSearchClientOptions)).Get<JobProfileSearchClientOptions>());
-            services.AddSingleton(configuration.GetSection(nameof(JobCategorySearchClientOptions)).Get<JobCategorySearchClientOptions>());
-            services.Configure<ExploreCareersSettings>(configuration.GetSection(nameof(ExploreCareersSettings)));
-
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy(_corsPolicy,
-                    builder => builder
-                        .AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
-            });
-
-            const string AppSettingsPolicies = "Policies";
-            var policyOptions = configuration.GetSection(AppSettingsPolicies).Get<PolicyOptions>() ?? new PolicyOptions();
             var policyRegistry = services.AddPolicyRegistry();
 
-            services
-                .AddPolicies(policyRegistry, nameof(JobCategoryApiClientOptions), policyOptions)
-                .AddHttpClient<IApiDataService<JobCategoryApiClientOptions>, ApiDataService<JobCategoryApiClientOptions>, JobCategoryApiClientOptions>(configuration, nameof(JobCategoryApiClientOptions), nameof(PolicyOptions.HttpRetry), nameof(PolicyOptions.HttpCircuitBreaker));
-
-            services.AddPolicies(policyRegistry, nameof(JobProfileSearchClientOptions), policyOptions)
-                .AddHttpClient<IAzureSearchService<JobProfileSearchClientOptions>,
-                    AzureSearchService<JobProfileSearchClientOptions>, JobProfileSearchClientOptions>(configuration, nameof(JobProfileSearchClientOptions), nameof(PolicyOptions.HttpRetry), nameof(PolicyOptions.HttpCircuitBreaker));
-
-            services.AddPolicies(policyRegistry, nameof(JobCategorySearchClientOptions), policyOptions)
-                .AddHttpClient<IAutoCompleteService<JobCategorySearchClientOptions>,
-                    AutoCompleteService<JobCategorySearchClientOptions>, JobCategorySearchClientOptions>(configuration, nameof(JobCategorySearchClientOptions), nameof(PolicyOptions.HttpRetry), nameof(PolicyOptions.HttpCircuitBreaker));
+            services.AddApiServices(configuration, policyRegistry);
 
             services.AddMvc(config =>
                 {

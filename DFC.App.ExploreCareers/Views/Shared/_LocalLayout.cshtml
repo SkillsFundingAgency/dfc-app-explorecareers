@@ -8,15 +8,13 @@
 <body class="govuk-template__body ">
     <partial name="_GovUkHeader" />
 
-    <div class="govuk-width-container">
-        <main class="govuk-main-wrapper" id="main-content" role="main">
+    <main class="govuk-!-padding-top-0 govuk-!-padding-bottom-0" id="main-content" role="main">
 
-            <partial name="_ErrorSummary" />
+        <partial name="_ErrorSummary" />
 
-            @RenderBody()
+        @RenderBody()
 
-        </main>
-    </div>
+    </main>
 
     <partial name="_GovUkFooter" />
 

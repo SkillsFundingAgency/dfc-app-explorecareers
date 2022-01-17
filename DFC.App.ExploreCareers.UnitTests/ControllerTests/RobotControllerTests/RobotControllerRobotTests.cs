@@ -1,6 +1,9 @@
-﻿using FluentAssertions;
+﻿using System.Net.Mime;
+
+using FluentAssertions;
+
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Mime;
+
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.RobotControllerTests
@@ -12,7 +15,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.RobotControllerTests
         public void RobotControllerRobotReturnsSuccess()
         {
             // Arrange
-            var controller = BuildRobotController();
+            using var controller = BuildRobotController();
 
             // Act
             var result = controller.Robot();
@@ -21,8 +24,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.RobotControllerTests
             var contentResult = Assert.IsType<ContentResult>(result);
 
             contentResult.ContentType.Should().Be(MediaTypeNames.Text.Plain);
-
-            controller.Dispose();
         }
     }
 }

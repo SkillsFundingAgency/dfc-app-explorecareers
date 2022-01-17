@@ -1,11 +1,12 @@
-﻿using DFC.App.ExploreCareers.Data.Contracts;
-using DFC.App.ExploreCareers.Data.Models;
+﻿using System;
+
+using DFC.App.ExploreCareers.Data.Contracts;
+using DFC.App.ExploreCareers.Data.Models.ContentModels;
+using DFC.Compui.Cosmos.Contracts;
+
 using FakeItEasy;
+
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using DFC.App.ExploreCareers.ApiService.Extensions;
-using DFC.App.ExploreCareers.PageService;
 
 namespace DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.WebhooksServiceTests
 {
@@ -20,10 +21,8 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.Webhooks
         protected BaseWebhooksServiceTests()
         {
             Logger = A.Fake<ILogger<WebhooksService>>();
-            FakeEventMessageService = A.Fake<IEventMessageService<JobCategory>>();
-            FakeMapper = A.Fake<AutoMapper.IMapper>();
-            FakeApiExtensions = A.Fake<IApiExtensions>();
-
+            FakeCacheReloadService = A.Fake<ICacheReloadService>();
+            FakeSharedContentItemDocumentService = A.Fake<IDocumentService<JobCategoryContentItemModel>>();
         }
 
         protected Guid ContentIdForCreate { get; } = Guid.NewGuid();
@@ -31,23 +30,16 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.Webhooks
         protected Guid ContentIdForUpdate { get; } = Guid.NewGuid();
 
         protected Guid ContentIdForDelete { get; } = Guid.NewGuid();
-        
+
         protected ILogger<WebhooksService> Logger { get; }
 
-        protected IApiExtensions FakeApiExtensions { get; }
+        protected ICacheReloadService FakeCacheReloadService { get; }
 
-        protected IEventMessageService<JobCategory> FakeEventMessageService { get; }
-
-        protected AutoMapper.IMapper FakeMapper { get; }
-
-        protected static string BuildValidJobCategoryHtmlString()
-        {
-            return "<div>testing<div>";
-        }
+        protected IDocumentService<JobCategoryContentItemModel> FakeSharedContentItemDocumentService { get; }
 
         protected WebhooksService BuildWebhooksService()
         {
-            var service = new WebhooksService(Logger, FakeMapper, FakeEventMessageService, FakeApiExtensions);
+            var service = new WebhooksService(Logger, FakeCacheReloadService, FakeSharedContentItemDocumentService);
 
             return service;
         }

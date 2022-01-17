@@ -1,9 +1,12 @@
-﻿namespace DFC.App.ExploreCareers.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace DFC.App.ExploreCareers.Models
 {
+    [ExcludeFromCodeCoverage]
     public class BreadcrumbItemModel
     {
-        public string? CanonicalName { get; set; }
+        public string? Route { get; set; }
 
-        public string? BreadcrumbTitle { get; set; }
+        public string? Title { get; set; }
     }
 }
