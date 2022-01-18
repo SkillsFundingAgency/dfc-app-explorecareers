@@ -70,6 +70,9 @@
         },
         "contentUrl": {
             "value": "__contentUrl__"
+        },
+        "apimCompositeApiKey": {
+            "value": "__apimCompositeKey__"
         }
     }
 }

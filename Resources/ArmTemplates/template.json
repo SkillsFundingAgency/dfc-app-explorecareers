@@ -72,6 +72,9 @@
     },
     "contentUrl": {
       "type": "string"
+    },
+    "apimCompositeApiKey": {
+      "type": "securestring"
     }
   },
   "variables": {
@@ -227,7 +230,7 @@
               },
               {
                 "name": "SubscriptionSettings__Endpoint",
-                "value": "[parameters('subscriptionEndpoint')]"
+                "value": "[concat(parameters('subscriptionEndpoint'),'?subscription-key=',parameters('apimCompositeApiKey'))]"
               },
               {
                 "name": "SubscriptionSettings__SubscriptionServiceEndpoint",
