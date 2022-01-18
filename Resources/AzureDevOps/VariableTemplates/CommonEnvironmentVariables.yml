@@ -15,8 +15,6 @@ variables:
   value: $(jobProfileSearchAddress)/
 - name: subscriptionEndpoint
   value: $(AppServiceName).$(appServiceDomain)/api/webhook/ReceiveEvents
-- name: subscriptionServiceEndpoint
-  value: $(ApimProxyAddress)/composite-ui/subscription/api/Execute/
 - name: autoCompleteEndpoint
   value: $(jobCategoryBaseAddress)searchautocomplete
 - name: contentUrl
