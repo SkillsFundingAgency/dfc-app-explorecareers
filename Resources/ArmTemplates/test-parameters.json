@@ -64,6 +64,9 @@
         },
         "apimCompositeApiKey": {
             "value": "apimCompositeApiKey"
+        },
+        "loggingLogLevelDefault": {
+            "value": "Trace"
         }
     }
 }

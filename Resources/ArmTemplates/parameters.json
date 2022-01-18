@@ -73,6 +73,9 @@
         },
         "apimCompositeApiKey": {
             "value": "__apimCompositeKey__"
+        },
+        "loggingLogLevelDefault": {
+            "value": "__loggingLogLevelDefault__"
         }
     }
 }
