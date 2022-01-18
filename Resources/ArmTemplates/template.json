@@ -169,7 +169,7 @@
               },
               {
                 "name": "Configuration__ApplicationName",
-                "value": "DFC.App.ExploreCareers"
+                "value": "dfc-app-explorecareers"
               },
               {
                 "name": "Configuration__CosmosDbConnections__JobCategoryContent__AccessKey",
