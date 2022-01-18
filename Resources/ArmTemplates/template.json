@@ -52,9 +52,6 @@
     "cosmosNeedsCreation": {
       "type": "bool"
     },
-    "jobCategoryApiClientOptionsBaseAddress": {
-      "type": "string"
-    },
     "jobProfileApiKey": {
       "type": "string"
     },
@@ -197,10 +194,6 @@
                 "value": "true"
               },
               {
-                "name": "ExploreCareers__LoadDataOnStartup",
-                "value": "true"
-              },
-              {
                 "name": "Policies__HttpCircuitBreaker__DurationOfBreak",
                 "value": "00:01:00"
               },
@@ -215,14 +208,6 @@
               {
                 "name": "Policies__HttpRetry__Count",
                 "value": 3
-              },
-              {
-                "name": "JobCategoryApiClientOptions__Timeout",
-                "value": "00:01:00"
-              },
-              {
-                "name": "JobCategoryApiClientOptions__BaseAddress",
-                "value": "[parameters('jobCategoryApiClientOptionsBaseAddress')]"
               },
               {
                 "name": "ExploreCareersSettings__JobProfileBaseAddress",

@@ -11,8 +11,6 @@ variables:
   value: job-categories
 - name: cosmosThroughput
   value: 400
-- name: jobCategoryApiClientOptionsBaseAddress
-  value: $(PublishedAppPrefix)/Pages/explore-careers
 - name: jobProfileBaseAddress
   value: $(jobProfileSearchAddress)/
 - name: subscriptionEndpoint

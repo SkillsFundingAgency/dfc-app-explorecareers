@@ -38,9 +38,6 @@
         "cosmosThroughput": {
             "value": 2
         },
-        "jobCategoryApiClientOptionsBaseAddress": {
-            "value": "jobCategoryApiClientOptionsBaseAddress"
-        },
         "enableAlerts": {
             "value": false
         },

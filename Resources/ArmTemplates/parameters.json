@@ -47,9 +47,6 @@
         "cosmosThroughput": {
             "value": __cosmosThroughput__
         },
-        "jobCategoryApiClientOptionsBaseAddress": {
-            "value": "__jobCategoryApiClientOptionsBaseAddress__"
-        },
         "enableAlerts": {
             "value": __enableAzureMonitorAlerting__
         },
