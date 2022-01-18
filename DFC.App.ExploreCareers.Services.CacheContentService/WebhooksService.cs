@@ -1,63 +1,59 @@
-﻿using DFC.App.ExploreCareers.Data.Contracts;
-using DFC.App.ExploreCareers.Data.Enums;
-using DFC.App.ExploreCareers.Data.Models;
-using DFC.Compui.Cosmos.Contracts;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using DFC.App.ExploreCareers.ApiService.Extensions;
+
+using DFC.App.ExploreCareers.Data.Contracts;
+using DFC.App.ExploreCareers.Data.Enums;
+using DFC.App.ExploreCareers.Data.Models.ContentModels;
+using DFC.Compui.Cosmos.Contracts;
+
+using Microsoft.Extensions.Logging;
 
 namespace DFC.App.ExploreCareers.Services.CacheContentService
 {
     public class WebhooksService : IWebhooksService
     {
         private readonly ILogger<WebhooksService> logger;
-        private readonly AutoMapper.IMapper mapper;
-        private readonly IEventMessageService<JobCategory> eventMessageService;
-        private readonly IApiExtensions apiExtensions;
+        private readonly ICacheReloadService cacheService;
+        private readonly IDocumentService<JobCategoryContentItemModel> documentService;
 
         public WebhooksService(
             ILogger<WebhooksService> logger,
-            AutoMapper.IMapper mapper,
-            IEventMessageService<JobCategory> eventMessageService, IApiExtensions apiExtensions)
+            ICacheReloadService cacheService,
+            IDocumentService<JobCategoryContentItemModel> documentService)
         {
             this.logger = logger;
-            this.mapper = mapper;
-            this.eventMessageService = eventMessageService;
-            this.apiExtensions = apiExtensions;
+            this.cacheService = cacheService;
+            this.documentService = documentService;
         }
 
-        public async Task<HttpStatusCode> ProcessMessageAsync(WebhookCacheOperation webhookCacheOperation, Guid eventId, Guid contentId, Uri url)
+        public async Task<HttpStatusCode> ProcessMessageAsync(WebhookCacheOperation webhookCacheOperation, Guid eventId, Guid contentId, string apiEndpoint)
         {
             switch (webhookCacheOperation)
             {
                 case WebhookCacheOperation.Delete:
+                    return await DeleteContentAsync(contentId);
+
                 case WebhookCacheOperation.CreateOrUpdate:
-                    return await UpdateContentAsync().ConfigureAwait(false);
+                    if (!Uri.TryCreate(apiEndpoint, UriKind.Absolute, out Uri? url))
+                    {
+                        throw new InvalidDataException($"Invalid Api url '{apiEndpoint}' received for Event Id: {eventId}");
+                    }
+
+                    return await cacheService.ProcessContentAsync(url);
+
                 default:
                     logger.LogError($"Event Id: {eventId} got unknown cache operation - {webhookCacheOperation}");
                     return HttpStatusCode.BadRequest;
             }
         }
 
-
-        public async Task<HttpStatusCode> UpdateContentAsync()
+        public async Task<HttpStatusCode> DeleteContentAsync(Guid contentId)
         {
-            var jobCategory = await apiExtensions.LoadDataAsync().ConfigureAwait(false);
-            await eventMessageService.DeleteAllAsync().ConfigureAwait(false);
-            if (string.IsNullOrEmpty(jobCategory))
-            {
-                return HttpStatusCode.BadRequest;
-            }
+            var result = await documentService.DeleteAsync(contentId);
 
-            var result = await eventMessageService.CreateOrUpdateAsync(new JobCategory
-                { Id = Guid.NewGuid(), Html = jobCategory, Version = Guid.NewGuid() }).ConfigureAwait(false);
-
-            return result;
+            return result ? HttpStatusCode.OK : HttpStatusCode.NoContent;
         }
     }
 }

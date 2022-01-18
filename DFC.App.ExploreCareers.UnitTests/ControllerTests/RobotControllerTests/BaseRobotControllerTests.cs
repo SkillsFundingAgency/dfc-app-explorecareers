@@ -1,5 +1,7 @@
 ﻿using DFC.App.ExploreCareers.Controllers;
+
 using FakeItEasy;
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

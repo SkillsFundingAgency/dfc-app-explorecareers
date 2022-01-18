@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml.Serialization;
 
 namespace DFC.App.ExploreCareers.Models
 {
+    [ExcludeFromCodeCoverage]
     public class SitemapLocation
     {
         public enum ChangeFrequencies

@@ -1,31 +1,32 @@
-﻿using DFC.App.ExploreCareers.Data.Contracts;
-using DFC.App.ExploreCareers.Data.Enums;
-using DFC.App.ExploreCareers.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.EventGrid;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+using DFC.App.ExploreCareers.Data.Contracts;
+using DFC.App.ExploreCareers.Data.Enums;
+using DFC.App.ExploreCareers.Models;
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.EventGrid;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
 namespace DFC.App.ExploreCareers.Controllers
 {
     [Route("api/webhook")]
     public class WebhooksController : Controller
     {
-        private readonly Dictionary<string, WebhookCacheOperation> acceptedEventTypes =
-            new Dictionary<string, WebhookCacheOperation>
-            {
-                {"draft", WebhookCacheOperation.CreateOrUpdate},
-                {"published", WebhookCacheOperation.CreateOrUpdate},
-                {"draft-discarded", WebhookCacheOperation.Delete},
-                {"unpublished", WebhookCacheOperation.Delete},
-                {"deleted", WebhookCacheOperation.Delete},
-            };
+        private readonly Dictionary<string, WebhookCacheOperation> acceptedEventTypes = new Dictionary<string, WebhookCacheOperation>
+        {
+            { "draft", WebhookCacheOperation.CreateOrUpdate },
+            { "published", WebhookCacheOperation.CreateOrUpdate },
+            { "draft-discarded", WebhookCacheOperation.Delete },
+            { "unpublished", WebhookCacheOperation.Delete },
+            { "deleted", WebhookCacheOperation.Delete },
+        };
 
         private readonly ILogger<WebhooksController> logger;
         private readonly IWebhooksService webhookService;
@@ -43,7 +44,7 @@ namespace DFC.App.ExploreCareers.Controllers
         public async Task<IActionResult> ReceiveEvents()
         {
             using var reader = new StreamReader(Request.Body, Encoding.UTF8);
-            string requestContent = await reader.ReadToEndAsync().ConfigureAwait(false);
+            string requestContent = await reader.ReadToEndAsync();
             logger.LogInformation($"Received events: {requestContent}");
 
             var eventGridSubscriber = new EventGridSubscriber();
@@ -63,8 +64,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
                 if (eventGridEvent.Data is SubscriptionValidationEventData subscriptionValidationEventData)
                 {
-                    logger.LogInformation(
-                        $"Got SubscriptionValidation event data, validationCode: {subscriptionValidationEventData!.ValidationCode},  validationUrl: {subscriptionValidationEventData.ValidationUrl}, topic: {eventGridEvent.Topic}");
+                    logger.LogInformation($"Got SubscriptionValidation event data, validationCode: {subscriptionValidationEventData!.ValidationCode},  validationUrl: {subscriptionValidationEventData.ValidationUrl}, topic: {eventGridEvent.Topic}");
 
                     // Do any additional validation (as required) such as validating that the Azure resource ID of the topic matches
                     // the expected topic and then return back the below response
@@ -79,30 +79,20 @@ namespace DFC.App.ExploreCareers.Controllers
                 {
                     if (!Guid.TryParse(eventGridEventData.ItemId, out Guid contentId))
                     {
-                        throw new InvalidDataException(
-                            $"Invalid Guid for EventGridEvent.Data.ItemId '{eventGridEventData.ItemId}'");
-                    }
-
-                    if (!Uri.TryCreate(eventGridEventData.Api, UriKind.Absolute, out Uri? url))
-                    {
-                        throw new InvalidDataException(
-                            $"Invalid Api url '{eventGridEventData.Api}' received for Event Id: {eventId}");
+                        throw new InvalidDataException($"Invalid Guid for EventGridEvent.Data.ItemId '{eventGridEventData.ItemId}'");
                     }
 
                     var cacheOperation = acceptedEventTypes[eventGridEvent.EventType];
 
-                    logger.LogInformation(
-                        $"Got Event Id: {eventId}: {eventGridEvent.EventType}: Cache operation: {cacheOperation} {url}");
+                    logger.LogInformation($"Got Event Id: {eventId}: {eventGridEvent.EventType}: Cache operation: {cacheOperation} {eventGridEventData.Api}");
 
-                    var result = await webhookService.ProcessMessageAsync(cacheOperation, eventId, contentId, url)
-                        .ConfigureAwait(false);
+                    var result = await webhookService.ProcessMessageAsync(cacheOperation, eventId, contentId, eventGridEventData.Api!);
 
                     LogResult(eventId, contentId, result);
                 }
                 else
                 {
-                    throw new InvalidDataException(
-                        $"Invalid event type '{eventGridEvent.EventType}' received for Event Id: {eventId}, should be one of '{string.Join(",", acceptedEventTypes.Keys)}'");
+                    throw new InvalidDataException($"Invalid event type '{eventGridEvent.EventType}' received for Event Id: {eventId}, should be one of '{string.Join(",", acceptedEventTypes.Keys)}'");
                 }
             }
 
@@ -114,24 +104,19 @@ namespace DFC.App.ExploreCareers.Controllers
             switch (result)
             {
                 case HttpStatusCode.OK:
-                    logger.LogInformation(
-                        $"Event Id: {eventId}, Content Page Id: {contentPageId}: Updated Content Page");
+                    logger.LogInformation($"Event Id: {eventId}, Content Page Id: {contentPageId}: Updated Content Page");
                     break;
 
                 case HttpStatusCode.Created:
-                    logger.LogInformation(
-                        $"Event Id: {eventId}, Content Page Id: {contentPageId}: Created Content Page");
+                    logger.LogInformation($"Event Id: {eventId}, Content Page Id: {contentPageId}: Created Content Page");
                     break;
 
                 case HttpStatusCode.AlreadyReported:
-                    logger.LogInformation(
-                        $"Event Id: {eventId}, Content Page Id: {contentPageId}: Content Page previously updated");
+                    logger.LogInformation($"Event Id: {eventId}, Content Page Id: {contentPageId}: Content Page previously updated");
                     break;
 
                 default:
-                    logger.LogWarning(
-                        $"Event Id: {eventId}, Content Page Id: {contentPageId}: Content Page not Posted: Status: {result}");
-                    break;
+                    throw new InvalidDataException($"Event Id: {eventId}, Content Page Id: {contentPageId}: Content Page not updated: Status: {result}");
             }
         }
     }

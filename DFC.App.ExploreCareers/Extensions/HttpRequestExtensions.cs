@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace DFC.App.ExploreCareers.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public static class HttpRequestExtensions
     {
         public static Uri? GetBaseAddress(this HttpRequest request, IUrlHelper? urlHelper = null)

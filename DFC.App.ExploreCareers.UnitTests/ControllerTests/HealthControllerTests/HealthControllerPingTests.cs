@@ -1,7 +1,10 @@
-﻿using FakeItEasy;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
+﻿using System.Net;
 using System.Net.Mime;
+
+using FakeItEasy;
+
+using Microsoft.AspNetCore.Mvc;
+
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
@@ -13,7 +16,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
         public void HealthControllerPingReturnsSuccess()
         {
             // Arrange
-            var controller = BuildHealthController(MediaTypeNames.Application.Json);
+            using var controller = BuildHealthController(MediaTypeNames.Application.Json);
 
             // Act
             var result = controller.Ping();
@@ -22,8 +25,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
             var statusResult = Assert.IsType<OkResult>(result);
 
             A.Equals((int)HttpStatusCode.OK, statusResult.StatusCode);
-
-            controller.Dispose();
         }
     }
 }

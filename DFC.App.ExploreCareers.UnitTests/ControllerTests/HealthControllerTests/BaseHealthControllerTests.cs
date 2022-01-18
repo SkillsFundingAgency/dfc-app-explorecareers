@@ -1,13 +1,16 @@
-﻿using DFC.App.ExploreCareers.Controllers;
-using DFC.App.ExploreCareers.Data.Models;
+﻿using System.Collections.Generic;
+using System.Net.Mime;
+
+using DFC.App.ExploreCareers.Controllers;
+using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.Compui.Cosmos.Contracts;
+
 using FakeItEasy;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
-using System.Collections.Generic;
-using System.Net.Mime;
 
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
 {
@@ -15,7 +18,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
     {
         public BaseHealthControllerTests()
         {
-            FakeDocumentService = A.Fake<IDocumentService<JobCategory>>();
+            FakeDocumentService = A.Fake<IDocumentService<JobCategoryContentItemModel>>();
             FakeLogger = A.Fake<ILogger<HealthController>>();
         }
 
@@ -35,7 +38,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
             new string[] { MediaTypeNames.Application.Json },
         };
 
-        protected IDocumentService<JobCategory> FakeDocumentService { get; }
+        protected IDocumentService<JobCategoryContentItemModel> FakeDocumentService { get; }
 
         protected ILogger<HealthController> FakeLogger { get; }
 

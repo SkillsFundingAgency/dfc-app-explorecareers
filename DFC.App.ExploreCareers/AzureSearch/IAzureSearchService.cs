@@ -1,12 +1,14 @@
-﻿using DFC.App.ExploreCareers.Models.AzureSearch;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using DFC.App.ExploreCareers.Models;
 
 namespace DFC.App.ExploreCareers.AzureSearch
 {
-    public interface IAzureSearchService<TClientOptions>
-        where TClientOptions : JobProfileSearchClientOptions
+    public interface IAzureSearchService
     {
-        Task<AzureSearchJobProfileModel> Search(string searchTerm, int page = 1);
+        Task<List<AutoCompleteModel>> AutoComplete(string searchTerm);
+
+        Task<AzureSearchJobProfileModel> Search(string searchTerm, int skip = 1);
     }
 }

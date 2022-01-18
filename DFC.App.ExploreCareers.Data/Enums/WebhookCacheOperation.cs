@@ -1,4 +1,5 @@
-﻿namespace DFC.App.ExploreCareers.Data.Enums
+﻿
+namespace DFC.App.ExploreCareers.Data.Enums
 {
     public enum WebhookCacheOperation
     {

@@ -1,0 +1,32 @@
+﻿@model IndexViewModel
+
+@{
+    Layout = "_LocalLayout";
+
+    ViewData["Title"] = "Index";
+}
+
+<div class="govuk-grid-row">
+    <div class="govuk-width-container">
+        @if (Model.Documents?.Count() > 0)
+        {
+            <ul>
+                @foreach (var document in Model.Documents)
+                {
+                    if (document.Id is null)
+                    {
+                        <li>
+                            <a href="/@document.Title">@document.Title</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/@document.Id/document">@document.Title</a>
+                        </li>
+                    }
+                }
+            </ul>
+        }
+    </div>
+</div>

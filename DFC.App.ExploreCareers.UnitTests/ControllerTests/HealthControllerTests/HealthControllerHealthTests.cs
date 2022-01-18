@@ -1,13 +1,17 @@
-﻿using DFC.App.ExploreCareers.ViewModels;
-using FakeItEasy;
-using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
+
+using DFC.App.ExploreCareers.ViewModels;
+
+using FakeItEasy;
+
+using FluentAssertions;
+
+using Microsoft.AspNetCore.Mvc;
+
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
@@ -20,12 +24,12 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
         {
             // Arrange
             bool expectedResult = true;
-            var controller = BuildHealthController(MediaTypeNames.Application.Json);
+            using var controller = BuildHealthController(MediaTypeNames.Application.Json);
 
             A.CallTo(() => FakeDocumentService.PingAsync()).Returns(expectedResult);
 
             // Act
-            var result = await controller.Health().ConfigureAwait(false);
+            var result = await controller.Health();
 
             // Assert
             A.CallTo(() => FakeDocumentService.PingAsync()).MustHaveHappenedOnceExactly();
@@ -36,8 +40,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
             models.Count.Should().BeGreaterThan(0);
             models.First().Service.Should().NotBeNullOrWhiteSpace();
             models.First().Message.Should().NotBeNullOrWhiteSpace();
-
-            controller.Dispose();
         }
 
         [Fact]
@@ -45,12 +47,12 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
         {
             // Arrange
             bool expectedResult = false;
-            var controller = BuildHealthController(MediaTypeNames.Application.Json);
+            using var controller = BuildHealthController(MediaTypeNames.Application.Json);
 
             A.CallTo(() => FakeDocumentService.PingAsync()).Returns(expectedResult);
 
             // Act
-            var result = await controller.Health().ConfigureAwait(false);
+            var result = await controller.Health();
 
             // Assert
             A.CallTo(() => FakeDocumentService.PingAsync()).MustHaveHappenedOnceExactly();
@@ -58,27 +60,65 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HealthControllerTests
             var statusResult = Assert.IsType<StatusCodeResult>(result);
 
             A.Equals((int)HttpStatusCode.ServiceUnavailable, statusResult.StatusCode);
+        }
+
+        [Theory]
+        [MemberData(nameof(HtmlMediaTypes))]
+        public async Task HealthControllerViewHtmlReturnsSuccess(string mediaTypeName)
+        {
+            // Arrange
+            bool expectedResult = true;
+            var controller = BuildHealthController(mediaTypeName);
+
+            A.CallTo(() => FakeDocumentService.PingAsync()).Returns(expectedResult);
+
+            // Act
+            var result = await controller.Health();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            _ = Assert.IsAssignableFrom<HealthViewModel>(viewResult.ViewData.Model);
 
             controller.Dispose();
         }
 
-        [Fact]
-        public async Task HealthControllerHealthReturnsServiceUnavailableWhenException()
+        [Theory]
+        [MemberData(nameof(JsonMediaTypes))]
+        public async Task HealthControllerViewJsonReturnsSuccess(string mediaTypeName)
         {
             // Arrange
-            var controller = BuildHealthController(MediaTypeNames.Application.Json);
+            bool expectedResult = true;
+            var controller = BuildHealthController(mediaTypeName);
 
-            A.CallTo(() => FakeDocumentService.PingAsync()).Throws<Exception>();
+            A.CallTo(() => FakeDocumentService.PingAsync()).Returns(expectedResult);
 
             // Act
-            var result = await controller.Health().ConfigureAwait(false);
+            var result = await controller.Health();
 
             // Assert
-            A.CallTo(() => FakeDocumentService.PingAsync()).MustHaveHappenedOnceExactly();
+            var jsonResult = Assert.IsType<OkObjectResult>(result);
+            _ = Assert.IsAssignableFrom<IList<HealthItemViewModel>>(jsonResult.Value);
 
+            controller.Dispose();
+        }
+
+        [Theory]
+        [MemberData(nameof(InvalidMediaTypes))]
+        public async Task HealthControllerHealthViewReturnsNotAcceptable(string mediaTypeName)
+        {
+            // Arrange
+            bool expectedResult = true;
+            var controller = BuildHealthController(mediaTypeName);
+
+            A.CallTo(() => FakeDocumentService.PingAsync()).Returns(expectedResult);
+
+            // Act
+            var result = await controller.Health();
+
+            // Assert
             var statusResult = Assert.IsType<StatusCodeResult>(result);
 
-            A.Equals((int)HttpStatusCode.ServiceUnavailable, statusResult.StatusCode);
+            A.Equals((int)HttpStatusCode.NotAcceptable, statusResult.StatusCode);
 
             controller.Dispose();
         }

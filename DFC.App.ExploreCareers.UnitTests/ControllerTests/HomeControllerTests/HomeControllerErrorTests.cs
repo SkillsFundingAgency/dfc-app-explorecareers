@@ -1,6 +1,9 @@
-﻿using DFC.App.ExploreCareers.ViewModels;
+﻿using System.Net.Mime;
+
+using DFC.App.ExploreCareers.ViewModels;
+
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Mime;
+
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HomeControllerTests
@@ -12,7 +15,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HomeControllerTests
         public void HomeControllerErrorTestsReturnsSuccess()
         {
             // Arrange
-            var controller = BuildHomeController(MediaTypeNames.Text.Html);
+            using var controller = BuildHomeController(MediaTypeNames.Text.Html);
 
             // Act
             var result = controller.Error();
@@ -20,8 +23,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.HomeControllerTests
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             _ = Assert.IsAssignableFrom<ErrorViewModel>(viewResult.ViewData.Model);
-
-            controller.Dispose();
         }
     }
 }
