@@ -75,6 +75,9 @@
     },
     "apimCompositeApiKey": {
       "type": "securestring"
+    },
+    "loggingLogLevelDefault": {
+      "type": "string"
     }
   },
   "variables": {
@@ -162,11 +165,7 @@
               },
               {
                 "name": "Logging__LogLevel__Default",
-                "value": "Debug"
-              },
-              {
-                "name": "Logging__ApplicationInsights__LogLevel__Microsoft",
-                "value": "Trace"
+                "value": "[parameters('loggingLogLevelDefault')]"
               },
               {
                 "name": "Configuration__ApplicationName",
@@ -229,6 +228,18 @@
                 "value": "[parameters('jobCategorySearchClientOptionsBaseAddress')]"
               },
               {
+                "name": "SubscriptionSettings__Filter__IncludeEventTypes__0",
+                "value": "published"
+              },
+              {
+                "name": "SubscriptionSettings__Filter__IncludeEventTypes__1",
+                "value": "unpublished"
+              },
+              {
+                "name": "SubscriptionSettings__Filter__IncludeEventTypes__2",
+                "value": "deleted"
+              },
+              {
                 "name": "SubscriptionSettings__Endpoint",
                 "value": "[concat(parameters('subscriptionEndpoint'),'?subscription-key=',parameters('apimCompositeApiKey'))]"
               },
@@ -238,15 +249,7 @@
               },
               {
                 "name": "SubscriptionSettings__SubscriptionRegistrationDelay",
-                "value": "00:02:00"
-              },
-              {
-                "name": "SubscriptionSettings__Filter__BeginsWith",
-                "value": "/dfc-app-jobcategories/"
-              },
-              {
-                "name": "SubscriptionSettings__Filter__IncludeEventTypes",
-                "value": "[[ \"published\", \"unpublished\", \"deleted\" ]"
+                "value": "00:01:00"
               },
               {
                 "name": "SubscriptionSettings__Filter__PropertyContainsFilters__0__Key",
@@ -309,7 +312,7 @@
       "apiVersion": "2019-05-01",
       "name": "[concat(variables('appInsightsName'), '-metric-exceptions')]",
       "type": "Microsoft.Resources/deployments",
-      "dependsOn": ["[variables('appInsightsName')]"],
+      "dependsOn": [ "[variables('appInsightsName')]" ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -360,7 +363,7 @@
       "apiVersion": "2019-05-01",
       "name": "[concat(variables('appInsightsName'), '-failure-anomaly-v2')]",
       "type": "Microsoft.Resources/deployments",
-      "dependsOn": ["[variables('appInsightsName')]"],
+      "dependsOn": [ "[variables('appInsightsName')]" ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -442,7 +445,7 @@
           }
         }
       },
-      "dependsOn": ["[parameters('cosmosDatabaseName')]"]
+      "dependsOn": [ "[parameters('cosmosDatabaseName')]" ]
     }
   ],
   "outputs": {}
