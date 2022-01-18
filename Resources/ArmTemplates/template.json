@@ -263,7 +263,7 @@
               },
               {
                 "name": "CmsApiClientOptions__SummaryEndpoint",
-                "value": "summary-endpoint"
+                "value": "/jobprofilecategory"
               },
               {
                 "name": "CmsApiClientOptions__Timeout",
