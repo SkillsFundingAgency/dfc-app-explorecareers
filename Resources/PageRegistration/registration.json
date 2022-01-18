@@ -1,25 +1,26 @@
 [
   {
     "Path": "explore-careers",
-    "TopNavigationText": null,
-    "TopNavigationOrder": 4000,
-    "Layout": 4,
-    "IsOnline": true,
+    "TopNavigationText": "Explore Careers",
+    "TopNavigationOrder": 100,
+    "Layout": "FullWidth",
     "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
+    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><<div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete <a target=\"_blank\" class=\"govuk-link\" href=\"https://surveys.ipsosinteractive.com/mrIWeb/mrIWeb.dll?I.Project=S1039833&amp;id=&amp;cf=ovl \">Ipsos MORI survey</a> to give us your feedback about the service.</span> </p></div></div>",
+    "IsOnline": true,
     "SitemapUrl": "https://__AppServiceName__.__appServiceDomain__/sitemap.xml",
     "RobotsUrl": "https://__AppServiceName__.__appServiceDomain__/robots.txt",
     "ExternalURL": null,
     "Regions": [
       {
         "PageRegion": 1,
-        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/{0}/breadcrumb",
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/head",
         "HealthCheckRequired": false,
         "IsHealthy": true
       },
       {
         "PageRegion": 2,
         "HealthCheckRequired": false,
-        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/{0}/body",
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/body",
         "OfflineHtml": "<div class=\"govuk-width-container\"><H3>Explore Careers Service Unavailable</H3></div>",
         "IsHealthy": true
       }
