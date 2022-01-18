@@ -11,5 +11,5 @@ variables:
   value: 2
 - name: subscriptionServiceEndpoint
   value: https://dfc-sit-api-eventgridsubscriptions-fa.$(appServiceDomain)
-- name: LoggingLogLevelDefault
+- name: loggingLogLevelDefault
   value: Trace
