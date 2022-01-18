@@ -8,16 +8,18 @@ variables:
 - name: cosmosDatabaseName
   value: dfc-app-explorecareers
 - name: cosmosContainerName
-  value: explorecareers-integrationtest
+  value: job-categories
 - name: cosmosThroughput
   value: 400
 - name: jobCategoryApiClientOptionsBaseAddress
   value: $(PublishedAppPrefix)/Pages/explore-careers
 - name: jobProfileBaseAddress
-  value: $(jobProfileSearchAddress)/indexes/dfc-digital-jobprofiles/docs/
+  value: $(jobProfileSearchAddress)/
 - name: subscriptionEndpoint
   value: $(AppServiceName).$(appServiceDomain)/api/webhook/ReceiveEvents
 - name: subscriptionServiceEndpoint
   value: $(ApimProxyAddress)/composite-ui/subscription/api/Execute/
 - name: autoCompleteEndpoint
   value: $(jobCategoryBaseAddress)searchautocomplete
+- name: contentUrl
+  value: $(ContentApiAddress)/api/execute

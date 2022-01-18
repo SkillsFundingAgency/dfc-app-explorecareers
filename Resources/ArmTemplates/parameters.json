@@ -70,6 +70,9 @@
         },
         "autoCompleteEndpoint": {
             "value": "__autoCompleteEndpoint__"
+        },
+        "contentUrl": {
+            "value": "__contentUrl__"
         }
     }
 }

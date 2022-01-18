@@ -72,6 +72,9 @@
     },
     "autoCompleteEndpoint": {
       "type": "string"
+    },
+    "contentUrl": {
+      "type": "string"
     }
   },
   "variables": {
@@ -170,24 +173,28 @@
                 "value": "DFC.App.ExploreCareers"
               },
               {
-                "name": "Configuration__CosmosDbConnections__ContentPages__AccessKey",
+                "name": "Configuration__CosmosDbConnections__JobCategoryContent__AccessKey",
                 "value": "[parameters('cosmosKey')]"
               },
               {
-                "name": "Configuration__CosmosDbConnections__ContentPages__EndpointUrl",
+                "name": "Configuration__CosmosDbConnections__JobCategoryContent__EndpointUrl",
                 "value": "[variables('cosmosEndpoint')]"
               },
               {
-                "name": "Configuration__CosmosDbConnections__ContentPages__DatabaseId",
+                "name": "Configuration__CosmosDbConnections__JobCategoryContent__DatabaseId",
                 "value": "[parameters('cosmosDatabaseName')]"
               },
               {
-                "name": "Configuration__CosmosDbConnections__ContentPages__CollectionId",
+                "name": "Configuration__CosmosDbConnections__JobCategoryContent__CollectionId",
                 "value": "[parameters('cosmosContainerName')]"
               },
               {
-                "name": "Configuration__CosmosDbConnections__ContentPages__PartitionKey",
+                "name": "Configuration__CosmosDbConnections__JobCategoryContent__PartitionKey",
                 "value": "[variables('cosmosPartitionKey')]"
+              },
+              {
+                "name": "Configuration__ReloadCache",
+                "value": "true"
               },
               {
                 "name": "ExploreCareers__LoadDataOnStartup",
@@ -254,8 +261,32 @@
                 "value": "[[ \"published\", \"unpublished\", \"deleted\" ]"
               },
               {
+                "name": "SubscriptionSettings__Filter__PropertyContainsFilters__0__Key",
+                "value": "subject"
+              },
+              {
+                "name": "SubscriptionSettings__Filter__PropertyContainsFilters__0__Values__0",
+                "value": "/content/Jobprofilecategory"
+              },
+              {
                 "name": "AutoCompleteEndpoint",
                 "value": "[parameters('autoCompleteEndpoint')]"
+              },
+              {
+                "name": "CmsApiClientOptions__BaseAddress",
+                "value": "[parameters('contentUrl')]"
+              },
+              {
+                "name": "CmsApiClientOptions__SummaryEndpoint",
+                "value": "summary-endpoint"
+              },
+              {
+                "name": "CmsApiClientOptions__Timeout",
+                "value": "00:00:30"
+              },
+              {
+                "name": "JobProfileSearchClientOptions__IndexName",
+                "value": "dfc-digital-jobprofiles"
               }
             ]
           }

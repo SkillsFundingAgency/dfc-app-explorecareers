@@ -72,6 +72,7 @@ stages:
   - group: dfc-app-shared-all
   - group: dfc-app-shared-dev
   - group: dfc-app-shared-registration
+  - group: dfc-stax-shared-dev
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\DevEnvironmentVariables.yml
 
@@ -106,6 +107,7 @@ stages:
   - group: dfc-app-shared-all
   - group: dfc-app-shared-sit
   - group: dfc-app-shared-registration
+  - group: dfc-stax-shared-sit
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\SITEnvironmentVariables.yml
 
