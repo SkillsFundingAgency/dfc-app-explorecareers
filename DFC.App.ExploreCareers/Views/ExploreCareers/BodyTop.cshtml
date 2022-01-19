@@ -1,31 +1,26 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
-<form action="/search-results" class="site-search ui-front" id="header-search" method="get">
-    <section id="EC-search-banner" class="primary-hero">
-        <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl" id="site-header">Explore careers</h1>
-                    <p class="govuk-body-lead">Find out what a job involves and if it's right for you.</p>
-
-
+<section class="homepage-top primary-hero">
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl" id="site-header">Explore careers</h1>
+                <p class="govuk-body-lead">Find out what a job involves and if it's right for you.</p>
+                <form action="/search-results" class="site-search ui-front" id="header-search" method="get">
                     <div class="header-search-content">
                         <label class="govuk-visually-hidden" for="SearchTerm">Enter a job title</label>
 
-                        <div class="input-wrapper">
-                            <input class="govuk-input input-search-item input-search js-search-focus js-autocomplete"
+                        <div class="search-input-wrapper">
+                            <input class="govuk-input search-input js-search-focus focus js-autocomplete ui-autocomplete-input"
                                    data-autocomplete-fuzzysearch="True" data-autocomplete-maxlength="7" data-autocomplete-maxnumberdisplyed="5"
                                    data-autocomplete-minlength="2" data-autocomplete-source="@Configuration["AutoCompleteEndpoint"]"
                                    id="SearchTerm" name="SearchTerm" type="search" value="" autocomplete="off">
-                            <div class="input-search-item input-submit-wrapper">
-                                <button data-module="govuk-button" type="submit" class="input-search-submit" id="search-button">Search</button>
-                            </div>
                         </div>
+                        <button class="submit" type="submit" value="Search">Search</button>
                     </div>
-
-                </div>
+                </form>
             </div>
         </div>
-    </section>
-</form>
+    </div>
+</section>
