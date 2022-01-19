@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 using DFC.Content.Pkg.Netcore.Data.Contracts;
 
@@ -6,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace DFC.App.ExploreCareers.Data.Models.CmsApiModels
 {
+    [ExcludeFromCodeCoverage]
     public class CmsApiSummaryItemModel : IApiDataModel
     {
         [JsonProperty(PropertyName = "uri")]

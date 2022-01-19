@@ -8,6 +8,7 @@ using AutoMapper;
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.ViewModels;
+using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 using DFC.Compui.Cosmos.Contracts;
 
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +44,14 @@ namespace DFC.App.ExploreCareers.Controllers
 
             logger.LogInformation($"{nameof(Head)} has returned content");
             return this.NegotiateContentResult(viewModel);
+        }
+
+        [HttpGet]
+        [Route("bodytop")]
+        public IActionResult BodyTop()
+        {
+            logger.LogInformation($"{nameof(BodyTop)} has returned content");
+            return this.NegotiateContentResult(null);
         }
 
         [HttpGet]
