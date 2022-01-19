@@ -18,6 +18,12 @@
         "IsHealthy": true
       },
       {
+        "PageRegion": 3,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/bodytop",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      },
+      {
         "PageRegion": 4,
         "HealthCheckRequired": false,
         "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/body",
