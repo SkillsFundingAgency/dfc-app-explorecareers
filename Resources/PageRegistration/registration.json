@@ -1,7 +1,7 @@
 [
   {
     "Path": "explore-careers",
-    "TopNavigationText": "Explore Careers",
+    "TopNavigationText": "Explore careers",
     "TopNavigationOrder": 100,
     "Layout": "FullWidth",
     "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
