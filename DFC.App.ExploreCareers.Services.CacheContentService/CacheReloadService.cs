@@ -63,13 +63,6 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService
                 if (summaryList.Count > 0)
                 {
                     await ProcessSummaryListAsync(summaryList, stoppingToken);
-
-                    if (stoppingToken.IsCancellationRequested)
-                    {
-                        logger.LogWarning("Reload cache cancelled");
-
-                        return;
-                    }
                 }
 
                 logger.LogInformation("Reload cache completed");

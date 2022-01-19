@@ -1,4 +1,4 @@
-﻿@model DocumentViewModel
+﻿@model DFC.App.ExploreCareers.ViewModels.ExploreCareers.DocumentViewModel
 
 @{
     Layout = "_LocalLayout";
@@ -10,9 +10,8 @@
 }
 
 <partial name="Breadcrumb" model=@Model.Breadcrumb />
+<partial name="BodyTop" />
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-        <partial name="Body" model=@Model.Body />
-    </div>
+<div class="govuk-main-wrapper">
+    <partial name="Body" model=@Model.Body />
 </div>

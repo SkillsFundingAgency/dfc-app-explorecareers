@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.ViewModels;
+using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 
 using FakeItEasy;
 
@@ -15,7 +16,7 @@ using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControllerTests
 {
-    public class HeadRouteTests : BaseControllerTests
+    public class RoutesTests : BaseControllerTests
     {
         [Fact]
         public void ExploreCareersHeadReturnsHtml()
@@ -33,6 +34,20 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControl
 
             viewModel.Title.Should().Be("Explore Careers | National Careers Service");
             viewModel.CanonicalUrl!.OriginalString.Should().Be("/explore-careers");
+        }
+
+        [Fact]
+        public void ExploreCareersBodyTopReturnsHtml()
+        {
+            // Arrange
+            using var controller = BuildController(MediaTypeNames.Text.Html);
+
+            // Act
+            var result = controller.BodyTop();
+
+            // Assert
+            result.Should().BeOfType<ViewResult>()
+                .Which.ViewData.Model.Should().BeNull();
         }
 
         [Fact]

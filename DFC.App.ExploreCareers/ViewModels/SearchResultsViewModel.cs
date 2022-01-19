@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DFC.App.ExploreCareers.ViewModels
 {
+    [ExcludeFromCodeCoverage]
     public class SearchResultsViewModel
     {
         public IList<JobProfileViewModel> JobProfiles { get; set; } = Array.Empty<JobProfileViewModel>();
