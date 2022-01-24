@@ -1,8 +1,14 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 using AutoMapper;
 
+using Azure;
+using Azure.Search.Documents;
+
+using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.Configuration;
+using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Data.Contracts;
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.HostedServices;
@@ -69,20 +75,23 @@ namespace DFC.App.ExploreCareers
 
             services.AddApplicationInsightsTelemetry();
             services.AddHttpContextAccessor();
+            services.AddHostedServiceTelemetryWrapper();
+            services.AddSubscriptionBackgroundService(configuration);
+            services.AddAutoMapper(typeof(Startup).Assembly);
+
+            services.AddSingleton(configuration.GetSection(nameof(CmsApiClientOptions)).Get<CmsApiClientOptions>() ?? new CmsApiClientOptions());
+            var searchClientOptions = configuration.GetSection(nameof(JobProfileSearchClientOptions)).Get<JobProfileSearchClientOptions>() ?? new JobProfileSearchClientOptions();
+            services.AddTransient(sp => new SearchClient(new Uri(searchClientOptions.BaseAddress), searchClientOptions.IndexName, new AzureKeyCredential(searchClientOptions.ApiKey)));
+
             services.AddTransient<ICacheReloadService, CacheReloadService>();
             services.AddTransient<IWebhooksService, WebhooksService>();
-
-            services.AddAutoMapper(typeof(Startup).Assembly);
-            services.AddSingleton(configuration.GetSection(nameof(CmsApiClientOptions)).Get<CmsApiClientOptions>() ?? new CmsApiClientOptions());
-            services.AddSingleton(configuration.GetSection(nameof(JobProfileSearchClientOptions)).Get<JobProfileSearchClientOptions>() ?? new JobProfileSearchClientOptions());
-            services.AddHostedServiceTelemetryWrapper();
+            services.AddTransient<IJobCategoryDocumentService, JobCategoryDocumentService>();
+            services.AddTransient<IAzureSearchService, AzureSearchService>();
 
             if (bool.TryParse(configuration["Configuration:ReloadCache"], out bool reload) && reload)
             {
                 services.AddHostedService<CacheReloadBackgroundService>();
             }
-
-            services.AddSubscriptionBackgroundService(configuration);
 
             var policyRegistry = services.AddPolicyRegistry();
 

@@ -2,9 +2,11 @@
 
 using AutoMapper;
 
+using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.Data.Models.CmsApiModels;
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.ViewModels;
+using DFC.App.ExploreCareers.ViewModels.JobCategories;
 
 namespace DFC.App.ExploreCareers.AutoMapperProfiles
 {
@@ -22,6 +24,9 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
 
             CreateMap<JobCategoryContentItemModel, JobCategoryViewModel>()
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.Title));
+
+            CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()
+                .ForMember(d => d.AlternativeTitle, o => o.MapFrom(s => s.AlternativeTitle != null ? string.Join(", ", s.AlternativeTitle).Trim().TrimEnd(',') : string.Empty));
         }
     }
 }

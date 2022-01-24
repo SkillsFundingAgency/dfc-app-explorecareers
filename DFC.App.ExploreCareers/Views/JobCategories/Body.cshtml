@@ -1,0 +1,36 @@
+﻿@model DFC.App.ExploreCareers.ViewModels.JobCategories.BodyViewModel
+
+<div class="govuk-width-container">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">@Model.Title</h1>
+            <ul class="govuk-list job-categories_items">
+                @foreach (var item in Model.JobProfiles)
+                {
+                    <li class="job-categories_item">
+                        <h2 class="govuk-heading-m">
+                            <a class="dfc-code-search-jpTitle govuk-link" href="/job-profiles/@item.UrlName">@item.Title</a>
+                        </h2>
+                        @if (!string.IsNullOrWhiteSpace(item.AlternativeTitle))
+                        {
+                            <h3 class="text-secondary font-xsmall meta dfc-code-search-jpAltTitle">@item.AlternativeTitle</h3>
+                        }
+                        <p class="dfc-code-search-jpOverview">@item.Overview</p>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="govuk-grid-column-one-third">
+            <div class="app-related-items"></div>
+            <aside class="job-categories_list">
+                <h2 class="govuk-heading-m">Other job categories</h2>
+                <ul class="govuk-list font-xsmall">
+                    @foreach (var item in Model.JobCategories)
+                    {
+                        <li><a class="govuk-link" href="/job-categories/@item.CanonicalName">@item.Name</a></li>
+                    }
+                </ul>
+            </aside>
+        </div>
+    </div>
+</div>
