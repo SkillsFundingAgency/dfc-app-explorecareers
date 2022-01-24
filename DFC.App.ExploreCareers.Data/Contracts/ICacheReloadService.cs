@@ -12,6 +12,7 @@ namespace DFC.App.ExploreCareers.Data.Contracts
         Task<HttpStatusCode> ProcessContentAsync(Uri url, CancellationToken stoppingToken = default);
 
         Task Reload(CancellationToken stoppingToken);
+
         bool TryValidateModel(JobCategoryContentItemModel? contentItemModel);
     }
 }

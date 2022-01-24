@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-using AutoMapper;
-
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
+using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
-using DFC.Compui.Cosmos.Contracts;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,19 +15,16 @@ namespace DFC.App.ExploreCareers.Controllers
     public class ExploreCareersController : Controller
     {
         public const string ExploreCareersViewCanonicalName = "explore-careers";
-        public const string DefaultPageTitleSuffix = "Explore Careers | National Careers Service";
+        public const string DefaultPageTitleSuffix = "Explore careers | National Careers Service";
 
         private readonly ILogger<ExploreCareersController> logger;
-        private readonly IMapper mapper;
-        private readonly IDocumentService<JobCategoryContentItemModel> documentService;
+        private readonly IJobCategoryDocumentService documentService;
 
         public ExploreCareersController(
             ILogger<ExploreCareersController> logger,
-            IMapper mapper,
-            IDocumentService<JobCategoryContentItemModel> documentService)
+            IJobCategoryDocumentService documentService)
         {
             this.logger = logger;
-            this.mapper = mapper;
             this.documentService = documentService;
         }
 
@@ -90,8 +82,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private async Task<BodyViewModel> GetBodyViewModelAsync()
         {
-            var jobCategoryDocuments = await documentService.GetAllAsync() ?? Enumerable.Empty<JobCategoryContentItemModel>();
-            var jobCategories = mapper.Map<List<JobCategoryViewModel>>(jobCategoryDocuments);
+            var jobCategories = await documentService.GetJobCategoriesAsync();
 
             return new BodyViewModel { JobCategories = jobCategories };
         }

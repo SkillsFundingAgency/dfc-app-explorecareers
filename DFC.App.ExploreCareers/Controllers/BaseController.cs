@@ -37,7 +37,7 @@ namespace DFC.App.ExploreCareers.Controllers
             {
                 var articlePathViewModel = new BreadcrumbItemViewModel
                 {
-                    Route = $"/{ExploreCareersController.ExploreCareersViewCanonicalName}/{breadcrumbItemModel.Route}",
+                    Route = breadcrumbItemModel.Route,
                     Title = breadcrumbItemModel.Title,
                 };
 

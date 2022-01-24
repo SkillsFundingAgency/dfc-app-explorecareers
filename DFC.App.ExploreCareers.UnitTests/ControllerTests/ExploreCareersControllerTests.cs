@@ -2,7 +2,8 @@
 using System.Net.Mime;
 using System.Threading.Tasks;
 
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
+using DFC.App.ExploreCareers.Controllers;
+using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 
@@ -10,14 +11,23 @@ using FakeItEasy;
 
 using FluentAssertions;
 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 
 using Xunit;
 
-namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControllerTests
+using static DFC.App.ExploreCareers.UnitTests.TestData.TestDataFactory;
+
+namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 {
-    public class RoutesTests : BaseControllerTests
+    public class ExploreCareersControllerTests
     {
+        private IJobCategoryDocumentService FakeDocumentService { get; } = A.Fake<IJobCategoryDocumentService>();
+
+        private ILogger<ExploreCareersController> FakeLogger { get; } = A.Fake<ILogger<ExploreCareersController>>();
+
         [Fact]
         public void ExploreCareersHeadReturnsHtml()
         {
@@ -32,7 +42,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControl
                 .Which.ViewData.Model.Should().BeOfType<HeadViewModel>()
                 .Which;
 
-            viewModel.Title.Should().Be("Explore Careers | National Careers Service");
+            viewModel.Title.Should().Be(ExploreCareersController.DefaultPageTitleSuffix);
             viewModel.CanonicalUrl!.OriginalString.Should().Be("/explore-careers");
         }
 
@@ -56,10 +66,9 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControl
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            var model = BuildValidContentItemModel();
-            var expectedViewModel = BuildValidViewModel();
-            A.CallTo(() => FakeDocumentService.GetAllAsync(A<string>.Ignored)).Returns(new List<JobCategoryContentItemModel>() { model });
-            A.CallTo(() => FakeMapper.Map<List<JobCategoryViewModel>>(A<IEnumerable<JobCategoryContentItemModel>>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            var model = BuildJobCategoryContentItemModel();
+            var expectedViewModel = BuildJobCategoryViewModel();
+            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
 
             var result = await controller.BodyAsync();
 
@@ -73,7 +82,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControl
             jobCategory.Name.Should().Be(expectedViewModel.Name);
             jobCategory.CanonicalName.Should().Be(expectedViewModel.CanonicalName);
 
-            A.CallTo(() => FakeDocumentService.GetAllAsync(null)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(null)).MustHaveHappenedOnceExactly();
         }
 
         [Fact]
@@ -82,10 +91,9 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControl
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            var model = BuildValidContentItemModel();
-            var expectedViewModel = BuildValidViewModel();
-            A.CallTo(() => FakeDocumentService.GetAllAsync(A<string>.Ignored)).Returns(new List<JobCategoryContentItemModel>() { model });
-            A.CallTo(() => FakeMapper.Map<List<JobCategoryViewModel>>(A<IEnumerable<JobCategoryContentItemModel>>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            var model = BuildJobCategoryContentItemModel();
+            var expectedViewModel = BuildJobCategoryViewModel();
+            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
 
             var result = await controller.DocumentAsync();
 
@@ -97,7 +105,24 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests.ExploreCareersControl
             viewModel.Body.Should().NotBeNull();
             viewModel.Head.Should().NotBeNull();
 
-            A.CallTo(() => FakeDocumentService.GetAllAsync(null)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(null)).MustHaveHappenedOnceExactly();
+        }
+
+        private ExploreCareersController BuildController(string mediaTypeName)
+        {
+            var httpContext = new DefaultHttpContext();
+
+            httpContext.Request.Headers[HeaderNames.Accept] = mediaTypeName;
+
+            var controller = new ExploreCareersController(FakeLogger, FakeDocumentService)
+            {
+                ControllerContext = new ControllerContext()
+                {
+                    HttpContext = httpContext,
+                },
+            };
+
+            return controller;
         }
     }
 }
