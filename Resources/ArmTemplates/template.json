@@ -248,7 +248,7 @@
               },
               {
                 "name": "SubscriptionSettings__SubscriptionServiceEndpoint",
-                "value": "[parameters('subscriptionServiceEndpoint')]"
+                "value": "[concat(parameters('subscriptionServiceEndpoint'),'/api/Execute')]"
               },
               {
                 "name": "SubscriptionSettings__SubscriptionRegistrationDelay",

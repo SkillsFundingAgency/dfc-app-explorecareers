@@ -14,7 +14,7 @@ variables:
 - name: jobProfileBaseAddress
   value: $(jobProfileSearchAddress)/
 - name: subscriptionEndpoint
-  value: $(AppServiceName).$(appServiceDomain)/api/webhook/ReceiveEvents
+  value: https://$(AppServiceName).$(appServiceDomain)/api/webhook/ReceiveEvents
 - name: autoCompleteEndpoint
   value: $(jobCategoryBaseAddress)searchautocomplete
 - name: contentUrl
