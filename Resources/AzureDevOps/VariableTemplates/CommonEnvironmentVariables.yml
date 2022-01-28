@@ -19,3 +19,5 @@ variables:
   value: $(jobCategoryBaseAddress)searchautocomplete
 - name: contentUrl
   value: $(ContentApiAddress)/api/execute
+- name: jobProfileSearchIndexName
+  value: $(jobProfileSearchIndexName)
