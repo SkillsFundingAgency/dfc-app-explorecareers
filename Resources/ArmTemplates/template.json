@@ -58,6 +58,9 @@
     "jobProfileBaseAddress": {
       "type": "string"
     },
+    "jobProfileSearchIndexName":{
+      "type": "string"
+    },
     "jobCategorySearchClientOptionsBaseAddress": {
       "type": "string"
     },
@@ -277,7 +280,7 @@
               },
               {
                 "name": "JobProfileSearchClientOptions__IndexName",
-                "value": "dfc-digital-jobprofiles"
+                "value": "[parameters('jobProfileSearchIndexName')]"
               }
             ]
           }

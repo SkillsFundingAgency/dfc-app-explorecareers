@@ -47,6 +47,9 @@
         "jobProfileBaseAddress": {
             "value": "jobProfileBaseAddress"
         },
+        "jobProfileSearchIndexName":{
+          "value": "job-profile-index"
+        },
         "jobCategorySearchClientOptionsBaseAddress": {
             "value": "jobCategorySearchClientOptionsBaseAddress"
         },
