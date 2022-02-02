@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 using Azure.Search.Documents;
+using Azure.Search.Documents.Models;
 
 using DFC.App.ExploreCareers.Models;
 
@@ -14,17 +16,12 @@ namespace DFC.App.ExploreCareers.AzureSearch
 
         public AzureSearchService(SearchClient client)
         {
-            this.azureSearchClient = client;
-        }
-
-        public async Task<AzureSearchJobProfileModel> Search(string searchTerm, int skip = 1)
-        {
-            throw new System.NotImplementedException();
+            azureSearchClient = client;
         }
 
         public async Task<List<AutoCompleteModel>> AutoComplete(string searchTerm)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public async Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category)
@@ -45,6 +42,68 @@ namespace DFC.App.ExploreCareers.AzureSearch
             }
 
             return results.OrderBy(p => p.Title).ToList();
+        }
+
+        public async Task<AzureSearchJobProfileModel> SearchAsync(string searchTerm, int pageNumber = 1)
+        {
+            var skip = pageNumber < 1 ? 0 : ((pageNumber - 1) * SearchConfig.PageSize);
+            var searchOptions = new SearchOptions
+            {
+                ScoringProfile = "jp",
+                IncludeTotalCount = true,
+                QueryType = SearchQueryType.Full,
+                Size = SearchConfig.PageSize,
+                Skip = skip,
+                Select = {
+                    nameof(JobProfileIndex.Title),
+                    nameof(JobProfileIndex.AlternativeTitle),
+                    nameof(JobProfileIndex.UrlName),
+                    nameof(JobProfileIndex.Overview),
+                    nameof(JobProfileIndex.SalaryStarter),
+                    nameof(JobProfileIndex.SalaryExperienced),
+                    nameof(JobProfileIndex.JobProfileCategoriesWithUrl)
+                }
+            };
+
+            var cleanedSearchTerm = SearchBuilder.RemoveSpecialCharactersFromTheSearchTerm(searchTerm);
+            var trimmedSearchTerm = SearchBuilder.TrimCommonWordsAndSuffixes(cleanedSearchTerm);
+            var partialTermToSearch = SearchBuilder.BuildContainPartialSearch(trimmedSearchTerm);
+            var finalComputedSearchTerm = SearchBuilder.BuildSearchExpression(searchTerm, cleanedSearchTerm, partialTermToSearch);
+
+            var response = await azureSearchClient.SearchAsync<JobProfileIndex>(finalComputedSearchTerm, searchOptions);
+
+            var jobProfiles = response.Value.GetResults()
+                .Select((r, idx) =>
+                {
+                    var doc = r.Document;
+                    doc.Rank = idx + 1;
+                    return r.Document;
+                }).ToList();
+
+            return new AzureSearchJobProfileModel
+            {
+                TotalResults = (int?)response.Value.TotalCount ?? 0,
+                JobProfiles = Reorder(jobProfiles, searchTerm, pageNumber)
+            };
+        }
+
+        private static IEnumerable<JobProfileIndex> Reorder(List<JobProfileIndex> jobProfiles, string searchTerm, int pageNumber)
+        {
+            if (pageNumber is 1 && jobProfiles.Any())
+            {
+                var searchedProfile = jobProfiles.FirstOrDefault(p => p.Title?.Equals(searchTerm, StringComparison.OrdinalIgnoreCase) is true
+                   || p.AlternativeTitle?.Any(a => a.Equals(searchTerm, StringComparison.OrdinalIgnoreCase)) is true);
+
+                // The results contain a profile and its not at the top.
+                if (searchedProfile != null && searchedProfile.Rank != 1)
+                {
+                    searchedProfile.Rank = 0;
+                }
+
+                return jobProfiles.OrderBy(r => r.Rank);
+            }
+
+            return jobProfiles;
         }
     }
 }

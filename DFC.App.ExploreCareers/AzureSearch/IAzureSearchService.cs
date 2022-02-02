@@ -9,7 +9,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
     {
         Task<List<AutoCompleteModel>> AutoComplete(string searchTerm);
 
-        Task<AzureSearchJobProfileModel> Search(string searchTerm, int skip = 1);
+        Task<AzureSearchJobProfileModel> SearchAsync(string searchTerm, int pageNumber = 1);
 
         Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category);
     }

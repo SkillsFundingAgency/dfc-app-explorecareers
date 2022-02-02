@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace DFC.App.ExploreCareers.AzureSearch
 {
@@ -12,7 +13,11 @@ namespace DFC.App.ExploreCareers.AzureSearch
 
         public string? Title { get; set; }
 
+        public string TitleAsKeyword => Title?.ToLower() ?? string.Empty;
+
         public IEnumerable<string>? AlternativeTitle { get; set; }
+
+        public IEnumerable<string>? AltTitleAsKeywords => AlternativeTitle?.Select(a => a.ToLower());
 
         public string? Overview { get; set; }
 
@@ -67,5 +72,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
         public double MinimumHours { get; set; }
 
         public double MaximumHours { get; set; }
+
+        public int Rank { get; set; }
     }
 }

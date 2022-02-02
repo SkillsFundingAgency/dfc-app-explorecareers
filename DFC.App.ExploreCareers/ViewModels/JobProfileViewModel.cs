@@ -19,7 +19,7 @@ namespace DFC.App.ExploreCareers.ViewModels
 
         public string? ResultItemUrlName { get; set; }
 
-        public IList<string> JobProfileCategoriesWithUrl { get; set; } = Array.Empty<string>();
+        public IEnumerable<string> JobProfileCategoriesWithUrl { get; set; } = Array.Empty<string>();
 
         public double Score { get; set; }
 
