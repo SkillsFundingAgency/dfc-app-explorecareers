@@ -1,0 +1,35 @@
+{
+  "_type": "SpellCheck",
+  "flaggedTokens": [
+	{
+	  "offset": 0,
+	  "token": "Hollo",
+	  "type": "UnknownToken",
+	  "suggestions": [
+		{
+		  "suggestion": "Hello",
+		  "score": 0.9115257530801
+		},
+		{
+		  "suggestion": "Hollow",
+		  "score": 0.858039839213461
+		},
+		{
+		  "suggestion": "Hallo",
+		  "score": 0.597385084464481
+		}
+	  ]
+	},
+	{
+	  "offset": 7,
+	  "token": "wrld",
+	  "type": "UnknownToken",
+	  "suggestions": [
+		{
+		  "suggestion": "world",
+		  "score": 0.9115257530801
+		}
+	  ]
+	}
+  ]
+}

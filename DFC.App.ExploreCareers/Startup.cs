@@ -7,6 +7,7 @@ using Azure;
 using Azure.Search.Documents;
 
 using DFC.App.ExploreCareers.AzureSearch;
+using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Configuration;
 using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Data.Contracts;
@@ -18,6 +19,7 @@ using DFC.Compui.Cosmos.Contracts;
 using DFC.Compui.Subscriptions.Pkg.Netstandard.Extensions;
 using DFC.Compui.Telemetry;
 using DFC.Content.Pkg.Netcore.Data.Models.ClientOptions;
+using DFC.Content.Pkg.Netcore.Data.Models.PollyOptions;
 using DFC.Content.Pkg.Netcore.Extensions;
 
 using Microsoft.AspNetCore.Builder;
@@ -80,6 +82,7 @@ namespace DFC.App.ExploreCareers
             services.AddAutoMapper(typeof(Startup).Assembly);
 
             services.AddSingleton(configuration.GetSection(nameof(CmsApiClientOptions)).Get<CmsApiClientOptions>() ?? new CmsApiClientOptions());
+            services.AddSingleton(configuration.GetSection(nameof(SpellCheckApiClientOptions)).Get<SpellCheckApiClientOptions>() ?? new SpellCheckApiClientOptions());
             var searchClientOptions = configuration.GetSection(nameof(JobProfileSearchClientOptions)).Get<JobProfileSearchClientOptions>() ?? new JobProfileSearchClientOptions();
             services.AddTransient(sp => new SearchClient(new Uri(searchClientOptions.BaseAddress), searchClientOptions.IndexName, new AzureKeyCredential(searchClientOptions.ApiKey)));
 
@@ -93,7 +96,15 @@ namespace DFC.App.ExploreCareers
                 services.AddHostedService<CacheReloadBackgroundService>();
             }
 
+            var policyOptions = configuration.GetSection("Policies").Get<PolicyOptions>() ?? new PolicyOptions();
             var policyRegistry = services.AddPolicyRegistry();
+
+            services
+                .AddPolicies(policyRegistry, nameof(SpellCheckApiClientOptions), policyOptions)
+                .AddHttpClient<ISpellCheckService, SpellCheckService, SpellCheckApiClientOptions>(
+                    nameof(SpellCheckApiClientOptions),
+                    nameof(PolicyOptions.HttpRetry),
+                    nameof(PolicyOptions.HttpCircuitBreaker));
 
             services.AddApiServices(configuration, policyRegistry);
 

@@ -54,7 +54,8 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 QueryType = SearchQueryType.Full,
                 Size = SearchConfig.PageSize,
                 Skip = skip,
-                Select = {
+                Select =
+                {
                     nameof(JobProfileIndex.Title),
                     nameof(JobProfileIndex.AlternativeTitle),
                     nameof(JobProfileIndex.UrlName),
@@ -78,7 +79,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
                     var doc = r.Document;
                     doc.Rank = idx + 1;
                     return r.Document;
-                }).ToList();
+                });
 
             return new AzureSearchJobProfileModel
             {
@@ -87,11 +88,12 @@ namespace DFC.App.ExploreCareers.AzureSearch
             };
         }
 
-        private static IEnumerable<JobProfileIndex> Reorder(List<JobProfileIndex> jobProfiles, string searchTerm, int pageNumber)
+        private static IEnumerable<JobProfileIndex> Reorder(IEnumerable<JobProfileIndex> jobProfiles, string searchTerm, int pageNumber)
         {
             if (pageNumber is 1 && jobProfiles.Any())
             {
-                var searchedProfile = jobProfiles.FirstOrDefault(p => p.Title?.Equals(searchTerm, StringComparison.OrdinalIgnoreCase) is true
+                var profiles = jobProfiles.ToList();
+                var searchedProfile = profiles.FirstOrDefault(p => p.Title?.Equals(searchTerm, StringComparison.OrdinalIgnoreCase) is true
                    || p.AlternativeTitle?.Any(a => a.Equals(searchTerm, StringComparison.OrdinalIgnoreCase)) is true);
 
                 // The results contain a profile and its not at the top.
@@ -100,7 +102,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
                     searchedProfile.Rank = 0;
                 }
 
-                return jobProfiles.OrderBy(r => r.Rank);
+                return profiles.OrderBy(r => r.Rank);
             }
 
             return jobProfiles;

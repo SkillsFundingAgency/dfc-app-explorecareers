@@ -6,6 +6,7 @@ using System.Web;
 using AutoMapper;
 
 using DFC.App.ExploreCareers.AzureSearch;
+using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.Models;
 using DFC.App.ExploreCareers.ViewModels;
@@ -25,15 +26,18 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<SearchResultsController> logger;
         private readonly IAzureSearchService azureSearchService;
+        private readonly ISpellCheckService spellCheckService;
         private readonly IMapper mapper;
 
         public SearchResultsController(
             ILogger<SearchResultsController> logger,
             IAzureSearchService azureSearchService,
+            ISpellCheckService spellCheckService,
             IMapper mapper)
         {
             this.logger = logger;
             this.azureSearchService = azureSearchService;
+            this.spellCheckService = spellCheckService;
             this.mapper = mapper;
         }
 
@@ -111,32 +115,50 @@ namespace DFC.App.ExploreCareers.Controllers
                 SearchTerm = searchTerm,
                 JobProfiles = mapper.Map<IEnumerable<JobProfileViewModel>>(searchResults.JobProfiles),
                 TotalResults = totalFound,
-                TotalResultsMessage = searchResults.TotalResults is 0 ? NoResultsMessage : GetResultsMessage(),
+                TotalResultsMessage = GetResultsMessage(),
                 PageNumber = page,
                 TotalPages = (int)Math.Ceiling((double)totalFound / SearchConfig.PageSize),
             };
 
             SetPagination();
 
+            await SpellCheckAsync();
+
             return viewModel;
 
+            async Task SpellCheckAsync()
+            {
+                var spellCheckResult = await spellCheckService.CheckSpellingAsync(searchTerm);
+                if (spellCheckResult.HasCorrected)
+                {
+                    viewModel.DidYouMeanTerm = spellCheckResult.CorrectedTerm;
+                    viewModel.DidYouMeanUrl = GetSearchUrl(spellCheckResult.CorrectedTerm);
+                }
+            }
+
             string GetResultsMessage() =>
-                $"{totalFound} result{(totalFound is 1 ? string.Empty : "s")} found";
+                searchResults.TotalResults is 0 ? NoResultsMessage : $"{totalFound} result{Pluralise(totalFound)} found";
+
+            static string Pluralise(int count) =>
+                count is 1 ? string.Empty : "s";
 
             void SetPagination()
             {
                 if (viewModel.TotalPages > viewModel.PageNumber)
                 {
-                    viewModel.NextPageUrl = $"/{SearchResultsCanonicalName}?searchTerm={HttpUtility.UrlEncode(searchTerm)}&page={viewModel.PageNumber + 1}";
+                    viewModel.NextPageUrl = $"{GetSearchUrl(searchTerm)}&page={viewModel.PageNumber + 1}";
                     viewModel.NextPageUrlText = $"{viewModel.PageNumber + 1} of {viewModel.TotalPages}";
                 }
 
                 if (viewModel.PageNumber > 1)
                 {
-                    viewModel.PreviousPageUrl = $"/{SearchResultsCanonicalName}?searchTerm={HttpUtility.UrlEncode(searchTerm)}{(viewModel.PageNumber is 2 ? string.Empty : $"&page={viewModel.PageNumber - 1}")}";
+                    viewModel.PreviousPageUrl = $"{GetSearchUrl(searchTerm)}{(viewModel.PageNumber is 2 ? string.Empty : $"&page={viewModel.PageNumber - 1}")}";
                     viewModel.PreviousPageUrlText = $"{viewModel.PageNumber - 1} of {viewModel.TotalPages}";
                 }
             }
+
+            static string GetSearchUrl(string searchTerm) =>
+                $"/{SearchResultsCanonicalName}?searchTerm={HttpUtility.UrlEncode(searchTerm)}";
         }
     }
 }

@@ -7,6 +7,7 @@ using AutoMapper;
 
 using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.AzureSearch;
+using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Controllers;
 using DFC.App.ExploreCareers.Models;
 using DFC.App.ExploreCareers.ViewModels;
@@ -32,6 +33,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
         private ILogger<SearchResultsController> Logger { get; } = A.Fake<ILogger<SearchResultsController>>();
 
         private IAzureSearchService AzureSearchService { get; } = A.Fake<IAzureSearchService>();
+
+        private ISpellCheckService SpellCheckService { get; } = A.Fake<ISpellCheckService>();
 
         //[Fact]
         [Theory]
@@ -263,6 +266,42 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             viewModel.NextPageUrlText.Should().BeNull();
         }
 
+        [Fact]
+        public async Task BodyReturnsHtmlWithResultWithSpellCheck()
+        {
+            // Arrange
+            var searchTerm = "something";
+            using var controller = BuildController(MediaTypeNames.Text.Html);
+
+            var searchModel = new AzureSearchJobProfileModel
+            {
+                TotalResults = 1,
+                JobProfiles = new List<JobProfileIndex> { new JobProfileIndex() }
+            };
+            SpellCheckResult spellCheckResult = new SpellCheckResult
+            {
+                HasCorrected = true,
+                CorrectedTerm = "corrected"
+            };
+            A.CallTo(() => AzureSearchService.SearchAsync(searchTerm, A<int>.Ignored)).Returns(searchModel);
+            A.CallTo(() => SpellCheckService.CheckSpellingAsync(searchTerm)).Returns(spellCheckResult);
+
+            // Act
+            var result = await controller.Body(searchTerm);
+
+            // Assert
+            var viewModel = result.Should().BeOfType<ViewResult>()
+                .Which.ViewData.Model.Should().BeOfType<BodyViewModel>()
+                .Which;
+
+            viewModel.TotalResultsMessage.Should().Be("1 result found");
+            viewModel.JobProfiles.Should().NotBeNullOrEmpty()
+                .And.HaveCount(1);
+
+            viewModel.DidYouMeanTerm.Should().Be(spellCheckResult.CorrectedTerm);
+            viewModel.DidYouMeanUrl.Should().Be($"/search-results?searchTerm={spellCheckResult.CorrectedTerm}");
+        }
+
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -289,7 +328,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             httpContext.Request.Headers[HeaderNames.Accept] = mediaTypeName;
 
-            var controller = new SearchResultsController(Logger, AzureSearchService, Mapper)
+            var controller = new SearchResultsController(Logger, AzureSearchService, SpellCheckService, Mapper)
             {
                 ControllerContext = new ControllerContext()
                 {
