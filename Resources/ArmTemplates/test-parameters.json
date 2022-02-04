@@ -53,9 +53,6 @@
         "jobCategorySearchClientOptionsBaseAddress": {
             "value": "jobCategorySearchClientOptionsBaseAddress"
         },
-        "subscriptionEndpoint": {
-            "value": "subscriptionEndpoint"
-        },
         "subscriptionServiceEndpoint": {
             "value": "subscriptionServiceEndpoint"
         },
@@ -70,6 +67,24 @@
         },
         "loggingLogLevelDefault": {
             "value": "Trace"
+        },
+        "ApimResourceGroup": {
+            "value": "dfc-dev-shared-rg"
+        },
+        "ApimLoggerName": {
+            "value": "composite-ui-logger"
+        },
+        "ApimProductInstanceName": {
+            "value": "composite-ui"
+        },
+        "ApimServiceName": {
+            "value": "dfc-dev-shared-apim"
+        },
+        "ApiName": {
+            "value": "explorecareers"
+        },
+        "SubscriptionSettingsEndpoint": {
+            "value": "http://url"
         }
     }
 }

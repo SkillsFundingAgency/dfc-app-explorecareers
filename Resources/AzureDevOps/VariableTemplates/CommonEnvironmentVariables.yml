@@ -13,9 +13,15 @@ variables:
   value: 400
 - name: jobProfileBaseAddress
   value: $(jobProfileSearchAddress)/
-- name: subscriptionEndpoint
-  value: https://$(AppServiceName).$(appServiceDomain)/api/webhook/ReceiveEvents
 - name: autoCompleteEndpoint
   value: $(jobCategoryBaseAddress)searchautocomplete
 - name: contentUrl
   value: $(ContentApiAddress)/api/execute
+- name: apiName
+  value: explorecareers
+- name: apiId
+  value: composite-ui-explorecareers
+- name: applicationUrl
+  value: https://$(AppServiceName).$(appServiceDomain)
+- name: SubscriptionSettingsEndpoint
+  value: $(ApimProxyAddress)/composite-ui/explorecareers

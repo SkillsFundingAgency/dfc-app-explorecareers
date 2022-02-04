@@ -20,6 +20,14 @@ parameters:
   AppRegistryApiUrl: ''
   ApimCompositeKey: ''
   AppServiceName: ''
+  SharedResourceGroupName: ''
+  ApimServiceName: ''
+  ApimProductInstanceName: ''
+  ApiName: ''
+  ApiId: ''
+  APIMPolicyPath: ''
+  ApimImportScript: ''
+  SpecificationPath: ''
 
 jobs:
 - deployment: DeployTemplate
@@ -61,6 +69,14 @@ jobs:
             DfCDevopsPath: '${{ parameters.DfCDevopsPath }}'
             PackageFile: '${{ parameters.PackageFile }}'
             ResourceGroup: '${{ parameters.ResourceGroup }}'
+            SharedResourceGroupName: '${{ parameters.SharedResourceGroupName }}'
+            ApimServiceName: '${{ parameters.ApimServiceName }}'
+            ApimProductInstanceName: '${{ parameters.ApimProductInstanceName }}'
+            ApiName: '${{ parameters.ApiName }}'
+            ApiId: '${{ parameters.ApiId }}'
+            APIMPolicyPath: '${{ parameters.APIMPolicyPath }}'
+            ApimImportScript: '${{ parameters.ApimImportScript }}'
+            SpecificationPath:  '${{ parameters.SpecificationPath }}'
 
 - deployment: DeployRegistration
   displayName: "Deploy page registration"
