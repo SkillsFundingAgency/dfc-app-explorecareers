@@ -15,18 +15,18 @@ using FluentAssertions;
 
 using Xunit;
 
-namespace DFC.App.ExploreCareers.UnitTests
+namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
     public class AzureSearchServiceTests
     {
-        private readonly SearchClient MockClient = A.Fake<SearchClient>();
+        private readonly SearchClient mockClient = A.Fake<SearchClient>();
 
         [Fact]
         public async Task GetProfilesByCategoryShouldReturnsResultsOrderedByTitle()
         {
             // Arrange
             SetupMockSearchClientAndResponse();
-            var searchService = new AzureSearchService(MockClient);
+            var searchService = new AzureSearchService(mockClient);
 
             // Act
             var response = await searchService.GetProfilesByCategoryAsync("category");
@@ -54,11 +54,11 @@ namespace DFC.App.ExploreCareers.UnitTests
                 mockResponse);
 
             SearchOptions? searchOptionsUsedForClient = null;
-            A.CallTo(() => MockClient.SearchAsync<JobProfileIndex>(A<string>.Ignored, A<SearchOptions>.Ignored, A<CancellationToken>.Ignored))
+            A.CallTo(() => mockClient.SearchAsync<JobProfileIndex>(A<string>.Ignored, A<SearchOptions>.Ignored, A<CancellationToken>.Ignored))
                 .Invokes((string term, SearchOptions options, CancellationToken token) => searchOptionsUsedForClient = options)
                 .Returns(Response.FromValue(mockResults, mockResponse));
 
-            var searchService = new AzureSearchService(MockClient);
+            var searchService = new AzureSearchService(mockClient);
 
             // Act
             await searchService.SearchAsync("something");
@@ -84,7 +84,7 @@ namespace DFC.App.ExploreCareers.UnitTests
         {
             // Arrange
             SetupMockSearchClientAndResponse();
-            var searchService = new AzureSearchService(MockClient);
+            var searchService = new AzureSearchService(mockClient);
 
             // Act
             var response = await searchService.SearchAsync("a");
@@ -107,7 +107,7 @@ namespace DFC.App.ExploreCareers.UnitTests
         {
             // Arrange
             SetupMockSearchClientAndResponse();
-            var searchService = new AzureSearchService(MockClient);
+            var searchService = new AzureSearchService(mockClient);
 
             // Act
             var response = await searchService.SearchAsync("a", 2);
@@ -140,7 +140,7 @@ namespace DFC.App.ExploreCareers.UnitTests
                 0,
                 mockResponse);
 
-            A.CallTo(() => MockClient.SearchAsync<JobProfileIndex>(A<string>.Ignored, A<SearchOptions>.Ignored, A<CancellationToken>.Ignored))
+            A.CallTo(() => mockClient.SearchAsync<JobProfileIndex>(A<string>.Ignored, A<SearchOptions>.Ignored, A<CancellationToken>.Ignored))
                 .Returns(Response.FromValue(mockResults, mockResponse));
         }
     }

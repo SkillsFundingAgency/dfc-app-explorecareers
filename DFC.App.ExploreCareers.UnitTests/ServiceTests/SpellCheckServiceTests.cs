@@ -13,12 +13,12 @@ using Microsoft.Extensions.Logging;
 
 using Xunit;
 
-namespace DFC.App.ExploreCareers.UnitTests
+namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
     public class SpellCheckServiceTests
     {
         private readonly string testFilePath;
-        private readonly ILogger<SpellCheckService> FakeLogger = A.Fake<ILogger<SpellCheckService>>();
+        private readonly ILogger<SpellCheckService> fakeLogger = A.Fake<ILogger<SpellCheckService>>();
 
         public SpellCheckServiceTests()
         {
@@ -29,7 +29,7 @@ namespace DFC.App.ExploreCareers.UnitTests
         public async Task CheckSpellingShouldNotCorrectForEmtpySearchTerm()
         {
             // Arrange
-            var service = new SpellCheckService(FakeLogger, new HttpClient());
+            var service = new SpellCheckService(fakeLogger, new HttpClient());
 
             // Act
             var response = await service.CheckSpellingAsync(string.Empty);
@@ -45,7 +45,7 @@ namespace DFC.App.ExploreCareers.UnitTests
             using var stream = File.OpenRead(testFilePath);
             var handler = FakeHttpMessageHandler.Create(stream, System.Net.HttpStatusCode.OK);
             var client = new HttpClient(handler) { BaseAddress = new Uri("https://sample.com/") };
-            var service = new SpellCheckService(FakeLogger, client);
+            var service = new SpellCheckService(fakeLogger, client);
 
             // Act
             var response = await service.CheckSpellingAsync("hollo");
@@ -61,7 +61,7 @@ namespace DFC.App.ExploreCareers.UnitTests
             // Arrange
             using var handler = FakeHttpMessageHandler.Create(string.Empty, System.Net.HttpStatusCode.BadRequest);
             var client = new HttpClient(handler) { BaseAddress = new Uri("https://sample.com/") };
-            var service = new SpellCheckService(FakeLogger, client);
+            var service = new SpellCheckService(fakeLogger, client);
 
             // Act
             var response = await service.CheckSpellingAsync("hollo");
@@ -76,7 +76,7 @@ namespace DFC.App.ExploreCareers.UnitTests
             // Arrange
             using var handler = FakeHttpMessageHandler.Create(string.Empty, System.Net.HttpStatusCode.OK);
             var client = new HttpClient(handler);
-            var service = new SpellCheckService(FakeLogger, client);
+            var service = new SpellCheckService(fakeLogger, client);
 
             // Act
             var response = await service.CheckSpellingAsync("hollo");
