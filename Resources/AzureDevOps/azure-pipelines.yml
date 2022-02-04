@@ -19,17 +19,17 @@ pool:
   - msbuild
   - visualstudio
 
-# trigger: 
-#   branches:
-#     include: 
-#     - dev
-#     - master
+trigger: 
+  branches:
+    include: 
+    - dev
+    - master
 
-# pr:
-#   branches:
-#     include: 
-#     - dev
-#     - master
+pr:
+  branches:
+    include: 
+    - dev
+    - master
 
 stages:
 - stage: Build
@@ -94,8 +94,8 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToDev
-  #condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
-  condition: eq(dependencies.Build.result,'Succeeded')
+  condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+  #condition: eq(dependencies.Build.result,'Succeeded')
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
