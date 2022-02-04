@@ -79,6 +79,21 @@
         },
         "loggingLogLevelDefault": {
             "value": "__loggingLogLevelDefault__"
+        },
+        "ApimResourceGroup": {
+            "value": "__SharedResourceGroupName__"
+        },
+        "ApimLoggerName": {
+            "value": "__ApimLoggerName__"
+        },
+        "ApimProductInstanceName": {
+            "value": "__ApimProductInstanceName__"
+        },
+        "ApimServiceName": {
+            "value": "__ApimServiceName__"
+        },
+        "ApiName": {
+            "value": "__ApiName__"
         }
     }
 }

@@ -19,3 +19,9 @@ variables:
   value: $(jobCategoryBaseAddress)searchautocomplete
 - name: contentUrl
   value: $(ContentApiAddress)/api/execute
+- name: apiName
+  value: explorecareers
+- name: apiId
+  value: composite-ui-explorecareers
+- name: applicationUrl
+  value: https://$(AppServiceName).$(appServiceDomain)
