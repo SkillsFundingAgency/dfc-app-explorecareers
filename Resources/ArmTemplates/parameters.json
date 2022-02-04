@@ -62,9 +62,6 @@
         "jobCategorySearchClientOptionsBaseAddress": {
             "value": "__jobCategoryBaseAddress__"
         },
-        "subscriptionEndpoint": {
-            "value": "__subscriptionEndpoint__"
-        },
         "subscriptionServiceEndpoint": {
             "value": "__subscriptionServiceEndpoint__"
         },
@@ -94,6 +91,9 @@
         },
         "ApiName": {
             "value": "__ApiName__"
+        },
+        "SubscriptionSettingsEndpoint": {
+            "value": "__SubscriptionSettingsEndpoint__"
         }
     }
 }

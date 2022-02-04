@@ -64,9 +64,6 @@
     "jobCategorySearchClientOptionsBaseAddress": {
       "type": "string"
     },
-    "subscriptionEndpoint": {
-      "type": "string"
-    },
     "subscriptionServiceEndpoint": {
       "type": "string"
     },
@@ -96,6 +93,9 @@
     },
     "ApiName": {
         "type": "string"
+    },
+    "SubscriptionSettingsEndpoint": {
+      "type": "string"
     }
   },
   "variables": {
@@ -260,7 +260,7 @@
               },
               {
                 "name": "SubscriptionSettings__Endpoint",
-                "value": "[concat(parameters('subscriptionEndpoint'),'?subscription-key=',parameters('apimCompositeApiKey'))]"
+                "value": "[concat(parameters('SubscriptionSettingsEndpoint'),'/api/webhook/ReceiveEvents?subscription-key=',parameters('apimCompositeApiKey'))]"
               },
               {
                 "name": "SubscriptionSettings__SubscriptionServiceEndpoint",

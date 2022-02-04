@@ -53,9 +53,6 @@
         "jobCategorySearchClientOptionsBaseAddress": {
             "value": "jobCategorySearchClientOptionsBaseAddress"
         },
-        "subscriptionEndpoint": {
-            "value": "subscriptionEndpoint"
-        },
         "subscriptionServiceEndpoint": {
             "value": "subscriptionServiceEndpoint"
         },
@@ -85,6 +82,9 @@
         },
         "ApiName": {
             "value": "explorecareers"
+        },
+        "SubscriptionSettingsEndpoint": {
+            "value": "http://url"
         }
     }
 }
