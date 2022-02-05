@@ -56,6 +56,22 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         }
 
         [Fact]
+        public async Task CheckSpellingShouldNotCorrectWhenNoSuggestionsReturned()
+        {
+            // Arrange
+            var fileContent = "{\"_type\": \"SpellCheck\", \"flaggedTokens\": [] }";
+            var handler = FakeHttpMessageHandler.Create(fileContent, System.Net.HttpStatusCode.OK);
+            var client = new HttpClient(handler) { BaseAddress = new Uri("https://sample.com/") };
+            var service = new SpellCheckService(fakeLogger, client);
+
+            // Act
+            var response = await service.CheckSpellingAsync("hello");
+
+            // Assert
+            response.HasCorrected.Should().BeFalse();
+        }
+
+        [Fact]
         public async Task CheckSpellingShouldNotCorrectWhenBingApiCallFailed()
         {
             // Arrange

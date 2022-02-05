@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
+
+using DFC.App.ExploreCareers.BingSpellCheck.Models;
 
 using Microsoft.Extensions.Logging;
 
@@ -32,12 +36,12 @@ namespace DFC.App.ExploreCareers.BingSpellCheck
                     if (response.IsSuccessStatusCode)
                     {
                         var resultsString = await response.Content.ReadAsByteArrayAsync();
-                        var suggestions = System.Text.Json.JsonSerializer.Deserialize<BingResponse>(resultsString);
-                        if (suggestions.flaggedTokens.Length > 0)
+                        var suggestions = JsonSerializer.Deserialize<BingResponse>(resultsString);
+                        if (suggestions.FlaggedTokens.Any())
                         {
-                            foreach (var tokenTerm in suggestions.flaggedTokens)
+                            foreach (var tokenTerm in suggestions.FlaggedTokens.Where(s => s.Suggestions.Any()))
                             {
-                                term = term.Replace(tokenTerm.token, tokenTerm.suggestions[0].suggestion, StringComparison.OrdinalIgnoreCase);
+                                term = term.Replace(tokenTerm.Token, tokenTerm.Suggestions.First().Value, StringComparison.OrdinalIgnoreCase);
                             }
 
                             return new SpellCheckResult
