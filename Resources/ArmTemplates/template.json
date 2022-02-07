@@ -313,7 +313,7 @@
                 "value": "[parameters('bingSpellCheckApiUrl')]"
               },
               {
-                "name": "SpellCheckApiClientOptions__BaseAddress",
+                "name": "SpellCheckApiClientOptions__ApiKey",
                 "value": "[parameters('bingSpellCheckApiKey')]"
               }
             ]
