@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 using Xunit;
 
-namespace DFC.App.ExploreCareers.UnitTests
+namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
     public class CacheReloadBackgroundServiceTests
     {

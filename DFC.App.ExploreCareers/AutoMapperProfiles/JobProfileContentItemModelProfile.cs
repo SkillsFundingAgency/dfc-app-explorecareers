@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 using AutoMapper;
 
@@ -27,6 +29,26 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
 
             CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()
                 .ForMember(d => d.AlternativeTitle, o => o.MapFrom(s => s.AlternativeTitle != null ? string.Join(", ", s.AlternativeTitle).Trim().TrimEnd(',') : string.Empty));
+
+            CreateMap<JobProfileIndex, JobProfileViewModel>()
+                .ForMember(d => d.ResultItemTitle, s => s.MapFrom(x => x.Title))
+                .ForMember(d => d.ResultItemUrlName, s => s.MapFrom(x => x.UrlName))
+                .ForMember(d => d.ResultItemAlternativeTitle, s => s.MapFrom(x => string.Join(", ", x.AlternativeTitle ?? Array.Empty<string>())))
+                .ForMember(d => d.ResultItemOverview, s => s.MapFrom(x => x.Overview))
+                .ForMember(d => d.ResultItemSalaryRange, s => s.MapFrom(x => GetSalaryRange(x)))
+                .ForMember(d => d.JobProfileCategoriesWithUrl, s => s.MapFrom(x => x.JobProfileCategoriesWithUrl ?? Array.Empty<string>()))
+
+                .ForMember(d => d.Score, s => s.Ignore())
+                .ForMember(d => d.ShouldDisplayCaveat, s => s.Ignore())
+                .ForMember(d => d.MatchingSkillsCount, s => s.Ignore())
+                ;
+        }
+
+        private static string GetSalaryRange(JobProfileIndex x)
+        {
+            return (x.SalaryStarter is 0 || x.SalaryExperienced is 0)
+                ? "Variable"
+                : string.Format(new CultureInfo("en-GB", false), "{0:C0} to {1:C0}", x.SalaryStarter, x.SalaryExperienced);
         }
     }
 }

@@ -15,7 +15,7 @@ using FluentAssertions;
 
 using Xunit;
 
-namespace DFC.App.ExploreCareers.UnitTests
+namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
     public class JobCategoryDocumentServiceTests
     {

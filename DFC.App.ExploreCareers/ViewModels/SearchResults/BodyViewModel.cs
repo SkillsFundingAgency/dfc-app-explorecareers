@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace DFC.App.ExploreCareers.ViewModels
+namespace DFC.App.ExploreCareers.ViewModels.SearchResults
 {
     [ExcludeFromCodeCoverage]
-    public class SearchResultsViewModel
+    public class BodyViewModel
     {
-        public IList<JobProfileViewModel> JobProfiles { get; set; } = Array.Empty<JobProfileViewModel>();
+        public IEnumerable<JobProfileViewModel> JobProfiles { get; set; } = Array.Empty<JobProfileViewModel>();
 
         public int TotalPages { get; set; }
 
         public int PageNumber { get; set; } = 1;
-
-        public int CurrentPage { get; set; }
 
         public string SearchTerm { get; set; } = string.Empty;
 

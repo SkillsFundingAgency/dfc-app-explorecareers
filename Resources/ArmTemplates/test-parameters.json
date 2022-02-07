@@ -85,6 +85,12 @@
         },
         "SubscriptionSettingsEndpoint": {
             "value": "http://url"
+        },
+        "bingSpellCheckApiUrl": {
+          "value": "http://url"
+        },
+        "bingSpellCheckApiKey": {
+          "value": "spellCheckKey"
         }
     }
 }
