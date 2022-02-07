@@ -94,6 +94,12 @@
         },
         "SubscriptionSettingsEndpoint": {
             "value": "__SubscriptionSettingsEndpoint__"
+        },
+        "bingSpellCheckApiUrl": {
+          "value": "__bingSpellCheckApiUrl__"
+        },
+        "bingSpellCheckApiKey": {
+          "value": "__bingSpellCheckApiKey__"
         }
     }
 }
