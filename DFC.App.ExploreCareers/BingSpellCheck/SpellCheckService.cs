@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -30,9 +29,7 @@ namespace DFC.App.ExploreCareers.BingSpellCheck
             {
                 try
                 {
-                    var values = new Dictionary<string, string> { { "text", term } };
-                    using var content = new FormUrlEncodedContent(values);
-                    var response = await client.PostAsync(string.Empty, content);
+                    var response = await client.GetAsync($"?text={term}&amp;mode=spell&amp;mkt=en-gb");
                     if (response.IsSuccessStatusCode)
                     {
                         var resultsString = await response.Content.ReadAsByteArrayAsync();
