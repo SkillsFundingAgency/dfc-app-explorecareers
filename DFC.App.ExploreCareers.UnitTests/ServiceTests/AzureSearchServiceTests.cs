@@ -22,10 +22,27 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         private readonly SearchClient mockClient = A.Fake<SearchClient>();
 
         [Fact]
+        public async Task GetSuggestionsShouldReturnSuggestions()
+        {
+            // Arrange
+            SetupMockSuggestionResponse();
+            var searchService = new AzureSearchService(mockClient);
+
+            // Act
+            var response = await searchService.GetSuggestionsAsync("a");
+
+            // Assert
+            response.Should().NotBeNullOrEmpty();
+            response.Should().HaveCount(2);
+            response.First().Label.Should().Be("B");
+            response.Skip(1).First().Label.Should().Be("A");
+        }
+
+        [Fact]
         public async Task GetProfilesByCategoryShouldReturnsResultsOrderedByTitle()
         {
             // Arrange
-            SetupMockSearchClientAndResponse();
+            SetupMockSearchResponse();
             var searchService = new AzureSearchService(mockClient);
 
             // Act
@@ -83,7 +100,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         public async Task SearchAsyncShouldReturnSearchedResultAtTheTop()
         {
             // Arrange
-            SetupMockSearchClientAndResponse();
+            SetupMockSearchResponse();
             var searchService = new AzureSearchService(mockClient);
 
             // Act
@@ -106,7 +123,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         public async Task SearchAsyncShouldReturnSearchResultsWithoutOrdering()
         {
             // Arrange
-            SetupMockSearchClientAndResponse();
+            SetupMockSearchResponse();
             var searchService = new AzureSearchService(mockClient);
 
             // Act
@@ -126,7 +143,21 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             otherJobProfile.Title.Should().Be("A");
         }
 
-        private void SetupMockSearchClientAndResponse()
+        private void SetupMockSuggestionResponse()
+        {
+            var mockResponse = A.Fake<Response>();
+            var mockResults = SearchModelFactory.SuggestResults(
+                new[]
+                {
+                  SearchModelFactory.SearchSuggestion(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "B" }, "B"),
+                  SearchModelFactory.SearchSuggestion(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "A" }, "A")
+                }, null);
+
+            A.CallTo(() => mockClient.SuggestAsync<JobProfileIndex>(A<string>._, A<string>._, A<SuggestOptions>._, A<CancellationToken>.Ignored))
+                .Returns(Response.FromValue(mockResults, mockResponse));
+        }
+
+        private void SetupMockSearchResponse()
         {
             var mockResponse = A.Fake<Response>();
             var mockResults = SearchModelFactory.SearchResults(

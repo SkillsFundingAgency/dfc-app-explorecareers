@@ -97,5 +97,17 @@
         "IsHealthy": true
       }
     ]
+  },
+  {
+    "Path": "searchautocomplete",
+    "IsOnline": true,
+    "Regions": [
+      {
+        "PageRegion": 4,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/searchautocomplete",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      }
+    ]
   }
 ]

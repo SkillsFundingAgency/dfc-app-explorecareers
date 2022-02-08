@@ -44,13 +44,18 @@ namespace DFC.App.ExploreCareers.BingSpellCheck
                                 term = term.Replace(tokenTerm.Token, tokenTerm.Suggestions.First().Value, StringComparison.OrdinalIgnoreCase);
                             }
 
+                            logger.LogInformation($"Bing Spell check corrected term: {term}");
                             return new SpellCheckResult
                             {
                                 CorrectedTerm = term,
                                 HasCorrected = true
                             };
                         }
+
+                        logger.LogInformation($"Bing Spell check didn't return any corrections.");
                     }
+
+                    logger.LogWarning($"Bing Spell check api call failed. Response: {await response.Content.ReadAsStringAsync()}");
                 }
                 catch (Exception e)
                 {

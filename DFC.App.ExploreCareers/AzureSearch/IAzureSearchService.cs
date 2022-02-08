@@ -7,7 +7,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
 {
     public interface IAzureSearchService
     {
-        Task<List<AutoCompleteModel>> AutoComplete(string searchTerm);
+        Task<IEnumerable<AutoCompleteModel>> GetSuggestionsAsync(string searchTerm, int maxResultCount = 5, bool useFuzzyMatching = true);
 
         Task<AzureSearchJobProfileModel> SearchAsync(string searchTerm, int pageNumber = 1);
 

@@ -12,6 +12,9 @@ namespace DFC.App.ExploreCareers.AzureSearch
 {
     public class AzureSearchService : IAzureSearchService
     {
+        public static readonly string DefaultSuggester = "sg";
+        public static readonly string ScoringProfile = "jp";
+
         private readonly SearchClient azureSearchClient;
 
         public AzureSearchService(SearchClient client)
@@ -19,9 +22,16 @@ namespace DFC.App.ExploreCareers.AzureSearch
             azureSearchClient = client;
         }
 
-        public async Task<List<AutoCompleteModel>> AutoComplete(string searchTerm)
+        public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsAsync(string searchTerm, int maxResultCount = 5, bool useFuzzyMatching = true)
         {
-            throw new NotImplementedException();
+            SuggestOptions options = new SuggestOptions
+            {
+                Size = maxResultCount,
+                UseFuzzyMatching = useFuzzyMatching,
+                Select = { nameof(JobProfileIndex.Title) }
+            };
+            var searchResult = await azureSearchClient.SuggestAsync<JobProfileIndex>(searchTerm, DefaultSuggester, options);
+            return searchResult?.Value?.Results?.Select(r => new AutoCompleteModel { Label = r.Text }) ?? Array.Empty<AutoCompleteModel>();
         }
 
         public async Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category)
@@ -49,7 +59,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
             var skip = pageNumber < 1 ? 0 : ((pageNumber - 1) * SearchConfig.PageSize);
             var searchOptions = new SearchOptions
             {
-                ScoringProfile = "jp",
+                ScoringProfile = ScoringProfile,
                 IncludeTotalCount = true,
                 QueryType = SearchQueryType.Full,
                 Size = SearchConfig.PageSize,
