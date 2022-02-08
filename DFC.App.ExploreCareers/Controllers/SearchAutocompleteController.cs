@@ -23,6 +23,13 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
+        [Route("head")]
+        public IActionResult Head()
+        {
+            return NoContent();
+        }
+
+        [HttpGet]
         public async Task<IEnumerable<AutoCompleteModel>> Get(string? term = "")
         {
             if (string.IsNullOrWhiteSpace(term))

@@ -104,6 +104,12 @@
     "IsOnline": true,
     "Regions": [
       {
+        "PageRegion": 1,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/searchautocomplete/head",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      },
+      {
         "PageRegion": 4,
         "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/searchautocomplete",
         "HealthCheckRequired": false,

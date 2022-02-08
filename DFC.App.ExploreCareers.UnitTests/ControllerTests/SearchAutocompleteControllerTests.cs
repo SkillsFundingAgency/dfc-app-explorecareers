@@ -9,6 +9,8 @@ using FakeItEasy;
 
 using FluentAssertions;
 
+using Microsoft.AspNetCore.Mvc;
+
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
@@ -16,6 +18,19 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
     public class SearchAutocompleteControllerTests
     {
         private IAzureSearchService AzureSearchService { get; } = A.Fake<IAzureSearchService>();
+
+        [Fact]
+        public void HeadReturnsNoContent()
+        {
+            // Arrange
+            using var controller = new SearchAutocompleteController(AzureSearchService);
+
+            // Act
+            var result = controller.Head();
+
+            // Assert
+            result.Should().BeOfType<NoContentResult>();
+        }
 
         [Theory]
         [InlineData(null)]

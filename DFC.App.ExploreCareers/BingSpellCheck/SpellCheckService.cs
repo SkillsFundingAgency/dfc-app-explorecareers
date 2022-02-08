@@ -55,7 +55,7 @@ namespace DFC.App.ExploreCareers.BingSpellCheck
                         logger.LogInformation($"Bing Spell check didn't return any corrections.");
                     }
 
-                    logger.LogWarning($"Bing Spell check api call failed. Response: {await response.Content.ReadAsStringAsync()}");
+                    logger.LogWarning($"Bing Spell check api call failed. Status: {response.StatusCode} - {response.ReasonPhrase}. Response: {await response.Content.ReadAsStringAsync()}");
                 }
                 catch (Exception e)
                 {
