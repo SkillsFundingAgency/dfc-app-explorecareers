@@ -29,11 +29,11 @@ namespace DFC.App.ExploreCareers.BingSpellCheck
             {
                 try
                 {
-                    var response = await client.GetAsync($"?text={term}&amp;mode=spell&amp;mkt=en-gb");
+                    var response = await client.GetAsync($"?text={term}&mode=spell&mkt=en-GB");
                     if (response.IsSuccessStatusCode)
                     {
-                        var resultsString = await response.Content.ReadAsByteArrayAsync();
-                        var suggestions = JsonSerializer.Deserialize<BingResponse>(resultsString);
+                        var stream = await response.Content.ReadAsStreamAsync();
+                        var suggestions = await JsonSerializer.DeserializeAsync<BingResponse>(stream);
                         if (suggestions.FlaggedTokens.Any())
                         {
                             foreach (var tokenTerm in suggestions.FlaggedTokens.Where(s => s.Suggestions.Any()))
