@@ -44,7 +44,7 @@
                         @foreach (var jobProfile in Model.JobProfiles)
                         {
                             <li class="dfc-code-search-resultitem" data-ga-rank="@jobProfile.Rank">
-                                <h3><a class="dfc-code-search-jpTitle" href="/jobprofiles/@jobProfile.ResultItemUrlName">@jobProfile.ResultItemTitle</a></h3>
+                                <h3><a class="dfc-code-search-jpTitle" href="/job-profiles/@jobProfile.ResultItemUrlName">@jobProfile.ResultItemTitle</a></h3>
                                 @if (!string.IsNullOrWhiteSpace(jobProfile.ResultItemAlternativeTitle))
                                 {
                                     <p class="meta dfc-code-search-jpAltTitle"><span class="sr-hidden">Alternative titles for this job include </span>@jobProfile.ResultItemAlternativeTitle</p>
