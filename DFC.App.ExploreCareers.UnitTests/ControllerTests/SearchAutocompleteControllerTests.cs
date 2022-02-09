@@ -44,8 +44,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             var result = await controller.Get(searchTerm);
 
             // Assert
-            result.Should().BeOfType<AutoCompleteModel[]>()
-                .And.BeEmpty();
+            result.Should().BeOfType<NoContentResult>();
         }
 
         [Fact]
@@ -65,7 +64,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             var result = await controller.Get(searchTerm);
 
             // Assert
-            var results = result.Should().BeOfType<AutoCompleteModel[]>()
+            var results = result.Should().BeOfType<JsonResult>()
+                .Which.Value.Should().BeOfType<AutoCompleteModel[]>()
                 .Which;
             results.Should().NotBeNullOrEmpty();
             results.Should().HaveCount(1);

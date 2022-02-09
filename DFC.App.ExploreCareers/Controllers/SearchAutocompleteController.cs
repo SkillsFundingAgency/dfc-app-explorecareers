@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.AzureSearch;
-using DFC.App.ExploreCareers.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,16 +27,16 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<AutoCompleteModel>> Get(string? term = "")
+        public async Task<IActionResult> Get(string? term = "")
         {
             if (string.IsNullOrWhiteSpace(term))
             {
-                return Array.Empty<AutoCompleteModel>();
+                return NoContent();
             }
 
             var results = await azureSearchService.GetSuggestionsAsync(term, MaxResultsDisplayed, UseFuzzySearch);
 
-            return results;
+            return Json(results);
         }
     }
 }
