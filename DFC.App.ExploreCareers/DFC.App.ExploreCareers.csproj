@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Azure.Search.Documents" Version="11.3.0" />
     <PackageReference Include="DFC.Compui.Subscriptions" Version="1.0.96" />
