@@ -1,13 +1,16 @@
 ﻿using System;
 using System.IO;
+
 using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
-using DFC.App.ExploreCareers.Model;
+
+using DFC.App.ExploreCareers.UI.FunctionalTests.Model;
 using DFC.TestAutomation.UI;
 using DFC.TestAutomation.UI.Extension;
 using DFC.TestAutomation.UI.Helper;
 using DFC.TestAutomation.UI.Settings;
 using DFC.TestAutomation.UI.Support;
+
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
@@ -18,13 +21,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
         public BeforeScenario(ScenarioContext context)
         {
             Context = context ?? throw new NullReferenceException($"The scenario context is null. The {nameof(BeforeScenario)} class cannot be initialised.");
-
-            //this.Context = context;
-
-            //if (this.Context == null)
-            //{
-            //    throw new NullReferenceException($"The scenario context is null. The {this.GetType().Name} class cannot be initialised.");
-            //}
         }
 
         private ScenarioContext Context { get; set; }
