@@ -1,4 +1,4 @@
-﻿using DFC.App.ExploreCareers.Model;
+﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Model;
 using DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using DFC.TestAutomation.UI.Extension;
@@ -33,7 +33,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void NavigateToPage(string resourceOne, string resourceTwo = null)
         {
-            var endpoint = this.scenarioContext.GetSettingsLibrary<AppSettings>().AppSettings.AppBaseUrl.ToString().Replace("job-profiles/", "");
+            var endpoint = this.scenarioContext.GetSettingsLibrary<AppSettings>().AppSettings.AppBaseUrl.ToString().Replace("job-profiles/", string.Empty);
 
             switch (resourceOne)
             {
@@ -53,7 +53,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             }
         }
 
-        public static string ProcessResourceTwo(string resourceTwo)
+        public string ProcessResourceTwo(string resourceTwo)
         {
             string secondResource = string.Empty;
 
