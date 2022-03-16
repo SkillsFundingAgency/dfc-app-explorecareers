@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 
 using AventStack.ExtentReports;
@@ -18,22 +19,22 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
     [Binding]
     public class BeforeScenario
     {
+        /* extent reports*/
+        private static AventStack.ExtentReports.ExtentReports extent;
+        private static AventStack.ExtentReports.ExtentTest feature;
+        private static string reportPath = System.IO.Directory.GetParent(@"../../../").FullName
+            + Path.DirectorySeparatorChar + "Result"
+            + Path.DirectorySeparatorChar + "Result_" + DateTime.Now.ToString("ddMMyyyy HHmmss", CultureInfo.InvariantCulture);
+
+        private AventStack.ExtentReports.ExtentTest scenario;
+        private AventStack.ExtentReports.ExtentTest step;
+
         public BeforeScenario(ScenarioContext context)
         {
             Context = context ?? throw new NullReferenceException($"The scenario context is null. The {nameof(BeforeScenario)} class cannot be initialised.");
         }
 
         private ScenarioContext Context { get; set; }
-
-        /* extent reports*/
-        private static AventStack.ExtentReports.ExtentReports extent;
-        private static AventStack.ExtentReports.ExtentTest feature;
-        private static string reportPath = System.IO.Directory.GetParent(@"../../../").FullName
-            + Path.DirectorySeparatorChar + "Result"
-            + Path.DirectorySeparatorChar + "Result_" + DateTime.Now.ToString("ddMMyyyy HHmmss");
-
-        private AventStack.ExtentReports.ExtentTest scenario;
-        private AventStack.ExtentReports.ExtentTest step;
 
         [BeforeTestRun]
         public static void BeforeTestRun()
@@ -46,6 +47,11 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
         [BeforeFeature]
         public static void BeforeFeature(FeatureContext context)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
             feature = extent.CreateTest(context.FeatureInfo.Title);
         }
 
@@ -58,6 +64,11 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
         [AfterStep]
         public void AfterStep(ScenarioContext context)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
             if (context.TestError == null)
             {
                 step.Log(Status.Pass, context.StepContext.StepInfo.Text);
@@ -80,6 +91,11 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
         public void SetObjectContext(ObjectContext objectContext, ScenarioContext context)
         {
             this.Context.SetObjectContext(objectContext);
+
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
 
             //Extent report
             scenario = feature.CreateNode(context.ScenarioInfo.Title);

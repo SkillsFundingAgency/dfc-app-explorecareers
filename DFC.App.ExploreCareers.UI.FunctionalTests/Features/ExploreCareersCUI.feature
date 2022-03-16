@@ -271,3 +271,48 @@ Examples:
 	| Page           | Job category   |
 	| Job categories | Administration |
 	| Search results |                |
+
+Scenario Outline: Job category page shows correct breadcrumb
+	Given I am at the "Explore careers" page
+	When I click on the <Job category> link
+	Then the page displayed as a result bears the breadcrumb <Breadcrumb>
+Examples:
+	| Job category                      | Breadcrumb                                                 |
+	| Administration                    | Home > Explore Careers > Administration                    |
+	| Animal care                       | Home > Explore Careers > Animal care                       |
+	| Beauty and wellbeing              | Home > Explore Careers > Beauty and wellbeing              |
+	| Business and finance              | Home > Explore Careers > Business and finance              |
+	| Computing, technology and digital | Home > Explore Careers > Computing, technology and digital |
+	| Construction and trades           | Home > Explore Careers > Construction and trades           |
+	| Creative and media                | Home > Explore Careers > Creative and media                |
+	| Delivery and storage              | Home > Explore Careers > Delivery and storage              |
+	| Emergency and uniform services    | Home > Explore Careers > Emergency and uniform services    |
+	| Engineering and maintenance       | Home > Explore Careers > Engineering and maintenance       |
+	| Environment and land              | Home > Explore Careers > Environment and land              |
+	| Government services               | Home > Explore Careers > Government services               |
+	| Healthcare                        | Home > Explore Careers > Healthcare                        |
+	| Home services                     | Home > Explore Careers > Home services                     |
+	| Hospitality and food              | Home > Explore Careers > Hospitality and food              |
+	| Law and legal                     | Home > Explore Careers > Law and legal                     |
+	| Managerial                        | Home > Explore Careers > Managerial                        |
+	| Manufacturing                     | Home > Explore Careers > Manufacturing                     |
+	| Retail and sales                  | Home > Explore Careers > Retail and sales                  |
+	| Science and research              | Home > Explore Careers > Science and research              |
+	| Social care                       | Home > Explore Careers > Social care                       |
+	| Sports and leisure                | Home > Explore Careers > Sports and leisure                |
+	| Teaching and education            | Home > Explore Careers > Teaching and education            |
+	| Transport                         | Home > Explore Careers > Transport                         |
+	| Travel and tourism                | Home > Explore Careers > Travel and tourism                |
+
+Scenario Outline: Job profiles links and breadcrumb verified on being clicked
+	Given I am at the "Job categories" web page for <Job category>
+	When I click the link for each of the Job profiles listed thereunder in turn
+	Then I am navigated to the Job profiles page for the Job profile clicked
+	And the breadcrumb for that specific Job profile is displayed
+Examples:
+	| Job category                      |
+	| Administration                    |
+	| Construction and trades           |
+	| Delivery and storage              |
+	| Sports and leisure                |
+	| Travel and tourism                |

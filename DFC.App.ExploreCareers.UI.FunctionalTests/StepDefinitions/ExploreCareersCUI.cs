@@ -1,4 +1,5 @@
 ﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Pages;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Support.Poco;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -13,19 +14,19 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
     [Binding]
     public sealed class ExploreCareersCUI
     {
-        private readonly ScenarioContext scenarioContext;
         private readonly ExploreCareersPage exploreCareersPage;
         private readonly JobCategoriesPage jobCategoriesPage;
         private readonly JobProfilesPage jobProfilesPage;
         private readonly SearchResultsPage searchResultsPage;
-        string _page, jobCategory;
-        IEnumerable<JobCategories> jobCategories;
-        IList<IWebElement> jobProfiles, jobCategoryList;
-        bool _jobCategoryPagePaginated;
+        private string webPage;
+        private string jobCategory;
+        private IEnumerable<JobCategories> jobCategories;
+        private IList<IWebElement> jobProfiles;
+        private IList<IWebElement> jobCategoryList;
+        private bool jobCategoryPagePaginated;
 
         public ExploreCareersCUI(ScenarioContext scenarioContext)
         {
-            scenarioContext = scenarioContext;
             exploreCareersPage = new ExploreCareersPage(scenarioContext);
             jobCategoriesPage = new JobCategoriesPage(scenarioContext);
             jobProfilesPage = new JobProfilesPage(scenarioContext);
@@ -54,14 +55,14 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Given(@"I navigate to the (.*) page")]
         public void GivenINavigateToThePage(string page)
         {
-            _page = page;
+            webPage = page;
             exploreCareersPage.NavigateToPage(page, null);
         }
 
         [When(@"I enter the search term (.*) in the search field")]
         public void GivenIEnterTheSearchTermInTheSearchField(string searchTerm)
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.EnterSearchTerm(searchTerm);
@@ -78,7 +79,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [When(@"I enter the non existent search term (.*) in the search field")]
         public void WhenIEnterTheNonExistentSearchTermInTheSearchField(string nonExistentSearchTerm)
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.EnterSearchTerm(nonExistentSearchTerm);
@@ -95,7 +96,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"I am able to select (.*) from the resultant auto suggest")]
         public void ThenIAmAbleToSelectFromTheResultantAutoSuggest(string option)
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.SelectFromAutosuggest(option);
@@ -112,7 +113,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"(.*) is populated in the search field")]
         public void IsPopulatedInTheSearchField(string autosuggestedOption)
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     Assert.AreEqual(autosuggestedOption, exploreCareersPage.GetSelectedSearchTerm(), "Selected option is not " + autosuggestedOption + ".");
@@ -129,7 +130,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Given(@"I enter the search term (.*) in the search field")]
         public void GivenIEnterTheSearchTermNurInTheSearchField(string searchTerm)
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.EnterSearchTerm(searchTerm);
@@ -146,7 +147,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Given(@"I click the search button")]
         public void GivenIClickTheSearchButton()
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.ClickSearchButton();
@@ -175,7 +176,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Given(@"the search field is empty")]
         public void GivenTheSearchFieldIsEmpty()
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.ClearSearchField();
@@ -192,7 +193,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [When(@"I click the search button")]
         public void WhenIClickTheSearchButton()
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.ClickSearchButton();
@@ -209,7 +210,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"the page does not advance")]
         public void ThenThePageDoesNotAdvance()
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     Assert.IsTrue(exploreCareersPage.GetUrl().Contains("/explore-careers"), "The page advanced unexpectedly");
@@ -246,16 +247,16 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         }
 
         [Then(@"the Next button is no longer present on the final page")]
-        public static void ThenTheNextButtonIsNoLongerPresentOnTheFinalPage()
+        public void ThenTheNextButtonIsNoLongerPresentOnTheFinalPage()
         {
-            /* This step is inserted for readability. The verification of the presence of the 
+            /* This step is inserted for readability. The verification of the presence of the
             Next button on the final page was done as part of the assertion in the last step */
         }
 
         [When(@"I press the Enter button instead of clicking search")]
         public void WhenIPressTheEnterButtonInsteadOfClickingSearch()
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Explore careers":
                     exploreCareersPage.ClickEnterInSearchField();
@@ -272,7 +273,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"the search results screen is displayed.")]
         public void ThenTheSearchResultsScreenIsDisplayed()
         {
-            switch (_page)
+            switch (webPage)
             {
                 case "Search results":
                     Assert.IsTrue(searchResultsPage.GetZeroResultsMsg().Contains("results found"), "Pressing the enter key did not produce search results");
@@ -382,13 +383,13 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [When(@"I examine the page")]
         public void WhenIExamineThePage()
         {
-            _jobCategoryPagePaginated = jobCategoriesPage.IsPagePaginated();
+            jobCategoryPagePaginated = jobCategoriesPage.IsPagePaginated();
         }
 
         [Then(@"the page contains no pagination")]
         public void ThenThePageContainsNoPagination()
         {
-            Assert.IsFalse(_jobCategoryPagePaginated, "The job categories > Administration page is, unexpectedly, paginated");
+            Assert.IsFalse(jobCategoryPagePaginated, "The job categories > Administration page is, unexpectedly, paginated");
         }
 
         [Then(@"the search results field placeholder text is ""(.*)""")]
@@ -428,10 +429,34 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         {
             Assert.AreEqual(page, exploreCareersPage.GetPageHeading(), "Breacrumb did not land on the " + page + " page.");
         }
-    }
 
-    public class JobCategories
-    {
-        public string jobCategory { get; set; }
+        [Then(@"the page displayed as a result bears the breadcrumb (.*)")]
+        public void ThenThePageDisplayedAsAResultBearsTheBreadcrumb(string breadCrumb)
+        {
+            if (breadCrumb == null)
+            {
+                throw new ArgumentNullException(nameof(breadCrumb));
+            }
+
+            Assert.IsEmpty(jobCategoriesPage.GetBreadcrumbVerifier(breadCrumb), "Breadcrumb for page " + jobCategoriesPage.GetBreadcrumbVerifier(breadCrumb) + " is incorrect.");
+        }
+
+        [When(@"I click the link for each of the Job profiles listed thereunder in turn")]
+        public void WhenIClickTheLinkForEachOfTheJobProfilesListedThereunderInTurn()
+        {
+            /* This step is inserted for readability. The action herein is performed in the Then step */
+        }
+
+        [Then(@"I am navigated to the Job profiles page for the Job profile clicked")]
+        public void ThenIAmNavigatedToTheJobProfilesPageForTheJobProfileClicked()
+        {
+            /* This step is inserted for readability. The action herein is performed in the Then step */
+        }
+
+        [Then(@"the breadcrumb for that specific Job profile is displayed")]
+        public void ThenTheBreadcrumbForThatSpecificJobProfileIsDisplayed()
+        {
+            Assert.AreEqual("Test passed", jobCategoriesPage.ClickJobProfiles(jobCategory), "xxx");
+        }
     }
 }

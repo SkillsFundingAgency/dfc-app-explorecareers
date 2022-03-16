@@ -1843,6 +1843,596 @@ this.BreadcrumbLinkingVerification("Search results", "", ((string[])(null)));
 #line hidden
         }
         
+        public virtual void JobCategoryPageShowsCorrectBreadcrumb(string jobCategory, string breadcrumb, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Job category", jobCategory);
+            argumentsOfScenario.Add("Breadcrumb", breadcrumb);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Job category page shows correct breadcrumb", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 275
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 276
+ testRunner.Given("I am at the \"Explore careers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 277
+ testRunner.When(string.Format("I click on the {0} link", jobCategory), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 278
+ testRunner.Then(string.Format("the page displayed as a result bears the breadcrumb {0}", breadcrumb), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Administration")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Administration")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_Administration()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Administration", "Home > Explore Careers > Administration", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Animal care")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Animal care")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_AnimalCare()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Animal care", "Home > Explore Careers > Animal care", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Beauty and wellbeing")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Beauty and wellbeing")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_BeautyAndWellbeing()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Beauty and wellbeing", "Home > Explore Careers > Beauty and wellbeing", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Business and finance")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Business and finance")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_BusinessAndFinance()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Business and finance", "Home > Explore Careers > Business and finance", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Computing, technology and digital")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Computing, technology and digital")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_ComputingTechnologyAndDigital()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Computing, technology and digital", "Home > Explore Careers > Computing, technology and digital", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Construction and trades")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Construction and trades")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_ConstructionAndTrades()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Construction and trades", "Home > Explore Careers > Construction and trades", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Creative and media")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Creative and media")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_CreativeAndMedia()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Creative and media", "Home > Explore Careers > Creative and media", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Delivery and storage")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Delivery and storage")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_DeliveryAndStorage()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Delivery and storage", "Home > Explore Careers > Delivery and storage", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Emergency and uniform services")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Emergency and uniform services")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_EmergencyAndUniformServices()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Emergency and uniform services", "Home > Explore Careers > Emergency and uniform services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Engineering and maintenance")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Engineering and maintenance")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_EngineeringAndMaintenance()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Engineering and maintenance", "Home > Explore Careers > Engineering and maintenance", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Environment and land")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Environment and land")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_EnvironmentAndLand()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Environment and land", "Home > Explore Careers > Environment and land", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Government services")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Government services")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_GovernmentServices()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Government services", "Home > Explore Careers > Government services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Healthcare")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Healthcare")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_Healthcare()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Healthcare", "Home > Explore Careers > Healthcare", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Home services")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Home services")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_HomeServices()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Home services", "Home > Explore Careers > Home services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Hospitality and food")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Hospitality and food")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_HospitalityAndFood()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Hospitality and food", "Home > Explore Careers > Hospitality and food", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Law and legal")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Law and legal")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_LawAndLegal()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Law and legal", "Home > Explore Careers > Law and legal", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Managerial")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Managerial")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_Managerial()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Managerial", "Home > Explore Careers > Managerial", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Manufacturing")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Manufacturing")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_Manufacturing()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Manufacturing", "Home > Explore Careers > Manufacturing", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Retail and sales")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Retail and sales")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_RetailAndSales()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Retail and sales", "Home > Explore Careers > Retail and sales", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Science and research")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Science and research")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_ScienceAndResearch()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Science and research", "Home > Explore Careers > Science and research", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Social care")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Social care")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_SocialCare()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Social care", "Home > Explore Careers > Social care", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Sports and leisure")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Sports and leisure")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_SportsAndLeisure()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Sports and leisure", "Home > Explore Careers > Sports and leisure", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Teaching and education")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Teaching and education")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_TeachingAndEducation()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Teaching and education", "Home > Explore Careers > Teaching and education", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Transport")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Transport")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_Transport()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Transport", "Home > Explore Careers > Transport", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Travel and tourism")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Travel and tourism")]
+        public void JobCategoryPageShowsCorrectBreadcrumb_TravelAndTourism()
+        {
+#line 275
+this.JobCategoryPageShowsCorrectBreadcrumb("Travel and tourism", "Home > Explore Careers > Travel and tourism", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked(string jobCategory, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "ignore"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Job category", jobCategory);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Job profiles links and breadcrumb verified on being clicked", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 308
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 309
+ testRunner.Given(string.Format("I am at the \"Job categories\" web page for {0}", jobCategory), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 310
+ testRunner.When("I click the link for each of the Job profiles listed thereunder in turn", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 311
+ testRunner.Then("I am navigated to the Job profiles page for the Job profile clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 312
+ testRunner.And("the breadcrumb for that specific Job profile is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Administration", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Administration")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Administration()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Administration", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Animal care", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Animal care")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_AnimalCare()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Animal care", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Beauty and wellbeing" +
+            "", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Beauty and wellbeing" +
+            "")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_BeautyAndWellbeing()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Beauty and wellbeing", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Business and finance" +
+            "", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Business and finance" +
+            "")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_BusinessAndFinance()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Business and finance", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Computing, technolog" +
+            "y and digital", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Computing, technolog" +
+            "y and digital")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_ComputingTechnologyAndDigital()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Computing, technology and digital", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Construction and tra" +
+            "des", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Construction and tra" +
+            "des")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_ConstructionAndTrades()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Construction and trades", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Creative and media", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Creative and media")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_CreativeAndMedia()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Creative and media", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Delivery and storage" +
+            "", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Delivery and storage" +
+            "")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_DeliveryAndStorage()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Delivery and storage", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Emergency and unifor" +
+            "m services", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Emergency and unifor" +
+            "m services")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_EmergencyAndUniformServices()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Emergency and uniform services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Engineering and main" +
+            "tenance", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Engineering and main" +
+            "tenance")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_EngineeringAndMaintenance()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Engineering and maintenance", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Environment and land" +
+            "", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Environment and land" +
+            "")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_EnvironmentAndLand()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Environment and land", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Government services", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Government services")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_GovernmentServices()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Government services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Healthcare", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Healthcare")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Healthcare()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Healthcare", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Home services", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Home services")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_HomeServices()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Home services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Hospitality and food" +
+            "", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Hospitality and food" +
+            "")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_HospitalityAndFood()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Hospitality and food", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Law and legal", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Law and legal")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_LawAndLegal()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Law and legal", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Managerial", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Managerial")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Managerial()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Managerial", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Manufacturing", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Manufacturing")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Manufacturing()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Manufacturing", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Retail and sales", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Retail and sales")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_RetailAndSales()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Retail and sales", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Science and research" +
+            "", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Science and research" +
+            "")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_ScienceAndResearch()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Science and research", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Social care", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Social care")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_SocialCare()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Social care", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Sports and leisure", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Sports and leisure")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_SportsAndLeisure()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Sports and leisure", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Teaching and educati" +
+            "on", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Teaching and educati" +
+            "on")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_TeachingAndEducation()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Teaching and education", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Transport", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Transport")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Transport()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Transport", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links and breadcrumb verified on being clicked: Travel and tourism", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "Job profiles links and breadcrumb verified on being clicked: Travel and tourism")]
+        public void JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_TravelAndTourism()
+        {
+#line 308
+this.JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Travel and tourism", ((string[])(null)));
+#line hidden
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

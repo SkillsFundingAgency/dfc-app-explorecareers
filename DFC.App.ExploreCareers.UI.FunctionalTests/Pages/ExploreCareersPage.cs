@@ -1,6 +1,7 @@
 ﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Model;
 using DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Support.Poco;
 using DFC.TestAutomation.UI.Extension;
 using OpenQA.Selenium;
 using System;
@@ -20,6 +21,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             scenarioContext = context;
         }
 
+        public static string Endpoint { get; set; }
+
         private IWebElement SearchField => scenarioContext.GetWebDriver().FindElement(By.Id("SearchTerm"));
 
         private IWebElement SearchButton => scenarioContext.GetWebDriver().FindElement(By.ClassName("submit"));
@@ -33,22 +36,22 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void NavigateToPage(string resourceOne, string resourceTwo = null)
         {
-            var endpoint = this.scenarioContext.GetSettingsLibrary<AppSettings>().AppSettings.AppBaseUrl.ToString().Replace("job-profiles/", string.Empty);
+            Endpoint = this.scenarioContext.GetSettingsLibrary<AppSettings>().AppSettings.AppBaseUrl.ToString().Replace("job-profiles/", string.Empty);
 
             switch (resourceOne)
             {
                 case "Explore careers":
-                    this.scenarioContext.GetWebDriver().Url = endpoint + "explore-careers";
+                    this.scenarioContext.GetWebDriver().Url = Endpoint + "explore-careers";
                     break;
                 case "Job profiles":
-                    this.scenarioContext.GetWebDriver().Url = endpoint + "job-profiles/admin-assistant";
+                    this.scenarioContext.GetWebDriver().Url = Endpoint + "job-profiles/admin-assistant";
                     Devices.ScrollIntoView(this.scenarioContext.GetWebDriver(), scenarioContext.GetWebDriver().FindElement(By.Id("search-main")));
                     break;
                 case "Search results":
-                    this.scenarioContext.GetWebDriver().Url = endpoint + "search-results";
+                    this.scenarioContext.GetWebDriver().Url = Endpoint + "search-results";
                     break;
                 case "Job categories":
-                    this.scenarioContext.GetWebDriver().Url = endpoint + "job-categories/" + ProcessResourceTwo(resourceTwo);
+                    this.scenarioContext.GetWebDriver().Url = Endpoint + "job-categories/" + ProcessResourceTwo(resourceTwo);
                     break;
             }
         }
@@ -193,7 +196,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
             //A - Check.
             //Convert IEnumerable expected results to string
-            string[] expected = expectedJobCategories.Select(p => p.jobCategory).ToArray();
+            string[] expected = expectedJobCategories.Select(p => p.JobCategory).ToArray();
 
             //Get actual list from the UI
             IList<IWebElement> actualJobCategoriesList = scenarioContext.GetWebDriver().FindElements(By.CssSelector(".govuk-list.homepage-jobcategories > li > a"));

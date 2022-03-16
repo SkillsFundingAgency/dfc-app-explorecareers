@@ -1,4 +1,6 @@
-﻿using DFC.TestAutomation.UI.Extension;
+﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
+using DFC.TestAutomation.UI.Extension;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -23,6 +25,12 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
         private IWebElement Heading => scenarioContext.GetWebDriver().FindElement(By.ClassName("govuk-heading-xl")); //SIT
 
         private IWebElement ExploreCareersBreadcrumb => scenarioContext.GetWebDriver().FindElement(By.CssSelector(".govuk-breadcrumbs li:nth-of-type(2) a"));
+
+        private IWebElement BreadcrumbOne => scenarioContext.GetWebDriver().FindElement(By.CssSelector(".govuk-breadcrumbs__list li:nth-of-type(1)"));
+
+        private IWebElement BreadcrumbTwo => scenarioContext.GetWebDriver().FindElement(By.CssSelector(".govuk-breadcrumbs__list li:nth-of-type(2)"));
+
+        private IWebElement BreadcrumbThree => scenarioContext.GetWebDriver().FindElement(By.CssSelector(".govuk-breadcrumbs__list li:nth-of-type(3)"));
 
         public string GetHeadingText()
         {
@@ -103,6 +111,58 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
         public void ClickExploreCareersBreadcrumb()
         {
             ExploreCareersBreadcrumb.Click();
+        }
+
+        public string GetBreadcrumbVerifier(string expectedBreadCrumb)
+        {
+            string jobCategory = string.Empty;
+            string[] expectedBreadcrumbSingles = expectedBreadCrumb.Split(">");
+            string[] actualBreadcrumbSingles = { BreadcrumbOne.Text, BreadcrumbTwo.Text, BreadcrumbThree.Text };
+
+            for (int i = 0; i < expectedBreadcrumbSingles.Length; i++)
+            {
+                if (expectedBreadcrumbSingles[i].Trim() != actualBreadcrumbSingles[i].Trim())
+                {
+                    jobCategory = expectedBreadcrumbSingles[2].Trim();
+                }
+                else
+                {
+                    jobCategory = string.Empty;
+                }
+            }
+
+            return jobCategory;
+        }
+
+        public string ClickJobProfiles(string jobCategory)
+        {
+            scenarioContext.GetWebDriver().FindElement(By.Id("accept-all-cookies")).Click();
+            string selector = ".job-categories_item h2 a";
+            IList<IWebElement> jobProfileLinks = scenarioContext.GetWebDriver().FindElements(By.CssSelector(selector));
+
+            for (int i = 0; i < jobProfileLinks.Count; i++)
+            {
+                jobProfileLinks = scenarioContext.GetWebDriver().FindElements(By.CssSelector(selector)); //prevents staleness of element
+                string jobProfileLinkText = jobProfileLinks[i].Text;
+                Devices.ScrollIntoView(scenarioContext.GetWebDriver(), jobProfileLinks[i]);
+                jobProfileLinks[i].Click();
+
+                try
+                {
+                    scenarioContext.GetWebDriver().FindElement(By.CssSelector(".govuk-grid-column-two-thirds > h1"));
+                }
+                catch (NoSuchElementException)
+                {
+                    /* Assertion for Job profiles link text on Job categories page against Job profiles page header text */
+                    Assert.AreEqual(jobProfileLinkText, string.Empty, "From the " + jobCategory + " Job category page, the " + jobProfileLinkText + " link did not navigate to its Job profile details page.");
+                }
+
+                /* Assertion for Job profiles page breadcrumb */
+                Assert.AreEqual("Home: Explore careers" + " " + jobProfileLinkText, scenarioContext.GetWebDriver().FindElement(By.CssSelector(".govuk-breadcrumbs__list-item:nth-of-type(1)")).Text + " " + scenarioContext.GetWebDriver().FindElement(By.CssSelector(".govuk-breadcrumbs__list-item:nth-of-type(2)")).Text, jobProfileLinkText + "breadcrumb is incorrect.");
+                scenarioContext.GetWebDriver().Navigate().Back();
+            }
+
+            return "Test passed"; //if test fails assertion message is displayed
         }
     }
 }
