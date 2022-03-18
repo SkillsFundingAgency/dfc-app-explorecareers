@@ -172,5 +172,16 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
             return result == suggestedProfession;
         }
+
+        public void SearchProfile(string searchTerm)
+        {
+            SearchField.SendKeys(searchTerm);
+            SearchButton.Click();
+        }
+
+        public bool CompareCounts(int countInEnvironment, int countInProduction)
+        {
+            return countInEnvironment == countInProduction;
+        }
     }
 }

@@ -53,6 +53,9 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
                 case "Job categories":
                     this.scenarioContext.GetWebDriver().Url = Endpoint + "job-categories/" + ProcessResourceTwo(resourceTwo);
                     break;
+                case "Production":
+                    this.scenarioContext.GetWebDriver().Url = "https://nationalcareers.service.gov.uk/" + ProcessResourceTwo(resourceTwo);
+                    break;
             }
         }
 
@@ -136,6 +139,9 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
                     break;
                 case "Travel and tourism":
                     secondResource = "travel-and-tourism";
+                    break;
+                case "search results":
+                    secondResource = "search-results";
                     break;
                 default:
                     secondResource = string.Empty;
