@@ -30,8 +30,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             searchResultsPage.SearchProfile(searchTerm);
         }
 
-        [Given(@"I obtain the number of search results")]
-        public void GivenIObtainTheNumberOfSearchResults()
+        [Given(@"I note the number of search results")]
+        public void GivenINoteTheNumberOfSearchResults()
         {
             searchCount.Add(searchResultsPage.GetNumberOfSearchResults());
         }
@@ -43,8 +43,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             exploreCareersPage.NavigateToPage(environment, webPage);
         }
 
-        [When(@"I compare the number of search results from both environments")]
-        public void WhenICompareTheNumberOfSearchResultsFromBothEnvironments()
+        [When(@"I compare the number of search results noted from both environments")]
+        public void WhenICompareTheNumberOfSearchResultsNotedFromBothEnvironments()
         {
             searchResultsPage.CompareCounts(searchCount[0], searchCount[1]);
         }

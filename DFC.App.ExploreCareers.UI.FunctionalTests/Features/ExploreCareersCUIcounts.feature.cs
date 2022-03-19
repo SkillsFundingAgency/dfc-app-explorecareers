@@ -81,10 +81,11 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Features
             this.TestTearDown();
         }
         
-        public virtual void CompareJobProfileSearchCountsInDifferentEnvironments(string jobProfile, string jobCategory, string[] exampleTags)
+        public virtual void CompareJobProfileSearchCountsInDifferentEnvironments(string no_, string jobProfile, string jobCategory, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("no.", no_);
             argumentsOfScenario.Add("Job profile", jobProfile);
             argumentsOfScenario.Add("Job category", jobCategory);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Compare Job profile search counts in different environments", null, tagsOfScenario, argumentsOfScenario, featureTags);
@@ -105,7 +106,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And(string.Format("I search for the term {0}", jobProfile), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
- testRunner.And("I obtain the number of search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I note the number of search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
  testRunner.And("I surf to the \"Production\" environments \"search results\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -114,10 +115,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And(string.Format("I search for the term {0}", jobProfile), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
- testRunner.And("I obtain the number of search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I note the number of search results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
- testRunner.When("I compare the number of search results from both environments", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I compare the number of search results noted from both environments", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
  testRunner.Then("the number is the same", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -126,2243 +127,2243 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 0")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 1")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 0")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant0()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 1")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_1()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Admin assistant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("1", "Admin assistant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 1")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 2")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 1")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant1()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 2")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_2()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Arts administrator", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("2", "Arts administrator", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 2")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 3")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 2")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant2()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 3")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_3()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Assistant immigration officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("3", "Assistant immigration officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 3")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 4")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 3")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant3()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 4")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_4()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Auditor", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("4", "Auditor", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 4")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 5")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 4")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant4()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 5")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_5()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Bid writer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("5", "Bid writer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 5")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 6")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 5")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant5()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 6")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_6()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Bilingual secretary", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("6", "Bilingual secretary", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 6")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 7")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 6")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant6()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 7")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_7()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Bookkeeper", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("7", "Bookkeeper", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 7")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 8")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 7")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant7()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 8")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_8()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Border Force officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("8", "Border Force officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 8")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 9")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 8")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant8()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 9")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_9()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Car rental agent", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("9", "Car rental agent", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 9")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 10")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 9")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant9()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 10")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_10()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Charity fundraiser", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("10", "Charity fundraiser", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 10")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 11")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 10")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant10()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 11")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_11()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Civil Service administrative officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("11", "Civil Service administrative officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 11")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 12")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 11")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant11()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 12")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_12()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Civil Service executive officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("12", "Civil Service executive officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 12")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 13")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 12")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant12()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 13")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_13()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Credit controller", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("13", "Credit controller", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 13")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 14")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 13")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant13()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 14")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_14()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Data entry clerk", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("14", "Data entry clerk", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 14")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 15")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 14")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant14()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 15")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_15()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Diplomatic Service officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("15", "Diplomatic Service officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 15")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 16")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 15")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant15()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 16")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_16()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Estates officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("16", "Estates officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 16")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 17")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 16")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant16()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 17")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_17()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Farm secretary", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("17", "Farm secretary", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 17")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 18")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 17")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant17()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 18")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_18()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Finance officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("18", "Finance officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 18")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 19")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 18")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant18()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 19")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_19()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Financial services customer adviser", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("19", "Financial services customer adviser", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 19")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 20")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 19")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant19()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 20")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_20()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("GP practice manager", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("20", "GP practice manager", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 20")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 21")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 20")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant20()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 21")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_21()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Health and safety adviser", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("21", "Health and safety adviser", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 21")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 22")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 21")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant21()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 22")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_22()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Health records clerk", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("22", "Health records clerk", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 22")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 23")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 22")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant22()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 23")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_23()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Health service manager", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("23", "Health service manager", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 23")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 24")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 23")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant23()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 24")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_24()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Human resources officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("24", "Human resources officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 24")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 25")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 24")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant24()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 25")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_25()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Immigration officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("25", "Immigration officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 25")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 26")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 25")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant25()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 26")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_26()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Import-export clerk", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("26", "Import-export clerk", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 26")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 27")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 26")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant26()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 27")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_27()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance broker", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("27", "Insurance broker", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 27")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 28")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 27")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant27()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 28")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_28()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance technician", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("28", "Insurance technician", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 28")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 29")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 28")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant28()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 29")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_29()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Interpreter", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("29", "Interpreter", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 29")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 30")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 29")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant29()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 30")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_30()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Local government administrative assistant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("30", "Local government administrative assistant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 30")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 31")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 30")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant30()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 31")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_31()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Local government officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("31", "Local government officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 31")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 32")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 31")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant31()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 32")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_32()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Local government revenues officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("32", "Local government revenues officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 32")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 33")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 32")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant32()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 33")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_33()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Medical secretary", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("33", "Medical secretary", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 33")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 34")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 33")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant33()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 34")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_34()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Office manager", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("34", "Office manager", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 34")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 35")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 34")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant34()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 35")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_35()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Payroll administrator", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("35", "Payroll administrator", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 35")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 36")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 35")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant35()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 36")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_36()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Personal assistant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("36", "Personal assistant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 36")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 37")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 36")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant36()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 37")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_37()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Post Office customer service assistant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("37", "Post Office customer service assistant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 37")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 38")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 37")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant37()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 38")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_38()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Proofreader", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("38", "Proofreader", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 38")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 39")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 38")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant38()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 39")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_39()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Purchasing manager", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("39", "Purchasing manager", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 39")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 40")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 39")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant39()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 40")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_40()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Quality control assistant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("40", "Quality control assistant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 40")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 41")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 40")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant40()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 41")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_41()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Receptionist", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("41", "Receptionist", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 41")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 42")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 41")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant41()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 42")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_42()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Recruitment consultant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("42", "Recruitment consultant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 42")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 43")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 42")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant42()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 43")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_43()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Registrar of births, deaths, marriages and civil partnerships", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("43", "Registrar of births, deaths, marriages and civil partnerships", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 43")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 44")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 43")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant43()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 44")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_44()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Reprographic assistant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("44", "Reprographic assistant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 44")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 45")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 44")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant44()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 45")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_45()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Sales administrator", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("45", "Sales administrator", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 45")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 46")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 45")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant45()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 46")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_46()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("School business manager", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("46", "School business manager", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 46")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 47")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 46")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant46()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 47")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_47()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("School secretary", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("47", "School secretary", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 47")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 48")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 47")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant47()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 48")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_48()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Secretary", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("48", "Secretary", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 48")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 49")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 48")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant48()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 49")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_49()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Security Service personnel", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("49", "Security Service personnel", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 49")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 50")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 49")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant49()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 50")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_50()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Sports development officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("50", "Sports development officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 50")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 51")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 50")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant50()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 51")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_51()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Supervisor", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("51", "Supervisor", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 51")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 52")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 51")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant51()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 52")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_52()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Telephonist", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("52", "Telephonist", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 52")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 53")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 52")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant52()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 53")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_53()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Town planning assistant", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("53", "Town planning assistant", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 53")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 54")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 53")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant53()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 54")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_54()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Trade union official", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("54", "Trade union official", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 54")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 55")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 54")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant54()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 55")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_55()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Trading standards officer", "Administrator", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("55", "Trading standards officer", "Administrator", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 55")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 56")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 55")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant55()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 56")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_56()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Agricultural contractor", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("56", "Agricultural contractor", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 56")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 57")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 56")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant56()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 57")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_57()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Agricultural inspector", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("57", "Agricultural inspector", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 57")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 58")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 57")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant57()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 58")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_58()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Animal care worker", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("58", "worker", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 58")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 59")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 58")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant58()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 59")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_59()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Animal technician", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("59", "Animal technician", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 59")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 60")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 59")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant59()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 60")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_60()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Dog training and behaviour adviser", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("60", "Dog training and behaviour adviser", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 60")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 61")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 60")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant60()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 61")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_61()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Beekeeper", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("61", "Beekeeper", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 61")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 62")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 61")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant61()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 62")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_62()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Biologist", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("62", "Biologist", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 62")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 63")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 62")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant62()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 63")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_63()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Countryside ranger", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("63", "Countryside ranger", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 63")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 64")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 63")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant63()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 64")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_64()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Dog groomer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("64", "Dog groomer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 64")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 65")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 64")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant64()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 65")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_65()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Dog handler", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("65", "Dog handler", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 65")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 66")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 65")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant65()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 66")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_66()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Ecologist", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("66", "Ecologist", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 66")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 67")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 66")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant66()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 67")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_67()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Farm worker", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("67", "Farm worker", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 67")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 68")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 67")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant67()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 68")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_68()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Farmer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("68", "Farmer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 68")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 69")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 68")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant68()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 69")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_69()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Farrier", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("69", "Farrier", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 69")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 70")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 69")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant69()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 70")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_70()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Fish farmer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("70", "Fish farmer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 70")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 71")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 70")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant70()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 71")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_71()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Fishing boat deckhand", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("71", "Fishing boat deckhand", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 71")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 72")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 71")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant71()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 72")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_72()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Gamekeeper", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("72", "Gamekeeper", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 72")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 73")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 72")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant72()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 73")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_73()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Horse groom", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("73", "Horse groom", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 73")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 74")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 73")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant73()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 74")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_74()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Horse riding instructor", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("74", "Horse riding instructor", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 74")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 75")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 74")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant74()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 75")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_75()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Jockey", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("75", "Jockey", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 75")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 76")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 75")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant75()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 76")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_76()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Kennel worker", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("76", "Kennel worker", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 76")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 77")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 76")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant76()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 77")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_77()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Pet behaviour consultant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("77", "Pet behaviour consultant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 77")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 78")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 77")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant77()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 78")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_78()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Pet shop assistant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("78", "Pet shop assistant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 78")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 79")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 78")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant78()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 79")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_79()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("RSPCA inspector", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("79", "RSPCA inspector", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 79")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 80")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 79")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant79()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 80")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_80()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Racehorse trainer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("80", "Racehorse trainer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 80")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 81")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 80")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant80()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 81")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_81()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Vet", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("81", "Vet", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 81")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 82")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 81")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant81()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 82")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_82()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Veterinary nurse", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("82", "Veterinary nurse", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 82")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 83")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 82")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant82()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 83")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_83()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Veterinary physiotherapist", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("83", "Veterinary physiotherapist", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 83")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 84")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 83")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant83()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 84")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_84()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Zookeeper", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("84", "Zookeeper", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 84")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 85")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 84")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant84()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 85")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_85()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Zoologist", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("85", "Zoologist", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 85")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 86")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 85")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant85()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 86")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_86()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Local government administrative assistant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("86", "Local government administrative assistant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 86")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 87")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 86")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant86()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 87")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_87()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Local government officer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("87", "Local government officer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 87")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 88")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 87")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant87()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 88")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_88()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Local government revenues officer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("88", "Local government revenues officer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 88")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 89")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 88")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant88()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 89")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_89()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Medical secretary", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("89", "Medical secretary", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 89")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 90")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 89")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant89()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 90")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_90()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Office manager", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("90", "Office manager", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 90")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 91")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 90")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant90()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 91")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_91()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Payroll administrator", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("91", "Payroll administrator", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 91")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 92")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 91")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant91()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 92")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_92()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Personal assistant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("92", "Personal assistant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 92")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 93")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 92")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant92()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 93")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_93()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Post Office customer service assistant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("93", "Post Office customer service assistant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 93")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 94")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 93")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant93()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 94")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_94()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Proofreader", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("94", "Proofreader", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 94")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 95")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 94")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant94()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 95")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_95()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Purchasing manager", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("95", "Purchasing manager", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 95")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 96")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 95")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant95()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 96")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_96()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Quality control assistant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("96", "Quality control assistant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 96")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 97")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 96")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant96()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 97")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_97()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Receptionist", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("97", "Receptionist", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 97")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 98")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 97")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant97()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 98")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_98()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Recruitment consultant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("98", "Recruitment consultant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 98")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 99")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 98")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant98()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 99")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_99()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Registrar of births, deaths, marriages and civil partnerships", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("99", "Registrar of births, deaths, marriages and civil partnerships", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 99")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 100")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 99")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant99()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 100")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_100()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Reprographic assistant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("100", "Reprographic assistant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 100")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 101")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 100")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant100()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 101")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_101()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Sales administrator", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("101", "Sales administrator", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 101")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 102")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 101")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant101()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 102")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_102()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("School business manager", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("102", "School business manager", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 102")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 103")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 102")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant102()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 103")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_103()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("School secretary", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("103", "School secretary", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 103")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 104")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 103")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant103()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 104")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_104()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Secretary", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("104", "Secretary", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 104")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 105")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 104")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant104()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 105")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_105()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Security Service personnel", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("105", "Security Service personnel", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 105")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 106")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 105")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant105()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 106")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_106()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Sports development officer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("106", "Sports development officer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 106")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 107")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 106")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant106()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 107")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_107()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Supervisor", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("107", "Supervisor", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 107")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 108")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 107")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant107()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 108")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_108()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Telephonist", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("108", "Telephonist", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 108")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 109")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 108")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant108()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 109")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_109()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Town planning assistant", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("109", "Town planning assistant", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 109")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 110")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 109")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant109()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 110")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_110()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Trade union official", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("110", "Trade union official", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 110")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 111")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 110")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant110()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 111")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_111()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Trading standards officer", "Animal care", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("111", "Trading standards officer", "Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 111")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 112")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 111")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant111()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 112")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_112()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Acupuncturist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("112", "Acupuncturist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 112")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 113")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 112")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant112()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 113")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_113()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Aromatherapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("113", "Aromatherapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 113")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 114")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 113")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant113()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 114")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_114()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Art therapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("114", "Art therapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 114")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 115")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 114")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant114()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 115")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_115()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Barber", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("115", "Barber", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 115")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 116")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 115")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant115()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 116")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_116()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Beauty consultant", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("116", "Beauty consultant", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 116")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 117")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 116")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant116()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 117")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_117()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Beauty therapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("117", "Beauty therapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 117")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 118")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 117")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant117()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 118")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_118()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Chiropractor", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("118", "Chiropractor", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 118")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 119")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 118")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant118()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 119")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_119()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Counsellor", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("119", "Counsellor", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 119")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 120")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 119")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant119()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 120")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_120()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Dance movement psychotherapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("120", "Dance movement psychotherapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 120")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 121")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 120")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant120()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 121")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_121()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Dramatherapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("121", "Dramatherapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 121")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 122")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 121")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant121()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 122")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_122()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Hairdresser", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("122", "Hairdresser", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 122")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 123")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 122")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant122()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 123")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_123()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Health play specialist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("123", "Health play specialist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 123")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 124")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 123")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant123()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 124")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_124()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Homeopath", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("124", "Homeopath", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 124")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 125")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 124")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant124()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 125")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_125()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Massage therapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("125", "Massage therapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 125")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 126")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 125")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant125()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 126")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_126()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Medical herbalist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("126", "Medical herbalist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 126")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 127")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 126")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant126()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 127")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_127()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Music therapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("127", "Music therapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 127")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 128")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 127")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant127()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 128")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_128()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Nail technician", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("128", "Nail technician", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 128")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 129")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 128")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant128()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 129")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_129()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Naturopath", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("129", "Naturopath", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 129")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 130")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 129")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant129()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 130")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_130()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Nutritional therapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("130", "Nutritional therapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 130")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 131")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 130")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant130()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 131")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_131()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Osteopath", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("131", "Osteopath", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 131")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 132")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 131")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant131()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 132")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_132()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Pilates teacher", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("132", "Pilates teacher", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 132")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 133")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 132")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant132()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 133")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_133()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Reflexologist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("133", "Reflexologist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 133")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 134")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 133")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant133()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 134")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_134()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Reiki healer", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("134", "Reiki healer", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 134")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 135")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 134")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant134()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 135")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_135()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Tattooist and body piercer", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("135", "Tattooist and body piercer", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 135")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 136")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 135")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant135()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 136")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_136()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Yoga therapist", "Beauty and wellbeing", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("136", "Yoga therapist", "Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 136")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 137")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 136")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant136()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 137")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_137()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Accounting technician", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("137", "Accounting technician", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 137")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 138")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 137")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant137()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 138")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_138()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Actuary", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("138", "Actuary", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 138")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 139")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 138")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant138()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 139")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_139()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Auditor", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("139", "Auditor", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 139")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 140")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 139")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant139()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 140")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_140()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Bank manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("140", "Bank manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 140")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 141")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 140")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant140()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 141")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_141()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Banking customer service adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("141", "Banking customer service adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 141")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 142")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 141")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant141()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 142")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_142()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Bookkeeper", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("142", "Bookkeeper", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 142")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 143")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 142")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant142()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 143")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_143()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Business adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("143", "Business adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 143")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 144")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 143")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant143()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 144")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_144()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Business development manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("144", "Business development manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 144")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 145")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 144")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant144()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 145")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_145()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Business project manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("145", "Business project manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 145")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 146")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 145")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant145()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 146")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_146()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Chief executive", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("146", "Chief executive", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 146")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 147")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 146")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant146()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 147")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_147()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Company secretary", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("147", "Company secretary", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 147")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 148")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 147")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant147()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 148")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_148()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Corporate responsibility and sustainability practitioner", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("148", "Corporate responsibility and sustainability practitioner", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 148")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 149")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 148")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant148()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 149")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_149()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Credit controller", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("149", "Credit controller", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 149")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 150")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 149")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant149()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 150")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_150()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Credit manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("150", "Credit manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 150")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 151")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 150")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant150()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 151")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_151()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Economist", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("151", "Economist", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 151")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 152")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 151")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant151()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 152")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_152()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Finance officer", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("152", "Finance officer", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 152")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 153")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 152")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant152()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 153")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_153()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Financial adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("153", "Financial adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 153")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 154")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 153")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant153()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 154")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_154()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Financial services customer adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("154", "Financial services customer adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 154")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 155")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 154")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant154()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 155")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_155()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance account manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("155", "Insurance account manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 155")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 156")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 155")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant155()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 156")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_156()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance broker", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("156", "Insurance broker", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 156")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 157")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 156")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant156()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 157")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_157()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance claims handler", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("157", "Insurance claims handler", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 157")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 158")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 157")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant157()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 158")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_158()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance loss adjuster", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("158", "Insurance loss adjuster", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 158")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 159")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 158")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant158()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 159")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_159()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance risk surveyor", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("159", "Insurance risk surveyor", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 159")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 160")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 159")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant159()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 160")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_160()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance technician", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("160", "Insurance technician", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 160")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 161")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 160")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant160()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 161")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_161()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Insurance underwriter", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("161", "Insurance underwriter", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 161")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 162")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 161")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant161()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 162")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_162()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Investment analyst", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("162", "Investment analyst", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 162")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 163")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 162")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant162()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 163")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_163()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Local government revenues officer", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("163", "Local government revenues officer", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 163")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 164")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 163")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant163()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 164")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_164()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Management accountant", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("164", "Management accountant", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 164")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 165")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 164")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant164()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 165")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_165()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Market research executive", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("165", "Market research executive", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 165")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 166")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 165")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant165()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 166")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_166()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Marketing manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("166", "Marketing manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 166")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 167")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 166")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant166()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 167")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_167()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Money adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("167", "Money adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 167")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 168")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 167")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant167()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 168")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_168()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Mortgage adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("168", "Mortgage adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 168")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 169")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 168")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant168()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 169")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_169()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Payroll administrator", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("169", "Payroll administrator", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 169")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 170")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 169")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant169()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 170")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_170()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Payroll manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("170", "Payroll manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 170")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 171")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 170")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant170()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 171")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_171()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Pensions administrator", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("171", "Pensions administrator", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 171")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 172")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 171")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant171()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 172")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_172()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Pensions adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("172", "Pensions adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 172")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 173")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 172")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant172()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 173")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_173()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Private practice accountant", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("173", "Private practice accountant", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 173")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 174")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 173")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant173()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 174")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_174()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Public finance accountant", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("174", "Public finance accountant", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 174")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 175")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 174")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant174()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 175")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_175()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("School business manager", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("175", "School business manager", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 175")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 176")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 175")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant175()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 176")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_176()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Stockbroker", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("176", "Stockbroker", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 176")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 177")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 176")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant176()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 177")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_177()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Tax adviser", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("177", "Tax adviser", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 177")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 178")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 177")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant177()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 178")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_178()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Tax inspector", "Business and finance", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("178", "Tax inspector", "Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 178")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 179")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 178")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant178()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 179")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_179()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("3D printing technician", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("179", "3D printing technician", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 179")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 180")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 179")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant179()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 180")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_180()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("App developer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("180", "App developer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 180")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 181")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 180")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant180()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 181")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_181()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Archivist", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("181", "Archivist", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 181")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 182")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 181")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant181()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 182")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_182()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Business analyst", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("182", "Business analyst", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 182")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 183")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 182")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant182()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 183")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_183()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Cartographer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("183", "Cartographer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 183")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 184")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 183")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant183()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 184")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_184()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Computer games developer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("184", "Computer games developer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 184")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 185")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 184")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant184()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 185")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_185()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Computer games tester", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("185", "Computer games tester", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 185")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 186")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 185")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant185()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 186")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_186()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Cyber intelligence officer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("186", "Cyber intelligence officer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 186")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 187")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 186")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant186()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 187")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_187()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Data entry clerk", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("187", "Data entry clerk", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 187")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 188")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 187")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant187()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 188")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_188()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Data scientist", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("188", "Data scientist", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 188")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 189")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 188")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant188()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 189")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_189()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Database administrator", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("189", "Database administrator", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 189")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 190")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 189")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant189()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 190")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_190()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Digital delivery manager", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("190", "Digital delivery manager", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 190")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 191")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 190")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant190()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 191")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_191()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Digital product owner", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("191", "Digital product owner", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 191")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 192")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 191")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant191()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 192")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_192()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("E-learning developer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("192", "E-learning developer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 192")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 193")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 192")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant192()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 193")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_193()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Forensic computer analyst", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("193", "Forensic computer analyst", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 193")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 194")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 193")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant193()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 194")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_194()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Geospatial technician", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("194", "Geospatial technician", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 194")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 195")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 194")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant194()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 195")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_195()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("IT project manager", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("195", "IT project manager", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 195")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 196")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 195")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant195()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 196")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_196()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("IT security co-ordinator", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("196", "IT security co-ordinator", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 196")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 197")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 196")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant196()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 197")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_197()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("IT support technician", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("197", "IT support technician", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 197")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 198")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 197")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant197()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 198")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_198()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("IT trainer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("198", "IT trainer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 198")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 199")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 198")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant198()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 199")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_199()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Indexer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("199", "Indexer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 199")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 200")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 199")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant199()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 200")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_200()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Information scientist", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("200", "Information scientist", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 200")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 201")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 200")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant200()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 201")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_201()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Librarian", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("201", "Librarian", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 201")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 202")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 201")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant201()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 202")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_202()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Library assistant", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("202", "Library assistant", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 202")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 203")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 202")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant202()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 203")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_203()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Media researcher", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("203", "Media researcher", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 203")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 204")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 203")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant203()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 204")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_204()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Network engineer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("204", "Network engineer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 204")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 205")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 204")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant204()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 205")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_205()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Network manager", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("205", "Network manager", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 205")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 206")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 205")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant205()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 206")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_206()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Operational researcher", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("206", "Operational researcher", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 206")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 207")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 206")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant206()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 207")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_207()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Pre-press operator", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("207", "Pre-press operator", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 207")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 208")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 207")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant207()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 208")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_208()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Robotics engineer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("208", "Robotics engineer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 208")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 209")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 208")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant208()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 209")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_209()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Security Service personnel", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("209", "Security Service personnel", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 209")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 210")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 209")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant209()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 210")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_210()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Social media manager", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("210", "Social media manager", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 210")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 211")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 210")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant210()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 211")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_211()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Software developer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("211", "Software developer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 211")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 212")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 211")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant211()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 212")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_212()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Solutions architect", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("212", "Solutions architect", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 212")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 213")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 212")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant212()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 213")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_213()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Systems analyst", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("213", "Systems analyst", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 213")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 214")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 213")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant213()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 214")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_214()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Technical architect", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("214", "Technical architect", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 214")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 215")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 214")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant214()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 215")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_215()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Technical author", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("215", "Technical author", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 215")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 216")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 215")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant215()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 216")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_216()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Telephonist", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("216", "Telephonist", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 216")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 217")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 216")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant216()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 217")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_217()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Test lead", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("217", "Test lead", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 217")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 218")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 217")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant217()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 218")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_218()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("User experience (UX) designer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("218", "User experience (UX) designer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 218")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 219")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 218")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant218()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 219")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_219()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("User researcher", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("219", "User researcher", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 219")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 220")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 219")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant219()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 220")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_220()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Vlogger", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("220", "Vlogger", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 220")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 221")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 220")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant220()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 221")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_221()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Web content editor", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("221", "Web content editor", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 221")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 222")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 221")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant221()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 222")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_222()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Web content manager", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("222", "Web content manager", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 222")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 223")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 222")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant222()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 223")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_223()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Web designer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("223", "Web designer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: Variant 223")]
+        [Xunit.SkippableFactAttribute(DisplayName="Compare Job profile search counts in different environments: 224")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUIcounts")]
-        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: Variant 223")]
-        public void CompareJobProfileSearchCountsInDifferentEnvironments_Variant223()
+        [Xunit.TraitAttribute("Description", "Compare Job profile search counts in different environments: 224")]
+        public void CompareJobProfileSearchCountsInDifferentEnvironments_224()
         {
 #line 4
-this.CompareJobProfileSearchCountsInDifferentEnvironments("Web developer", "Computing, technology and digital", ((string[])(null)));
+this.CompareJobProfileSearchCountsInDifferentEnvironments("224", "Web developer", "Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
