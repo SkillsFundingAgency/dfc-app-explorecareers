@@ -1,7 +1,10 @@
 ﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Pages;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
@@ -15,6 +18,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         private readonly SearchResultsPage searchResultsPage;
         private string theEnvironment;
         private string searchParameter;
+        private string theJobCategory;
         private List<int> searchCount = new List<int>();
 
         public ExploreCareersCUIcounts(ScenarioContext scenarioContext)
@@ -23,9 +27,10 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             searchResultsPage = new SearchResultsPage(scenarioContext);
         }
 
-        [Given(@"I search for the term (.*)")]
-        public void GivenISearchForTheTerm(string searchTerm)
+        [Given(@"I search for the term (.*) of the (.*) Job category")]
+        public void GivenISearchForTheTermOfTheJobCategory(string searchTerm, string jobCategory)
         {
+            theJobCategory = jobCategory;
             searchParameter = searchTerm;
             searchResultsPage.SearchProfile(searchTerm);
         }
@@ -52,7 +57,16 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"the number is the same")]
         public void ThenTheNumberIsTheSame()
         {
-            Assert.AreEqual(searchCount[1], searchCount[0], "Count for '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from this environment's, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + "."));
+            string path = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
+            string file = "jp_counts_log.txt";
+            string textToWrite = theJobCategory + " category: count of '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from this environment's, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + ".");
+
+            if (searchCount[1] != searchCount[0])
+            {
+                Devices.WriteToFile(path, file, textToWrite);
+            }
+
+            Assert.AreEqual(searchCount[1], searchCount[0], theJobCategory + " category: count of '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from this environment's, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + "."));
         }
     }
 }

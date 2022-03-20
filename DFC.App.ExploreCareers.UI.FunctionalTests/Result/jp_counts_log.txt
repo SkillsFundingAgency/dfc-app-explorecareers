@@ -1,0 +1,175 @@
+--begin-- 20-03-2022 14:59:04
+Computing, technology and digital category: count of 'Data entry clerk' in Production, of 147 differs from this environment's, of 137 by 10.
+Administrator category: count of 'Registrar of births, deaths, marriages and civil partnerships' in Production, of 820 differs from this environment's, of 842 by -22.
+Computing, technology and digital category: count of 'Digital product owner' in Production, of 295 differs from this environment's, of 289 by 6.
+Administrator category: count of 'Trade union official' in Production, of 111 differs from this environment's, of 107 by 4.
+Administrator category: count of 'Car rental agent' in Production, of 78 differs from this environment's, of 77 by 1.
+Beauty and wellbeing category: count of 'Tattooist and body piercer' in Production, of 820 differs from this environment's, of 842 by -22.
+Animal care category: count of 'Payroll administrator' in Production, of 101 differs from this environment's, of 105 by -4.
+Administrator category: count of 'Supervisor' in Production, of 157 differs from this environment's, of 161 by -4.
+Administrator category: count of 'Health records clerk' in Production, of 367 differs from this environment's, of 365 by 2.
+Administrator category: count of 'Local government officer' in Production, of 248 differs from this environment's, of 253 by -5.
+Animal care category: count of 'worker' in Production, of 98 differs from this environment's, of 100 by -2.
+Administrator category: count of 'Human resources officer' in Production, of 242 differs from this environment's, of 250 by -8.
+Animal care category: count of 'Secretary' in Production, of 15 differs from this environment's, of 17 by -2.
+Animal care category: count of 'Town planning assistant' in Production, of 391 differs from this environment's, of 402 by -11.
+Animal care category: count of 'Dog training and behaviour adviser' in Production, of 820 differs from this environment's, of 842 by -22.
+Computing, technology and digital category: count of 'Web developer' in Production, of 265 differs from this environment's, of 258 by 7.
+Animal care category: count of 'Horse groom' in Production, of 10 differs from this environment's, of 12 by -2.
+Computing, technology and digital category: count of 'Cyber intelligence officer' in Production, of 158 differs from this environment's, of 162 by -4.
+Business and finance category: count of 'Company secretary' in Production, of 169 differs from this environment's, of 180 by -11.
+Computing, technology and digital category: count of 'Archivist' in Production, of 2 differs from this environment's, of 1 by 1.
+Beauty and wellbeing category: count of 'Health play specialist' in Production, of 319 differs from this environment's, of 307 by 12.
+Business and finance category: count of 'Insurance technician' in Production, of 187 differs from this environment's, of 186 by 1.
+Animal care category: count of 'Agricultural contractor' in Production, of 50 differs from this environment's, of 46 by 4.
+Business and finance category: count of 'Insurance loss adjuster' in Production, of 52 differs from this environment's, of 51 by 1.
+Administrator category: count of 'Sports development officer' in Production, of 388 differs from this environment's, of 395 by -7.
+Animal care category: count of 'Local government officer' in Production, of 248 differs from this environment's, of 253 by -5.
+Administrator category: count of 'Secretary' in Production, of 15 differs from this environment's, of 17 by -2.
+Administrator category: count of 'Assistant immigration officer' in Production, of 275 differs from this environment's, of 284 by -9.
+Administrator category: count of 'Financial services customer adviser' in Production, of 675 differs from this environment's, of 690 by -15.
+Animal care category: count of 'Post Office customer service assistant' in Production, of 701 differs from this environment's, of 718 by -17.
+Administrator category: count of 'Receptionist' in Production, of 2 differs from this environment's, of 3 by -1.
+Beauty and wellbeing category: count of 'Hairdresser' in Production, of 4 differs from this environment's, of 3 by 1.
+Computing, technology and digital category: count of 'Pre-press operator' in Production, of 232 differs from this environment's, of 230 by 2.
+Computing, technology and digital category: count of 'Social media manager' in Production, of 738 differs from this environment's, of 752 by -14.
+Animal care category: count of 'Local government revenues officer' in Production, of 248 differs from this environment's, of 253 by -5.
+Administrator category: count of 'Admin assistant' in Production, of 196 differs from this environment's, of 190 by 6.
+Business and finance category: count of 'Credit controller' in Production, of 169 differs from this environment's, of 166 by 3.
+Animal care category: count of 'Receptionist' in Production, of 2 differs from this environment's, of 3 by -1.
+Computing, technology and digital category: count of '3D printing technician' in Production, of 192 differs from this environment's, of 187 by 5.
+Animal care category: count of 'Supervisor' in Production, of 157 differs from this environment's, of 161 by -4.
+Administrator category: count of 'Trading standards officer' in Production, of 266 differs from this environment's, of 268 by -2.
+Animal care category: count of 'Quality control assistant' in Production, of 680 differs from this environment's, of 693 by -13.
+Administrator category: count of 'GP practice manager' in Production, of 634 differs from this environment's, of 645 by -11.
+Computing, technology and digital category: count of 'User experience (UX) designer' in Production, of 701 differs from this environment's, of 716 by -15.
+Computing, technology and digital category: count of 'Software developer' in Production, of 298 differs from this environment's, of 293 by 5.
+Computing, technology and digital category: count of 'Web designer' in Production, of 211 differs from this environment's, of 208 by 3.
+Animal care category: count of 'Medical secretary' in Production, of 92 differs from this environment's, of 93 by -1.
+Computing, technology and digital category: count of 'Media researcher' in Production, of 350 differs from this environment's, of 349 by 1.
+Administrator category: count of 'Security Service personnel' in Production, of 671 differs from this environment's, of 684 by -13.
+Administrator category: count of 'Bilingual secretary' in Production, of 16 differs from this environment's, of 18 by -2.
+Business and finance category: count of 'Marketing manager' in Production, of 641 differs from this environment's, of 642 by -1.
+Business and finance category: count of 'Corporate responsibility and sustainability practitioner' in Production, of 820 differs from this environment's, of 842 by -22.
+Business and finance category: count of 'Payroll manager' in Production, of 600 differs from this environment's, of 606 by -6.
+Computing, technology and digital category: count of 'IT project manager' in Production, of 649 differs from this environment's, of 656 by -7.
+Computing, technology and digital category: count of 'App developer' in Production, of 263 differs from this environment's, of 257 by 6.
+Animal care category: count of 'Sports development officer' in Production, of 388 differs from this environment's, of 395 by -7.
+Administrator category: count of 'Civil Service executive officer' in Production, of 666 differs from this environment's, of 684 by -18.
+Administrator category: count of 'Personal assistant' in Production, of 633 differs from this environment's, of 653 by -20.
+Computing, technology and digital category: count of 'Library assistant' in Production, of 175 differs from this environment's, of 181 by -6.
+Business and finance category: count of 'Business project manager' in Production, of 676 differs from this environment's, of 674 by 2.
+Beauty and wellbeing category: count of 'Nail technician' in Production, of 168 differs from this environment's, of 167 by 1.
+Beauty and wellbeing category: count of 'Massage therapist' in Production, of 37 differs from this environment's, of 35 by 2.
+Computing, technology and digital category: count of 'Operational researcher' in Production, of 404 differs from this environment's, of 395 by 9.
+Administrator category: count of 'Data entry clerk' in Production, of 147 differs from this environment's, of 137 by 10.
+Animal care category: count of 'Ecologist' in Production, of 1 differs from this environment's, of 3 by -2.
+Administrator category: count of 'Estates officer' in Production, of 154 differs from this environment's, of 160 by -6.
+Administrator category: count of 'Health and safety adviser' in Production, of 820 differs from this environment's, of 842 by -22.
+Business and finance category: count of 'Financial adviser' in Production, of 178 differs from this environment's, of 184 by -6.
+Computing, technology and digital category: count of 'Digital delivery manager' in Production, of 627 differs from this environment's, of 633 by -6.
+Animal care category: count of 'Local government administrative assistant' in Production, of 355 differs from this environment's, of 363 by -8.
+Beauty and wellbeing category: count of 'Beauty therapist' in Production, of 49 differs from this environment's, of 46 by 3.
+Business and finance category: count of 'Tax adviser' in Production, of 160 differs from this environment's, of 163 by -3.
+Computing, technology and digital category: count of 'Web content manager' in Production, of 611 differs from this environment's, of 616 by -5.
+Administrator category: count of 'Office manager' in Production, of 631 differs from this environment's, of 644 by -13.
+Computing, technology and digital category: count of 'Business analyst' in Production, of 303 differs from this environment's, of 284 by 19.
+Computing, technology and digital category: count of 'Test lead' in Production, of 231 differs from this environment's, of 229 by 2.
+Animal care category: count of 'Kennel worker' in Production, of 101 differs from this environment's, of 103 by -2.
+Computing, technology and digital category: count of 'Robotics engineer' in Production, of 207 differs from this environment's, of 204 by 3.
+Animal care category: count of 'Trade union official' in Production, of 111 differs from this environment's, of 107 by 4.
+Administrator category: count of 'Diplomatic Service officer' in Production, of 657 differs from this environment's, of 676 by -19.
+Animal care category: count of 'Racehorse trainer' in Production, of 30 differs from this environment's, of 26 by 4.
+Computing, technology and digital category: count of 'Computer games developer' in Production, of 351 differs from this environment's, of 339 by 12.
+Administrator category: count of 'Credit controller' in Production, of 169 differs from this environment's, of 166 by 3.
+Animal care category: count of 'Pet shop assistant' in Production, of 203 differs from this environment's, of 206 by -3.
+Beauty and wellbeing category: count of 'Music therapist' in Production, of 55 differs from this environment's, of 49 by 6.
+Animal care category: count of 'Reprographic assistant' in Production, of 169 differs from this environment's, of 174 by -5.
+Business and finance category: count of 'Insurance account manager' in Production, of 612 differs from this environment's, of 619 by -7.
+Business and finance category: count of 'Pensions administrator' in Production, of 102 differs from this environment's, of 106 by -4.
+Computing, technology and digital category: count of 'Solutions architect' in Production, of 38 differs from this environment's, of 35 by 3.
+Administrator category: count of 'Arts administrator' in Production, of 181 differs from this environment's, of 184 by -3.
+Animal care category: count of 'Security Service personnel' in Production, of 671 differs from this environment's, of 684 by -13.
+Business and finance category: count of 'Mortgage adviser' in Production, of 147 differs from this environment's, of 150 by -3.
+Administrator category: count of 'Local government administrative assistant' in Production, of 355 differs from this environment's, of 363 by -8.
+Business and finance category: count of 'Market research executive' in Production, of 298 differs from this environment's, of 285 by 13.
+Computing, technology and digital category: count of 'Forensic computer analyst' in Production, of 184 differs from this environment's, of 172 by 12.
+Computing, technology and digital category: count of 'IT trainer' in Production, of 148 differs from this environment's, of 137 by 11.
+Administrator category: count of 'Finance officer' in Production, of 209 differs from this environment's, of 213 by -4.
+Computing, technology and digital category: count of 'Network engineer' in Production, of 220 differs from this environment's, of 217 by 3.
+Business and finance category: count of 'Management accountant' in Production, of 667 differs from this environment's, of 677 by -10.
+Administrator category: count of 'Reprographic assistant' in Production, of 169 differs from this environment's, of 174 by -5.
+Administrator category: count of 'Medical secretary' in Production, of 92 differs from this environment's, of 93 by -1.
+Business and finance category: count of 'Insurance risk surveyor' in Production, of 91 differs from this environment's, of 90 by 1.
+Beauty and wellbeing category: count of 'Medical herbalist' in Production, of 84 differs from this environment's, of 83 by 1.
+Administrator category: count of 'Quality control assistant' in Production, of 680 differs from this environment's, of 693 by -13.
+Beauty and wellbeing category: count of 'Reiki healer' in Production, of 21 differs from this environment's, of 20 by 1.
+Computing, technology and digital category: count of 'E-learning developer' in Production, of 400 differs from this environment's, of 390 by 10.
+Animal care category: count of 'Purchasing manager' in Production, of 601 differs from this environment's, of 608 by -7.
+Business and finance category: count of 'Credit manager' in Production, of 601 differs from this environment's, of 607 by -6.
+Animal care category: count of 'Vet' in Production, of 7 differs from this environment's, of 6 by 1.
+Beauty and wellbeing category: count of 'Yoga therapist' in Production, of 36 differs from this environment's, of 32 by 4.
+Computing, technology and digital category: count of 'Geospatial technician' in Production, of 165 differs from this environment's, of 164 by 1.
+Animal care category: count of 'Trading standards officer' in Production, of 266 differs from this environment's, of 268 by -2.
+Computing, technology and digital category: count of 'Security Service personnel' in Production, of 671 differs from this environment's, of 684 by -13.
+Computing, technology and digital category: count of 'Database administrator' in Production, of 111 differs from this environment's, of 113 by -2.
+Administrator category: count of 'Immigration officer' in Production, of 148 differs from this environment's, of 154 by -6.
+Administrator category: count of 'Import-export clerk' in Production, of 33 differs from this environment's, of 29 by 4.
+Administrator category: count of 'Local government revenues officer' in Production, of 248 differs from this environment's, of 253 by -5.
+Computing, technology and digital category: count of 'Web content editor' in Production, of 47 differs from this environment's, of 42 by 5.
+Computing, technology and digital category: count of 'Technical architect' in Production, of 121 differs from this environment's, of 112 by 9.
+Computing, technology and digital category: count of 'IT support technician' in Production, of 390 differs from this environment's, of 382 by 8.
+Administrator category: count of 'Interpreter' in Production, of 27 differs from this environment's, of 25 by 2.
+Animal care category: count of 'Animal technician' in Production, of 201 differs from this environment's, of 198 by 3.
+Business and finance category: count of 'Public finance accountant' in Production, of 304 differs from this environment's, of 308 by -4.
+Animal care category: count of 'Countryside ranger' in Production, of 9 differs from this environment's, of 11 by -2.
+Beauty and wellbeing category: count of 'Nutritional therapist' in Production, of 46 differs from this environment's, of 42 by 4.
+Administrator category: count of 'Town planning assistant' in Production, of 391 differs from this environment's, of 402 by -11.
+Administrator category: count of 'Recruitment consultant' in Production, of 224 differs from this environment's, of 218 by 6.
+Animal care category: count of 'Office manager' in Production, of 631 differs from this environment's, of 644 by -13.
+Beauty and wellbeing category: count of 'Pilates teacher' in Production, of 44 differs from this environment's, of 43 by 1.
+Computing, technology and digital category: count of 'Computer games tester' in Production, of 176 differs from this environment's, of 166 by 10.
+Business and finance category: count of 'Pensions adviser' in Production, of 148 differs from this environment's, of 151 by -3.
+Administrator category: count of 'Post Office customer service assistant' in Production, of 701 differs from this environment's, of 718 by -17.
+Business and finance category: count of 'Banking customer service adviser' in Production, of 672 differs from this environment's, of 687 by -15.
+Animal care category: count of 'Pet behaviour consultant' in Production, of 219 differs from this environment's, of 212 by 7.
+Administrator category: count of 'Sales administrator' in Production, of 280 differs from this environment's, of 289 by -9.
+Computing, technology and digital category: count of 'Indexer' in Production, of 3 differs from this environment's, of 4 by -1.
+Business and finance category: count of 'Accounting technician' in Production, of 229 differs from this environment's, of 234 by -5.
+Animal care category: count of 'Recruitment consultant' in Production, of 224 differs from this environment's, of 218 by 6.
+Administrator category: count of 'Charity fundraiser' in Production, of 14 differs from this environment's, of 11 by 3.
+Administrator category: count of 'Purchasing manager' in Production, of 601 differs from this environment's, of 608 by -7.
+Computing, technology and digital category: count of 'User researcher' in Production, of 248 differs from this environment's, of 241 by 7.
+Administrator category: count of 'Farm secretary' in Production, of 33 differs from this environment's, of 34 by -1.
+Animal care category: count of 'Registrar of births, deaths, marriages and civil partnerships' in Production, of 820 differs from this environment's, of 842 by -22.
+Business and finance category: count of 'Private practice accountant' in Production, of 219 differs from this environment's, of 208 by 11.
+Administrator category: count of 'Border Force officer' in Production, of 157 differs from this environment's, of 164 by -7.
+Animal care category: count of 'Biologist' in Production, of 3 differs from this environment's, of 4 by -1.
+Business and finance category: count of 'Local government revenues officer' in Production, of 248 differs from this environment's, of 253 by -5.
+Animal care category: count of 'Personal assistant' in Production, of 633 differs from this environment's, of 653 by -20.
+Beauty and wellbeing category: count of 'Beauty consultant' in Production, of 205 differs from this environment's, of 195 by 10.
+Administrator category: count of 'Health service manager' in Production, of 763 differs from this environment's, of 782 by -19.
+Administrator category: count of 'Civil Service administrative officer' in Production, of 674 differs from this environment's, of 693 by -19.
+Business and finance category: count of 'Bank manager' in Production, of 602 differs from this environment's, of 608 by -6.
+Animal care category: count of 'Farm worker' in Production, of 113 differs from this environment's, of 114 by -1.
+Business and finance category: count of 'Business adviser' in Production, of 385 differs from this environment's, of 366 by 19.
+Computing, technology and digital category: count of 'IT security co-ordinator' in Production, of 300 differs from this environment's, of 296 by 4.
+Beauty and wellbeing category: count of 'Dance movement psychotherapist' in Production, of 322 differs from this environment's, of 330 by -8.
+Computing, technology and digital category: count of 'Network manager' in Production, of 615 differs from this environment's, of 619 by -4.
+Business and finance category: count of 'Payroll administrator' in Production, of 101 differs from this environment's, of 105 by -4.
+Business and finance category: count of 'Finance officer' in Production, of 209 differs from this environment's, of 213 by -4.
+Computing, technology and digital category: count of 'Technical author' in Production, of 151 differs from this environment's, of 140 by 11.
+Computing, technology and digital category: count of 'Data scientist' in Production, of 119 differs from this environment's, of 113 by 6.
+Business and finance category: count of 'Money adviser' in Production, of 160 differs from this environment's, of 163 by -3.
+Administrator category: count of 'Payroll administrator' in Production, of 101 differs from this environment's, of 105 by -4.
+Beauty and wellbeing category: count of 'Art therapist' in Production, of 111 differs from this environment's, of 100 by 11.
+Animal care category: count of 'Agricultural inspector' in Production, of 55 differs from this environment's, of 51 by 4.
+Administrator category: count of 'Insurance technician' in Production, of 187 differs from this environment's, of 186 by 1.
+Business and finance category: count of 'Financial services customer adviser' in Production, of 675 differs from this environment's, of 690 by -15.
+Animal care category: count of 'Sales administrator' in Production, of 280 differs from this environment's, of 289 by -9.
+--end-- 20-03-2022 15:22:22
+168 Job profiles affected
+Administrator category: count of 'Admin assistant' in Production, of 196 differs from this environment's, of 190 by 6.
+Animal care category: count of 'Reprographic assistant' in Production, of 169 differs from this environment's, of 174 by -5.
+Administrator category: count of 'Charity fundraiser' in Production, of 14 differs from this environment's, of 11 by 3.
+Animal care category: count of 'Sales administrator' in Production, of 280 differs from this environment's, of 289 by -9.

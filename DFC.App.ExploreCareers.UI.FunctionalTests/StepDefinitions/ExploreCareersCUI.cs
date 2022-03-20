@@ -456,7 +456,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"the breadcrumb for that specific Job profile is displayed")]
         public void ThenTheBreadcrumbForThatSpecificJobProfileIsDisplayed()
         {
-            Assert.AreEqual("Test passed", jobCategoriesPage.ClickJobProfiles(jobCategory), "xxx");
+            Assert.AreEqual("Test passed", jobCategoriesPage.ClickJobProfiles(jobCategory), "Breadcrumb wrong/not displayed");
         }
     }
 }

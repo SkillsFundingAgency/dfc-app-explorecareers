@@ -1,12 +1,12 @@
 ﻿Feature: ExploreCareersCUIcounts
 		I want to reconcile counts between the production environment and the test environment
 
-Scenario Outline: Compare Job profile search counts in different environments
+Scenario Outline: Compare Job profile search result counts in different environments
 	Given I am at the "Search results" page
-	And I search for the term <Job profile>
+	And I search for the term <Job profile> of the <Job category> Job category
 	And I note the number of search results
 	And I surf to the "Production" environments "search results" page
-	And I search for the term <Job profile>
+	And I search for the term <Job profile> of the <Job category> Job category
 	And I note the number of search results
 	When I compare the number of search results noted from both environments
 	Then the number is the same

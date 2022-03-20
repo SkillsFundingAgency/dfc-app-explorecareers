@@ -6,6 +6,7 @@ using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 
 using DFC.App.ExploreCareers.UI.FunctionalTests.Model;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using DFC.TestAutomation.UI;
 using DFC.TestAutomation.UI.Extension;
 using DFC.TestAutomation.UI.Helper;
@@ -19,6 +20,9 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
     [Binding]
     public class BeforeScenario
     {
+        private static string filePath = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
+        private static string logFile = "jp_counts_log.csv";
+
         /* extent reports*/
         private static AventStack.ExtentReports.ExtentReports extent;
         private static AventStack.ExtentReports.ExtentTest feature;
@@ -36,7 +40,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
 
         private ScenarioContext Context { get; set; }
 
-        [BeforeTestRun]
+        [BeforeTestRun(Order = 0)]
         public static void BeforeTestRun()
         {
             ExtentHtmlReporter htmlReport = new ExtentHtmlReporter(reportPath);
@@ -53,6 +57,9 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
             }
 
             feature = extent.CreateTest(context.FeatureInfo.Title);
+
+            File.WriteAllText(filePath + logFile, string.Empty);
+            Devices.WriteToFile(filePath, logFile, "--begin-- " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture));
         }
 
         [BeforeStep]
@@ -83,6 +90,9 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
         public static void AfterFeature()
         {
             extent.Flush();
+
+            Devices.WriteToFile(filePath, logFile, "--end-- " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+            Devices.WriteToFile(filePath, logFile, (Devices.TotalLines(filePath + logFile) - 2).ToString(CultureInfo.InvariantCulture) + " Job profiles affected");
         }
 
         /* extent reports*/
