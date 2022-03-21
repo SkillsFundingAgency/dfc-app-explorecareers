@@ -303,16 +303,3 @@ Examples:
 	| Teaching and education            | Home > Explore Careers > Teaching and education            |
 	| Transport                         | Home > Explore Careers > Transport                         |
 	| Travel and tourism                | Home > Explore Careers > Travel and tourism                |
-
-Scenario Outline: Job profiles links and breadcrumb verified on being clicked
-	Given I am at the "Job categories" web page for <Job category>
-	When I click the link for each of the Job profiles listed thereunder in turn
-	Then I am navigated to the Job profiles page for the Job profile clicked
-	And the breadcrumb for that specific Job profile is displayed
-Examples:
-	| Job category                      |
-	| Administration                    |
-	| Construction and trades           |
-	| Delivery and storage              |
-	| Sports and leisure                |
-	| Travel and tourism                |

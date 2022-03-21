@@ -441,18 +441,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             Assert.IsEmpty(jobCategoriesPage.GetBreadcrumbVerifier(breadCrumb), "Breadcrumb for page " + jobCategoriesPage.GetBreadcrumbVerifier(breadCrumb) + " is incorrect.");
         }
 
-        [When(@"I click the link for each of the Job profiles listed thereunder in turn")]
-        public void WhenIClickTheLinkForEachOfTheJobProfilesListedThereunderInTurn()
-        {
-            /* This step is inserted for readability. The action herein is performed in the Then step */
-        }
-
-        [Then(@"I am navigated to the Job profiles page for the Job profile clicked")]
-        public void ThenIAmNavigatedToTheJobProfilesPageForTheJobProfileClicked()
-        {
-            /* This step is inserted for readability. The action herein is performed in the Then step */
-        }
-
         [Then(@"the breadcrumb for that specific Job profile is displayed")]
         public void ThenTheBreadcrumbForThatSpecificJobProfileIsDisplayed()
         {

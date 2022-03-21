@@ -39,5 +39,14 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Support
                 return i;
             }
         }
+
+        public static string Between(string str, string firstString, string lastString)
+        {
+            string finalString;
+            int pos1 = str.IndexOf(firstString, StringComparison.Ordinal) + firstString.Length;
+            int pos2 = str.IndexOf(lastString, StringComparison.Ordinal);
+            finalString = str.Substring(pos1, pos2 - pos1);
+            return finalString;
+        }
     }
 }

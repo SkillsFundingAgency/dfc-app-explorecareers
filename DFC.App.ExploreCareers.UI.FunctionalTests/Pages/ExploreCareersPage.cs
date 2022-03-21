@@ -6,6 +6,7 @@ using DFC.TestAutomation.UI.Extension;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
@@ -22,6 +23,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
         }
 
         public static string Endpoint { get; set; }
+
+        public static string Environment { get; set; }
 
         private IWebElement SearchField => scenarioContext.GetWebDriver().FindElement(By.Id("SearchTerm"));
 
@@ -57,6 +60,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
                     this.scenarioContext.GetWebDriver().Url = "https://nationalcareers.service.gov.uk/" + ProcessResourceTwo(resourceTwo);
                     break;
             }
+
+            GetEnvironment();
         }
 
         public string ProcessResourceTwo(string resourceTwo)
@@ -262,6 +267,18 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
         public string GetPageHeading()
         {
             return PageHeading.Text;
+        }
+
+        public void GetEnvironment()
+        {
+            if (Endpoint.Contains("staging"))
+            {
+                Environment = "Pre-Production";
+            }
+            else
+            {
+                Environment = Devices.Between(Endpoint, "https://", "-beta.").ToUpper(CultureInfo.InvariantCulture);
+            }
         }
     }
 }

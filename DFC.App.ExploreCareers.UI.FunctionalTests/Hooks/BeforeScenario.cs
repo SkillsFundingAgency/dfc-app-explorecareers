@@ -21,7 +21,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
     public class BeforeScenario
     {
         private static string filePath = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
-        private static string logFile = "jp_counts_log.csv";
+        private static string logFile = "jp_counts_log.txt";
 
         /* extent reports*/
         private static AventStack.ExtentReports.ExtentReports extent;

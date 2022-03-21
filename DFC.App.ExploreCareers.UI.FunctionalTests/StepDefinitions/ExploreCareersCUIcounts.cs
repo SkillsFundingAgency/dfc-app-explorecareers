@@ -1,4 +1,5 @@
-﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Pages;
+﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Hooks;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Pages;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using NUnit.Framework;
 using System;
@@ -59,14 +60,14 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         {
             string path = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
             string file = "jp_counts_log.txt";
-            string textToWrite = theJobCategory + " category: count of '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from this environment's, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + ".");
+            string textToWrite = theJobCategory + " category: count of '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from " + ExploreCareersPage.Environment + "'s, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + ".");
 
             if (searchCount[1] != searchCount[0])
             {
                 Devices.WriteToFile(path, file, textToWrite);
             }
 
-            Assert.AreEqual(searchCount[1], searchCount[0], theJobCategory + " category: count of '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from this environment's, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + "."));
+            Assert.AreEqual(searchCount[1], searchCount[0], textToWrite);
         }
     }
 }
