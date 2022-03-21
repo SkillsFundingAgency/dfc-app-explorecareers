@@ -3,7 +3,7 @@
 	I want to be sure that links work fine
 
 
-Scenario Outline: Job profiles links and breadcrumb verified on being clicked
+Scenario Outline: TCC01 - Job profiles links and breadcrumb verified on being clicked
 	Given I am at the "Job categories" web page for <Job category>
 	When I click the link for each of the Job profiles listed thereunder in turn
 	Then I am navigated to the Job profiles page for the Job profile clicked

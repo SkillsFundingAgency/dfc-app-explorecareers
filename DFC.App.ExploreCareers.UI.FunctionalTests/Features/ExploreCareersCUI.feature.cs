@@ -81,12 +81,12 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Features
             this.TestTearDown();
         }
         
-        public virtual void JobCategoryLinksVerification(string jobCategory, string[] exampleTags)
+        public virtual void TCA01_JobCategoryLinksVerification(string jobCategory, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job category", jobCategory);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Job category links verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA01 - Job category links verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -110,104 +110,104 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Administration")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Administration")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Administration")]
-        public void JobCategoryLinksVerification_Administration()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Administration")]
+        public void TCA01_JobCategoryLinksVerification_Administration()
         {
 #line 5
-this.JobCategoryLinksVerification("Administration", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Administration", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Animal care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Animal care")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Animal care")]
-        public void JobCategoryLinksVerification_AnimalCare()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Animal care")]
+        public void TCA01_JobCategoryLinksVerification_AnimalCare()
         {
 #line 5
-this.JobCategoryLinksVerification("Animal care", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Business and finance")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Business and finance")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Business and finance")]
-        public void JobCategoryLinksVerification_BusinessAndFinance()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Business and finance")]
+        public void TCA01_JobCategoryLinksVerification_BusinessAndFinance()
         {
 #line 5
-this.JobCategoryLinksVerification("Business and finance", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Computing, technology and digital")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Computing, technology and digital")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Computing, technology and digital")]
-        public void JobCategoryLinksVerification_ComputingTechnologyAndDigital()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Computing, technology and digital")]
+        public void TCA01_JobCategoryLinksVerification_ComputingTechnologyAndDigital()
         {
 #line 5
-this.JobCategoryLinksVerification("Computing, technology and digital", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Emergency and uniform services")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Emergency and uniform services")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Emergency and uniform services")]
-        public void JobCategoryLinksVerification_EmergencyAndUniformServices()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Emergency and uniform services")]
+        public void TCA01_JobCategoryLinksVerification_EmergencyAndUniformServices()
         {
 #line 5
-this.JobCategoryLinksVerification("Emergency and uniform services", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Emergency and uniform services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Law and legal")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Law and legal")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Law and legal")]
-        public void JobCategoryLinksVerification_LawAndLegal()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Law and legal")]
+        public void TCA01_JobCategoryLinksVerification_LawAndLegal()
         {
 #line 5
-this.JobCategoryLinksVerification("Law and legal", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Law and legal", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Manufacturing")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Manufacturing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Manufacturing")]
-        public void JobCategoryLinksVerification_Manufacturing()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Manufacturing")]
+        public void TCA01_JobCategoryLinksVerification_Manufacturing()
         {
 #line 5
-this.JobCategoryLinksVerification("Manufacturing", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Manufacturing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Science and research")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Science and research")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Science and research")]
-        public void JobCategoryLinksVerification_ScienceAndResearch()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Science and research")]
+        public void TCA01_JobCategoryLinksVerification_ScienceAndResearch()
         {
 #line 5
-this.JobCategoryLinksVerification("Science and research", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Science and research", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category links verification: Transport")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA01 - Job category links verification: Transport")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category links verification: Transport")]
-        public void JobCategoryLinksVerification_Transport()
+        [Xunit.TraitAttribute("Description", "TCA01 - Job category links verification: Transport")]
+        public void TCA01_JobCategoryLinksVerification_Transport()
         {
 #line 5
-this.JobCategoryLinksVerification("Transport", ((string[])(null)));
+this.TCA01_JobCategoryLinksVerification("Transport", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void SearchFieldAutosuggestFieldPopulation(string page, string searchTerm, string autoSuggestOption, string[] exampleTags)
+        public virtual void TCA02_SearchFieldAutosuggestFieldPopulation(string page, string searchTerm, string autoSuggestOption, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
             argumentsOfScenario.Add("search term", searchTerm);
             argumentsOfScenario.Add("auto suggest option", autoSuggestOption);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search field autosuggest field population", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA02 - Search field autosuggest field population", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -234,103 +234,103 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 0")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 0")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 0")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant0()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 0")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant0()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Explore careers", "nur", "Nursing associate", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "nur", "Nursing associate", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 1")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 1")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 1")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant1()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 1")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant1()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Explore careers", "pi", "Aircraft pilot", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "pi", "Aircraft pilot", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 2")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 2")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 2")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant2()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 2")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant2()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Explore careers", "la", "Lawyer", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "la", "Lawyer", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 3")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 3")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 3")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant3()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 3")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant3()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Job profiles", "nur", "Nursing associate", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "nur", "Nursing associate", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 4")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 4")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 4")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant4()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 4")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant4()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Job profiles", "pi", "Aircraft pilot", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "pi", "Aircraft pilot", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 5")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 5")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 5")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant5()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 5")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant5()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Job profiles", "la", "Lawyer", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "la", "Lawyer", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 6")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 6")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 6")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant6()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 6")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant6()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Search results", "nur", "Nursing associate", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "nur", "Nursing associate", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 7")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 7")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 7")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant7()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 7")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant7()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Search results", "pi", "Aircraft pilot", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "pi", "Aircraft pilot", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search field autosuggest field population: Variant 8")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA02 - Search field autosuggest field population: Variant 8")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search field autosuggest field population: Variant 8")]
-        public void SearchFieldAutosuggestFieldPopulation_Variant8()
+        [Xunit.TraitAttribute("Description", "TCA02 - Search field autosuggest field population: Variant 8")]
+        public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant8()
         {
 #line 21
-this.SearchFieldAutosuggestFieldPopulation("Search results", "la", "Lawyer", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "la", "Lawyer", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void SearchTermNotFound(string page, string searchTerm, string[] exampleTags)
+        public virtual void TCA03_SearchTermNotFound(string page, string searchTerm, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
             argumentsOfScenario.Add("search term", searchTerm);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search term not found", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA03 - Search term not found", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 38
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -358,44 +358,44 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search term not found: Explore careers")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA03 - Search term not found: Explore careers")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search term not found: Explore careers")]
-        public void SearchTermNotFound_ExploreCareers()
+        [Xunit.TraitAttribute("Description", "TCA03 - Search term not found: Explore careers")]
+        public void TCA03_SearchTermNotFound_ExploreCareers()
         {
 #line 38
-this.SearchTermNotFound("Explore careers", "aaa", ((string[])(null)));
+this.TCA03_SearchTermNotFound("Explore careers", "aaa", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search term not found: Job profiles")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA03 - Search term not found: Job profiles")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search term not found: Job profiles")]
-        public void SearchTermNotFound_JobProfiles()
+        [Xunit.TraitAttribute("Description", "TCA03 - Search term not found: Job profiles")]
+        public void TCA03_SearchTermNotFound_JobProfiles()
         {
 #line 38
-this.SearchTermNotFound("Job profiles", "sss", ((string[])(null)));
+this.TCA03_SearchTermNotFound("Job profiles", "sss", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search term not found: Search results")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA03 - Search term not found: Search results")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search term not found: Search results")]
-        public void SearchTermNotFound_SearchResults()
+        [Xunit.TraitAttribute("Description", "TCA03 - Search term not found: Search results")]
+        public void TCA03_SearchTermNotFound_SearchResults()
         {
 #line 38
-this.SearchTermNotFound("Search results", "zzz", ((string[])(null)));
+this.TCA03_SearchTermNotFound("Search results", "zzz", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void AutoSuggestingSearchTermsOnSearchTermMisspelling(string page, string searchTerm, string suggestedSearchTerm, string[] exampleTags)
+        public virtual void TCA04_AutoSuggestingSearchTermsOnSearchTermMisspelling(string page, string searchTerm, string suggestedSearchTerm, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
             argumentsOfScenario.Add("search term", searchTerm);
             argumentsOfScenario.Add("suggested search term", suggestedSearchTerm);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Auto suggesting search terms on search term misspelling", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA04 - Auto suggesting search terms on search term misspelling", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 49
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -427,44 +427,44 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Auto suggesting search terms on search term misspelling: Explore careers")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA04 - Auto suggesting search terms on search term misspelling: Explore careers")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Auto suggesting search terms on search term misspelling: Explore careers")]
-        public void AutoSuggestingSearchTermsOnSearchTermMisspelling_ExploreCareers()
+        [Xunit.TraitAttribute("Description", "TCA04 - Auto suggesting search terms on search term misspelling: Explore careers")]
+        public void TCA04_AutoSuggestingSearchTermsOnSearchTermMisspelling_ExploreCareers()
         {
 #line 49
-this.AutoSuggestingSearchTermsOnSearchTermMisspelling("Explore careers", "nuurse", "nurse", ((string[])(null)));
+this.TCA04_AutoSuggestingSearchTermsOnSearchTermMisspelling("Explore careers", "nuurse", "nurse", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Auto suggesting search terms on search term misspelling: Job profiles")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA04 - Auto suggesting search terms on search term misspelling: Job profiles")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Auto suggesting search terms on search term misspelling: Job profiles")]
-        public void AutoSuggestingSearchTermsOnSearchTermMisspelling_JobProfiles()
+        [Xunit.TraitAttribute("Description", "TCA04 - Auto suggesting search terms on search term misspelling: Job profiles")]
+        public void TCA04_AutoSuggestingSearchTermsOnSearchTermMisspelling_JobProfiles()
         {
 #line 49
-this.AutoSuggestingSearchTermsOnSearchTermMisspelling("Job profiles", "lawwwyer", "lawyer", ((string[])(null)));
+this.TCA04_AutoSuggestingSearchTermsOnSearchTermMisspelling("Job profiles", "lawwwyer", "lawyer", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Auto suggesting search terms on search term misspelling: Search results")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA04 - Auto suggesting search terms on search term misspelling: Search results")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Auto suggesting search terms on search term misspelling: Search results")]
-        public void AutoSuggestingSearchTermsOnSearchTermMisspelling_SearchResults()
+        [Xunit.TraitAttribute("Description", "TCA04 - Auto suggesting search terms on search term misspelling: Search results")]
+        public void TCA04_AutoSuggestingSearchTermsOnSearchTermMisspelling_SearchResults()
         {
 #line 49
-this.AutoSuggestingSearchTermsOnSearchTermMisspelling("Search results", "phlebotomizzzt", "phlebotomist", ((string[])(null)));
+this.TCA04_AutoSuggestingSearchTermsOnSearchTermMisspelling("Search results", "phlebotomizzzt", "phlebotomist", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void MisspeltSearchTermsAutoSuggestionLinkVerification(string page, string searchTerm, string suggestedSearchTerm, string[] exampleTags)
+        public virtual void TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification(string page, string searchTerm, string suggestedSearchTerm, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
             argumentsOfScenario.Add("search term", searchTerm);
             argumentsOfScenario.Add("suggested search term", suggestedSearchTerm);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Misspelt search terms auto suggestion link verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA05 - Misspelt search terms auto suggestion link verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 61
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -498,52 +498,52 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Misspelt search terms auto suggestion link verification: Variant 0")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA05 - Misspelt search terms auto suggestion link verification: Variant 0")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Misspelt search terms auto suggestion link verification: Variant 0")]
-        public void MisspeltSearchTermsAutoSuggestionLinkVerification_Variant0()
+        [Xunit.TraitAttribute("Description", "TCA05 - Misspelt search terms auto suggestion link verification: Variant 0")]
+        public void TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification_Variant0()
         {
 #line 61
-this.MisspeltSearchTermsAutoSuggestionLinkVerification("Explore careers", "nuurse", "nurse", ((string[])(null)));
+this.TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification("Explore careers", "nuurse", "nurse", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Misspelt search terms auto suggestion link verification: Variant 1")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA05 - Misspelt search terms auto suggestion link verification: Variant 1")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Misspelt search terms auto suggestion link verification: Variant 1")]
-        public void MisspeltSearchTermsAutoSuggestionLinkVerification_Variant1()
+        [Xunit.TraitAttribute("Description", "TCA05 - Misspelt search terms auto suggestion link verification: Variant 1")]
+        public void TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification_Variant1()
         {
 #line 61
-this.MisspeltSearchTermsAutoSuggestionLinkVerification("Explore careers", "lawwwyer", "lawyer", ((string[])(null)));
+this.TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification("Explore careers", "lawwwyer", "lawyer", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Misspelt search terms auto suggestion link verification: Variant 2")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA05 - Misspelt search terms auto suggestion link verification: Variant 2")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Misspelt search terms auto suggestion link verification: Variant 2")]
-        public void MisspeltSearchTermsAutoSuggestionLinkVerification_Variant2()
+        [Xunit.TraitAttribute("Description", "TCA05 - Misspelt search terms auto suggestion link verification: Variant 2")]
+        public void TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification_Variant2()
         {
 #line 61
-this.MisspeltSearchTermsAutoSuggestionLinkVerification("Search results", "mechannic", "mechanic", ((string[])(null)));
+this.TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification("Search results", "mechannic", "mechanic", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Misspelt search terms auto suggestion link verification: Variant 3")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA05 - Misspelt search terms auto suggestion link verification: Variant 3")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Misspelt search terms auto suggestion link verification: Variant 3")]
-        public void MisspeltSearchTermsAutoSuggestionLinkVerification_Variant3()
+        [Xunit.TraitAttribute("Description", "TCA05 - Misspelt search terms auto suggestion link verification: Variant 3")]
+        public void TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification_Variant3()
         {
 #line 61
-this.MisspeltSearchTermsAutoSuggestionLinkVerification("Search results", "astronautt", "astronaut", ((string[])(null)));
+this.TCA05_MisspeltSearchTermsAutoSuggestionLinkVerification("Search results", "astronautt", "astronaut", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void EmptySearchFields(string page, string[] exampleTags)
+        public virtual void TCA06_EmptySearchFields(string page, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Empty search fields", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA06 - Empty search fields", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 75
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -570,33 +570,33 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Empty search fields: Explore careers")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA06 - Empty search fields: Explore careers")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Empty search fields: Explore careers")]
-        public void EmptySearchFields_ExploreCareers()
+        [Xunit.TraitAttribute("Description", "TCA06 - Empty search fields: Explore careers")]
+        public void TCA06_EmptySearchFields_ExploreCareers()
         {
 #line 75
-this.EmptySearchFields("Explore careers", ((string[])(null)));
+this.TCA06_EmptySearchFields("Explore careers", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Empty search fields: Search results")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA06 - Empty search fields: Search results")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Empty search fields: Search results")]
-        public void EmptySearchFields_SearchResults()
+        [Xunit.TraitAttribute("Description", "TCA06 - Empty search fields: Search results")]
+        public void TCA06_EmptySearchFields_SearchResults()
         {
 #line 75
-this.EmptySearchFields("Search results", ((string[])(null)));
+this.TCA06_EmptySearchFields("Search results", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void ReconcilingSearchResultsCountWithNumberOfPagesReturned(string page, string searchTerm, string[] exampleTags)
+        public virtual void TCA07_ReconcilingSearchResultsCountWithNumberOfPagesReturned(string page, string searchTerm, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
             argumentsOfScenario.Add("search term", searchTerm);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Reconciling search results count with number of pages returned", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA07- Reconciling search results count with number of pages returned", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 85
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -633,43 +633,49 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Reconciling search results count with number of pages returned: Explore careers")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA07- Reconciling search results count with number of pages returned: Explore ca" +
+            "reers")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Reconciling search results count with number of pages returned: Explore careers")]
-        public void ReconcilingSearchResultsCountWithNumberOfPagesReturned_ExploreCareers()
+        [Xunit.TraitAttribute("Description", "TCA07- Reconciling search results count with number of pages returned: Explore ca" +
+            "reers")]
+        public void TCA07_ReconcilingSearchResultsCountWithNumberOfPagesReturned_ExploreCareers()
         {
 #line 85
-this.ReconcilingSearchResultsCountWithNumberOfPagesReturned("Explore careers", "nurse", ((string[])(null)));
+this.TCA07_ReconcilingSearchResultsCountWithNumberOfPagesReturned("Explore careers", "nurse", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Reconciling search results count with number of pages returned: Job profiles")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA07- Reconciling search results count with number of pages returned: Job profil" +
+            "es")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Reconciling search results count with number of pages returned: Job profiles")]
-        public void ReconcilingSearchResultsCountWithNumberOfPagesReturned_JobProfiles()
+        [Xunit.TraitAttribute("Description", "TCA07- Reconciling search results count with number of pages returned: Job profil" +
+            "es")]
+        public void TCA07_ReconcilingSearchResultsCountWithNumberOfPagesReturned_JobProfiles()
         {
 #line 85
-this.ReconcilingSearchResultsCountWithNumberOfPagesReturned("Job profiles", "lawyer", ((string[])(null)));
+this.TCA07_ReconcilingSearchResultsCountWithNumberOfPagesReturned("Job profiles", "lawyer", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Reconciling search results count with number of pages returned: Search results")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA07- Reconciling search results count with number of pages returned: Search res" +
+            "ults")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Reconciling search results count with number of pages returned: Search results")]
-        public void ReconcilingSearchResultsCountWithNumberOfPagesReturned_SearchResults()
+        [Xunit.TraitAttribute("Description", "TCA07- Reconciling search results count with number of pages returned: Search res" +
+            "ults")]
+        public void TCA07_ReconcilingSearchResultsCountWithNumberOfPagesReturned_SearchResults()
         {
 #line 85
-this.ReconcilingSearchResultsCountWithNumberOfPagesReturned("Search results", "phlebotomist", ((string[])(null)));
+this.TCA07_ReconcilingSearchResultsCountWithNumberOfPagesReturned("Search results", "phlebotomist", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void SearchResultsOnPressingTheEnterButton(string page, string searchTerm, string[] exampleTags)
+        public virtual void TCA08_SearchResultsOnPressingTheEnterButton(string page, string searchTerm, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
             argumentsOfScenario.Add("search term", searchTerm);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search results on pressing the enter button", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA08 - Search results on pressing the enter button", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 99
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -696,43 +702,43 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search results on pressing the enter button: Explore careers")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA08 - Search results on pressing the enter button: Explore careers")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search results on pressing the enter button: Explore careers")]
-        public void SearchResultsOnPressingTheEnterButton_ExploreCareers()
+        [Xunit.TraitAttribute("Description", "TCA08 - Search results on pressing the enter button: Explore careers")]
+        public void TCA08_SearchResultsOnPressingTheEnterButton_ExploreCareers()
         {
 #line 99
-this.SearchResultsOnPressingTheEnterButton("Explore careers", "nurse", ((string[])(null)));
+this.TCA08_SearchResultsOnPressingTheEnterButton("Explore careers", "nurse", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search results on pressing the enter button: Job profiles")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA08 - Search results on pressing the enter button: Job profiles")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search results on pressing the enter button: Job profiles")]
-        public void SearchResultsOnPressingTheEnterButton_JobProfiles()
+        [Xunit.TraitAttribute("Description", "TCA08 - Search results on pressing the enter button: Job profiles")]
+        public void TCA08_SearchResultsOnPressingTheEnterButton_JobProfiles()
         {
 #line 99
-this.SearchResultsOnPressingTheEnterButton("Job profiles", "lawyer", ((string[])(null)));
+this.TCA08_SearchResultsOnPressingTheEnterButton("Job profiles", "lawyer", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Search results on pressing the enter button: Search results")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA08 - Search results on pressing the enter button: Search results")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Search results on pressing the enter button: Search results")]
-        public void SearchResultsOnPressingTheEnterButton_SearchResults()
+        [Xunit.TraitAttribute("Description", "TCA08 - Search results on pressing the enter button: Search results")]
+        public void TCA08_SearchResultsOnPressingTheEnterButton_SearchResults()
         {
 #line 99
-this.SearchResultsOnPressingTheEnterButton("Search results", "phlebotomist", ((string[])(null)));
+this.TCA08_SearchResultsOnPressingTheEnterButton("Search results", "phlebotomist", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void LinksVerificationsForOtherJobCategoriesSideSection(string jobCategory, string linkToTest, string[] exampleTags)
+        public virtual void TCA09_LinksVerificationsForOtherJobCategoriesSideSection(string jobCategory, string linkToTest, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job category", jobCategory);
             argumentsOfScenario.Add("Link to test", linkToTest);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Links verifications for Other job categories side section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA09 - Links verifications for Other job categories side section", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 110
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -756,272 +762,296 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Administration")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Administration")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_Administration()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Administration", "Travel and tourism", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Animal care")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Animal care")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_AnimalCare()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Animal care", "Transport", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Beauty and wellbeing")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Beauty and wellbeing")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_BeautyAndWellbeing()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Beauty and wellbeing", "Teaching and education", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Business and finance")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Business and finance")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_BusinessAndFinance()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Business and finance", "Sports and leisure", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Computing, technology " +
-            "and digital")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Computing, technology " +
-            "and digital")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_ComputingTechnologyAndDigital()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Computing, technology and digital", "Social care", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Construction and trade" +
-            "s")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Construction and trade" +
-            "s")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_ConstructionAndTrades()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Construction and trades", "Science and research", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Creative and media")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Creative and media")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_CreativeAndMedia()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Creative and media", "Retail and sales", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Delivery and storage")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Delivery and storage")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_DeliveryAndStorage()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Delivery and storage", "Manufacturing", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Emergency and uniform " +
-            "services")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Emergency and uniform " +
-            "services")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_EmergencyAndUniformServices()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Emergency and uniform services", "Managerial", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Engineering and mainte" +
-            "nance")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Engineering and mainte" +
-            "nance")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_EngineeringAndMaintenance()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Engineering and maintenance", "Law and legal", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Environment and land")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Environment and land")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_EnvironmentAndLand()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Environment and land", "Hospitality and food", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Government services")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Government services")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_GovernmentServices()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Government services", "Home services", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Healthcare")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Healthcare")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_Healthcare()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Healthcare", "Government services", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Home services")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Home services")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_HomeServices()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Home services", "Healthcare", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Hospitality and food")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Hospitality and food")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_HospitalityAndFood()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Hospitality and food", "Environment and land", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Law and legal")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Law and legal")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_LawAndLegal()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Law and legal", "Engineering and maintenance", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Managerial")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Managerial")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_Managerial()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Managerial", "Emergency and uniform services", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Manufacturing")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Manufacturing")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_Manufacturing()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Manufacturing", "Delivery and storage", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Retail and sales")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Retail and sales")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_RetailAndSales()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Retail and sales", "Creative and media", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Science and research")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Science and research")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_ScienceAndResearch()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Science and research", "Construction and trades", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Social care")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Social care")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_SocialCare()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Social care", "Computing, technology and digital", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Sports and leisure")]
-        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Sports and leisure")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_SportsAndLeisure()
-        {
-#line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Sports and leisure", "Business and finance", ((string[])(null)));
-#line hidden
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Teaching and education" +
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Administration" +
             "")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Teaching and education" +
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Administration" +
             "")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_TeachingAndEducation()
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_Administration()
         {
 #line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Teaching and education", "Beauty and wellbeing", ((string[])(null)));
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Administration", "Travel and tourism", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Transport")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Animal care")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Transport")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_Transport()
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Animal care")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_AnimalCare()
         {
 #line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Transport", "Animal care", ((string[])(null)));
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Animal care", "Transport", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Links verifications for Other job categories side section: Travel and tourism")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Beauty and wel" +
+            "lbeing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Links verifications for Other job categories side section: Travel and tourism")]
-        public void LinksVerificationsForOtherJobCategoriesSideSection_TravelAndTourism()
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Beauty and wel" +
+            "lbeing")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_BeautyAndWellbeing()
         {
 #line 110
-this.LinksVerificationsForOtherJobCategoriesSideSection("Travel and tourism", "Administration", ((string[])(null)));
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Beauty and wellbeing", "Teaching and education", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection(string jobCategory, string[] exampleTags)
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Business and f" +
+            "inance")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Business and f" +
+            "inance")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_BusinessAndFinance()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Business and finance", "Sports and leisure", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Computing, tec" +
+            "hnology and digital")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Computing, tec" +
+            "hnology and digital")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_ComputingTechnologyAndDigital()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Computing, technology and digital", "Social care", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Construction a" +
+            "nd trades")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Construction a" +
+            "nd trades")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_ConstructionAndTrades()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Construction and trades", "Science and research", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Creative and m" +
+            "edia")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Creative and m" +
+            "edia")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_CreativeAndMedia()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Creative and media", "Retail and sales", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Delivery and s" +
+            "torage")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Delivery and s" +
+            "torage")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_DeliveryAndStorage()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Delivery and storage", "Manufacturing", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Emergency and " +
+            "uniform services")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Emergency and " +
+            "uniform services")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_EmergencyAndUniformServices()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Emergency and uniform services", "Managerial", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Engineering an" +
+            "d maintenance")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Engineering an" +
+            "d maintenance")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_EngineeringAndMaintenance()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Engineering and maintenance", "Law and legal", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Environment an" +
+            "d land")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Environment an" +
+            "d land")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_EnvironmentAndLand()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Environment and land", "Hospitality and food", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Government ser" +
+            "vices")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Government ser" +
+            "vices")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_GovernmentServices()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Government services", "Home services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Healthcare")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Healthcare")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_Healthcare()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Healthcare", "Government services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Home services")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Home services")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_HomeServices()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Home services", "Healthcare", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Hospitality an" +
+            "d food")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Hospitality an" +
+            "d food")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_HospitalityAndFood()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Hospitality and food", "Environment and land", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Law and legal")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Law and legal")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_LawAndLegal()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Law and legal", "Engineering and maintenance", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Managerial")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Managerial")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_Managerial()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Managerial", "Emergency and uniform services", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Manufacturing")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Manufacturing")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_Manufacturing()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Manufacturing", "Delivery and storage", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Retail and sal" +
+            "es")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Retail and sal" +
+            "es")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_RetailAndSales()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Retail and sales", "Creative and media", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Science and re" +
+            "search")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Science and re" +
+            "search")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_ScienceAndResearch()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Science and research", "Construction and trades", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Social care")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Social care")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_SocialCare()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Social care", "Computing, technology and digital", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Sports and lei" +
+            "sure")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Sports and lei" +
+            "sure")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_SportsAndLeisure()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Sports and leisure", "Business and finance", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Teaching and e" +
+            "ducation")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Teaching and e" +
+            "ducation")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_TeachingAndEducation()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Teaching and education", "Beauty and wellbeing", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Transport")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Transport")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_Transport()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Transport", "Animal care", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA09 - Links verifications for Other job categories side section: Travel and tou" +
+            "rism")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA09 - Links verifications for Other job categories side section: Travel and tou" +
+            "rism")]
+        public void TCA09_LinksVerificationsForOtherJobCategoriesSideSection_TravelAndTourism()
+        {
+#line 110
+this.TCA09_LinksVerificationsForOtherJobCategoriesSideSection("Travel and tourism", "Administration", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection(string jobCategory, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job category", jobCategory);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unqualified link verification for Other job categories side section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA10 - Unqualified link verification for Other job categories side section", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 142
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1043,108 +1073,110 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Beauty and w" +
-            "ellbeing")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Beau" +
+            "ty and wellbeing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Beauty and w" +
-            "ellbeing")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_BeautyAndWellbeing()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Beau" +
+            "ty and wellbeing")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_BeautyAndWellbeing()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Beauty and wellbeing", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Construction" +
-            " and trades")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Cons" +
+            "truction and trades")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Construction" +
-            " and trades")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_ConstructionAndTrades()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Cons" +
+            "truction and trades")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_ConstructionAndTrades()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Construction and trades", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Construction and trades", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Creative and" +
-            " media")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Crea" +
+            "tive and media")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Creative and" +
-            " media")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_CreativeAndMedia()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Crea" +
+            "tive and media")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_CreativeAndMedia()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Creative and media", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Creative and media", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Delivery and" +
-            " storage")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Deli" +
+            "very and storage")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Delivery and" +
-            " storage")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_DeliveryAndStorage()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Deli" +
+            "very and storage")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_DeliveryAndStorage()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Delivery and storage", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Delivery and storage", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Engineering " +
-            "and maintenance")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Engi" +
+            "neering and maintenance")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Engineering " +
-            "and maintenance")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_EngineeringAndMaintenance()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Engi" +
+            "neering and maintenance")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_EngineeringAndMaintenance()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Engineering and maintenance", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Engineering and maintenance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Environment " +
-            "and land")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Envi" +
+            "ronment and land")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Environment " +
-            "and land")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_EnvironmentAndLand()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Envi" +
+            "ronment and land")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_EnvironmentAndLand()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Environment and land", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Environment and land", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Government s" +
-            "ervices")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Gove" +
+            "rnment services")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Government s" +
-            "ervices")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_GovernmentServices()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Gove" +
+            "rnment services")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_GovernmentServices()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Government services", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Government services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Unqualified link verification for Other job categories side section: Healthcare")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA10 - Unqualified link verification for Other job categories side section: Heal" +
+            "thcare")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Unqualified link verification for Other job categories side section: Healthcare")]
-        public void UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_Healthcare()
+        [Xunit.TraitAttribute("Description", "TCA10 - Unqualified link verification for Other job categories side section: Heal" +
+            "thcare")]
+        public void TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection_Healthcare()
         {
 #line 142
-this.UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Healthcare", ((string[])(null)));
+this.TCA10_UnqualifiedLinkVerificationForOtherJobCategoriesSideSection("Healthcare", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job category list")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA11 - Verify Job category list")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job category list")]
-        public void VerifyJobCategoryList()
+        [Xunit.TraitAttribute("Description", "TCA11 - Verify Job category list")]
+        public void TCA11_VerifyJobCategoryList()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Job category list", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA11 - Verify Job category list", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 156
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1221,12 +1253,12 @@ testRunner.Then("both lists are the same", ((string)(null)), ((TechTalk.SpecFlow
             this.ScenarioCleanup();
         }
         
-        public virtual void VerifyJobProfilesDistinctCount(string jobCategory, string[] exampleTags)
+        public virtual void TCA12_VerifyJobProfilesDistinctCount(string jobCategory, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job category", jobCategory);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Job profiles distinct count", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA12 - Verify Job profiles distinct count", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 187
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1250,263 +1282,263 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Administration")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Administration")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Administration")]
-        public void VerifyJobProfilesDistinctCount_Administration()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Administration")]
+        public void TCA12_VerifyJobProfilesDistinctCount_Administration()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Administration", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Administration", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Animal care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Animal care")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Animal care")]
-        public void VerifyJobProfilesDistinctCount_AnimalCare()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Animal care")]
+        public void TCA12_VerifyJobProfilesDistinctCount_AnimalCare()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Animal care", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Beauty and wellbeing")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Beauty and wellbeing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Beauty and wellbeing")]
-        public void VerifyJobProfilesDistinctCount_BeautyAndWellbeing()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Beauty and wellbeing")]
+        public void TCA12_VerifyJobProfilesDistinctCount_BeautyAndWellbeing()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Beauty and wellbeing", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Business and finance")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Business and finance")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Business and finance")]
-        public void VerifyJobProfilesDistinctCount_BusinessAndFinance()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Business and finance")]
+        public void TCA12_VerifyJobProfilesDistinctCount_BusinessAndFinance()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Business and finance", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Computing, technology and digital")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Computing, technology and digital")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Computing, technology and digital")]
-        public void VerifyJobProfilesDistinctCount_ComputingTechnologyAndDigital()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Computing, technology and digital")]
+        public void TCA12_VerifyJobProfilesDistinctCount_ComputingTechnologyAndDigital()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Computing, technology and digital", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Construction and trades")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Construction and trades")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Construction and trades")]
-        public void VerifyJobProfilesDistinctCount_ConstructionAndTrades()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Construction and trades")]
+        public void TCA12_VerifyJobProfilesDistinctCount_ConstructionAndTrades()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Construction and trades", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Construction and trades", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Creative and media")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Creative and media")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Creative and media")]
-        public void VerifyJobProfilesDistinctCount_CreativeAndMedia()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Creative and media")]
+        public void TCA12_VerifyJobProfilesDistinctCount_CreativeAndMedia()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Creative and media", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Creative and media", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Delivery and storage")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Delivery and storage")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Delivery and storage")]
-        public void VerifyJobProfilesDistinctCount_DeliveryAndStorage()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Delivery and storage")]
+        public void TCA12_VerifyJobProfilesDistinctCount_DeliveryAndStorage()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Delivery and storage", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Delivery and storage", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Emergency and uniform services")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Emergency and uniform services")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Emergency and uniform services")]
-        public void VerifyJobProfilesDistinctCount_EmergencyAndUniformServices()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Emergency and uniform services")]
+        public void TCA12_VerifyJobProfilesDistinctCount_EmergencyAndUniformServices()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Emergency and uniform services", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Emergency and uniform services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Engineering and maintenance")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Engineering and maintenance")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Engineering and maintenance")]
-        public void VerifyJobProfilesDistinctCount_EngineeringAndMaintenance()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Engineering and maintenance")]
+        public void TCA12_VerifyJobProfilesDistinctCount_EngineeringAndMaintenance()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Engineering and maintenance", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Engineering and maintenance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Environment and land")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Environment and land")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Environment and land")]
-        public void VerifyJobProfilesDistinctCount_EnvironmentAndLand()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Environment and land")]
+        public void TCA12_VerifyJobProfilesDistinctCount_EnvironmentAndLand()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Environment and land", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Environment and land", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Government services")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Government services")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Government services")]
-        public void VerifyJobProfilesDistinctCount_GovernmentServices()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Government services")]
+        public void TCA12_VerifyJobProfilesDistinctCount_GovernmentServices()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Government services", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Government services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Healthcare")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Healthcare")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Healthcare")]
-        public void VerifyJobProfilesDistinctCount_Healthcare()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Healthcare")]
+        public void TCA12_VerifyJobProfilesDistinctCount_Healthcare()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Healthcare", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Healthcare", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Home services")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Home services")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Home services")]
-        public void VerifyJobProfilesDistinctCount_HomeServices()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Home services")]
+        public void TCA12_VerifyJobProfilesDistinctCount_HomeServices()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Home services", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Home services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Hospitality and food")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Hospitality and food")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Hospitality and food")]
-        public void VerifyJobProfilesDistinctCount_HospitalityAndFood()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Hospitality and food")]
+        public void TCA12_VerifyJobProfilesDistinctCount_HospitalityAndFood()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Hospitality and food", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Hospitality and food", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Law and legal")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Law and legal")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Law and legal")]
-        public void VerifyJobProfilesDistinctCount_LawAndLegal()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Law and legal")]
+        public void TCA12_VerifyJobProfilesDistinctCount_LawAndLegal()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Law and legal", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Law and legal", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Managerial")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Managerial")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Managerial")]
-        public void VerifyJobProfilesDistinctCount_Managerial()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Managerial")]
+        public void TCA12_VerifyJobProfilesDistinctCount_Managerial()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Managerial", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Managerial", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Manufacturing")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Manufacturing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Manufacturing")]
-        public void VerifyJobProfilesDistinctCount_Manufacturing()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Manufacturing")]
+        public void TCA12_VerifyJobProfilesDistinctCount_Manufacturing()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Manufacturing", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Manufacturing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Retail and sales")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Retail and sales")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Retail and sales")]
-        public void VerifyJobProfilesDistinctCount_RetailAndSales()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Retail and sales")]
+        public void TCA12_VerifyJobProfilesDistinctCount_RetailAndSales()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Retail and sales", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Retail and sales", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Science and research")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Science and research")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Science and research")]
-        public void VerifyJobProfilesDistinctCount_ScienceAndResearch()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Science and research")]
+        public void TCA12_VerifyJobProfilesDistinctCount_ScienceAndResearch()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Science and research", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Science and research", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Social care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Social care")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Social care")]
-        public void VerifyJobProfilesDistinctCount_SocialCare()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Social care")]
+        public void TCA12_VerifyJobProfilesDistinctCount_SocialCare()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Social care", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Social care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Sports and leisure")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Sports and leisure")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Sports and leisure")]
-        public void VerifyJobProfilesDistinctCount_SportsAndLeisure()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Sports and leisure")]
+        public void TCA12_VerifyJobProfilesDistinctCount_SportsAndLeisure()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Sports and leisure", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Sports and leisure", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Teaching and education")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Teaching and education")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Teaching and education")]
-        public void VerifyJobProfilesDistinctCount_TeachingAndEducation()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Teaching and education")]
+        public void TCA12_VerifyJobProfilesDistinctCount_TeachingAndEducation()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Teaching and education", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Teaching and education", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Transport")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Transport")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Transport")]
-        public void VerifyJobProfilesDistinctCount_Transport()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Transport")]
+        public void TCA12_VerifyJobProfilesDistinctCount_Transport()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Transport", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Transport", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Job profiles distinct count: Travel and tourism")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA12 - Verify Job profiles distinct count: Travel and tourism")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Verify Job profiles distinct count: Travel and tourism")]
-        public void VerifyJobProfilesDistinctCount_TravelAndTourism()
+        [Xunit.TraitAttribute("Description", "TCA12 - Verify Job profiles distinct count: Travel and tourism")]
+        public void TCA12_VerifyJobProfilesDistinctCount_TravelAndTourism()
         {
 #line 187
-this.VerifyJobProfilesDistinctCount("Travel and tourism", ((string[])(null)));
+this.TCA12_VerifyJobProfilesDistinctCount("Travel and tourism", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void JobProfilesLinksVerification(string jobCategory, string linkPosition, string[] exampleTags)
+        public virtual void TCA13_JobProfilesLinksVerification(string jobCategory, string linkPosition, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job category", jobCategory);
             argumentsOfScenario.Add("Link position", linkPosition);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Job profiles links verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA13 - Job profiles links verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 219
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1530,64 +1562,64 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links verification: Administration")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA13 - Job profiles links verification: Administration")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job profiles links verification: Administration")]
-        public void JobProfilesLinksVerification_Administration()
+        [Xunit.TraitAttribute("Description", "TCA13 - Job profiles links verification: Administration")]
+        public void TCA13_JobProfilesLinksVerification_Administration()
         {
 #line 219
-this.JobProfilesLinksVerification("Administration", "first", ((string[])(null)));
+this.TCA13_JobProfilesLinksVerification("Administration", "first", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links verification: Animal care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA13 - Job profiles links verification: Animal care")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job profiles links verification: Animal care")]
-        public void JobProfilesLinksVerification_AnimalCare()
+        [Xunit.TraitAttribute("Description", "TCA13 - Job profiles links verification: Animal care")]
+        public void TCA13_JobProfilesLinksVerification_AnimalCare()
         {
 #line 219
-this.JobProfilesLinksVerification("Animal care", "second", ((string[])(null)));
+this.TCA13_JobProfilesLinksVerification("Animal care", "second", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links verification: Beauty and wellbeing")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA13 - Job profiles links verification: Beauty and wellbeing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job profiles links verification: Beauty and wellbeing")]
-        public void JobProfilesLinksVerification_BeautyAndWellbeing()
+        [Xunit.TraitAttribute("Description", "TCA13 - Job profiles links verification: Beauty and wellbeing")]
+        public void TCA13_JobProfilesLinksVerification_BeautyAndWellbeing()
         {
 #line 219
-this.JobProfilesLinksVerification("Beauty and wellbeing", "third", ((string[])(null)));
+this.TCA13_JobProfilesLinksVerification("Beauty and wellbeing", "third", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links verification: Business and finance")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA13 - Job profiles links verification: Business and finance")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job profiles links verification: Business and finance")]
-        public void JobProfilesLinksVerification_BusinessAndFinance()
+        [Xunit.TraitAttribute("Description", "TCA13 - Job profiles links verification: Business and finance")]
+        public void TCA13_JobProfilesLinksVerification_BusinessAndFinance()
         {
 #line 219
-this.JobProfilesLinksVerification("Business and finance", "fourth", ((string[])(null)));
+this.TCA13_JobProfilesLinksVerification("Business and finance", "fourth", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job profiles links verification: Computing, technology and digital")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA13 - Job profiles links verification: Computing, technology and digital")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job profiles links verification: Computing, technology and digital")]
-        public void JobProfilesLinksVerification_ComputingTechnologyAndDigital()
+        [Xunit.TraitAttribute("Description", "TCA13 - Job profiles links verification: Computing, technology and digital")]
+        public void TCA13_JobProfilesLinksVerification_ComputingTechnologyAndDigital()
         {
 #line 219
-this.JobProfilesLinksVerification("Computing, technology and digital", "fifth", ((string[])(null)));
+this.TCA13_JobProfilesLinksVerification("Computing, technology and digital", "fifth", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void AlphabeticalOrdering(string page, string jobCategory, string listToExamine, string[] exampleTags)
+        public virtual void TCA14_AlphabeticalOrdering(string page, string jobCategory, string listToExamine, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Page", page);
             argumentsOfScenario.Add("Job category", jobCategory);
             argumentsOfScenario.Add("List to examine", listToExamine);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Alphabetical ordering", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA14 - Alphabetical ordering", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 231
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1611,43 +1643,43 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Alphabetical ordering: Variant 0")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA14 - Alphabetical ordering: Variant 0")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Alphabetical ordering: Variant 0")]
-        public void AlphabeticalOrdering_Variant0()
+        [Xunit.TraitAttribute("Description", "TCA14 - Alphabetical ordering: Variant 0")]
+        public void TCA14_AlphabeticalOrdering_Variant0()
         {
 #line 231
-this.AlphabeticalOrdering("Explore careers", "", "Job categories", ((string[])(null)));
+this.TCA14_AlphabeticalOrdering("Explore careers", "", "Job categories", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Alphabetical ordering: Variant 1")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA14 - Alphabetical ordering: Variant 1")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Alphabetical ordering: Variant 1")]
-        public void AlphabeticalOrdering_Variant1()
+        [Xunit.TraitAttribute("Description", "TCA14 - Alphabetical ordering: Variant 1")]
+        public void TCA14_AlphabeticalOrdering_Variant1()
         {
 #line 231
-this.AlphabeticalOrdering("Job categories", "Administration", "Other job categories", ((string[])(null)));
+this.TCA14_AlphabeticalOrdering("Job categories", "Administration", "Other job categories", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Alphabetical ordering: Variant 2")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA14 - Alphabetical ordering: Variant 2")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Alphabetical ordering: Variant 2")]
-        public void AlphabeticalOrdering_Variant2()
+        [Xunit.TraitAttribute("Description", "TCA14 - Alphabetical ordering: Variant 2")]
+        public void TCA14_AlphabeticalOrdering_Variant2()
         {
 #line 231
-this.AlphabeticalOrdering("Job categories", "Administration", "Job profiles", ((string[])(null)));
+this.TCA14_AlphabeticalOrdering("Job categories", "Administration", "Job profiles", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void NonPaginationVerificationForJobCategoriesAdministrationPage(string page, string jobCategory, string[] exampleTags)
+        public virtual void TCA15_NonPaginationVerificationForJobCategoriesAdministrationPage(string page, string jobCategory, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Page", page);
             argumentsOfScenario.Add("Job category", jobCategory);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Non pagination verification for Job categories Administration page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA15 - Non pagination verification for Job categories Administration page", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 241
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1671,34 +1703,38 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Non pagination verification for Job categories Administration page: Variant 0")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA15 - Non pagination verification for Job categories Administration page: Varia" +
+            "nt 0")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Non pagination verification for Job categories Administration page: Variant 0")]
-        public void NonPaginationVerificationForJobCategoriesAdministrationPage_Variant0()
+        [Xunit.TraitAttribute("Description", "TCA15 - Non pagination verification for Job categories Administration page: Varia" +
+            "nt 0")]
+        public void TCA15_NonPaginationVerificationForJobCategoriesAdministrationPage_Variant0()
         {
 #line 241
-this.NonPaginationVerificationForJobCategoriesAdministrationPage("Job categories", "Administration", ((string[])(null)));
+this.TCA15_NonPaginationVerificationForJobCategoriesAdministrationPage("Job categories", "Administration", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Non pagination verification for Job categories Administration page: Variant 1")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA15 - Non pagination verification for Job categories Administration page: Varia" +
+            "nt 1")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Non pagination verification for Job categories Administration page: Variant 1")]
-        public void NonPaginationVerificationForJobCategoriesAdministrationPage_Variant1()
+        [Xunit.TraitAttribute("Description", "TCA15 - Non pagination verification for Job categories Administration page: Varia" +
+            "nt 1")]
+        public void TCA15_NonPaginationVerificationForJobCategoriesAdministrationPage_Variant1()
         {
 #line 241
-this.NonPaginationVerificationForJobCategoriesAdministrationPage("Job categories", "Transport", ((string[])(null)));
+this.TCA15_NonPaginationVerificationForJobCategoriesAdministrationPage("Job categories", "Transport", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Placeholder text verification for search field")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA16 - Placeholder text verification for search field")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Placeholder text verification for search field")]
-        public void PlaceholderTextVerificationForSearchField()
+        [Xunit.TraitAttribute("Description", "TCA16 - Placeholder text verification for search field")]
+        public void TCA16_PlaceholderTextVerificationForSearchField()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Placeholder text verification for search field", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA16 - Placeholder text verification for search field", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 250
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1719,13 +1755,13 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        public virtual void NumberOfResultsFoundVerification(string page, string searchTerm, string[] exampleTags)
+        public virtual void TCA17_NumberOfResultsFoundVerification(string page, string searchTerm, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("page", page);
             argumentsOfScenario.Add("search term", searchTerm);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Number of results found verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA17 - Number of results found verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 254
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1753,53 +1789,53 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Number of results found verification: Variant 0")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA17 - Number of results found verification: Variant 0")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Number of results found verification: Variant 0")]
-        public void NumberOfResultsFoundVerification_Variant0()
+        [Xunit.TraitAttribute("Description", "TCA17 - Number of results found verification: Variant 0")]
+        public void TCA17_NumberOfResultsFoundVerification_Variant0()
         {
 #line 254
-this.NumberOfResultsFoundVerification("Explore careers", "Aircraft pilot", ((string[])(null)));
+this.TCA17_NumberOfResultsFoundVerification("Explore careers", "Aircraft pilot", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Number of results found verification: Variant 1")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA17 - Number of results found verification: Variant 1")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Number of results found verification: Variant 1")]
-        public void NumberOfResultsFoundVerification_Variant1()
+        [Xunit.TraitAttribute("Description", "TCA17 - Number of results found verification: Variant 1")]
+        public void TCA17_NumberOfResultsFoundVerification_Variant1()
         {
 #line 254
-this.NumberOfResultsFoundVerification("Search results", "Nurse", ((string[])(null)));
+this.TCA17_NumberOfResultsFoundVerification("Search results", "Nurse", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Number of results found verification: Variant 2")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA17 - Number of results found verification: Variant 2")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Number of results found verification: Variant 2")]
-        public void NumberOfResultsFoundVerification_Variant2()
+        [Xunit.TraitAttribute("Description", "TCA17 - Number of results found verification: Variant 2")]
+        public void TCA17_NumberOfResultsFoundVerification_Variant2()
         {
 #line 254
-this.NumberOfResultsFoundVerification("Explore careers", "Carpenter", ((string[])(null)));
+this.TCA17_NumberOfResultsFoundVerification("Explore careers", "Carpenter", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Number of results found verification: Variant 3")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA17 - Number of results found verification: Variant 3")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Number of results found verification: Variant 3")]
-        public void NumberOfResultsFoundVerification_Variant3()
+        [Xunit.TraitAttribute("Description", "TCA17 - Number of results found verification: Variant 3")]
+        public void TCA17_NumberOfResultsFoundVerification_Variant3()
         {
 #line 254
-this.NumberOfResultsFoundVerification("Search results", "Cartographer", ((string[])(null)));
+this.TCA17_NumberOfResultsFoundVerification("Search results", "Cartographer", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void BreadcrumbLinkingVerification(string page, string jobCategory, string[] exampleTags)
+        public virtual void TCA18_BreadcrumbLinkingVerification(string page, string jobCategory, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Page", page);
             argumentsOfScenario.Add("Job category", jobCategory);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Breadcrumb linking verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA18 - Breadcrumb linking verification", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 266
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1823,33 +1859,33 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Breadcrumb linking verification: Job categories")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA18 - Breadcrumb linking verification: Job categories")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Breadcrumb linking verification: Job categories")]
-        public void BreadcrumbLinkingVerification_JobCategories()
+        [Xunit.TraitAttribute("Description", "TCA18 - Breadcrumb linking verification: Job categories")]
+        public void TCA18_BreadcrumbLinkingVerification_JobCategories()
         {
 #line 266
-this.BreadcrumbLinkingVerification("Job categories", "Administration", ((string[])(null)));
+this.TCA18_BreadcrumbLinkingVerification("Job categories", "Administration", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Breadcrumb linking verification: Search results")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA18 - Breadcrumb linking verification: Search results")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Breadcrumb linking verification: Search results")]
-        public void BreadcrumbLinkingVerification_SearchResults()
+        [Xunit.TraitAttribute("Description", "TCA18 - Breadcrumb linking verification: Search results")]
+        public void TCA18_BreadcrumbLinkingVerification_SearchResults()
         {
 #line 266
-this.BreadcrumbLinkingVerification("Search results", "", ((string[])(null)));
+this.TCA18_BreadcrumbLinkingVerification("Search results", "", ((string[])(null)));
 #line hidden
         }
         
-        public virtual void JobCategoryPageShowsCorrectBreadcrumb(string jobCategory, string breadcrumb, string[] exampleTags)
+        public virtual void TCA19_JobCategoryPageShowsCorrectBreadcrumb(string jobCategory, string breadcrumb, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job category", jobCategory);
             argumentsOfScenario.Add("Breadcrumb", breadcrumb);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Job category page shows correct breadcrumb", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA19 - Job category page shows correct breadcrumb", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 275
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -1873,253 +1909,257 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Administration")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Administration")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Administration")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_Administration()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Administration")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_Administration()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Administration", "Home > Explore Careers > Administration", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Administration", "Home > Explore Careers > Administration", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Animal care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Animal care")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Animal care")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_AnimalCare()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Animal care")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_AnimalCare()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Animal care", "Home > Explore Careers > Animal care", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Animal care", "Home > Explore Careers > Animal care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Beauty and wellbeing")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Beauty and wellbeing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Beauty and wellbeing")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_BeautyAndWellbeing()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Beauty and wellbeing")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_BeautyAndWellbeing()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Beauty and wellbeing", "Home > Explore Careers > Beauty and wellbeing", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Beauty and wellbeing", "Home > Explore Careers > Beauty and wellbeing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Business and finance")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Business and finance")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Business and finance")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_BusinessAndFinance()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Business and finance")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_BusinessAndFinance()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Business and finance", "Home > Explore Careers > Business and finance", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Business and finance", "Home > Explore Careers > Business and finance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Computing, technology and digital")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Computing, technology and dig" +
+            "ital")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Computing, technology and digital")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_ComputingTechnologyAndDigital()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Computing, technology and dig" +
+            "ital")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_ComputingTechnologyAndDigital()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Computing, technology and digital", "Home > Explore Careers > Computing, technology and digital", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Computing, technology and digital", "Home > Explore Careers > Computing, technology and digital", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Construction and trades")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Construction and trades")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Construction and trades")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_ConstructionAndTrades()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Construction and trades")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_ConstructionAndTrades()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Construction and trades", "Home > Explore Careers > Construction and trades", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Construction and trades", "Home > Explore Careers > Construction and trades", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Creative and media")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Creative and media")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Creative and media")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_CreativeAndMedia()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Creative and media")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_CreativeAndMedia()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Creative and media", "Home > Explore Careers > Creative and media", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Creative and media", "Home > Explore Careers > Creative and media", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Delivery and storage")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Delivery and storage")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Delivery and storage")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_DeliveryAndStorage()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Delivery and storage")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_DeliveryAndStorage()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Delivery and storage", "Home > Explore Careers > Delivery and storage", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Delivery and storage", "Home > Explore Careers > Delivery and storage", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Emergency and uniform services")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Emergency and uniform service" +
+            "s")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Emergency and uniform services")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_EmergencyAndUniformServices()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Emergency and uniform service" +
+            "s")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_EmergencyAndUniformServices()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Emergency and uniform services", "Home > Explore Careers > Emergency and uniform services", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Emergency and uniform services", "Home > Explore Careers > Emergency and uniform services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Engineering and maintenance")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Engineering and maintenance")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Engineering and maintenance")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_EngineeringAndMaintenance()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Engineering and maintenance")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_EngineeringAndMaintenance()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Engineering and maintenance", "Home > Explore Careers > Engineering and maintenance", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Engineering and maintenance", "Home > Explore Careers > Engineering and maintenance", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Environment and land")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Environment and land")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Environment and land")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_EnvironmentAndLand()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Environment and land")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_EnvironmentAndLand()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Environment and land", "Home > Explore Careers > Environment and land", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Environment and land", "Home > Explore Careers > Environment and land", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Government services")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Government services")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Government services")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_GovernmentServices()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Government services")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_GovernmentServices()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Government services", "Home > Explore Careers > Government services", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Government services", "Home > Explore Careers > Government services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Healthcare")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Healthcare")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Healthcare")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_Healthcare()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Healthcare")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_Healthcare()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Healthcare", "Home > Explore Careers > Healthcare", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Healthcare", "Home > Explore Careers > Healthcare", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Home services")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Home services")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Home services")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_HomeServices()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Home services")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_HomeServices()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Home services", "Home > Explore Careers > Home services", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Home services", "Home > Explore Careers > Home services", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Hospitality and food")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Hospitality and food")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Hospitality and food")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_HospitalityAndFood()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Hospitality and food")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_HospitalityAndFood()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Hospitality and food", "Home > Explore Careers > Hospitality and food", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Hospitality and food", "Home > Explore Careers > Hospitality and food", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Law and legal")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Law and legal")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Law and legal")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_LawAndLegal()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Law and legal")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_LawAndLegal()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Law and legal", "Home > Explore Careers > Law and legal", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Law and legal", "Home > Explore Careers > Law and legal", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Managerial")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Managerial")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Managerial")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_Managerial()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Managerial")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_Managerial()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Managerial", "Home > Explore Careers > Managerial", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Managerial", "Home > Explore Careers > Managerial", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Manufacturing")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Manufacturing")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Manufacturing")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_Manufacturing()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Manufacturing")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_Manufacturing()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Manufacturing", "Home > Explore Careers > Manufacturing", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Manufacturing", "Home > Explore Careers > Manufacturing", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Retail and sales")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Retail and sales")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Retail and sales")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_RetailAndSales()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Retail and sales")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_RetailAndSales()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Retail and sales", "Home > Explore Careers > Retail and sales", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Retail and sales", "Home > Explore Careers > Retail and sales", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Science and research")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Science and research")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Science and research")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_ScienceAndResearch()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Science and research")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_ScienceAndResearch()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Science and research", "Home > Explore Careers > Science and research", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Science and research", "Home > Explore Careers > Science and research", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Social care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Social care")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Social care")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_SocialCare()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Social care")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_SocialCare()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Social care", "Home > Explore Careers > Social care", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Social care", "Home > Explore Careers > Social care", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Sports and leisure")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Sports and leisure")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Sports and leisure")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_SportsAndLeisure()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Sports and leisure")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_SportsAndLeisure()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Sports and leisure", "Home > Explore Careers > Sports and leisure", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Sports and leisure", "Home > Explore Careers > Sports and leisure", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Teaching and education")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Teaching and education")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Teaching and education")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_TeachingAndEducation()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Teaching and education")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_TeachingAndEducation()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Teaching and education", "Home > Explore Careers > Teaching and education", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Teaching and education", "Home > Explore Careers > Teaching and education", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Transport")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Transport")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Transport")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_Transport()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Transport")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_Transport()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Transport", "Home > Explore Careers > Transport", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Transport", "Home > Explore Careers > Transport", ((string[])(null)));
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Job category page shows correct breadcrumb: Travel and tourism")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA19 - Job category page shows correct breadcrumb: Travel and tourism")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
-        [Xunit.TraitAttribute("Description", "Job category page shows correct breadcrumb: Travel and tourism")]
-        public void JobCategoryPageShowsCorrectBreadcrumb_TravelAndTourism()
+        [Xunit.TraitAttribute("Description", "TCA19 - Job category page shows correct breadcrumb: Travel and tourism")]
+        public void TCA19_JobCategoryPageShowsCorrectBreadcrumb_TravelAndTourism()
         {
 #line 275
-this.JobCategoryPageShowsCorrectBreadcrumb("Travel and tourism", "Home > Explore Careers > Travel and tourism", ((string[])(null)));
+this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Travel and tourism", "Home > Explore Careers > Travel and tourism", ((string[])(null)));
 #line hidden
         }
         

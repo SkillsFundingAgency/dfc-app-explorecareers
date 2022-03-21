@@ -2,7 +2,7 @@
 	As a citizen on the National Careers website 
 	I want to view and search job profiles information for a particular job category
 
-Scenario Outline: Job category links verification
+Scenario Outline: TCA01 - Job category links verification
 	Given I am at the "Explore careers" page
 	When I click on the <Job category> link
 	Then I am taken to the <Job category> page
@@ -18,7 +18,7 @@ Examples:
 	| Science and research              |
 	| Transport                         |
 
-Scenario Outline: Search field autosuggest field population
+Scenario Outline: TCA02 - Search field autosuggest field population
 	Given I navigate to the <page> page
 	When I enter the search term <search term> in the search field
 	Then I am able to select <auto suggest option> from the resultant auto suggest
@@ -35,7 +35,7 @@ Examples:
 	| Search results  | pi          | Aircraft pilot      |
 	| Search results  | la          | Lawyer              |
 
-Scenario Outline: Search term not found
+Scenario Outline: TCA03 - Search term not found
 	Given I navigate to the <page> page
 	When I enter the non existent search term <search term> in the search field
 	And I click the search button
@@ -46,7 +46,7 @@ Examples:
 	| Job profiles    | sss         | 
 	| Search results  | zzz         | 
 
-Scenario Outline: Auto suggesting search terms on search term misspelling
+Scenario Outline: TCA04 - Auto suggesting search terms on search term misspelling
 	Given I navigate to the <page> page
 	When I enter the search term <search term> in the search field
 	And I click the search button
@@ -58,7 +58,7 @@ Examples:
 	| Job profiles    | lawwwyer       | lawyer                |
 	| Search results  | phlebotomizzzt | phlebotomist          |
 
-Scenario Outline: Misspelt search terms auto suggestion link verification
+Scenario Outline: TCA05 - Misspelt search terms auto suggestion link verification
 	Given I navigate to the <page> page
 	And I enter the search term <search term> in the search field
 	And I click the search button
@@ -72,7 +72,7 @@ Examples:
 	| Search results  | mechannic   | mechanic              |
 	| Search results  | astronautt  | astronaut             |
 
-Scenario Outline: Empty search fields
+Scenario Outline: TCA06 - Empty search fields
 	Given I navigate to the <page> page
 	And the search field is empty
 	When I click the search button
@@ -82,7 +82,7 @@ Examples:
 	| Explore careers | 
 	| Search results  | 
 
-Scenario Outline: Reconciling search results count with number of pages returned
+Scenario Outline: TCA07- Reconciling search results count with number of pages returned
 	Given I navigate to the <page> page
 	And I enter the search term <search term> in the search field
 	And I click the search button
@@ -96,7 +96,7 @@ Examples:
 	| Job profiles    | lawyer       | 
 	| Search results  | phlebotomist | 
 
-Scenario Outline: Search results on pressing the enter button
+Scenario Outline: TCA08 - Search results on pressing the enter button
 	Given I navigate to the <page> page
 	And I enter the search term <search term> in the search field
 	When I press the Enter button instead of clicking search
@@ -107,7 +107,7 @@ Examples:
 	| Job profiles    | lawyer       |
 	| Search results  | phlebotomist | 
 
-Scenario: Links verifications for Other job categories side section
+Scenario: TCA09 - Links verifications for Other job categories side section
 	Given I am at the "Job categories" web page for <Job category>
 	When I click on the <Link to test> link
 	Then I am taken to the <Link to test> page
@@ -139,7 +139,7 @@ Examples:
 	| Transport                         | Animal care                       |
 	| Travel and tourism                | Administration                    |
 
-Scenario: Unqualified link verification for Other job categories side section
+Scenario: TCA10 - Unqualified link verification for Other job categories side section
 	Given I am at the "Job categories" web page for <Job category>
 	Then the <Job category> link is not present amongst the links beneath the Other job categories side section
 Examples:
@@ -153,7 +153,7 @@ Examples:
 	| Government services         |
 	| Healthcare                  |
 
-Scenario: Verify Job category list
+Scenario: TCA11 - Verify Job category list
 Given I am at the "Explore careers" page
 And I check the list displayed below against the list of Job categories displayed on that page
 	| Job category                      |
@@ -184,7 +184,7 @@ And I check the list displayed below against the list of Job categories displaye
 	| Travel and tourism                |
 Then both lists are the same
 
-Scenario Outline: Verify Job profiles distinct count
+Scenario Outline: TCA12 - Verify Job profiles distinct count
 	Given I am at the "Job categories" web page for <Job category>
 	When I check the job profiles list
 	Then none of the job profiles occur more than once
@@ -216,7 +216,7 @@ Examples:
 	| Transport                         |
 	| Travel and tourism                |
 
-Scenario Outline: Job profiles links verification
+Scenario Outline: TCA13 - Job profiles links verification
 	Given I am at the "Job categories" web page for <Job category>
 	When I click the link for the <Link position> Job profile under that Job category
 	Then I am taken profile details page for that Job profile
@@ -228,7 +228,7 @@ Examples:
 	| Business and finance              | fourth        |
 	| Computing, technology and digital | fifth         |
 
-Scenario Outline: Alphabetical ordering
+Scenario Outline: TCA14 - Alphabetical ordering
 	Given I navigate to the <Page> page for <Job category>
 	When I examine the <List to examine> list
 	Then the list is in alphabetical order
@@ -238,7 +238,7 @@ Examples:
 	| Job categories  | Administration | Other job categories |
 	| Job categories  | Administration | Job profiles         |
 
-Scenario Outline: Non pagination verification for Job categories Administration page
+Scenario Outline: TCA15 - Non pagination verification for Job categories Administration page
 	Given I navigate to the <Page> page for <Job category>
 	When I examine the page
 	Then the page contains no pagination
@@ -247,11 +247,11 @@ Examples:
 	| Job categories | Administration |
 	| Job categories | Transport      |
 
-Scenario: Placeholder text verification for search field
+Scenario: TCA16 - Placeholder text verification for search field
 	Given I navigate to the web page "Search results"
 	Then the search results field placeholder text is "Enter a job title"
 
-Scenario Outline: Number of results found verification
+Scenario Outline: TCA17 - Number of results found verification
 	Given I navigate to the <page> page
 	And I enter the search term <search term> in the search field
 	When I click the search button
@@ -263,7 +263,7 @@ Examples:
 	| Explore careers | Carpenter      |
 	| Search results  | Cartographer   |
 
-Scenario Outline: Breadcrumb linking verification
+Scenario Outline: TCA18 - Breadcrumb linking verification
 	Given I navigate to the <Page> page for <Job category>
 	When I click the Explore careers breadcrumb
 	Then I am on the "Explore careers" page
@@ -272,7 +272,7 @@ Examples:
 	| Job categories | Administration |
 	| Search results |                |
 
-Scenario Outline: Job category page shows correct breadcrumb
+Scenario Outline: TCA19 - Job category page shows correct breadcrumb
 	Given I am at the "Explore careers" page
 	When I click on the <Job category> link
 	Then the page displayed as a result bears the breadcrumb <Breadcrumb>
