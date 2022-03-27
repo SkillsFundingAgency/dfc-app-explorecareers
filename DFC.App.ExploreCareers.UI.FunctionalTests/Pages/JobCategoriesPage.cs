@@ -21,6 +21,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public string JobProfileHeading { get; set; }
 
+        public List<string> JobProfileDiffs { get; set; }
+
         //IWebElement heading => _scenarioContext.GetWebDriver().FindElement(By.ClassName("heading-xlarge")); //PreProd
         private IWebElement Heading => scenarioContext.GetWebDriver().FindElement(By.ClassName("govuk-heading-xl")); //SIT
 
@@ -163,6 +165,19 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             }
 
             return "Test passed"; //if test fails assertion message is displayed
+        }
+
+        public IList<string> GetJobProfilesIEnum()
+        {
+            IList<string> jobProfiles = GetJobProfiles().Select(i => i.Text).ToArray();
+            return jobProfiles;
+        }
+
+        public bool CompareLists(IList<string> listA, IList<string> listB)
+        {
+            bool listEqual = listA.Count == listB.Count && listA.Intersect(listB).Count() == listB.Count;
+            JobProfileDiffs = listA.Except(listB).ToList();
+            return listEqual;
         }
     }
 }

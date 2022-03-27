@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Support
@@ -47,6 +48,21 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Support
             int pos2 = str.IndexOf(lastString, StringComparison.Ordinal);
             finalString = str.Substring(pos1, pos2 - pos1);
             return finalString;
+        }
+
+        public static string RandomString()
+        {
+            int randomStringLength = 4;
+
+            using (var crypto = new RNGCryptoServiceProvider())
+            {
+                var bits = randomStringLength * 6;
+                var byte_size = (bits + 7) / 8;
+                var bytesarray = new byte[byte_size];
+                crypto.GetBytes(bytesarray);
+
+                return Convert.ToBase64String(bytesarray);
+            }
         }
     }
 }

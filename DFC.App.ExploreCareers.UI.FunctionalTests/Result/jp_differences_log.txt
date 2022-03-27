@@ -1,0 +1,91 @@
+--Business and finance--
+Digital marketer
+--Social care--
+Drug and alcohol worker
+School matron
+--Managerial--
+Art gallery curator
+Conference and exhibition manager
+European Union official
+Forest officer
+Head of IT (IT director)
+Human resources manager
+Manufacturing supervisor
+Marketing director
+Research and development manager
+Riding holiday centre manager
+Technical surveyor
+--Animal care--
+Ornithologist
+Riding holiday leader
+--Retail and sales--
+Checkout operator
+Conference and exhibition manager
+Garden nursery assistant
+Marketing director
+Museum assistant
+Petrol station sales assistant
+Retail jeweller
+--Travel and tourism--
+Fairground worker
+Hotel receptionist
+Museum assistant
+Riding holiday centre manager
+Riding holiday leader
+--Administration--
+Conference and exhibition manager
+European Union official
+Human resources assistant
+Human resources manager
+JP Sanity
+Typist
+--Construction and trades--
+Technical surveyor
+--Sports and leisure--
+Cinema projectionist
+Fairground worker
+Football coach Publish Test
+Museum assistant
+Riding holiday centre manager
+Riding holiday leader
+Stunt performer
+--Science and research--
+Botanist
+Market research executive
+Research and development manager
+Textile technologist
+--Manufacturing--
+Knitter
+Manufacturing supervisor
+Rail engineering technician
+Research and development manager
+Sample machinist
+Textile machinery technician
+Textile technologist
+--Delivery and storage--
+Courier
+Large goods vehicle driver test
+Postman or postwoman
+Yard person
+--Computing, technology and digital--
+Digital marketer
+Head of IT (IT director)
+--Emergency and uniform services--
+Road traffic accident investigator
+Search and rescue worker
+--Engineering and maintenance--
+Cellar technician Test
+Food factory worker test
+Rail engineering technician
+Technical surveyor
+Textile machinery technician
+Textile technologist
+--Transport--
+Large goods vehicle driver test
+Rail engineering technician
+Road traffic accident investigator
+--Government services--
+Merchant Navy deck officer
+Merchant Navy rating
+Museum assistant
+Road traffic accident investigator

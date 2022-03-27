@@ -20,6 +20,7 @@
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="99.0.4844.5100" />
     <PackageReference Include="SpecFlow.xUnit" Version="3.9.58" />
+    <PackageReference Include="SpecRun.Runner" Version="3.9.31" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

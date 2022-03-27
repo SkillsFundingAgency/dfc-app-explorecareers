@@ -1,9 +1,12 @@
 ﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Pages;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support.Poco;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
@@ -18,12 +21,19 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         private readonly JobCategoriesPage jobCategoriesPage;
         private readonly JobProfilesPage jobProfilesPage;
         private readonly SearchResultsPage searchResultsPage;
-        private string webPage;
-        private string jobCategory;
         private IEnumerable<JobCategories> jobCategories;
         private IList<IWebElement> jobProfiles;
         private IList<IWebElement> jobCategoryList;
+        private IList<string> jobProfilesTest;
+        private IList<string> jobProfilesProd;
+        private string webPage;
         private bool jobCategoryPagePaginated;
+        private bool listEqual;
+        //
+        private string theEnvironment;
+        private string searchParameter;
+        private string theJobCategory;
+        private List<int> searchCount = new List<int>();
 
         public ExploreCareersCUI(ScenarioContext scenarioContext)
         {
@@ -32,6 +42,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             jobProfilesPage = new JobProfilesPage(scenarioContext);
             searchResultsPage = new SearchResultsPage(scenarioContext);
         }
+
+        public string JobCategory { get; set; }
 
         [Given(@"I am at the ""(.*)"" page")]
         public void GivenIAmAtThePage(string resource)
@@ -298,14 +310,14 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Given(@"I am at the ""(.*)"" web page for (.*)")]
         public void GivenIAmAtTheWebPageFor(string resource, string resourceTwo)
         {
-            jobCategory = resourceTwo;
+            JobCategory = resourceTwo;
             exploreCareersPage.NavigateToPage(resource, resourceTwo);
         }
 
         [Given(@"I navigate to the (.*) page for (.*)")]
         public void GivenINavigateToThePageFor(string resource, string resourceTwo)
         {
-            jobCategory = resourceTwo;
+            JobCategory = resourceTwo;
             exploreCareersPage.NavigateToPage(resource, resourceTwo);
         }
 
@@ -336,7 +348,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"none of the job profiles occur more than once")]
         public void ThenNoneOfTheJobProfilesOccurMoreThanOnce()
         {
-            Assert.AreEqual(0, jobCategoriesPage.VerifyJobProfileCount(jobProfiles), "There are multiple occurrences in the Job profiles for " + jobCategory + ".");
+            Assert.AreEqual(0, jobCategoriesPage.VerifyJobProfileCount(jobProfiles), "There are multiple occurrences in the Job profiles for " + JobCategory + ".");
         }
 
         [When(@"I click the link for the (.*) Job profile under that Job category")]
@@ -444,7 +456,118 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"the breadcrumb for that specific Job profile is displayed")]
         public void ThenTheBreadcrumbForThatSpecificJobProfileIsDisplayed()
         {
-            Assert.AreEqual("Test passed", jobCategoriesPage.ClickJobProfiles(jobCategory), "Breadcrumb wrong/not displayed");
+            Assert.AreEqual("Test passed", jobCategoriesPage.ClickJobProfiles(JobCategory), "Breadcrumb wrong/not displayed");
+        }
+
+        [Given(@"I collect all the Job profile titles displayed thereunder")]
+        public void GivenICollectAllTheJobProfileTitlesDisplayedThereunder()
+        {
+            switch (exploreCareersPage.NavigationPoint)
+            {
+                case "https://nationalcareers.service.gov.uk/":
+                    jobProfilesProd = jobCategoriesPage.GetJobProfilesIEnum();
+                    break;
+                default:
+                    jobProfilesTest = jobCategoriesPage.GetJobProfilesIEnum();
+                    break;
+            }
+        }
+
+        [Given(@"I surf to the Production environments ""(.*)"" web page for (.*)")]
+        public void GivenISurfToTheProductionEnvironmentsWebPageForAdministration(string webPage, string jobCategory)
+        {
+            if (webPage == null)
+            {
+                throw new ArgumentNullException(nameof(webPage));
+            }
+
+            exploreCareersPage.NavigateToProd(webPage.ToLower(CultureInfo.CurrentCulture).Replace(" ", "-") + "/", jobCategory);
+        }
+
+        [When(@"I compare the Job profiles collected from both environments")]
+        public void WhenICompareTheJobProfilesCollectedFromBothEnvironments()
+        {
+            listEqual = jobCategoriesPage.CompareLists(jobProfilesTest, jobProfilesProd);
+        }
+
+        [Then(@"they are exactlty the same")]
+        public void ThenTheyAreExactltyTheSame()
+        {
+            string path = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
+            string file = "jp_differences_log.txt";
+
+            if (jobCategoriesPage.JobProfileDiffs.Count > 0)
+            {
+                Devices.WriteToFile(path, file, "--" + JobCategory + "--");
+
+                foreach (string diff in jobCategoriesPage.JobProfileDiffs)
+                {
+                    Devices.WriteToFile(path, file, diff);
+                }
+            }
+
+            Assert.True(listEqual, "Job profiles in Production and " + ExploreCareersPage.Environment + " are not the same for the " + JobCategory + " Job category");
+        }
+
+        [Then(@"any differences are written to file")]
+        public void ThenAnyDifferencesAreWrittenToFile()
+        {
+            /* This step is inserted for readability. Differences in
+             * Job profiles are written to file in the last step */
+        }
+
+        [When(@"I click the link for each of the Job profiles listed thereunder in turn")]
+        public void WhenIClickTheLinkForEachOfTheJobProfilesListedThereunderInTurn()
+        {
+            /* This step is inserted for readability. The action herein is performed in the Then step */
+        }
+
+        [Then(@"I am navigated to the Job profiles page for the Job profile clicked")]
+        public void ThenIAmNavigatedToTheJobProfilesPageForTheJobProfileClicked()
+        {
+            /* This step is inserted for readability. The action herein is performed in the Then step */
+        }
+
+        [Given(@"I search for the term (.*) of the (.*) Job category")]
+        public void GivenISearchForTheTermOfTheJobCategory(string searchTerm, string jobCategory)
+        {
+            theJobCategory = jobCategory;
+            searchParameter = searchTerm;
+            searchResultsPage.SearchProfile(searchTerm);
+        }
+
+        [Given(@"I note the number of search results")]
+        public void GivenINoteTheNumberOfSearchResults()
+        {
+            searchCount.Add(searchResultsPage.GetNumberOfSearchResults());
+        }
+
+        [Given(@"I surf to the ""(.*)"" environments ""(.*)"" page")]
+        public void GivenISurfToTheEnvironmentsPage(string environment, string webPage = "search-results")
+        {
+            theEnvironment = environment;
+            exploreCareersPage.NavigateToPage(environment, webPage);
+        }
+
+        [When(@"I compare the number of search results noted from both environments")]
+        public void WhenICompareTheNumberOfSearchResultsNotedFromBothEnvironments()
+        {
+            searchResultsPage.CompareCounts(searchCount[0], searchCount[1]);
+        }
+
+        [Then(@"the number is the same")]
+        public void ThenTheNumberIsTheSame()
+        {
+            string path = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
+            string file = "jp_counts_log.txt";
+            string textToWrite = theJobCategory + " category: count of '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from " + ExploreCareersPage.Environment + "'s, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + ".");
+
+            if (searchCount[1] != searchCount[0])
+            {
+                Devices.WriteToFile(path, file, textToWrite);
+            }
+
+            Assert.AreEqual(searchCount[1], searchCount[0], textToWrite);
         }
     }
 }

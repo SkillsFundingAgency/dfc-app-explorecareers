@@ -26,6 +26,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public static string Environment { get; set; }
 
+        public string NavigationPoint { get; set; }
+
         private IWebElement SearchField => scenarioContext.GetWebDriver().FindElement(By.Id("SearchTerm"));
 
         private IWebElement SearchButton => scenarioContext.GetWebDriver().FindElement(By.ClassName("submit"));
@@ -62,6 +64,13 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             }
 
             GetEnvironment();
+        }
+
+        public void NavigateToProd(string resource, string parameter)
+        {
+            string endPoint = "https://nationalcareers.service.gov.uk/";
+            this.scenarioContext.GetWebDriver().Url = endPoint + resource + ProcessResourceTwo(parameter);
+            NavigationPoint = endPoint;
         }
 
         public string ProcessResourceTwo(string resourceTwo)

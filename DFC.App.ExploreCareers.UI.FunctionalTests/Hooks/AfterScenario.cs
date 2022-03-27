@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-
 using DFC.App.ExploreCareers.UI.FunctionalTests.Model;
 using DFC.TestAutomation.UI.Extension;
-
 using OpenQA.Selenium.Remote;
-
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks

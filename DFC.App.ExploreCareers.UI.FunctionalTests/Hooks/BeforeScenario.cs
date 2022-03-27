@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 
 using AventStack.ExtentReports;
+using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
 
 using DFC.App.ExploreCareers.UI.FunctionalTests.Model;
@@ -12,7 +13,7 @@ using DFC.TestAutomation.UI.Extension;
 using DFC.TestAutomation.UI.Helper;
 using DFC.TestAutomation.UI.Settings;
 using DFC.TestAutomation.UI.Support;
-
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
@@ -22,20 +23,19 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
     {
         private static string filePath = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
         private static string logFile = "jp_counts_log.txt";
+        private static string logDiffs = "jp_differences_log.txt";
 
         /* extent reports*/
-        private static AventStack.ExtentReports.ExtentReports extent;
-        private static AventStack.ExtentReports.ExtentTest feature;
-        private static string reportPath = System.IO.Directory.GetParent(@"../../../").FullName
-            + Path.DirectorySeparatorChar + "Result"
-            + Path.DirectorySeparatorChar + "Result_" + DateTime.Now.ToString("ddMMyyyy HHmmss", CultureInfo.InvariantCulture);
-
-        private AventStack.ExtentReports.ExtentTest scenario;
-        private AventStack.ExtentReports.ExtentTest step;
+        private static AventStack.ExtentReports.ExtentReports extentReports;
+        private static ExtentHtmlReporter extentHtmlReporter;
+        private static ExtentTest feature;
+        private static ExtentTest scenario;
+        private readonly ScreenShot screenShot;
 
         public BeforeScenario(ScenarioContext context)
         {
             Context = context ?? throw new NullReferenceException($"The scenario context is null. The {nameof(BeforeScenario)} class cannot be initialised.");
+            screenShot = new ScreenShot(context);
         }
 
         private ScenarioContext Context { get; set; }
@@ -43,9 +43,10 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
         [BeforeTestRun(Order = 0)]
         public static void BeforeTestRun()
         {
-            ExtentHtmlReporter htmlReport = new ExtentHtmlReporter(reportPath);
-            extent = new AventStack.ExtentReports.ExtentReports();
-            extent.AttachReporter(htmlReport);
+            extentHtmlReporter = new ExtentHtmlReporter(filePath);
+            extentHtmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
+            extentReports = new AventStack.ExtentReports.ExtentReports();
+            extentReports.AttachReporter(extentHtmlReporter);
         }
 
         [BeforeFeature]
@@ -56,46 +57,88 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
                 throw new ArgumentNullException(nameof(context));
             }
 
-            feature = extent.CreateTest(context.FeatureInfo.Title);
+            if (context != null)
+            {
+                feature = extentReports.CreateTest<Feature>(context.FeatureInfo.Title, context.FeatureInfo.Description);
+            }
 
             File.WriteAllText(filePath + logFile, string.Empty);
+            File.WriteAllText(filePath + logDiffs, string.Empty);
+
+            DirectoryInfo di = new DirectoryInfo(filePath + "ScreenShots\\");
+            foreach (FileInfo file in di.EnumerateFiles())
+            {
+                file.Delete();
+            }
+
             Devices.WriteToFile(filePath, logFile, "--begin-- " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture));
         }
 
-        [BeforeStep]
-        public void BeforeStep()
+        [AfterStep]
+        public void AfterStep(ScenarioContext scenarioContext)
         {
-            step = scenario;
+            if (scenarioContext == null)
+            {
+                throw new ArgumentNullException(nameof(scenarioContext));
+            }
+
+            ScenarioBlock scenarioBlock = scenarioContext.CurrentScenarioBlock;
+
+            switch (scenarioBlock)
+            {
+                case ScenarioBlock.Given:
+                    ReportExecution(scenarioContext);
+                    break;
+                case ScenarioBlock.When:
+                    ReportExecution(scenarioContext);
+                    break;
+                case ScenarioBlock.Then:
+                    ReportExecution(scenarioContext);
+                    break;
+                default:
+                    ReportExecution(scenarioContext);
+                    break;
+            }
         }
 
-        [AfterStep]
-        public void AfterStep(ScenarioContext context)
+        public void ReportExecution(ScenarioContext scenarioContext)
         {
-            if (context == null)
+            if (scenarioContext == null)
             {
-                throw new ArgumentNullException(nameof(context));
+                throw new ArgumentNullException(nameof(scenarioContext));
             }
 
-            if (context.TestError == null)
+            if (scenarioContext.TestError != null)
             {
-                step.Log(Status.Pass, context.StepContext.StepInfo.Text);
+                screenShot.TakeScreenShot(scenarioContext.GetWebDriver(), filePath);
+
+                scenario.CreateNode<And>(scenarioContext.StepContext.StepInfo.Text).Fail(scenarioContext.TestError.Message);
             }
-            else if (context.TestError != null)
+            else
             {
-                step.Log(Status.Fail, context.StepContext.StepInfo.Text);
+                scenario.CreateNode<And>(scenarioContext.StepContext.StepInfo.Text).Pass(string.Empty);
             }
         }
 
         [AfterFeature]
         public static void AfterFeature()
         {
-            extent.Flush();
+            extentReports.Flush();
 
             Devices.WriteToFile(filePath, logFile, "--end-- " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture));
             Devices.WriteToFile(filePath, logFile, (Devices.TotalLines(filePath + logFile) - 2).ToString(CultureInfo.InvariantCulture) + " Job profiles affected");
         }
 
         /* extent reports*/
+
+        [BeforeScenario]
+        public static void BeforeScenarioStart(ScenarioContext scenarioContext)
+        {
+            if (scenarioContext != null)
+            {
+                scenario = feature.CreateNode<Scenario>(scenarioContext.ScenarioInfo.Title, scenarioContext.ScenarioInfo.Description);
+            }
+        }
 
         [BeforeScenario(Order = 0)]
         public void SetObjectContext(ObjectContext objectContext, ScenarioContext context)
@@ -106,9 +149,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
             {
                 throw new ArgumentNullException(nameof(context));
             }
-
-            //Extent report
-            scenario = feature.CreateNode(context.ScenarioInfo.Title);
         }
 
         [BeforeScenario(Order = 1)]
