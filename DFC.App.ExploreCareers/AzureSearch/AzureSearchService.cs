@@ -31,7 +31,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 Select = { nameof(JobProfileIndex.Title) }
             };
             var searchResult = await azureSearchClient.SuggestAsync<JobProfileIndex>(searchTerm, DefaultSuggester, options);
-            return searchResult?.Value?.Results?.Select(r => new AutoCompleteModel { Label = r.Text }) ?? Array.Empty<AutoCompleteModel>();
+            return searchResult?.Value?.Results?.Select(r => new AutoCompleteModel { Label = r.Document.Title }) ?? Array.Empty<AutoCompleteModel>();
         }
 
         public async Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category)
