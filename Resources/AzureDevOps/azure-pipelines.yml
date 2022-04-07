@@ -94,8 +94,7 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToDev
-  condition: and(eq(dependencies.Build.result,'Succeeded'), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
-  #condition: eq(dependencies.Build.result,'Succeeded')
+  condition: and(eq(dependencies.Build.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/dev'), startsWith(variables['Build.SourceBranch'], 'refs/heads/NCSLT-*'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')))
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
@@ -139,7 +138,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToSIT
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
+  condition: and(eq(dependencies.Build.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/dev'), startsWith(variables['Build.SourceBranch'], 'refs/heads/NCSLT-*'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')))
   displayName: Deploy to SIT
   variables:
   - group: dfc-shared-all
