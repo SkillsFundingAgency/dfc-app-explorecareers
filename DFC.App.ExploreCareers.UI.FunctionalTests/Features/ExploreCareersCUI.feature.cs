@@ -2165,7 +2165,13 @@ this.TCA19_JobCategoryPageShowsCorrectBreadcrumb("Travel and tourism", "Home > E
         
         public virtual void TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked(string jobCategory, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] @__tags = new string[] {
+                    "ignore"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Job category", jobCategory);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA20 - Job profiles links and breadcrumb verified on being clicked", null, tagsOfScenario, argumentsOfScenario, featureTags);
@@ -2196,7 +2202,7 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Administrati" +
-            "on")]
+            "on", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Administrati" +
             "on")]
@@ -2207,7 +2213,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Administration",
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Animal care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Animal care", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Animal care")]
         public void TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_AnimalCare()
@@ -2218,7 +2224,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Animal care", ((
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Beauty and w" +
-            "ellbeing")]
+            "ellbeing", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Beauty and w" +
             "ellbeing")]
@@ -2230,7 +2236,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Beauty and wellb
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Business and" +
-            " finance")]
+            " finance", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Business and" +
             " finance")]
@@ -2242,7 +2248,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Business and fin
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Computing, t" +
-            "echnology and digital")]
+            "echnology and digital", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Computing, t" +
             "echnology and digital")]
@@ -2254,7 +2260,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Computing, techn
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Construction" +
-            " and trades")]
+            " and trades", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Construction" +
             " and trades")]
@@ -2266,7 +2272,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Construction and
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Creative and" +
-            " media")]
+            " media", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Creative and" +
             " media")]
@@ -2278,7 +2284,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Creative and med
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Delivery and" +
-            " storage")]
+            " storage", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Delivery and" +
             " storage")]
@@ -2290,7 +2296,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Delivery and sto
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Emergency an" +
-            "d uniform services")]
+            "d uniform services", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Emergency an" +
             "d uniform services")]
@@ -2302,7 +2308,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Emergency and un
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Engineering " +
-            "and maintenance")]
+            "and maintenance", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Engineering " +
             "and maintenance")]
@@ -2314,7 +2320,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Engineering and 
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Environment " +
-            "and land")]
+            "and land", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Environment " +
             "and land")]
@@ -2326,7 +2332,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Environment and 
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Government s" +
-            "ervices")]
+            "ervices", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Government s" +
             "ervices")]
@@ -2337,7 +2343,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Government servi
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Healthcare")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Healthcare", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Healthcare")]
         public void TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Healthcare()
@@ -2348,7 +2354,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Healthcare", ((s
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Home service" +
-            "s")]
+            "s", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Home service" +
             "s")]
@@ -2360,7 +2366,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Home services", 
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Hospitality " +
-            "and food")]
+            "and food", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Hospitality " +
             "and food")]
@@ -2372,7 +2378,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Hospitality and 
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Law and lega" +
-            "l")]
+            "l", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Law and lega" +
             "l")]
@@ -2383,7 +2389,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Law and legal", 
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Managerial")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Managerial", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Managerial")]
         public void TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Managerial()
@@ -2394,7 +2400,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Managerial", ((s
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Manufacturin" +
-            "g")]
+            "g", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Manufacturin" +
             "g")]
@@ -2406,7 +2412,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Manufacturing", 
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Retail and s" +
-            "ales")]
+            "ales", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Retail and s" +
             "ales")]
@@ -2418,7 +2424,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Retail and sales
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Science and " +
-            "research")]
+            "research", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Science and " +
             "research")]
@@ -2429,7 +2435,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Science and rese
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Social care")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Social care", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Social care")]
         public void TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_SocialCare()
@@ -2440,7 +2446,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Social care", ((
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Sports and l" +
-            "eisure")]
+            "eisure", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Sports and l" +
             "eisure")]
@@ -2452,7 +2458,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Sports and leisu
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Teaching and" +
-            " education")]
+            " education", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Teaching and" +
             " education")]
@@ -2463,7 +2469,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Teaching and edu
 #line hidden
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Transport")]
+        [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Transport", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Transport")]
         public void TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked_Transport()
@@ -2474,7 +2480,7 @@ this.TCA20_JobProfilesLinksAndBreadcrumbVerifiedOnBeingClicked("Transport", ((st
         }
         
         [Xunit.SkippableFactAttribute(DisplayName="TCA20 - Job profiles links and breadcrumb verified on being clicked: Travel and t" +
-            "ourism")]
+            "ourism", Skip="Ignored")]
         [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
         [Xunit.TraitAttribute("Description", "TCA20 - Job profiles links and breadcrumb verified on being clicked: Travel and t" +
             "ourism")]
