@@ -118,7 +118,7 @@ stages:
       DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
       PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
       ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
-      EnvironmentName: Dev_ExploreCareers
+      EnvironmentName: DEV_AppExploreCareers
       AppSharedResourceGroup: $(AppSharedResourceGroup)
       appSharedCosmosDBName: $(appSharedCosmosDBName)
       cosmosDatabaseName: $(cosmosDatabaseName)
@@ -162,7 +162,7 @@ stages:
       DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
       PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
       ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
-      EnvironmentName: SIT_ExploreCareers
+      EnvironmentName: SIT_AppExploreCareers
       AppSharedResourceGroup: $(AppSharedResourceGroup)
       appSharedCosmosDBName: $(appSharedCosmosDBName)
       cosmosDatabaseName: $(cosmosDatabaseName)
@@ -206,7 +206,7 @@ stages:
       DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
       PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
       ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
-      EnvironmentName: PP_ExploreCareers
+      EnvironmentName: PP_AppExploreCareers
       AppSharedResourceGroup: $(AppSharedResourceGroup)
       appSharedCosmosDBName: $(appSharedCosmosDBName)
       cosmosDatabaseName: $(cosmosDatabaseName)
@@ -250,7 +250,7 @@ stages:
       DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
       PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
       ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
-      EnvironmentName: PRD_ExploreCareers
+      EnvironmentName: PRD_AppExploreCareers
       AppSharedResourceGroup: $(AppSharedResourceGroup)
       appSharedCosmosDBName: $(appSharedCosmosDBName)
       cosmosDatabaseName: $(cosmosDatabaseName)
