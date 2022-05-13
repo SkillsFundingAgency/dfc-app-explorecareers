@@ -12594,6 +12594,727 @@ this.TCA22_CompareJobProfileSearchResultCountsInDifferentEnvironments("971", "To
 #line hidden
         }
         
+        public virtual void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage(string no_, string jobProfile, string jobCategory, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "DataSource:../Data/JobProfiles.xlsx"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("no.", no_);
+            argumentsOfScenario.Add("Job profile", jobProfile);
+            argumentsOfScenario.Add("Job category", jobCategory);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA23 - All profiles can be searched & accessed via EC home page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 1360
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 1361
+ testRunner.Given("I navigate to the \"Explore careers\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 1362
+ testRunner.And(string.Format("I enter the search term {0} in the search field", jobProfile), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 1363
+ testRunner.And("I click the search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 1364
+ testRunner.When("I click the job profile search term on the resultant page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 1365
+ testRunner.Then("that job profiles main page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 3")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 3")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_3()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("3", " Assistant immigration officer                                 ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 6")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 6")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_6()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("6", " Bilingual secretary                                           ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 11")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 11")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_11()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("11", " Civil Service administrative officer                          ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 12")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 12")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_12()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("12", " Civil Service executive officer                               ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 29")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 29")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_29()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("29", " Interpreter                                                   ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 43")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 43")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_43()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("43", " Registrar of births, deaths, marriages and civil partnerships ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 86")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 86")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_86()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("86", " Local government administrative assistant                     ", " Animal care                       ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 131")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 131")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_131()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("131", " Osteopath                                                     ", " Beauty and wellbeing              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 135")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 135")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_135()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("135", " Tattooist and body piercer                                    ", " Beauty and wellbeing              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 148")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 148")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_148()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("148", " Corporate responsibility and sustainability practitioner      ", " Business and finance              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 154")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 154")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_154()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("154", " Financial services customer adviser                           ", " Business and finance              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 163")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 163")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_163()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("163", " Local government revenues officer                             ", " Business and finance              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 179")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 179")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_179()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("179", " 3D printing technician                                        ", " Computing, technology and digital ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 192")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 192")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_192()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("192", " E-learning developer                                          ", " Computing, technology and digital ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 218")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 218")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_218()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("218", " User experience (UX) designer                                 ", " Computing, technology and digital ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 283")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 283")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_283()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("283", " Refrigeration and air-conditioning installer                  ", " Construction and trades           ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 324")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 324")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_324()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("324", " Ceramics designer-maker                                       ", " Creative and media                ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 332")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 332")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_332()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("332", " DJ                                                            ", " Creative and media                ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 410")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 410")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_410()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("410", " TV or film assistant production co-ordinator                  ", " Creative and media                ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 538")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 538")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_538()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("538", " Motor mechanic                                                ", " Engineering and maintenance       ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 582")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 582")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_582()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("582", " Corporate responsibility and sustainability practitioner      ", " Environment and land              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 640")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 640")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_640()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("640", " Children\'s nurse                                              ", " Healthcare                        ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 771")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 771")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_771()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("771", " Barristers\' clerk                                             ", " Law and legal                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 783")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 783")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_783()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("783", " Immigration adviser (non-government)                          ", " Law and legal                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 831")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 831")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_831()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("831", " Production manager (manufacturing)                            ", " Managerial                        ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 891")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 891")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_891()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("891", " Data analyst-statistician                                     ", " Science and research              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 956")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 956")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_956()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("956", " Special educational needs (SEN) teaching assistant            ", " Teaching and education            ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 965")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 965")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_965()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("965", " Fishing vessel skipper                                        ", " Transport                         ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA23 - All profiles can be searched & accessed via EC home page: 968")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA23 - All profiles can be searched & accessed via EC home page: 968")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_968()
+        {
+#line 1360
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECHomePage("968", " Train conductor                                               ", " Transport                         ", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults(string no_, string jobProfile, string jobCategory, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "DataSource:../Data/JobProfiles.xlsx"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("no.", no_);
+            argumentsOfScenario.Add("Job profile", jobProfile);
+            argumentsOfScenario.Add("Job category", jobCategory);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("TCA24 - All profiles can be searched & accessed via EC search results", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 1368
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 1369
+ testRunner.Given("I am at the \"Search results\" page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 1370
+ testRunner.And(string.Format("I search for the term {0} of the {1} Job category", jobProfile, jobCategory), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 1371
+ testRunner.When("I click the job profile search term on the resultant page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 1372
+ testRunner.Then("that job profiles main page is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 3")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 3")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_3()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("3", " Assistant immigration officer                                 ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 6")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 6")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_6()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("6", " Bilingual secretary                                           ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 11")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 11")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_11()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("11", " Civil Service administrative officer                          ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 12")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 12")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_12()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("12", " Civil Service executive officer                               ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 29")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 29")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_29()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("29", " Interpreter                                                   ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 43")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 43")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_43()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("43", " Registrar of births, deaths, marriages and civil partnerships ", " Administrator                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 86")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 86")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_86()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("86", " Local government administrative assistant                     ", " Animal care                       ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 131")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 131")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_131()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("131", " Osteopath                                                     ", " Beauty and wellbeing              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 135")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 135")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_135()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("135", " Tattooist and body piercer                                    ", " Beauty and wellbeing              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 148")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 148")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_148()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("148", " Corporate responsibility and sustainability practitioner      ", " Business and finance              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 154")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 154")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_154()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("154", " Financial services customer adviser                           ", " Business and finance              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 163")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 163")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_163()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("163", " Local government revenues officer                             ", " Business and finance              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 179")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 179")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_179()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("179", " 3D printing technician                                        ", " Computing, technology and digital ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 192")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 192")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_192()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("192", " E-learning developer                                          ", " Computing, technology and digital ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 218")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 218")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_218()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("218", " User experience (UX) designer                                 ", " Computing, technology and digital ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 283")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 283")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_283()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("283", " Refrigeration and air-conditioning installer                  ", " Construction and trades           ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 324")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 324")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_324()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("324", " Ceramics designer-maker                                       ", " Creative and media                ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 332")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 332")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_332()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("332", " DJ                                                            ", " Creative and media                ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 410")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 410")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_410()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("410", " TV or film assistant production co-ordinator                  ", " Creative and media                ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 538")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 538")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_538()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("538", " Motor mechanic                                                ", " Engineering and maintenance       ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 582")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 582")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_582()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("582", " Corporate responsibility and sustainability practitioner      ", " Environment and land              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 640")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 640")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_640()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("640", " Children\'s nurse                                              ", " Healthcare                        ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 771")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 771")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_771()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("771", " Barristers\' clerk                                             ", " Law and legal                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 783")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 783")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_783()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("783", " Immigration adviser (non-government)                          ", " Law and legal                     ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 831")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 831")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_831()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("831", " Production manager (manufacturing)                            ", " Managerial                        ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 891")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 891")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_891()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("891", " Data analyst-statistician                                     ", " Science and research              ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 956")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 956")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_956()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("956", " Special educational needs (SEN) teaching assistant            ", " Teaching and education            ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 965")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 965")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_965()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("965", " Fishing vessel skipper                                        ", " Transport                         ", ((string[])(null)));
+#line hidden
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="TCA24 - All profiles can be searched & accessed via EC search results: 968")]
+        [Xunit.TraitAttribute("FeatureTitle", "ExploreCareersCUI")]
+        [Xunit.TraitAttribute("Description", "TCA24 - All profiles can be searched & accessed via EC search results: 968")]
+        [Xunit.TraitAttribute("Category", "DataSource:../Data/JobProfiles.xlsx")]
+        public void TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_968()
+        {
+#line 1368
+this.TCA24_AllProfilesCanBeSearchedAccessedViaECSearchResults("968", " Train conductor                                               ", " Transport                         ", ((string[])(null)));
+#line hidden
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

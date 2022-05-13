@@ -1355,3 +1355,18 @@ Examples:
 	| 969 | Train driver                                                  | Transport                         |
 	| 970 | Tram driver                                                   | Transport                         |
 	| 971 | Tourist guide                                                 | Travel and tourism                |
+
+@DataSource:../Data/JobProfiles.xlsx
+Scenario: TCA23 - All profiles can be searched & accessed via EC home page
+	Given I navigate to the "Explore careers" page
+	And I enter the search term <Job profile> in the search field
+	And I click the search button
+	When I click the job profile search term on the resultant page
+	Then that job profiles main page is displayed
+
+@DataSource:../Data/JobProfiles.xlsx
+Scenario: TCA24 - All profiles can be searched & accessed via EC search results
+	Given I am at the "Search results" page
+	And I search for the term <Job profile> of the <Job category> Job category
+	When I click the job profile search term on the resultant page
+	Then that job profiles main page is displayed

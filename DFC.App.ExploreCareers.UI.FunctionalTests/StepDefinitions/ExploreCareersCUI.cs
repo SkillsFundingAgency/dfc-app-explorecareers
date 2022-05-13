@@ -29,7 +29,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         private string webPage;
         private bool jobCategoryPagePaginated;
         private bool listEqual;
-        //
         private string theEnvironment;
         private string searchParameter;
         private string theJobCategory;
@@ -63,6 +62,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             Assert.AreEqual(page, jobCategoriesPage.GetHeadingText(), "This is not the " + page + "page.");
         }
 
+        [Given(@"I navigate to the ""(.*)"" page")]
         [Given(@"I navigate to the web page ""(.*)""")]
         [Given(@"I navigate to the (.*) page")]
         public void GivenINavigateToThePage(string page)
@@ -142,6 +142,13 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Given(@"I enter the search term (.*) in the search field")]
         public void GivenIEnterTheSearchTermNurInTheSearchField(string searchTerm)
         {
+            if (searchTerm == null)
+            {
+                throw new ArgumentNullException(nameof(searchTerm));
+            }
+
+            searchParameter = searchTerm;
+
             switch (webPage)
             {
                 case "Explore careers":
@@ -531,9 +538,26 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Given(@"I search for the term (.*) of the (.*) Job category")]
         public void GivenISearchForTheTermOfTheJobCategory(string searchTerm, string jobCategory)
         {
+            if (searchTerm == null)
+            {
+                throw new ArgumentNullException(nameof(searchTerm));
+            }
+
             theJobCategory = jobCategory;
             searchParameter = searchTerm;
-            searchResultsPage.SearchProfile(searchTerm);
+            searchResultsPage.SearchProfile(searchTerm.Trim());
+        }
+
+        [When(@"I click the job profile search term on the resultant page")]
+        public void WhenIClickTheJobProfileSearchTermOnTheResultantPage()
+        {
+            searchResultsPage.ClickFirstSearchResult();
+        }
+
+        [Then(@"that job profiles main page is displayed")]
+        public void ThenThatJobProfilesMainPageIsDisplayed()
+        {
+            Assert.AreEqual(searchParameter.Trim(), jobProfilesPage.GetJobProfileHeading(), "The header displayed isn't for the " + theJobCategory + "profile.");
         }
 
         [Given(@"I note the number of search results")]
@@ -560,7 +584,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         {
             string path = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Result" + "\\";
             string file = "jp_counts_log.txt";
-            string textToWrite = theJobCategory + " category: count of '" + searchParameter + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from " + ExploreCareersPage.Environment + "'s, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + ".");
+            string textToWrite = theJobCategory.Trim() + " category: count of '" + searchParameter.Trim() + "' in " + theEnvironment + ", of " + searchCount[1] + " differs from " + ExploreCareersPage.Environment + "'s, of " + searchCount[0] + " by " + (searchCount[1] - searchCount[0] + ".");
 
             if (searchCount[1] != searchCount[0])
             {

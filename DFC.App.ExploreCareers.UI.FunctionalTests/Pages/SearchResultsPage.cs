@@ -34,6 +34,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         private IWebElement Footer => scenarioContext.GetWebDriver().FindElement(By.ClassName("govuk-footer"));
 
+        private IWebElement firstSearchResult => scenarioContext.GetWebDriver().FindElement(By.CssSelector(".results-list > li:nth-of-type(1) > h3 a:nth-of-type(1)"));
+
         public void SelectFromAutosuggest(string autosuggested)
         {
             SearchField.Click();
@@ -175,13 +177,18 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void SearchProfile(string searchTerm)
         {
-            SearchField.SendKeys(searchTerm);
+            SearchField.SendKeys(searchTerm.Trim());
             SearchButton.Click();
         }
 
         public bool CompareCounts(int countInEnvironment, int countInProduction)
         {
             return countInEnvironment == countInProduction;
+        }
+
+        public void ClickFirstSearchResult()
+        {
+            firstSearchResult.Click();
         }
     }
 }
