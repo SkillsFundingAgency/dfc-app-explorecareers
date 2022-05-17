@@ -1,5 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using Newtonsoft.Json;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -20,6 +23,12 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Support
         {
             IJavaScriptExecutor jS = (IJavaScriptExecutor)driver;
             jS.ExecuteScript("arguments[0].click();", locator);
+        }
+
+        public static void WaitVisible(IWebDriver driver, By elementLocator)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(elementLocator));
         }
 
         public static void WriteToFile(string path, string file, string textToWrite)

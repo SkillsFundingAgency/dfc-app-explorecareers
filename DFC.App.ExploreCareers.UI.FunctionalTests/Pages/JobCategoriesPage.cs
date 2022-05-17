@@ -1,9 +1,12 @@
-﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
+﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Data;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using DFC.TestAutomation.UI.Extension;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
@@ -56,6 +59,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public IList<IWebElement> GetJobProfiles()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             IList<IWebElement> jobProfiles = scenarioContext.GetWebDriver().FindElements(By.CssSelector(".dfc-code-search-jpTitle.govuk-link"));
 
             return jobProfiles;
@@ -178,6 +182,21 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             bool listEqual = listA.Count == listB.Count && listA.Intersect(listB).Count() == listB.Count;
             JobProfileDiffs = listA.Except(listB).ToList();
             return listEqual;
+        }
+
+        public object GetJsonData(string dataFile)
+        {
+            var jsonText = File.ReadAllText(dataFile);
+            var jsonData = JsonConvert.DeserializeObject<IList<AllJobProfiles>>(jsonText);
+            return jsonData;
+        }
+
+        public bool ContainsJobProfiles(object jsonData)
+        {
+            var data = (IList<AllJobProfiles>)jsonData;
+            string[] migratedJobProfiles = data.Select(i => i.JobProfile).ToArray();
+
+            return GetJobProfilesIEnum().All(d => migratedJobProfiles.Contains(d));
         }
     }
 }

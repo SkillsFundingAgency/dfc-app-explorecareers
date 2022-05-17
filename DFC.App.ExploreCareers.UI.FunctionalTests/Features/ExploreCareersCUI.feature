@@ -372,8 +372,56 @@ Examples:
 	| Teaching and education            |
 	| Transport                         |
 	| Travel and tourism                |
+
+@DataSource:../Data/JobProfiles.xlsx
+Scenario: TCA22 - All profiles can be searched & accessed via EC home page
+	Given I navigate to the "Explore careers" page
+	And I enter the search term <Job profile> in the search field
+	And I click the search button
+	When I click the job profile search result on the resultant page
+	Then that job profiles main page is displayed
+
+@DataSource:../Data/JobProfiles.xlsx
+Scenario: TCA23 - All profiles can be searched & accessed via EC search results
+	Given I am at the "Search results" page
+	And I search for the term <Job profile> of the <Job category> Job category
+	When I click the job profile search result on the resultant page
+	Then that job profiles main page is displayed
+
+Scenario Outline: TCA24 - Migrated job profiles present in job categories page
+	Given I am at the "Explore careers" page
+	When I click on the <Job category> link
+	Then the job profiles shown under the Job category are present in the "allJobProfiles" list of migrated job profiles
+Examples:
+	| Job category                      |
+	| Administration                    |
+	| Animal care                       |
+	| Beauty and wellbeing              |
+	| Business and finance              |
+	| Computing, technology and digital |
+	| Construction and trades           |
+	| Creative and media                |
+	| Delivery and storage              |
+	| Emergency and uniform services    |
+	| Engineering and maintenance       |
+	| Environment and land              |
+	| Government services               |
+	| Healthcare                        |
+	| Home services                     |
+	| Hospitality and food              |
+	| Law and legal                     |
+	| Managerial                        |
+	| Manufacturing                     |
+	| Retail and sales                  |
+	| Science and research              |
+	| Social care                       |
+	| Sports and leisure                |
+	| Teaching and education            |
+	| Transport                         |
+	| Travel and tourism                |
+
 @ignore
-Scenario Outline: TCA22 - Compare Job profile search result counts in different environments
+Scenario Outline: TCA25 - Compare Job profile search result counts in different environments
 	Given I am at the "Search results" page
 	And I search for the term <Job profile> of the <Job category> Job category
 	And I note the number of search results
@@ -1355,18 +1403,3 @@ Examples:
 	| 969 | Train driver                                                  | Transport                         |
 	| 970 | Tram driver                                                   | Transport                         |
 	| 971 | Tourist guide                                                 | Travel and tourism                |
-
-@DataSource:../Data/JobProfiles.xlsx
-Scenario: TCA23 - All profiles can be searched & accessed via EC home page
-	Given I navigate to the "Explore careers" page
-	And I enter the search term <Job profile> in the search field
-	And I click the search button
-	When I click the job profile search term on the resultant page
-	Then that job profiles main page is displayed
-
-@DataSource:../Data/JobProfiles.xlsx
-Scenario: TCA24 - All profiles can be searched & accessed via EC search results
-	Given I am at the "Search results" page
-	And I search for the term <Job profile> of the <Job category> Job category
-	When I click the job profile search term on the resultant page
-	Then that job profiles main page is displayed

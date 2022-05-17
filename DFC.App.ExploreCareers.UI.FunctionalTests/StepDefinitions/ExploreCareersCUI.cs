@@ -1,4 +1,5 @@
-﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Pages;
+﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Data;
+using DFC.App.ExploreCareers.UI.FunctionalTests.Pages;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support.Poco;
 using NUnit.Framework;
@@ -33,6 +34,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         private string searchParameter;
         private string theJobCategory;
         private List<int> searchCount = new List<int>();
+        IList<AllJobProfiles> allJobProfiles;
+        private string filePath = Directory.GetParent(@"../../../").FullName + Path.DirectorySeparatorChar + "Data" + "\\";
 
         public ExploreCareersCUI(ScenarioContext scenarioContext)
         {
@@ -53,6 +56,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [When(@"I click on the (.*) link")]
         public void WhenIClickOnTheAdministrationLink(string link)
         {
+            theJobCategory = link;
             exploreCareersPage.ClickLinkJobCategory(link);
         }
 
@@ -548,8 +552,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             searchResultsPage.SearchProfile(searchTerm.Trim());
         }
 
-        [When(@"I click the job profile search term on the resultant page")]
-        public void WhenIClickTheJobProfileSearchTermOnTheResultantPage()
+        [When(@"I click the job profile search result on the resultant page")]
+        public void WhenIClickTheJobProfileSearchResultOnTheResultantPage()
         {
             searchResultsPage.ClickFirstSearchResult();
         }
@@ -592,6 +596,13 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             }
 
             Assert.AreEqual(searchCount[1], searchCount[0], textToWrite);
+        }
+
+        [Then(@"the job profiles shown under the Job category are present in the ""(.*)"" list of migrated job profiles")]
+        public void ThenTheJobProfilesShownUnderTheJobCategoryArePresentInTheListOfMigratedJobProfiles(string jobProfileFile)
+        {
+            allJobProfiles = (IList<AllJobProfiles>)jobCategoriesPage.GetJsonData(filePath + jobProfileFile + ".json");
+            Assert.True(jobCategoriesPage.ContainsJobProfiles(allJobProfiles), "'" + theJobCategory + "' job profile(s) do not match migrated content.");
         }
     }
 }
