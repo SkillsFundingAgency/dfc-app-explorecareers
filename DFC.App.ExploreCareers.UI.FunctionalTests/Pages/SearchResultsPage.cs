@@ -44,21 +44,25 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public string GetSelectedSearchTerm()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return SearchField.GetAttribute("value");
         }
 
         public void ClickSearchButton()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             SearchButton.Click();
         }
 
         public string GetZeroResultsMsg()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return ResultsCount.Text.Trim();
         }
 
         public string GetDidYouMean()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return TextDidYouMean.Text.Trim();
         }
 
@@ -69,11 +73,13 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public string GetUrl()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return scenarioContext.GetWebDriver().Url;
         }
 
         public int GetNumberOfSearchResults()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             if (ResultsCount.Text.Trim() == "1 result found")
             {
                 return int.Parse(ResultsCount.Text.Replace("result found", string.Empty).Trim(), new CultureInfo("en-au"));
@@ -95,11 +101,13 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void Paginator()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             decimal numberOfSeachResultPages = NumberOfSeachResultPages();
 
             while (numberOfSeachResultPages > 0)
             {
                 NextPaginator.Click();
+                Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
                 numberOfSeachResultPages--;
             }
         }
@@ -109,11 +117,14 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             Paginator();
 
             Devices.ScrollIntoView(scenarioContext.GetWebDriver(), Footer);
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
 
             try
             {
-                scenarioContext.GetWebDriver().FindElement(By.ClassName("dfc-code-search-nextlink"));
-                return true;
+                return scenarioContext.GetWebDriver().FindElement(By.ClassName("dfc-code-search-nextlink")).Displayed;
+                //Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
+                //Devices.JavascriptClick(scenarioContext.GetWebDriver(), By.ClassName("dfc-code-search-nextlink"));
+                //return true;
             }
             catch (NoSuchElementException)
             {
@@ -123,16 +134,19 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public string GetSearchResultsForText()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return SearchResultsForText.Text.Trim();
         }
 
         public string GetPlaceholderText()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return SearchField.GetAttribute("placeholder");
         }
 
         public string GetNumberOfProfilesListed()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return SearchField.GetAttribute("placeholder");
         }
 
@@ -159,16 +173,19 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public int GetProfilesList()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return scenarioContext.GetWebDriver().FindElements(By.ClassName("dfc-code-search-jpTitle")).Count;
         }
 
         public void ClickDidYouMeanLink()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             scenarioContext.GetWebDriver().FindElement(By.CssSelector(".search-dym > span a")).Click();
         }
 
         public bool UrlContainsSuggestion(string suggestedProfession)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             string url = scenarioContext.GetWebDriver().Url;
             var result = url.Substring(url.LastIndexOf('=') + 1);
 
@@ -177,17 +194,20 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void SearchProfile(string searchTerm)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             SearchField.SendKeys(searchTerm.Trim());
             SearchButton.Click();
         }
 
         public bool CompareCounts(int countInEnvironment, int countInProduction)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return countInEnvironment == countInProduction;
         }
 
         public void ClickFirstSearchResult()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             firstSearchResult.Click();
         }
     }

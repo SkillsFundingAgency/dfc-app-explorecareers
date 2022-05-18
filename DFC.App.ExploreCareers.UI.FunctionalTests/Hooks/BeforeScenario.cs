@@ -110,7 +110,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
 
             if (scenarioContext.TestError != null)
             {
-                screenShot.TakeScreenShot(scenarioContext.GetWebDriver(), filePath);
+                //screenShot.TakeScreenShot(scenarioContext.GetWebDriver(), filePath);
 
                 scenario.CreateNode<And>(scenarioContext.StepContext.StepInfo.Text).Fail(scenarioContext.TestError.Message);
             }
@@ -179,6 +179,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks
             webDriver.Manage().Window.Maximize();
 
             //webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(settingsLibrary.TestExecutionSettings.TimeoutSettings.PageNavigation);
+            webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
             webDriver.SwitchTo().Window(webDriver.CurrentWindowHandle);
             this.Context.SetWebDriver(webDriver);
         }

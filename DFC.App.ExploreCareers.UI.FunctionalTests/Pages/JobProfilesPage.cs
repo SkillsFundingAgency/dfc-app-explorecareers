@@ -30,22 +30,26 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void SelectFromAutosuggest(string autosuggested)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             SearchField.Click();
             scenarioContext.GetWebDriver().FindElement(By.XPath("//div[@class='job-profile-search-content']//following-sibling::ul/li/div[contains(text(), '" + autosuggested + "')]")).Click();
         }
 
         public string GetSelectedSearchTerm()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return SearchField.GetAttribute("value");
         }
 
         public void ClickEnterInSearchField()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             SearchField.SendKeys(Keys.Enter);
         }
 
         public string GetJobProfileHeading()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             var jobProfileHeadingText = JobProlileHeading.Text.Trim();
 
             return jobProfileHeadingText;

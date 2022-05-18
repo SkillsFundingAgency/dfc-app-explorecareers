@@ -39,11 +39,13 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public string GetHeadingText()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return Heading.Text;
         }
 
         public bool GetJobCategorySideLinks(string jobCategory)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             IList<IWebElement> allLinks = scenarioContext.GetWebDriver().FindElements(By.CssSelector(".govuk-list.font-xsmall > li > a"));
 
             for (int i = 0; i < allLinks.Count; i++)
@@ -76,6 +78,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void ClickLinkInPosition(string linkPosition)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
+
             switch (linkPosition)
             {
                 case "first":
@@ -103,10 +107,15 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public bool IsPagePaginated()
         {
+            Devices.ScrollIntoView(scenarioContext.GetWebDriver(), scenarioContext.GetWebDriver().FindElement(By.ClassName("govuk-footer")));
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
+
             try
             {
-                scenarioContext.GetWebDriver().FindElement(By.ClassName("pagination-label"));
-                return true;
+                //scenarioContext.GetWebDriver().FindElement(By.ClassName("pagination-label"));
+                //return true;
+                return scenarioContext.GetWebDriver().FindElement(By.ClassName("pagination-label")).Displayed;
+                //return scenarioContext.GetWebDriver().FindElements(By.ClassName("pagination-label")).Displayed;
             }
             catch (NoSuchElementException)
             {
@@ -114,13 +123,25 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             }
         }
 
+        public bool IsPagePaginatedOld()
+        {
+            Devices.ScrollIntoView(scenarioContext.GetWebDriver(), scenarioContext.GetWebDriver().FindElement(By.ClassName("govuk-footer")));
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
+
+            return scenarioContext.GetWebDriver().FindElements(By.ClassName("pagination-label")).Count > 0;
+
+        }
+
         public void ClickExploreCareersBreadcrumb()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             ExploreCareersBreadcrumb.Click();
         }
 
         public string GetBreadcrumbVerifier(string expectedBreadCrumb)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
+
             string jobCategory = string.Empty;
             string[] expectedBreadcrumbSingles = expectedBreadCrumb.Split(">");
             string[] actualBreadcrumbSingles = { BreadcrumbOne.Text, BreadcrumbTwo.Text, BreadcrumbThree.Text };
@@ -131,10 +152,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
                 {
                     jobCategory = expectedBreadcrumbSingles[2].Trim();
                 }
-                else
-                {
-                    jobCategory = string.Empty;
-                }
             }
 
             return jobCategory;
@@ -142,6 +159,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public string ClickJobProfiles(string jobCategory)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             scenarioContext.GetWebDriver().FindElement(By.Id("accept-all-cookies")).Click();
             string selector = ".job-categories_item h2 a";
             IList<IWebElement> jobProfileLinks = scenarioContext.GetWebDriver().FindElements(By.CssSelector(selector));
@@ -189,14 +207,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             var jsonText = File.ReadAllText(dataFile);
             var jsonData = JsonConvert.DeserializeObject<IList<AllJobProfiles>>(jsonText);
             return jsonData;
-        }
-
-        public bool ContainsJobProfiles(object jsonData)
-        {
-            var data = (IList<AllJobProfiles>)jsonData;
-            string[] migratedJobProfiles = data.Select(i => i.JobProfile).ToArray();
-
-            return GetJobProfilesIEnum().All(d => migratedJobProfiles.Contains(d));
         }
     }
 }

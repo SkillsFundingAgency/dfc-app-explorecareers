@@ -47,19 +47,24 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             {
                 case "Explore careers":
                     this.scenarioContext.GetWebDriver().Url = Endpoint + "explore-careers";
+                    Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
                     break;
                 case "Job profiles":
                     this.scenarioContext.GetWebDriver().Url = Endpoint + "job-profiles/admin-assistant";
+                    Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
                     Devices.ScrollIntoView(this.scenarioContext.GetWebDriver(), scenarioContext.GetWebDriver().FindElement(By.Id("search-main")));
                     break;
                 case "Search results":
                     this.scenarioContext.GetWebDriver().Url = Endpoint + "search-results";
+                    Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
                     break;
                 case "Job categories":
                     this.scenarioContext.GetWebDriver().Url = Endpoint + "job-categories/" + ProcessResourceTwo(resourceTwo);
+                    Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
                     break;
                 case "Production":
                     this.scenarioContext.GetWebDriver().Url = "https://nationalcareers.service.gov.uk/" + ProcessResourceTwo(resourceTwo);
+                    Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
                     break;
             }
 
@@ -167,33 +172,39 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public void EnterSearchTerm(string searchTerm)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             ClearSearchField();
             SearchField.SendKeys(searchTerm);
         }
 
         public void SelectFromAutosuggest(string autosuggested)
         {
-           SearchField.Click();
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
+            SearchField.Click();
            scenarioContext.GetWebDriver().FindElement(By.XPath("//div[@class='header-search-content']//following-sibling::ul/li/div[contains(text(), '" + autosuggested + "')]")).Click();
         }
 
         public string GetSelectedSearchTerm()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return SearchField.GetAttribute("value");
         }
 
         public void ClickSearchButton()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             SearchButton.Click();
         }
 
         public void ClearSearchField()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             SearchField.Clear();
         }
 
         public string GetUrl()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return scenarioContext.GetWebDriver().Url;
         }
 
@@ -205,7 +216,8 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public IList<IWebElement> GetJobCategoryList()
         {
-            IList<IWebElement> allList = scenarioContext.GetWebDriver().FindElements(By.CssSelector(".govuk-list.homepage-jobcategories > li > a"));
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
+            IList<IWebElement> allList = scenarioContext.GetWebDriver().FindElements(By.CssSelector(".govuk-list > li > a"));
 
             return allList;
         }
@@ -246,6 +258,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public IList<IWebElement> GetList(string listToExamine)
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             IList<IWebElement> theList = null;
 
             switch (listToExamine)
@@ -275,6 +288,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
 
         public string GetPageHeading()
         {
+            Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
             return PageHeading.Text;
         }
 

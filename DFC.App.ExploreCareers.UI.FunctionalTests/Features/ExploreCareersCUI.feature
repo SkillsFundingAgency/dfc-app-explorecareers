@@ -24,16 +24,16 @@ Scenario Outline: TCA02 - Search field autosuggest field population
 	Then I am able to select <auto suggest option> from the resultant auto suggest
 	And <auto suggest option> is populated in the search field
 Examples:
-	| page            | search term | auto suggest option |
-	| Explore careers | nur         | Nursing associate   |
-	| Explore careers | pi          | Aircraft pilot      |
-	| Explore careers | la          | Lawyer              |
-	| Job profiles    | nur         | Nursing associate   |
-	| Job profiles    | pi          | Aircraft pilot      |
-	| Job profiles    | la          | Lawyer              |
-	| Search results  | nur         | Nursing associate   |
-	| Search results  | pi          | Aircraft pilot      |
-	| Search results  | la          | Lawyer              |
+	| page            | search term | auto suggest option                              |
+	| Explore careers | nur         | Nursing associate                                |
+	| Explore careers | pi          | Aircraft pilot, co-pilot, first officer, captain |
+	| Explore careers | la          | Farm labourer                                    |
+	| Job profiles    | nur         | Nursing associate                                |
+	| Job profiles    | pi          | Aircraft pilot, co-pilot, first officer, captain |
+	| Job profiles    | la          | Farm labourer                                    |
+	| Search results  | nur         | Nursing associate                                |
+	| Search results  | pi          | Aircraft pilot, co-pilot, first officer, captain |
+	| Search results  | la          | Farm labourer                                    |
 
 Scenario Outline: TCA03 - Search term not found
 	Given I navigate to the <page> page
@@ -42,8 +42,8 @@ Scenario Outline: TCA03 - Search term not found
 	Then I get the message "0 results found - try again using a different job title" in the search results page
 Examples:
 	| page            | search term | 
-	| Explore careers | aaa         | 
-	| Job profiles    | sss         | 
+	| Explore careers | zzz         | 
+	| Job profiles    | zzz         | 
 	| Search results  | zzz         | 
 
 Scenario Outline: TCA04 - Auto suggesting search terms on search term misspelling
@@ -303,6 +303,7 @@ Examples:
 	| Teaching and education            | Home > Explore Careers > Teaching and education            |
 	| Transport                         | Home > Explore Careers > Transport                         |
 	| Travel and tourism                | Home > Explore Careers > Travel and tourism                |
+
 @ignore
 Scenario Outline: TCA20 - Job profiles links and breadcrumb verified on being clicked
 	Given I am at the "Job categories" web page for <Job category>
@@ -337,6 +338,7 @@ Examples:
 	| Transport                         |
 	| Travel and tourism                |
 
+@ignore
 Scenario Outline: TCA21 - Verify Job profiles in each Job category with other environments
 	Given I am at the "Job categories" web page for <Job category>
 	And I collect all the Job profile titles displayed thereunder
@@ -388,40 +390,8 @@ Scenario: TCA23 - All profiles can be searched & accessed via EC search results
 	When I click the job profile search result on the resultant page
 	Then that job profiles main page is displayed
 
-Scenario Outline: TCA24 - Migrated job profiles present in job categories page
-	Given I am at the "Explore careers" page
-	When I click on the <Job category> link
-	Then the job profiles shown under the Job category are present in the "allJobProfiles" list of migrated job profiles
-Examples:
-	| Job category                      |
-	| Administration                    |
-	| Animal care                       |
-	| Beauty and wellbeing              |
-	| Business and finance              |
-	| Computing, technology and digital |
-	| Construction and trades           |
-	| Creative and media                |
-	| Delivery and storage              |
-	| Emergency and uniform services    |
-	| Engineering and maintenance       |
-	| Environment and land              |
-	| Government services               |
-	| Healthcare                        |
-	| Home services                     |
-	| Hospitality and food              |
-	| Law and legal                     |
-	| Managerial                        |
-	| Manufacturing                     |
-	| Retail and sales                  |
-	| Science and research              |
-	| Social care                       |
-	| Sports and leisure                |
-	| Teaching and education            |
-	| Transport                         |
-	| Travel and tourism                |
-
 @ignore
-Scenario Outline: TCA25 - Compare Job profile search result counts in different environments
+Scenario Outline: TCA24 - Compare Job profile search result counts in different environments
 	Given I am at the "Search results" page
 	And I search for the term <Job profile> of the <Job category> Job category
 	And I note the number of search results

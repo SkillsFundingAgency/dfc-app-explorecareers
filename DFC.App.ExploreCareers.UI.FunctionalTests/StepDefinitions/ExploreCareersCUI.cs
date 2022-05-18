@@ -29,6 +29,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         private IList<string> jobProfilesProd;
         private string webPage;
         private bool jobCategoryPagePaginated;
+        //private IList<IWebElement> jobCategoryPagePaginated;
         private bool listEqual;
         private string theEnvironment;
         private string searchParameter;
@@ -412,6 +413,7 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
         [Then(@"the page contains no pagination")]
         public void ThenThePageContainsNoPagination()
         {
+            //Assert.IsFalse(jobCategoryPagePaginated, "The job categories > Administration page is, unexpectedly, paginated");
             Assert.IsFalse(jobCategoryPagePaginated, "The job categories > Administration page is, unexpectedly, paginated");
         }
 
@@ -596,13 +598,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions
             }
 
             Assert.AreEqual(searchCount[1], searchCount[0], textToWrite);
-        }
-
-        [Then(@"the job profiles shown under the Job category are present in the ""(.*)"" list of migrated job profiles")]
-        public void ThenTheJobProfilesShownUnderTheJobCategoryArePresentInTheListOfMigratedJobProfiles(string jobProfileFile)
-        {
-            allJobProfiles = (IList<AllJobProfiles>)jobCategoriesPage.GetJsonData(filePath + jobProfileFile + ".json");
-            Assert.True(jobCategoriesPage.ContainsJobProfiles(allJobProfiles), "'" + theJobCategory + "' job profile(s) do not match migrated content.");
         }
     }
 }
