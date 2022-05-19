@@ -1,0 +1,15 @@
+variables:
+- name: ReleaseEnvironmentName
+  value: PRD
+- name: ResourcePrefix
+  value: dfc-prd-app-explorecareers
+- name: aspTier
+  value: Standard
+- name: aspInstances
+  value: 4
+- name: aspSize
+  value: 1
+- name: subscriptionServiceEndpoint
+  value: https://dfc-prd-api-eventgridsubscriptions-fa.$(appServiceDomain)
+- name: loggingLogLevelDefault
+  value: Warning
