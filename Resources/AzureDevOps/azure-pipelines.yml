@@ -115,7 +115,7 @@ stages:
   condition: |
     and(
       eq(dependencies.Build.result,'Succeeded'),
-      containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])
+      eq('${{ containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
     )
   displayName: Deploy to Dev
   variables:
@@ -163,7 +163,7 @@ stages:
   condition: |
     and(
       eq(dependencies.Build.result,'Succeeded'),
-      containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])
+      eq('${{ containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
     )
   displayName: Deploy to SIT
   variables:
@@ -211,7 +211,7 @@ stages:
   condition: |
     and(
       eq(dependencies.Build.result,'Succeeded'),
-      containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch'])
+      eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
     )
   displayName: Deploy to PP
   variables:
@@ -259,7 +259,7 @@ stages:
   condition: |
     and(
       eq(dependencies.PP.result,'Succeeded'),
-      containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch'])
+      eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
     )
   displayName: Deploy to PRD
   variables:
