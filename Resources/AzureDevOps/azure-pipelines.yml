@@ -13,14 +13,13 @@ parameters:
       - refs/heads/NCSLT-*
       - refs/heads/master
       - refs/heads/release/*
-
-parameters:
   - name: higherBranchOptions
     displayName: Source branch options (Release)
     type: object
     default:
       - refs/heads/master
       - refs/heads/release/*
+  
       
 
 resources:
