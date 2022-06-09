@@ -148,7 +148,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToSIT
-  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}
+  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])) }}
   displayName: Deploy to SIT
   variables:
   - group: dfc-shared-all
