@@ -112,7 +112,11 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToDev
-  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])) }}
+  condition: |
+    and(
+      eq(dependencies.Build.result,'Succeeded'),
+      containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])
+    )
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
@@ -156,7 +160,11 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToSIT
-  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])) }}
+  condition: |
+    and(
+      eq(dependencies.Build.result,'Succeeded'),
+      containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])
+    )
   displayName: Deploy to SIT
   variables:
   - group: dfc-shared-all
@@ -200,7 +208,11 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
       
 - stage: DeployToPP
-  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch'])) }}
+  condition: |
+    and(
+      eq(dependencies.Build.result,'Succeeded'),
+      containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch'])
+    )
   displayName: Deploy to PP
   variables:
   - group: dfc-shared-all
@@ -244,7 +256,11 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToPRD
-  condition: ${{ and(eq(dependencies.DeployToPP.result,'Succeeded'), containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch'])) }}
+  condition: |
+    and(
+      eq(dependencies.PP.result,'Succeeded'),
+      containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch'])
+    )
   displayName: Deploy to PRD
   variables:
   - group: dfc-shared-all
