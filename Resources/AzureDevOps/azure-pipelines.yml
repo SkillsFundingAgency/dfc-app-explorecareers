@@ -104,7 +104,7 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToDev
-  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}
+  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch'])) }}
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
