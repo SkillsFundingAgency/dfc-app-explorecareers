@@ -4,6 +4,16 @@ variables:
   BuildConfiguration: 'release'
   ArmTemplateRoot: '$(Build.SourcesDirectory)\Resources\ArmTemplates'
 
+parameters:
+  - name: lowerBranchOptions
+    displayName: Source branch options
+    type: object
+    default:
+      - refs/heads/dev
+      - refs/heads/NCSLT-*
+      - refs/heads/master
+      - refs/heads/release/*
+
 resources:
   repositories:
   - repository: self
@@ -94,7 +104,7 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToDev
-  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/dev'), startsWith(variables['Build.SourceBranch'], 'refs/heads/NCSLT-'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))) }}
+  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
@@ -138,7 +148,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToSIT
-  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/dev'), startsWith(variables['Build.SourceBranch'], 'refs/heads/NCSLT-'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))) }}
+  condition: ${{ and(eq(dependencies.Build.result,'Succeeded'), containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}
   displayName: Deploy to SIT
   variables:
   - group: dfc-shared-all
