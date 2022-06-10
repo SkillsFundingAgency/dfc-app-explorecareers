@@ -4,6 +4,24 @@ variables:
   BuildConfiguration: 'release'
   ArmTemplateRoot: '$(Build.SourcesDirectory)\Resources\ArmTemplates'
 
+parameters:
+  - name: lowerBranchOptions
+    displayName: Source branch options (Dev environments)
+    type: object
+    default:
+      - refs/heads/dev
+      - refs/heads/NCSLT-*
+      - refs/heads/master
+      - refs/heads/release/*
+  - name: higherBranchOptions
+    displayName: Source branch options (Release)
+    type: object
+    default:
+      - refs/heads/master
+      - refs/heads/release/*
+  
+      
+
 resources:
   repositories:
   - repository: self
@@ -94,7 +112,11 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToDev
-  condition: and(eq(dependencies.Build.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/dev'), startsWith(variables['Build.SourceBranch'], 'refs/heads/NCSLT-'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')))
+  condition: |
+    and(
+      eq(dependencies.Build.result,'Succeeded'),
+      eq('${{ containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
+    )
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
@@ -138,7 +160,11 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToSIT
-  condition: and(eq(dependencies.Build.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/dev'), startsWith(variables['Build.SourceBranch'], 'refs/heads/NCSLT-'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')))
+  condition: |
+    and(
+      eq(dependencies.Build.result,'Succeeded'),
+      eq('${{ containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
+    )
   displayName: Deploy to SIT
   variables:
   - group: dfc-shared-all
@@ -182,7 +208,11 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
       
 - stage: DeployToPP
-  condition: and(eq(dependencies.Build.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))
+  condition: |
+    and(
+      eq(dependencies.Build.result,'Succeeded'),
+      eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
+    )
   displayName: Deploy to PP
   variables:
   - group: dfc-shared-all
@@ -226,7 +256,11 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToPRD
-  condition: and(eq(dependencies.DeployToPP.result,'Succeeded'), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/'))
+  condition: |
+    and(
+      eq(dependencies.PP.result,'Succeeded'),
+      eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
+    )
   displayName: Deploy to PRD
   variables:
   - group: dfc-shared-all
