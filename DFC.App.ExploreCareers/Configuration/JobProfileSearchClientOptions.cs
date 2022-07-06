@@ -1,5 +1,8 @@
-﻿namespace DFC.App.ExploreCareers.Configuration
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace DFC.App.ExploreCareers.Configuration
 {
+    [ExcludeFromCodeCoverage]
     public class JobProfileSearchClientOptions
     {
         public string ApiKey { get; set; } = string.Empty;
