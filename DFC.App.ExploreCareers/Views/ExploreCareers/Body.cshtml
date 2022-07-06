@@ -1,0 +1,14 @@
+﻿@model DFC.App.ExploreCareers.ViewModels.ExploreCareers.BodyViewModel
+
+<div class="govuk-width-container">
+    <h3 class="govuk-heading-m">Explore by job category</h3>
+    <ul class="govuk-list homepage-jobcategories">
+        @if (Model?.JobCategories?.Any() is true)
+        {
+            foreach (var category in Model.JobCategories)
+            {
+                <li><a class="govuk-link" href="/job-categories/@category.CanonicalName">@category.Name</a></li>
+            }
+        }
+    </ul>
+</div>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en-gb" class="govuk-template">
+<head>
+    <title>@ViewData["Title"]</title>
+
+    <partial name="_LocalCss" />
+</head>
+<body class="govuk-template__body ">
+    <partial name="_GovUkHeader" />
+    <div class="govuk-width-container">
+        <div class="govuk-phase-banner">
+            <p class="govuk-phase-banner__content">
+                <strong class="govuk-tag govuk-phase-banner__content__tag ">
+                    beta
+                </strong>
+                <span class="govuk-phase-banner__text">Complete a survey to<a target="_blank" class="govuk-link" href="#"> give us feedback </a> about our website.</span>
+            </p>
+        </div>
+    </div>
+
+    <main class="govuk-!-padding-top-0 govuk-!-padding-bottom-0" id="main-content" role="main">
+        <partial name="_ErrorSummary" />
+        @RenderBody()
+    </main>
+
+    <partial name="_GovUkFooter" />
+    <partial name="_LocalJs" />
+</body>
+</html>

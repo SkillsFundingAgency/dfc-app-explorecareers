@@ -1,0 +1,17 @@
+﻿@model DFC.App.ExploreCareers.ViewModels.ExploreCareers.DocumentViewModel
+
+@{
+    Layout = "_LocalLayout";
+
+    if (!string.IsNullOrWhiteSpace(Model.Head?.Title))
+    {
+        ViewData["Title"] = Model.Head.Title;
+    }
+}
+
+<partial name="Breadcrumb" model=@Model.Breadcrumb />
+<partial name="BodyTop" />
+
+<div class="govuk-main-wrapper">
+    <partial name="Body" model=@Model.Body />
+</div>
