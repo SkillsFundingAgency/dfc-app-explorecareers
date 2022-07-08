@@ -250,7 +250,7 @@ this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "nur", "Nurs
         public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant1()
         {
 #line 21
-this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "pi", "Aircraft pilot, co-pilot, first officer, captain", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "pi", "Aircraft pilot", ((string[])(null)));
 #line hidden
         }
         
@@ -260,7 +260,7 @@ this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "pi", "Aircr
         public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant2()
         {
 #line 21
-this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "la", "Farm labourer", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "la", "Landscape architect", ((string[])(null)));
 #line hidden
         }
         
@@ -280,7 +280,7 @@ this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "nur", "Nursing
         public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant4()
         {
 #line 21
-this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "pi", "Aircraft pilot, co-pilot, first officer, captain", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "pi", "Pipe fitter", ((string[])(null)));
 #line hidden
         }
         
@@ -290,7 +290,7 @@ this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "pi", "Aircraft
         public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant5()
         {
 #line 21
-this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "la", "Farm labourer", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Job profiles", "la", "manager of licensed premises", ((string[])(null)));
 #line hidden
         }
         
@@ -310,7 +310,7 @@ this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "nur", "Nursi
         public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant7()
         {
 #line 21
-this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "pi", "Aircraft pilot, co-pilot, first officer, captain", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "pi", "thermal insulation installer", ((string[])(null)));
 #line hidden
         }
         
@@ -320,7 +320,7 @@ this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "pi", "Aircra
         public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant8()
         {
 #line 21
-this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "la", "Farm labourer", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Search results", "la", "Gas networks operative", ((string[])(null)));
 #line hidden
         }
         

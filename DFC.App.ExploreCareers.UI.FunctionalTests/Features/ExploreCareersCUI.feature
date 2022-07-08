@@ -24,16 +24,16 @@ Scenario Outline: TCA02 - Search field autosuggest field population
 	Then I am able to select <auto suggest option> from the resultant auto suggest
 	And <auto suggest option> is populated in the search field
 Examples:
-	| page            | search term | auto suggest option                              |
-	| Explore careers | nur         | Nursing associate                                |
-	| Explore careers | pi          | Aircraft pilot, co-pilot, first officer, captain |
-	| Explore careers | la          | Farm labourer                                    |
-	| Job profiles    | nur         | Nursing associate                                |
-	| Job profiles    | pi          | Aircraft pilot, co-pilot, first officer, captain |
-	| Job profiles    | la          | Farm labourer                                    |
-	| Search results  | nur         | Nursing associate                                |
-	| Search results  | pi          | Aircraft pilot, co-pilot, first officer, captain |
-	| Search results  | la          | Farm labourer                                    |
+	| page            | search term | auto suggest option          |
+	| Explore careers | nur         | Nursing associate            |
+	| Explore careers | pi          | Aircraft pilot               |
+	| Explore careers | la          | Landscape architect          |
+	| Job profiles    | nur         | Nursing associate            |
+	| Job profiles    | pi          | Pipe fitter                  |
+	| Job profiles    | la          | manager of licensed premises |
+	| Search results  | nur         | Nursing associate            |
+	| Search results  | pi          | thermal insulation installer |
+	| Search results  | la          | Gas networks operative       |
 
 Scenario Outline: TCA03 - Search term not found
 	Given I navigate to the <page> page

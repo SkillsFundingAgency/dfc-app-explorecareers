@@ -122,9 +122,6 @@ namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages
             try
             {
                 return scenarioContext.GetWebDriver().FindElement(By.ClassName("dfc-code-search-nextlink")).Displayed;
-                //Devices.WaitVisible(scenarioContext.GetWebDriver(), By.ClassName("govuk-footer"));
-                //Devices.JavascriptClick(scenarioContext.GetWebDriver(), By.ClassName("dfc-code-search-nextlink"));
-                //return true;
             }
             catch (NoSuchElementException)
             {
