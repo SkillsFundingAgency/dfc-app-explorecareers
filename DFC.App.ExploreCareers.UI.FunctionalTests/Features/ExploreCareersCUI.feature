@@ -27,7 +27,7 @@ Examples:
 	| page            | search term | auto suggest option          |
 	| Explore careers | nur         | Nursing associate            |
 	| Explore careers | pi          | Aircraft pilot               |
-	| Explore careers | la          | Landscape architect          |
+	| Explore careers | land        | Landscape architect          |
 	| Job profiles    | nur         | Nursing associate            |
 	| Job profiles    | pi          | Pipe fitter                  |
 	| Job profiles    | la          | manager of licensed premises |

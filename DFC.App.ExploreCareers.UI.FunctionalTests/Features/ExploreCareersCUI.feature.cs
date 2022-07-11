@@ -260,7 +260,7 @@ this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "pi", "Aircr
         public void TCA02_SearchFieldAutosuggestFieldPopulation_Variant2()
         {
 #line 21
-this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "la", "Landscape architect", ((string[])(null)));
+this.TCA02_SearchFieldAutosuggestFieldPopulation("Explore careers", "land", "Landscape architect", ((string[])(null)));
 #line hidden
         }
         
@@ -3130,7 +3130,7 @@ this.TCA22_AllProfilesCanBeSearchedAccessedViaECHomePage("640", " Children\'s nu
         public void TCA22_AllProfilesCanBeSearchedAccessedViaECHomePage_ExternalExamples_771()
         {
 #line 379
-this.TCA22_AllProfilesCanBeSearchedAccessedViaECHomePage("771", " Barristers\' clerk                                             ", " Law and legal                     ", ((string[])(null)));
+this.TCA22_AllProfilesCanBeSearchedAccessedViaECHomePage("771", "Barrister\'s clerk                      ", " Law and legal                     ", ((string[])(null)));
 #line hidden
         }
         
@@ -3489,7 +3489,7 @@ this.TCA23_AllProfilesCanBeSearchedAccessedViaECSearchResults("640", " Children\
         public void TCA23_AllProfilesCanBeSearchedAccessedViaECSearchResults_ExternalExamples_771()
         {
 #line 387
-this.TCA23_AllProfilesCanBeSearchedAccessedViaECSearchResults("771", " Barristers\' clerk                                             ", " Law and legal                     ", ((string[])(null)));
+this.TCA23_AllProfilesCanBeSearchedAccessedViaECSearchResults("771", "Barrister\'s clerk                      ", " Law and legal                     ", ((string[])(null)));
 #line hidden
         }
         
