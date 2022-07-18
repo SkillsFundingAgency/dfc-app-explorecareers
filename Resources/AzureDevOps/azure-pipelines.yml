@@ -256,11 +256,11 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToPRD
-  condition: |
-    and(
-      eq(dependencies.PP.result,'Succeeded'),
-      eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
-    )
+  # condition: |
+  #   and(
+  #     eq(dependencies.PP.result,'Succeeded'),
+  #     eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
+  #   )
   displayName: Deploy to PRD
   variables:
   - group: dfc-shared-all
