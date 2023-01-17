@@ -34,7 +34,7 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             var response = await client.GetAsync(uri);
 
             // Assert
-            response.StatusCode.Should().Be(StatusCodes.Status204NoContent);
+            response.StatusCode.Should().Be((System.Net.HttpStatusCode?)StatusCodes.Status204NoContent);
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             var response = await client.GetAsync(uri);
 
             // Assert
-            response.StatusCode.Should().Be(StatusCodes.Status200OK);
+            response.StatusCode.Should().Be((System.Net.HttpStatusCode?)StatusCodes.Status200OK);
             var result = await response.Content.ReadAsAsync<List<AutoCompleteModel>>();
             result.Should().BeEquivalentTo(expectedResults);
         }
