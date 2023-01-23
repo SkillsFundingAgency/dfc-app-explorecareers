@@ -271,9 +271,3 @@ __pycache__/
 # SpecFlow related exclusions
 *.playlist
 *.feature.cs
-/DFC.App.ExploreCareers/Properties/launchSettings.json
-*.json
-/DFC.App.ExploreCareers/appsettings-template.json
-/DFC.App.ExploreCareers.UnitTests/ServiceTests/AzureSearchServiceTests.cs
-/DFC.App.ExploreCareers.UI.FunctionalTests/Result/jp_differences_log.txt
-/DFC.App.ExploreCareers.UI.FunctionalTests/Result/jp_counts_log.txt
