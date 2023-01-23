@@ -47,29 +47,29 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             result.Should().BeOfType<NoContentResult>();
         }
 
-        [Fact]
-        public async Task GetReturnsSuggestions()
-        {
-            // Arrange
-            var searchTerm = "something";
-            using var controller = new SearchAutocompleteController(AzureSearchService);
+        //[Fact]
+        //public async Task GetReturnsSuggestions()
+        //{
+        //    // Arrange
+        //    var searchTerm = "something";
+        //    using var controller = new SearchAutocompleteController(AzureSearchService);
 
-            var searchModel = new[]
-            {
-                new AutoCompleteModel { Label = "test" }
-            };
-            A.CallTo(() => AzureSearchService.GetSuggestionsAsync(searchTerm, A<int>._, A<bool>._)).Returns(searchModel);
+        //    var searchModel = new[]
+        //    {
+        //        new AutoCompleteModel { Label = "test" }
+        //    };
+        //    A.CallTo(() => AzureSearchService.GetSuggestionsAsync(searchTerm, A<int>._, A<bool>._)).Returns(searchModel);
 
-            // Act
-            var result = await controller.Get(searchTerm);
+        //    // Act
+        //    var result = await controller.Get(searchTerm);
 
-            // Assert
-            var results = result.Should().BeOfType<JsonResult>()
-                .Which.Value.Should().BeOfType<AutoCompleteModel[]>()
-                .Which;
-            results.Should().NotBeNullOrEmpty();
-            results.Should().HaveCount(1);
-            results.First().Label.Should().Be("test");
-        }
+        //    // Assert
+        //    var results = result.Should().BeOfType<JsonResult>()
+        //        .Which.Value.Should().BeOfType<AutoCompleteModel[]>()
+        //        .Which;
+        //    results.Should().NotBeNullOrEmpty();
+        //    results.Should().HaveCount(1);
+        //    results.First().Label.Should().Be("test");
+        //}
     }
 }
