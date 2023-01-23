@@ -34,6 +34,53 @@ namespace DFC.App.ExploreCareers.AzureSearch
             return searchResult?.Value?.Results?.Select(r => new AutoCompleteModel { Label = r.Text }) ?? Array.Empty<AutoCompleteModel>();
         }
 
+        public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsFromSearchAsync(string searchTerm, int maxResultCount = 5)
+        {
+            var options = new SearchOptions
+            {
+                Size = maxResultCount,
+                ScoringProfile = ScoringProfile,
+                QueryType = SearchQueryType.Full,
+                Select = { nameof(JobProfileIndex.Title), 
+                           nameof(JobProfileIndex.AlternativeTitle),
+
+                }
+            };
+
+            var cleanedSearchTerm = SearchBuilder.RemoveSpecialCharactersFromTheSearchTerm(searchTerm);
+            var trimmedSearchTerm = SearchBuilder.TrimCommonWordsAndSuffixes(cleanedSearchTerm);
+            var partialTermToSearch = SearchBuilder.BuildContainPartialSearch(trimmedSearchTerm);
+            var finalComputedSearchTerm = SearchBuilder.BuildSearchExpression(searchTerm, cleanedSearchTerm, partialTermToSearch);
+
+            var searchResult = await azureSearchClient.SearchAsync<JobProfileIndex>(finalComputedSearchTerm, options);
+            var jobProfiles = searchResult.Value.GetResults()
+                .Select((r, idx) =>
+                {
+                    var doc = r.Document;
+                    doc.Rank = idx + 1;
+                    return r.Document;
+                });
+            var listTitles = Reorder(jobProfiles, searchTerm, 1).ToList();
+            var listResult = new List<AutoCompleteModel>();
+
+            foreach (var item in listTitles)
+            {
+                var result = new AutoCompleteModel();
+                if (item.AlternativeTitle.Count() > 0 && item.Title != item.AlternativeTitle.FirstOrDefault())
+                {
+                    result.Label = item.Title + " (" + item.AlternativeTitle.FirstOrDefault() + ")";
+                }
+                else
+                {
+                    result.Label = item.Title;
+                }
+
+                listResult.Add(result);
+            }
+
+            return listResult.Count() > 0 ? listResult.Select(r => new AutoCompleteModel { Label = r.Label }) : Array.Empty<AutoCompleteModel>();
+        }
+
         public async Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category)
         {
             var searchOptions = new SearchOptions
