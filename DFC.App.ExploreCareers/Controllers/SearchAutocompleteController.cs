@@ -37,13 +37,6 @@ namespace DFC.App.ExploreCareers.Controllers
 
             var results = await azureSearchService.GetSuggestionsFromSearchAsync(term, MaxResultsDisplayed);
 
-            /*
-            if (results.Count() == 0)
-            {
-                results = await azureSearchService.GetSuggestionsAsync(term, MaxResultsDisplayed, UseFuzzySearch);
-            }
-            */
-
             return Json(results);
         }
     }

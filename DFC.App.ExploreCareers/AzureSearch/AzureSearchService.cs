@@ -7,6 +7,8 @@ using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 
 using DFC.App.ExploreCareers.Models;
+using NHibernate.Dialect.Schema;
+using NHibernate.Hql.Ast.ANTLR.Tree;
 
 namespace DFC.App.ExploreCareers.AzureSearch
 {
@@ -41,16 +43,14 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 Size = maxResultCount,
                 ScoringProfile = ScoringProfile,
                 QueryType = SearchQueryType.Full,
-                Select = { nameof(JobProfileIndex.Title), 
-                           nameof(JobProfileIndex.AlternativeTitle),
-
+                Select =
+                {
+                    nameof(JobProfileIndex.Title),
+                    nameof(JobProfileIndex.AlternativeTitle),
                 }
             };
 
-            var cleanedSearchTerm = SearchBuilder.RemoveSpecialCharactersFromTheSearchTerm(searchTerm);
-            var trimmedSearchTerm = SearchBuilder.TrimCommonWordsAndSuffixes(cleanedSearchTerm);
-            var partialTermToSearch = SearchBuilder.BuildContainPartialSearch(trimmedSearchTerm);
-            var finalComputedSearchTerm = SearchBuilder.BuildSearchExpression(searchTerm, cleanedSearchTerm, partialTermToSearch);
+            var finalComputedSearchTerm = TidySearchTerm(searchTerm);
 
             var searchResult = await azureSearchClient.SearchAsync<JobProfileIndex>(finalComputedSearchTerm, options);
             var jobProfiles = searchResult.Value.GetResults()
@@ -68,7 +68,30 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 var result = new AutoCompleteModel();
                 if (item.AlternativeTitle.Count() > 0 && item.Title != item.AlternativeTitle.FirstOrDefault())
                 {
-                    result.Label = item.Title + " (" + item.AlternativeTitle.FirstOrDefault() + ")";
+                    if (item.AlternativeTitle.Contains(searchTerm, StringComparer.OrdinalIgnoreCase))
+                    {
+                        //Find the matching alternative title from the list and display that rather than the 'searchTerm' which is always lower case and looks a little unprofessional
+                        int alternativeTitleIndex = 0;
+                        string alternativeTitleToDisplay = item.AlternativeTitle.FirstOrDefault();
+                        while (searchTerm.ToLower() != item.AlternativeTitle.ElementAt(alternativeTitleIndex).ToLower() && alternativeTitleIndex < item.AlternativeTitle.Count() - 1)
+                        {
+                            alternativeTitleIndex += 1;
+                            alternativeTitleToDisplay = item.AlternativeTitle.ElementAt(alternativeTitleIndex);
+                        }
+
+                        result.Label = item.Title + " (" + alternativeTitleToDisplay + ")";
+                    }
+                    else
+                    {
+                        if (item.AlternativeTitle.Count() > 1)
+                        {
+                            result.Label = item.Title + " (" + item.AlternativeTitle.FirstOrDefault() + ",...)";
+                        }
+                        else
+                        {
+                            result.Label = item.Title + " (" + item.AlternativeTitle.FirstOrDefault() + ")";
+                        }
+                    }
                 }
                 else
                 {
@@ -123,10 +146,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 }
             };
 
-            var cleanedSearchTerm = SearchBuilder.RemoveSpecialCharactersFromTheSearchTerm(searchTerm);
-            var trimmedSearchTerm = SearchBuilder.TrimCommonWordsAndSuffixes(cleanedSearchTerm);
-            var partialTermToSearch = SearchBuilder.BuildContainPartialSearch(trimmedSearchTerm);
-            var finalComputedSearchTerm = SearchBuilder.BuildSearchExpression(searchTerm, cleanedSearchTerm, partialTermToSearch);
+            var finalComputedSearchTerm = TidySearchTerm(searchTerm);
 
             var response = await azureSearchClient.SearchAsync<JobProfileIndex>(finalComputedSearchTerm, searchOptions);
 
@@ -143,6 +163,16 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 TotalResults = (int?)response.Value.TotalCount ?? 0,
                 JobProfiles = Reorder(jobProfiles, searchTerm, pageNumber)
             };
+        }
+
+        private static string TidySearchTerm(string searchTerm)
+        {
+            var cleanedSearchTerm = SearchBuilder.RemoveSpecialCharactersFromTheSearchTerm(searchTerm);
+            var trimmedSearchTerm = SearchBuilder.TrimCommonWordsAndSuffixes(cleanedSearchTerm);
+            var partialTermToSearch = SearchBuilder.BuildContainPartialSearch(trimmedSearchTerm);
+            var finalComputedSearchTerm = SearchBuilder.BuildSearchExpression(searchTerm, cleanedSearchTerm, partialTermToSearch);
+
+            return finalComputedSearchTerm;
         }
 
         private static IEnumerable<JobProfileIndex> Reorder(IEnumerable<JobProfileIndex> jobProfiles, string searchTerm, int pageNumber)
