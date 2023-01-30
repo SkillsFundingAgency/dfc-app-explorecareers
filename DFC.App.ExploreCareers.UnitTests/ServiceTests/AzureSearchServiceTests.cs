@@ -23,23 +23,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         private readonly SearchClient mockClient = A.Fake<SearchClient>();
 
         [Fact]
-        public async Task GetSuggestionsShouldReturnSuggestions()
-        {
-            // Arrange
-            SetupMockSuggestionResponse();
-            var searchService = new AzureSearchService(mockClient);
-
-            // Act
-            var response = await searchService.GetSuggestionsAsync("a");
-
-            // Assert
-            response.Should().NotBeNullOrEmpty();
-            response.Should().HaveCount(2);
-            response.First().Label.Should().Be("B");
-            response.Skip(1).First().Label.Should().Be("A");
-        }
-
-        [Fact]
         public async Task GetSuggestionsFromSearchShouldReturnSuggestionsWithAlternativeTitles()
         {
             // Arrange

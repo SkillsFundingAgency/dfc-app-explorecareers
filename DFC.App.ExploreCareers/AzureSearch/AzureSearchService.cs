@@ -24,18 +24,6 @@ namespace DFC.App.ExploreCareers.AzureSearch
             azureSearchClient = client;
         }
 
-        public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsAsync(string searchTerm, int maxResultCount = 5, bool useFuzzyMatching = true)
-        {
-            SuggestOptions options = new SuggestOptions
-            {
-                Size = maxResultCount,
-                UseFuzzyMatching = useFuzzyMatching,
-                Select = { nameof(JobProfileIndex.Title) }
-            };
-            var searchResult = await azureSearchClient.SuggestAsync<JobProfileIndex>(searchTerm, DefaultSuggester, options);
-            return searchResult?.Value?.Results?.Select(r => new AutoCompleteModel { Label = r.Text }) ?? Array.Empty<AutoCompleteModel>();
-        }
-
         public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsFromSearchAsync(string searchTerm, int maxResultCount = 5)
         {
             var options = new SearchOptions
