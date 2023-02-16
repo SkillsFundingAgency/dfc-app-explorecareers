@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <CodeAnalysisRuleSet>../UnitTests.CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+    <TargetFramework>net6.0</TargetFramework>
+	<CodeAnalysisRuleSet>../UnitTests.CodeAnalysis.ruleset</CodeAnalysisRuleSet>
     <IsPackable>false</IsPackable>
     <OutputType>Library</OutputType>
   </PropertyGroup>
@@ -20,12 +20,11 @@
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="99.0.4844.5100" />
     <PackageReference Include="SpecFlow.xUnit" Version="3.9.58" />
-    <PackageReference Include="SpecRun.Runner" Version="3.9.31" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.2">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
