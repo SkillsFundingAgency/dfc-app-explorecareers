@@ -13,12 +13,14 @@ parameters:
       - refs/heads/NCSLT-*
       - refs/heads/master
       - refs/heads/release/*
+      - refs/feature/*
   - name: higherBranchOptions
     displayName: Source branch options (Release)
     type: object
     default:
       - refs/heads/master
       - refs/heads/release/*
+      - refs/feature/*
   
       
 
@@ -99,7 +101,6 @@ stages:
         SolutionBaseName: $(SolutionBaseName)
         BuildPlatform: $(BuildPlatform)
         BuildConfiguration: $(BuildConfiguration)
-        DotNetCoreVersion: '3.1.100'
         PublishWebApp: true
         TestSuffix: UnitTests
 
@@ -188,7 +189,7 @@ stages:
       DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
       PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
       ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
-      EnvironmentName: SIT_AppExploreCareers
+      EnvironmentName: SIT-AppExploreCareers
       AppSharedResourceGroup: $(AppSharedResourceGroup)
       appSharedCosmosDBName: $(appSharedCosmosDBName)
       cosmosDatabaseName: $(cosmosDatabaseName)
