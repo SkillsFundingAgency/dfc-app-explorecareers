@@ -5,7 +5,7 @@
     "TopNavigationOrder": 100,
     "Layout": 5,
     "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
-    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete a survey to <a target=\"_blank\" class=\"govuk-link\" href=\"https://surveys.ipsosinteractive.com/mrIWeb/mrIWeb.dll?I.Project=S1039833&amp;id=&amp;cf=ovl \"> give us feedback  </a>about our website.</span> </p></div></div>",
+    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete an independent survey to <a target=\"_blank\" class=\"govuk-link\" href=\"https://surveys.ipsosinteractive.com/mrIWeb/mrIWeb.dll?I.Project=S1039833&amp;id=&amp;cf=ovl \"> give us feedback  </a>about our website.</span> </p></div></div>",
     "IsOnline": true,
     "SitemapUrl": "https://__AppServiceName__.__appServiceDomain__/sitemap.xml",
     "RobotsUrl": "https://__AppServiceName__.__appServiceDomain__/robots.txt",
@@ -38,7 +38,7 @@
     "TopNavigationOrder": 200,
     "Layout": 5,
     "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
-    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete a survey to <a target=\"_blank\" class=\"govuk-link\" href=\"https://surveys.ipsosinteractive.com/mrIWeb/mrIWeb.dll?I.Project=S1039833&amp;id=&amp;cf=ovl \"> give us feedback </a> about our website.</span> </p></div></div>",
+    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete an independent survey to <a target=\"_blank\" class=\"govuk-link\" href=\"https://surveys.ipsosinteractive.com/mrIWeb/mrIWeb.dll?I.Project=S1039833&amp;id=&amp;cf=ovl \"> give us feedback </a> about our website.</span> </p></div></div>",
     "IsOnline": true,
     "Regions": [
       {
@@ -68,7 +68,7 @@
     "TopNavigationOrder": 300,
     "Layout": 5,
     "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
-    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete a survey to<a target=\"_blank\" class=\"govuk-link\" href=\"https://surveys.ipsosinteractive.com/mrIWeb/mrIWeb.dll?I.Project=S1039833&amp;id=&amp;cf=ovl \"> give us feedback </a> about our website.</span> </p></div></div>",
+    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete an independent survey to<a target=\"_blank\" class=\"govuk-link\" href=\"https://surveys.ipsosinteractive.com/mrIWeb/mrIWeb.dll?I.Project=S1039833&amp;id=&amp;cf=ovl \"> give us feedback </a> about our website.</span> </p></div></div>",
     "IsOnline": true,
     "ExternalURL": null,
     "Regions": [

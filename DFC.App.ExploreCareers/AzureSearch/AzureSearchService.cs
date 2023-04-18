@@ -7,6 +7,8 @@ using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 
 using DFC.App.ExploreCareers.Models;
+using NHibernate.Dialect.Schema;
+using NHibernate.Hql.Ast.ANTLR.Tree;
 
 namespace DFC.App.ExploreCareers.AzureSearch
 {
@@ -22,16 +24,72 @@ namespace DFC.App.ExploreCareers.AzureSearch
             azureSearchClient = client;
         }
 
-        public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsAsync(string searchTerm, int maxResultCount = 5, bool useFuzzyMatching = true)
+        public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsFromSearchAsync(string searchTerm, int maxResultCount = 5)
         {
-            SuggestOptions options = new SuggestOptions
+            var options = new SearchOptions
             {
                 Size = maxResultCount,
-                UseFuzzyMatching = useFuzzyMatching,
-                Select = { nameof(JobProfileIndex.Title) }
+                ScoringProfile = ScoringProfile,
+                QueryType = SearchQueryType.Full,
+                Select =
+                {
+                    nameof(JobProfileIndex.Title),
+                    nameof(JobProfileIndex.AlternativeTitle),
+                }
             };
-            var searchResult = await azureSearchClient.SuggestAsync<JobProfileIndex>(searchTerm, DefaultSuggester, options);
-            return searchResult?.Value?.Results?.Select(r => new AutoCompleteModel { Label = r.Text }) ?? Array.Empty<AutoCompleteModel>();
+
+            var finalComputedSearchTerm = TidySearchTerm(searchTerm);
+
+            var searchResult = await azureSearchClient.SearchAsync<JobProfileIndex>(finalComputedSearchTerm, options);
+            var jobProfiles = searchResult.Value.GetResults()
+                .Select((r, idx) =>
+                {
+                    var doc = r.Document;
+                    doc.Rank = idx + 1;
+                    return r.Document;
+                });
+            var listTitles = Reorder(jobProfiles, searchTerm, 1).ToList();
+            var listResult = new List<AutoCompleteModel>();
+
+            foreach (var item in listTitles)
+            {
+                var result = new AutoCompleteModel();
+                if (item.AlternativeTitle.Count() > 0 && item.Title != item.AlternativeTitle.FirstOrDefault())
+                {
+                    if (item.AlternativeTitle.Contains(searchTerm, StringComparer.OrdinalIgnoreCase))
+                    {
+                        //Find the matching alternative title from the list and display that rather than the 'searchTerm' which is always lower case and looks a little unprofessional
+                        int alternativeTitleIndex = 0;
+                        string alternativeTitleToDisplay = item.AlternativeTitle.FirstOrDefault();
+                        while (searchTerm.ToLower() != item.AlternativeTitle.ElementAt(alternativeTitleIndex).ToLower() && alternativeTitleIndex < item.AlternativeTitle.Count() - 1)
+                        {
+                            alternativeTitleIndex += 1;
+                            alternativeTitleToDisplay = item.AlternativeTitle.ElementAt(alternativeTitleIndex);
+                        }
+
+                        result.Label = item.Title + " (" + alternativeTitleToDisplay + ")";
+                    }
+                    else
+                    {
+                        if (item.AlternativeTitle.Count() > 1)
+                        {
+                            result.Label = item.Title + " (" + item.AlternativeTitle.FirstOrDefault() + ",...)";
+                        }
+                        else
+                        {
+                            result.Label = item.Title + " (" + item.AlternativeTitle.FirstOrDefault() + ")";
+                        }
+                    }
+                }
+                else
+                {
+                    result.Label = item.Title;
+                }
+
+                listResult.Add(result);
+            }
+
+            return listResult.Count() > 0 ? listResult.Select(r => new AutoCompleteModel { Label = r.Label }) : Array.Empty<AutoCompleteModel>();
         }
 
         public async Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category)
@@ -76,10 +134,7 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 }
             };
 
-            var cleanedSearchTerm = SearchBuilder.RemoveSpecialCharactersFromTheSearchTerm(searchTerm);
-            var trimmedSearchTerm = SearchBuilder.TrimCommonWordsAndSuffixes(cleanedSearchTerm);
-            var partialTermToSearch = SearchBuilder.BuildContainPartialSearch(trimmedSearchTerm);
-            var finalComputedSearchTerm = SearchBuilder.BuildSearchExpression(searchTerm, cleanedSearchTerm, partialTermToSearch);
+            var finalComputedSearchTerm = TidySearchTerm(searchTerm);
 
             var response = await azureSearchClient.SearchAsync<JobProfileIndex>(finalComputedSearchTerm, searchOptions);
 
@@ -96,6 +151,16 @@ namespace DFC.App.ExploreCareers.AzureSearch
                 TotalResults = (int?)response.Value.TotalCount ?? 0,
                 JobProfiles = Reorder(jobProfiles, searchTerm, pageNumber)
             };
+        }
+
+        private static string TidySearchTerm(string searchTerm)
+        {
+            var cleanedSearchTerm = SearchBuilder.RemoveSpecialCharactersFromTheSearchTerm(searchTerm);
+            var trimmedSearchTerm = SearchBuilder.TrimCommonWordsAndSuffixes(cleanedSearchTerm);
+            var partialTermToSearch = SearchBuilder.BuildContainPartialSearch(trimmedSearchTerm);
+            var finalComputedSearchTerm = SearchBuilder.BuildSearchExpression(searchTerm, cleanedSearchTerm, partialTermToSearch);
+
+            return finalComputedSearchTerm;
         }
 
         private static IEnumerable<JobProfileIndex> Reorder(IEnumerable<JobProfileIndex> jobProfiles, string searchTerm, int pageNumber)

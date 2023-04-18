@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using DFC.App.ExploreCareers.AzureSearch;
 using FakeItEasy;
 
 using FluentAssertions;
-
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
@@ -22,20 +23,36 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         private readonly SearchClient mockClient = A.Fake<SearchClient>();
 
         [Fact]
-        public async Task GetSuggestionsShouldReturnSuggestions()
+        public async Task GetSuggestionsFromSearchShouldReturnSuggestionsWithAlternativeTitles()
         {
             // Arrange
-            SetupMockSuggestionResponse();
+            SetupMockSearchResponse();
             var searchService = new AzureSearchService(mockClient);
 
             // Act
-            var response = await searchService.GetSuggestionsAsync("a");
+            var response = await searchService.GetSuggestionsFromSearchAsync("b");
 
             // Assert
             response.Should().NotBeNullOrEmpty();
             response.Should().HaveCount(2);
-            response.First().Label.Should().Be("B");
-            response.Skip(1).First().Label.Should().Be("A");
+            response.First().Label.Should().Be("B (B Alt Title 1)");
+            response.Skip(1).First().Label.Should().Be("A (A Alt Title 1,...)"); //ellipis there if there is more than one alternative title
+        }
+
+        [Fact]
+        public async Task GetSuggestionsFromSearchShouldReturnExactMatchingAlternativeTitle()
+        {
+            // Arrange
+            SetupMockSearchResponse();
+            var searchService = new AzureSearchService(mockClient);
+
+            // Act
+            var response = await searchService.GetSuggestionsFromSearchAsync("a alt title 2");
+
+            // Assert
+            response.Should().NotBeNullOrEmpty();
+            response.Should().NotHaveCount(1);
+            response.First().Label.Should().Be("A (A Alt Title 2)");
         }
 
         [Fact]
@@ -159,12 +176,15 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 
         private void SetupMockSearchResponse()
         {
+            IEnumerable<string> alternativeTitlesB = new List<string>() { "B Alt Title 1" };
+            IEnumerable<string> alternativeTitlesA = new List<string>() { "A Alt Title 1", "A Alt Title 2", "A Alt Title 3" };
+
             var mockResponse = A.Fake<Response>();
             var mockResults = SearchModelFactory.SearchResults(
                 new[]
                 {
-                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "B" }, 1.0, null),
-                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "A" }, 0.9, null),
+                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "B", AlternativeTitle = alternativeTitlesB }, 1.0, null),
+                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "A", AlternativeTitle = alternativeTitlesA }, 0.9, null),
                 },
                 2,
                 null,
