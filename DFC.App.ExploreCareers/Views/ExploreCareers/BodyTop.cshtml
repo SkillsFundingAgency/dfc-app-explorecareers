@@ -1,25 +1,66 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
-<section class="homepage-top primary-hero">
-    <div class="govuk-width-container">
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-                <h1 class="govuk-heading-xl" id="site-header">Explore careers</h1>
-                <p class="govuk-body-lead">Find out what a job involves and if it's right for you.</p>
-                <form action="/search-results" class="site-search ui-front" id="header-search" method="get">
-                    <div class="header-search-content">
-                        <label class="govuk-visually-hidden" for="SearchTerm">Enter a job title</label>
+<section aria-label="Search">
+   <div class="ncs-hero page-hero">   
+                    <!-- Desktop image -->
+                    <div class="d-only">
+                        <img src="https://lab-cdn.nationalcareersservice.org.uk/media/headers/page-header.jpg" alt=""/>
+                    </div>
 
-                        <div class="search-input-wrapper">
-                            <input class="govuk-input search-input js-search-focus focus js-autocomplete ui-autocomplete-input"
-                                   data-autocomplete-maxlength="7" data-autocomplete-minlength="2" data-autocomplete-source="/searchautocomplete"
-                                   id="SearchTerm" name="SearchTerm" type="search" value="" autocomplete="off">
+                    <!-- Mobile image -->
+                    <div class="m-only">
+                        <img src="https://lab-cdn.nationalcareersservice.org.uk/media/headers/page-mobile-header.jpg" alt=""/>
+                    </div>
+
+                    <div class="content govuk-width-container">
+                        <div class="govuk-grid-row">               
+                            <div class="govuk-grid-column-two-thirds">
+                                <h1 class="govuk-heading-xl">
+                                    <div class="block ncs">
+                                        <span>Explore</span>
+                                        <span>careers</span>
+                                    </div>
+                                </h1>
+                                <div class="sub-heading">
+                                    <p class="block">
+                                        <span>Find</span>
+                                        <span>out</span>
+                                        <span>what</span>
+                                        <span>a</span>
+                                        <span>job</span>
+                                        <span>involves</span>
+                                        <span>and</span>                        
+                                        <span>if</span>                        
+                                        <span>it's</span>                        
+                                        <span>right</span>                        
+                                        <span>for</span>
+                                        <span>you.</span>
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+                    </div>    
+                </div>
+
+                <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
+                    <div class="search-wrapper"> 
+                        <div class="govuk-width-container">
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-two-thirds">
+                                    <div class="govuk-form-group">
+                                        <label class="ncs-label govuk-label govuk-visually-hidden" for="searchTerm">Enter a job title</label>
+                                        <div class="input-wrapper">
+                                            <input id="searchTerm" name="searchTerm" type="search" class="govuk-input search-input js-search-focus focus js-autocomplete ui-autocomplete-input" aria-label="Enter a job title" data-autocomplete-maxlength="7" data-autocomplete-minlength="2" data-autocomplete-source="/searchautocomplete" autocomplete="off" />
+                                        
+                                            <div class="input-search-item input-submit-wrapper"> 
+                                                <button id="search-button" class="input-search-submit" type="submit" data-module="govuk-button" value="Search">Search</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button class="submit" type="submit" value="Search">Search</button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
 </section>
