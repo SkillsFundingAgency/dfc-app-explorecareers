@@ -38,9 +38,6 @@
         "cosmosThroughput": {
             "value": 2
         },
-        "enableAlerts": {
-            "value": false
-        },
         "jobProfileApiKey": {
             "value": "jobProfileApiKey"
         },
@@ -91,6 +88,9 @@
         },
         "bingSpellCheckApiKey": {
           "value": "spellCheckKey"
+        },
+        "appInsightsInstrumentationKey": {
+            "value": "appInsightsInstrumentationKey"
         }
     }
 }
