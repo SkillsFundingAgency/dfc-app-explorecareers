@@ -34,7 +34,7 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             var response = await client.GetAsync(uri);
 
             // Assert
-            response.StatusCode.Should().Be(StatusCodes.Status204NoContent);
+            response.StatusCode.Should().Be((System.Net.HttpStatusCode?)StatusCodes.Status204NoContent);
         }
 
         [Fact]
@@ -48,13 +48,13 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
                 new AutoCompleteModel{ Label = "A", Category = "A"},
                 new AutoCompleteModel{ Label = "B", Category = "B"},
             };
-            A.CallTo(() => factory.FakeAzureSearchService.GetSuggestionsAsync(A<string>._, A<int>._, A<bool>._)).Returns(expectedResults);
+            A.CallTo(() => factory.FakeAzureSearchService.GetSuggestionsFromSearchAsync(A<string>._, A<int>._)).Returns(expectedResults);
 
             // Act
             var response = await client.GetAsync(uri);
 
             // Assert
-            response.StatusCode.Should().Be(StatusCodes.Status200OK);
+            response.StatusCode.Should().Be((System.Net.HttpStatusCode?)StatusCodes.Status200OK);
             var result = await response.Content.ReadAsAsync<List<AutoCompleteModel>>();
             result.Should().BeEquivalentTo(expectedResults);
         }

@@ -58,7 +58,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             {
                 new AutoCompleteModel { Label = "test" }
             };
-            A.CallTo(() => AzureSearchService.GetSuggestionsAsync(searchTerm, A<int>._, A<bool>._)).Returns(searchModel);
+            A.CallTo(() => AzureSearchService.GetSuggestionsFromSearchAsync(searchTerm, A<int>._)).Returns(searchModel);
 
             // Act
             var result = await controller.Get(searchTerm);

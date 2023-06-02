@@ -13,12 +13,14 @@ parameters:
       - refs/heads/NCSLT-*
       - refs/heads/master
       - refs/heads/release/*
+      - refs/feature/*
   - name: higherBranchOptions
     displayName: Source branch options (Release)
     type: object
     default:
       - refs/heads/master
       - refs/heads/release/*
+      - refs/feature/*
   
       
 
@@ -99,7 +101,6 @@ stages:
         SolutionBaseName: $(SolutionBaseName)
         BuildPlatform: $(BuildPlatform)
         BuildConfiguration: $(BuildConfiguration)
-        DotNetCoreVersion: '3.1.100'
         PublishWebApp: true
         TestSuffix: UnitTests
 
@@ -112,11 +113,7 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToDev
-  condition: |
-    and(
-      eq(dependencies.Build.result,'Succeeded'),
-      eq('${{ containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
-    )
+  condition: succeeded()
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
@@ -160,11 +157,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToSIT
-  condition: |
-    and(
-      eq(dependencies.Build.result,'Succeeded'),
-      eq('${{ containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
-    )
+  condition: succeeded()
   displayName: Deploy to SIT
   variables:
   - group: dfc-shared-all
@@ -188,7 +181,7 @@ stages:
       DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
       PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
       ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
-      EnvironmentName: SIT_AppExploreCareers
+      EnvironmentName: SIT-AppExploreCareers
       AppSharedResourceGroup: $(AppSharedResourceGroup)
       appSharedCosmosDBName: $(appSharedCosmosDBName)
       cosmosDatabaseName: $(cosmosDatabaseName)
@@ -208,11 +201,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
       
 - stage: DeployToPP
-  condition: |
-    and(
-      eq(dependencies.Build.result,'Succeeded'),
-      eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
-    )
+  condition: succeeded()
   displayName: Deploy to PP
   variables:
   - group: dfc-shared-all
@@ -256,11 +245,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToPRD
-  condition: |
-    and(
-      eq(dependencies.PP.result,'Succeeded'),
-      eq('${{ containsValue(parameters.higherBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
-    )
+  condition: succeeded()
   displayName: Deploy to PRD
   variables:
   - group: dfc-shared-all
