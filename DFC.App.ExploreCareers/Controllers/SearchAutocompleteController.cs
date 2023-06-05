@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.AzureSearch;
 
@@ -34,7 +35,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 return NoContent();
             }
 
-            var results = await azureSearchService.GetSuggestionsAsync(term, MaxResultsDisplayed, UseFuzzySearch);
+            var results = await azureSearchService.GetSuggestionsFromSearchAsync(term, MaxResultsDisplayed);
 
             return Json(results);
         }
