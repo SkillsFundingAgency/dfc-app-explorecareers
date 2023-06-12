@@ -113,11 +113,7 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToLAB
-  condition: |
-    and(
-      eq(dependencies.Build.result,'Succeeded'),
-      eq('${{ containsValue(parameters.lowerBranchOptions, variables['Build.SourceBranch']) }}', 'True' )
-    )
+  condition: succeeded()
   displayName: Deploy to LAB
   variables:
   - group: dfc-shared-all
