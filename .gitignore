@@ -271,3 +271,4 @@ __pycache__/
 # SpecFlow related exclusions
 *.playlist
 *.feature.cs
+/DFC.App.ExploreCareers/Properties/launchSettings.json

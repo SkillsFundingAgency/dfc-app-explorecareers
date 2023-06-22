@@ -92,7 +92,19 @@ namespace DFC.App.ExploreCareers.Services.CacheContentService
             {
                 logger.LogInformation("Process summary list started");
 
-                await documentService.PurgeAsync();
+                //We need delete only necessary not delete all
+                var listdoc = await documentService.GetAllAsync();
+
+                if (listdoc != null)
+                {
+                    foreach (var doc in listdoc)
+                    {
+                        if (!summaryList.Select(sl => sl.Title).Contains(doc.Title))
+                        {
+                            await documentService.DeleteAsync(doc.Id);
+                        }
+                    }
+                }
 
                 foreach (var item in summaryList)
                 {
