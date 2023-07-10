@@ -1,0 +1,15 @@
+variables:
+- name: ReleaseEnvironmentName
+  value: LAB
+- name: ResourcePrefix
+  value: dfc-lab-app-explorecareers
+- name: aspTier
+  value: Standard
+- name: aspInstances
+  value: 2
+- name: aspSize
+  value: 2
+- name: subscriptionServiceEndpoint
+  value: https://dfc-lab-api-eventgridsubscriptions-fa.$(appServiceDomain)
+- name: loggingLogLevelDefault
+  value: Trace
