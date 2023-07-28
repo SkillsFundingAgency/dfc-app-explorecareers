@@ -102,6 +102,9 @@
     },
     "bingSpellCheckApiKey": {
       "type": "securestring"
+    },
+    "CdnUrl": {
+      "type": "string"
     }
   },
   "variables": {
@@ -315,6 +318,10 @@
               {
                 "name": "SpellCheckApiClientOptions__ApiKey",
                 "value": "[parameters('bingSpellCheckApiKey')]"
+              },
+              {
+                "name": "AssetsCdn",
+                "value": "[parameters('CdnUrl')]"
               }
             ]
           }
@@ -349,7 +356,7 @@
       "apiVersion": "2019-05-01",
       "name": "[concat(variables('appInsightsName'), '-metric-exceptions')]",
       "type": "Microsoft.Resources/deployments",
-      "dependsOn": ["[variables('appInsightsName')]"],
+      "dependsOn": [ "[variables('appInsightsName')]" ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -400,7 +407,7 @@
       "apiVersion": "2019-05-01",
       "name": "[concat(variables('appInsightsName'), '-failure-anomaly-v2')]",
       "type": "Microsoft.Resources/deployments",
-      "dependsOn": ["[variables('appInsightsName')]"],
+      "dependsOn": [ "[variables('appInsightsName')]" ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
@@ -482,7 +489,7 @@
           }
         }
       },
-      "dependsOn": ["[parameters('cosmosDatabaseName')]"]
+      "dependsOn": [ "[parameters('cosmosDatabaseName')]" ]
     },
     {
       "name": "[variables('ApiName')]",

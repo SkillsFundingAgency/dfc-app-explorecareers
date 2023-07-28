@@ -112,6 +112,51 @@ stages:
         targetPath: '$(Build.SourcesDirectory)/Resources/PageRegistration'
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
+- stage: DeployToLAB
+  condition: succeeded()
+  displayName: Deploy to LAB
+  variables:
+  - group: dfc-shared-all
+  - group: dfc-shared-lab
+  - group: dfc-app-shared-all
+  - group: dfc-app-shared-lab
+  - group: dfc-compositeui-all
+  - group: dfc-app-shared-registration
+  - group: dfc-stax-shared-lab
+  - template: VariableTemplates\CommonEnvironmentVariables.yml
+  - template: VariableTemplates\LABEnvironmentVariables.yml
+
+  jobs:
+  - template: JobTemplates/deploy-environment.yml
+    parameters:
+      AzureSubscription: 'SFA-CDH-Dev/Test (962cae10-2950-412a-93e3-d8ae92b17896)'
+      EnvironmentTag: '$(EnvironmentTag)'
+      ParentBusiness: '$(ParentBusiness)'
+      ServiceOffering: '$(ServiceOffering)'
+      ResourceGroup: $(ResourceGroup)
+      DfCDevopsPath: '$(Agent.BuildDirectory)/s/dfc-devops'
+      PackageFile:  "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.DeploymentPackages/${{ variables.SolutionBaseName }}.zip"
+      ArmTemplateFolder: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Resources.ArmTemplates/"
+      EnvironmentName: LAB_AppExploreCareers
+      AppSharedResourceGroup: $(AppSharedResourceGroup)
+      appSharedCosmosDBName: $(appSharedCosmosDBName)
+      cosmosDatabaseName: $(cosmosDatabaseName)
+      PageRegistrationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.PageRegistrations/"
+      PageRegistrationFile: 'registration.json'
+      AppRegistryApiUrl: "$(AppRegistryApiUrl)"
+      ApimCompositeKey: "$(ApimCompositeKey)"
+      AppServiceName: '$(AppServiceName)'
+      AppRegistryClientOptionsBaseAddress: $(ApimProxyAddress)/composite-ui-appRegistry/pages/
+      SharedResourceGroupName: $(SharedResourceGroupName)
+      ApimServiceName: $(ApimServiceName)
+      ApimProductInstanceName: $(ApimProductInstanceName)
+      ApiName: $(ApiName)
+      ApiId: $(ApiId)
+      APIMPolicyPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.ApimPolicies/"
+      ApimImportScript: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Scripts/Import-ApimOpenApiDefinitionFromFile.ps1"
+      SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
+
+
 - stage: DeployToDev
   condition: succeeded()
   displayName: Deploy to Dev

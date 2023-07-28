@@ -2,26 +2,32 @@
 @model DFC.App.ExploreCareers.ViewModels.SearchResults.BodyViewModel
 @inject IConfiguration Configuration
 
+      
+  
+  
+   
 <div class="govuk-width-container">
-    <form action="/search-results" class="js-live-search-form" id="header-search" method="get">
-        <div class="search-header">
-            <div class="searchfield">
-                <div class="search-input ui-front">
-                    <h1 class="search-title govuk-heading-m govuk-!-margin-bottom-6">
-                        Search results for <span class="visuallyhidden">@Model.SearchTerm</span>
-                    </h1>
-                    <label class="visuallyhidden" for="search-main">
-                        Search
-                    </label>
-                    <input placeholder="Enter a job title" class="search-input js-autocomplete ui-autocomplete-input"
-                           data-autocomplete-maxlength="7" data-autocomplete-minlength="2" data-autocomplete-source="/searchautocomplete"
-                           id="search-main" name="SearchTerm" type="search" value="@Model.SearchTerm" autocomplete="off">
+  <form  action="/search-results" method="get" id="header-search" class="ncs-search ncs-search__bar js-live-search-form">
+    <h1 class="search-title govuk-heading-m govuk-!-margin-bottom-6">
+        Search results for <span class="visuallyhidden">@Model.SearchTerm</span>
+    </h1>
+    <div class="search-wrapper">
+      <div class="govuk-width-container"> 
+        <div class="govuk-grid-row">         
+          <div class="govuk-grid-column-two-thirds"> 
+            <div class="govuk-form-group">                
+                <label class="ncs-label govuk-label" for="searchTerm">Search job titles</label>
+
+                <div class="input-wrapper">
+                    <input placeholder="Enter a job title" class="govuk-input search-input js-search-focus focus js-autocomplete ui-autocomplete-input" aria-label="Search job titles" data-autocomplete-maxlength="7" data-autocomplete-minlength="2" data-autocomplete-source="/searchautocomplete" id="search-main" name="SearchTerm" type="search" value="@Model.SearchTerm" autocomplete="off">
                     <ul id="ui-id-1" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: none;"></ul>
-                </div>
-                <div class="search-submit">
-                    <button type="submit" class="button">Search</button>
+                
+                    <div class="input-search-item input-submit-wrapper"> 
+                        <button id="search-button" class="input-search-submit button" type="submit" class="button">Search</button>
+                    </div>
                 </div>
             </div>
+            
             <div class="search-dym">
                 @if (!string.IsNullOrEmpty(Model.DidYouMeanUrl))
                 {
@@ -30,8 +36,11 @@
                     </span>
                 }
             </div>
+          </div>
         </div>
-    </form>
+      </div>
+    </div>
+  </form>
     <div id="results">
         <div class="results-block">
             <div class="inner-block">
