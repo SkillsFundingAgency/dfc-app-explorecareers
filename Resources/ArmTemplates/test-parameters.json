@@ -94,6 +94,12 @@
         },
         "bingSpellCheckApiKey": {
           "value": "spellCheckKey"
+        },
+        "workspaceName": {
+            "value": "aTestLogAnalyticsAccount"
+        },
+        "workspaceResourceGroup": {
+            "value": "aResourceGroup"
         }
     }
 }
