@@ -21,8 +21,8 @@ parameters:
       - refs/heads/master
       - refs/heads/release/*
       - refs/feature/*
-  
-      
+
+
 
 resources:
   repositories:
@@ -39,15 +39,15 @@ pool:
   - msbuild
   - visualstudio
 
-trigger: 
+trigger:
   branches:
-    include: 
+    include:
     - dev
     - master
 
 pr:
   branches:
-    include: 
+    include:
     - dev
     - master
 
@@ -80,7 +80,7 @@ stages:
       inputs:
         targetPath: "$(Build.SourcesDirectory)/Resources/ApimPolicy"
         artifactName: ${{ variables.SolutionBaseName }}.ApimPolicies
-  
+
     - task: PublishPipelineArtifact@1
       displayName: Publish OpenAPI docs to Pipeline Artifact
       inputs:
@@ -113,7 +113,7 @@ stages:
         artifactName: ${{ variables.SolutionBaseName }}.PageRegistrations
 
 - stage: DeployToLAB
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   displayName: Deploy to LAB
   variables:
   - group: dfc-shared-all
@@ -158,7 +158,7 @@ stages:
 
 
 - stage: DeployToDev
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   displayName: Deploy to Dev
   variables:
   - group: dfc-shared-all
@@ -202,7 +202,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToSIT
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   displayName: Deploy to SIT
   variables:
   - group: dfc-shared-all
@@ -244,9 +244,9 @@ stages:
       APIMPolicyPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.ApimPolicies/"
       ApimImportScript: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.Scripts/Import-ApimOpenApiDefinitionFromFile.ps1"
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
-      
+
 - stage: DeployToPP
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   displayName: Deploy to PP
   variables:
   - group: dfc-shared-all
@@ -290,7 +290,7 @@ stages:
       SpecificationPath: "$(Pipeline.Workspace)/${{ variables.SolutionBaseName }}.OpenApiDocs"
 
 - stage: DeployToPRD
-  condition: succeeded()
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
   displayName: Deploy to PRD
   variables:
   - group: dfc-shared-all
