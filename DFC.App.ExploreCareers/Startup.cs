@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-
+using System.Net.Http;
 using AutoMapper;
 
 using Azure;
@@ -12,8 +12,15 @@ using DFC.App.ExploreCareers.Configuration;
 using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Data.Contracts;
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.HostedServices;
 using DFC.App.ExploreCareers.Services.CacheContentService;
+using DFC.Common.SharedContent.Pkg.Netcore;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
+using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
+using DFC.Common.SharedContent.Pkg.Netcore.RequestHandler;
 using DFC.Compui.Cosmos;
 using DFC.Compui.Cosmos.Contracts;
 using DFC.Compui.Subscriptions.Pkg.Netstandard.Extensions;
@@ -21,9 +28,12 @@ using DFC.Compui.Telemetry;
 using DFC.Content.Pkg.Netcore.Data.Models.ClientOptions;
 using DFC.Content.Pkg.Netcore.Data.Models.PollyOptions;
 using DFC.Content.Pkg.Netcore.Extensions;
-
+using GraphQL.Client.Abstractions;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +45,8 @@ namespace DFC.App.ExploreCareers
     public class Startup
     {
         private const string CosmosDbSharedContentConfigAppSettings = "Configuration:CosmosDbConnections:JobCategoryContent";
+        private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
+        private const string GraphApiUrlAppSettings = "Cms:GraphApiUrl";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
@@ -72,6 +84,28 @@ namespace DFC.App.ExploreCareers
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
+
+            services.AddHttpClient();
+            services.AddSingleton<IGraphQLClient>(s =>
+            {
+                var option = new GraphQLHttpClientOptions()
+                {
+                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>()),
+
+                    HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
+                };
+                var client = new GraphQLHttpClient(option, new NewtonsoftJsonSerializer());
+                return client;
+            });
+
+            services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
+            //TODO Add JobProfileByCategory
+
+            services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
+
+            services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
+
             var cosmosDbConnectionSharedContent = configuration.GetSection(CosmosDbSharedContentConfigAppSettings).Get<CosmosDbConnection>();
             services.AddDocumentServices<JobCategoryContentItemModel>(cosmosDbConnectionSharedContent, env.IsDevelopment());
 
@@ -90,6 +124,9 @@ namespace DFC.App.ExploreCareers
             services.AddTransient<IWebhooksService, WebhooksService>();
             services.AddTransient<IJobCategoryDocumentService, JobCategoryDocumentService>();
             services.AddTransient<IAzureSearchService, AzureSearchService>();
+            services.AddTransient<IGraphQlService, GraphQlService>();
+            services.AddTransient<ISharedContentRedisInterface, SharedContentRedis>();
+            services.AddTransient<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
             if (bool.TryParse(configuration["Configuration:ReloadCache"], out bool reload) && reload)
             {
