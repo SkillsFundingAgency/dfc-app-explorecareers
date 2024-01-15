@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.Controllers;
 using DFC.App.ExploreCareers.Cosmos;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 
@@ -24,9 +25,9 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 {
     public class ExploreCareersControllerTests
     {
-        private IJobCategoryDocumentService FakeDocumentService { get; } = A.Fake<IJobCategoryDocumentService>();
-
         private ILogger<ExploreCareersController> FakeLogger { get; } = A.Fake<ILogger<ExploreCareersController>>();
+
+        private IGraphQlService FakeGraphQlService { get; } = A.Fake<IGraphQlService>();
 
         [Fact]
         public void ExploreCareersHeadReturnsHtml()
@@ -68,7 +69,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             var model = BuildJobCategoryContentItemModel();
             var expectedViewModel = BuildJobCategoryViewModel();
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { expectedViewModel });
 
             var result = await controller.BodyAsync();
 
@@ -82,7 +83,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             jobCategory.Name.Should().Be(expectedViewModel.Name);
             jobCategory.CanonicalName.Should().Be(expectedViewModel.CanonicalName);
 
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(null)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).MustHaveHappenedOnceExactly();
         }
 
         [Fact]
@@ -93,7 +94,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             var model = BuildJobCategoryContentItemModel();
             var expectedViewModel = BuildJobCategoryViewModel();
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { expectedViewModel });
 
             var result = await controller.DocumentAsync();
 
@@ -105,7 +106,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             viewModel.Body.Should().NotBeNull();
             viewModel.Head.Should().NotBeNull();
 
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(null)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).MustHaveHappenedOnceExactly();
         }
 
         private ExploreCareersController BuildController(string mediaTypeName)
@@ -114,7 +115,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             httpContext.Request.Headers[HeaderNames.Accept] = mediaTypeName;
 
-            var controller = new ExploreCareersController(FakeLogger, FakeDocumentService)
+            var controller = new ExploreCareersController(FakeLogger, FakeGraphQlService)
             {
                 ControllerContext = new ControllerContext()
                 {

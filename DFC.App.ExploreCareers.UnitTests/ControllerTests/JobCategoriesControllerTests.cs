@@ -8,6 +8,7 @@ using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.Controllers;
 using DFC.App.ExploreCareers.Cosmos;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
 
@@ -35,6 +36,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
         private IJobCategoryDocumentService DocumentService { get; } = A.Fake<IJobCategoryDocumentService>();
 
         private IAzureSearchService AzureSearchService { get; } = A.Fake<IAzureSearchService>();
+
+        private IGraphQlService GraphQlService { get; } = A.Fake<IGraphQlService>();
 
         [Fact]
         public void HeadReturnsHtml()
@@ -129,7 +132,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             var jobCategory = new JobCategoryViewModel { Name = "Category name", CanonicalName = CategoryName };
             var jobProfileIndex = new JobProfileIndex { Title = jobCategory.Name, Overview = "some overview", UrlName = CategoryName };
 
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { jobCategory });
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategory });
             A.CallTo(() => AzureSearchService.GetProfilesByCategoryAsync(CategoryName)).Returns(new List<JobProfileIndex> { jobProfileIndex });
 
             // Act
@@ -180,7 +183,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             var jobCategory = new JobCategoryViewModel { Name = "Category name", CanonicalName = CategoryName };
             var jobProfileIndex = new JobProfileIndex { Title = jobCategory.Name, Overview = "some overview", UrlName = CategoryName };
 
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { jobCategory });
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategory });
             A.CallTo(() => AzureSearchService.GetProfilesByCategoryAsync(CategoryName)).Returns(new List<JobProfileIndex> { jobProfileIndex });
 
             // Act
@@ -239,7 +242,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             httpContext.Request.Headers[HeaderNames.Accept] = mediaTypeName;
 
-            var controller = new JobCategoriesController(Logger, Mapper, DocumentService, AzureSearchService)
+            var controller = new JobCategoriesController(Logger, Mapper, DocumentService, AzureSearchService, GraphQlService)
             {
                 ControllerContext = new ControllerContext()
                 {
