@@ -1,41 +1,33 @@
 ﻿using DFC.App.ExploreCareers.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DFC.Common.SharedContent.Pkg.Netcore;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using AutoMapper;
-using NHibernate.Engine;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
+using System.Linq;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
+using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.Common.SharedContent.Pkg.Netcore.Repo;
+using NHibernate.Engine;
 
 namespace DFC.App.ExploreCareers.GraphQl
 {
     public class GraphQlService : IGraphQlService
     {
-        private readonly IRedisCMSRepo redisCMSRepo;
-        private string status = string.Empty;
+        private readonly ISharedContentRedisInterface sharedContentRedisInterface;
+        private readonly IMapper mapper;
 
-        public GraphQlService(IRedisCMSRepo redisCMSRepo)
+        public GraphQlService(IMapper mapper, ISharedContentRedisInterface sharedContentRedisInterface)
         {
-            this.redisCMSRepo = redisCMSRepo;
+            this.mapper = mapper;
+            this.sharedContentRedisInterface = sharedContentRedisInterface;
         }
 
         public async Task<List<JobCategoryViewModel>> GetJobCategoriesAsync()
         {
-            status = "PUBLISHED";
-            string query = @$"
-                query MyQuery {{
-                    jobProfileCategory(status: {status}){{
-                        displayText
-                        pageLocation{{
-                            fullUrl
-                            }}                        
-                        }}
-                    }}
-            ";
-
-            var response = await redisCMSRepo.GetGraphQLData<List<JobCategoryViewModel>>(query, "explorecareers/jobcategories");
-
-            return response;
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories")
+                ?? new JobProfileCategoriesResponse();
+            return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories.OrderBy(c => c.DisplayText));
         }
     }
 }
