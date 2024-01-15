@@ -9,6 +9,7 @@ using DFC.App.ExploreCareers.Data.Models.CmsApiModels;
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
 
 namespace DFC.App.ExploreCareers.AutoMapperProfiles
 {
@@ -26,6 +27,10 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
 
             CreateMap<JobCategoryContentItemModel, JobCategoryViewModel>()
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.Title));
+
+            CreateMap<JobProfileCategory, JobCategoryViewModel>()
+                .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
+                .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.FullUrl.Substring(1)));
 
             CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()
                 .ForMember(d => d.AlternativeTitle, o => o.MapFrom(s => s.AlternativeTitle != null ? string.Join(", ", s.AlternativeTitle).Trim().TrimEnd(',') : string.Empty));
