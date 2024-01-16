@@ -38,6 +38,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using RestSharp;
 
 namespace DFC.App.ExploreCareers
 {
@@ -47,6 +50,7 @@ namespace DFC.App.ExploreCareers
         private const string CosmosDbSharedContentConfigAppSettings = "Configuration:CosmosDbConnections:JobCategoryContent";
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
         private const string GraphApiUrlAppSettings = "Cms:GraphApiUrl";
+        private const string StaxSqlUrlAppSettings = "Configuration:StaxConnections:StaxSqlConnectionString";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
@@ -98,6 +102,29 @@ namespace DFC.App.ExploreCareers
                 var client = new GraphQLHttpClient(option, new NewtonsoftJsonSerializer());
                 return client;
             });
+
+            services.AddSingleton<IRestClient>(s =>
+            {
+                var option = new RestClientOptions()
+                {
+                    BaseUrl = new Uri(configuration.GetSection(StaxSqlUrlAppSettings).Get<string>()),
+                    ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
+                };
+                JsonSerializerSettings defaultSettings = new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                    DefaultValueHandling = DefaultValueHandling.Include,
+                    TypeNameHandling = TypeNameHandling.None,
+                    NullValueHandling = NullValueHandling.Ignore,
+                    Formatting = Formatting.None,
+                    ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+                };
+
+                var client = new RestClient(option);
+                return client;
+            }
+
+);
 
             services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
             services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfilesByCategoryQueryStrategy>();
