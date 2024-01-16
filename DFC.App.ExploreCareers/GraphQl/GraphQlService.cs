@@ -27,13 +27,11 @@ namespace DFC.App.ExploreCareers.GraphQl
             return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories.OrderBy(c => c.DisplayText));
         }
 
-        public async Task<List<JobProfileIndex>> GetJobProfilesByCategory(string jobProfile)
+        public async Task<List<JobProfileIndex>> GetJobProfilesByCategoryAsync(string jobProfile)
         {
             var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"JobProfiles/{jobProfile}")
                 ?? new JobProfilesResponse();
-            //TODO: Check if required
-            //return mapper.Map<List<JobProfileIndex>>(response.Items.OrderBy(c => c.Title));
-            return new List<JobProfileIndex>();
+            return mapper.Map<List<JobProfileIndex>>(response.Items.OrderBy(c => c.Title));
         }
     }
 }

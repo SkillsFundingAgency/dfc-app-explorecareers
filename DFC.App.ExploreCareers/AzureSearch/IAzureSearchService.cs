@@ -10,7 +10,5 @@ namespace DFC.App.ExploreCareers.AzureSearch
         Task<IEnumerable<AutoCompleteModel>> GetSuggestionsFromSearchAsync(string searchTerm, int maxResultCount = 5);
 
         Task<AzureSearchJobProfileModel> SearchAsync(string searchTerm, int pageNumber = 1);
-
-        Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category);
     }
 }

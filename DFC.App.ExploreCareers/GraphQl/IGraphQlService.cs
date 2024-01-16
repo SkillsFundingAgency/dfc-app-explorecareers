@@ -9,6 +9,6 @@ namespace DFC.App.ExploreCareers.GraphQl
     {
         Task<List<JobCategoryViewModel>> GetJobCategoriesAsync();
 
-        Task<List<JobProfileIndex>> GetJobProfilesByCategory(string jobProfile);
+        Task<List<JobProfileIndex>> GetJobProfilesByCategoryAsync(string jobProfile);
     }
 }

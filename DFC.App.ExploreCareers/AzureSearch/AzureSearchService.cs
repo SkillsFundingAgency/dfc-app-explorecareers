@@ -7,6 +7,7 @@ using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.Models;
+using Newtonsoft.Json;
 using NHibernate.Dialect.Schema;
 using NHibernate.Hql.Ast.ANTLR.Tree;
 
@@ -18,12 +19,10 @@ namespace DFC.App.ExploreCareers.AzureSearch
         public static readonly string ScoringProfile = "jp";
 
         private readonly SearchClient azureSearchClient;
-        private readonly IGraphQlService graphQlService;
 
-        public AzureSearchService(SearchClient client, IGraphQlService graphQlService)
+        public AzureSearchService(SearchClient client)
         {
             azureSearchClient = client;
-            this.graphQlService = graphQlService;
         }
 
         public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsFromSearchAsync(string searchTerm, int maxResultCount = 5)
@@ -92,28 +91,6 @@ namespace DFC.App.ExploreCareers.AzureSearch
             }
 
             return listResult.Count() > 0 ? listResult.Select(r => new AutoCompleteModel { Label = r.Label }) : Array.Empty<AutoCompleteModel>();
-        }
-
-        public async Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category)
-        {
-            var jobCategories = await graphQlService.GetJobProfilesByCategory(category);
-
-            var searchOptions = new SearchOptions
-            {
-                Size = 500,
-                Filter = $"{nameof(JobProfileIndex.JobProfileCategoryUrls)}/any(c: c eq '{category}')",
-                OrderBy = { nameof(JobProfileIndex.Title) },
-                Select = { nameof(JobProfileIndex.Title), nameof(JobProfileIndex.AlternativeTitle), nameof(JobProfileIndex.UrlName), nameof(JobProfileIndex.Overview) }
-            };
-
-            var searchResult = await azureSearchClient.SearchAsync<JobProfileIndex>("*", searchOptions);
-            var results = new List<JobProfileIndex>();
-            await foreach (var result in searchResult.Value.GetResultsAsync())
-            {
-                results.Add(result.Document);
-            }
-
-            return results.OrderBy(p => p.Title).ToList();
         }
 
         public async Task<AzureSearchJobProfileModel> SearchAsync(string searchTerm, int pageNumber = 1)

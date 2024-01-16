@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-
+using System.Linq;
 using AutoMapper;
 
 using DFC.App.ExploreCareers.AzureSearch;
@@ -32,21 +32,18 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));
 
-            //TODO: Fix FullUrl to URlName and check if working
-            /*CreateMap<JobProfile, JobProfileIndex>()
+            //TODO: Change FullUrl to URlName and remove substring
+            CreateMap<JobProfile, JobProfileIndex>()
                 .ForMember(d => d.Title, s => s.MapFrom(x => x.Title))
-                .ForMember(d => d.AlternativeTitle, s => s.MapFrom(x => x.AlternativeTitle))
+                .ForMember(d => d.AlternativeTitle, m => m.MapFrom(s => s.AlternativeTitle.Split(
+                    ',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList()))
                 .ForMember(d => d.Overview, s => s.MapFrom(x => x.Overview))
-                .ForMember(d => d.UrlName, s => s.MapFrom(x => x.FullUrl.Substring(13)))
-                .ForMember(d => d.SalaryStarter, s => s.Ignore())
-                .ForMember(d => d.SalaryExperienced, s => s.Ignore())
-                .ForMember(d => d.EntryQualificationLowestLevel, s => s.Ignore())
-                .ForMember(d => d.MinimumHours, s => s.Ignore())
-                .ForMember(d => d.MaximumHours, s => s.Ignore())
-                .ForMember(d => d.Rank, s => s.Ignore());*/
+                .ForMember(d => d.UrlName, s => s.MapFrom(x => x.Fullurl.Substring(14)))
+                .ForAllOtherMembers(opts => opts.Ignore());
 
             CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()
-                .ForMember(d => d.AlternativeTitle, o => o.MapFrom(s => s.AlternativeTitle != null ? string.Join(", ", s.AlternativeTitle).Trim().TrimEnd(',') : string.Empty));
+                .ForMember(d => d.AlternativeTitle, o => o.MapFrom(s => s.AlternativeTitle != null ? string.Join(
+                    ", ", s.AlternativeTitle).Trim().TrimEnd(',') : string.Empty));
 
             CreateMap<JobProfileIndex, JobProfileViewModel>()
                 .ForMember(d => d.ResultItemTitle, s => s.MapFrom(x => x.Title))

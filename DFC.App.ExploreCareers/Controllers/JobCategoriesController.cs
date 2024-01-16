@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 using AutoMapper;
 
-using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
@@ -23,18 +22,15 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<JobCategoriesController> logger;
         private readonly IMapper mapper;
-        private readonly IAzureSearchService azureSearchService;
         private readonly IGraphQlService graphQlService;
 
         public JobCategoriesController(
             ILogger<JobCategoriesController> logger,
             IMapper mapper,
-            IAzureSearchService azureSearchService,
             IGraphQlService graphQlService)
         {
             this.logger = logger;
             this.mapper = mapper;
-            this.azureSearchService = azureSearchService;
             this.graphQlService = graphQlService;
         }
 
@@ -148,7 +144,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 return new BodyViewModel();
             }
 
-            var jobProfiles = await azureSearchService.GetProfilesByCategoryAsync(category);
+            var jobProfiles = await graphQlService.GetJobProfilesByCategoryAsync(category);
 
             return new BodyViewModel
             {

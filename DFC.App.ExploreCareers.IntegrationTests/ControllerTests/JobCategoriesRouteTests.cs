@@ -56,7 +56,7 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
                 new JobCategoryContentItemModel { CanonicalName = category, Title = category }
             });
 
-            A.CallTo(() => factory.FakeAzureSearchService.GetProfilesByCategoryAsync(category)).Returns(new List<JobProfileIndex>
+            A.CallTo(() => factory.FakeGraphQlService.GetJobProfilesByCategoryAsync(category)).Returns(new List<JobProfileIndex>
             {
                 new JobProfileIndex { Title = "Title" }
             });
