@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
-
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.Models;
 using NHibernate.Dialect.Schema;
 using NHibernate.Hql.Ast.ANTLR.Tree;
@@ -18,10 +18,12 @@ namespace DFC.App.ExploreCareers.AzureSearch
         public static readonly string ScoringProfile = "jp";
 
         private readonly SearchClient azureSearchClient;
+        private readonly IGraphQlService graphQlService;
 
-        public AzureSearchService(SearchClient client)
+        public AzureSearchService(SearchClient client, IGraphQlService graphQlService)
         {
             azureSearchClient = client;
+            this.graphQlService = graphQlService;
         }
 
         public async Task<IEnumerable<AutoCompleteModel>> GetSuggestionsFromSearchAsync(string searchTerm, int maxResultCount = 5)
@@ -94,6 +96,8 @@ namespace DFC.App.ExploreCareers.AzureSearch
 
         public async Task<List<JobProfileIndex>> GetProfilesByCategoryAsync(string category)
         {
+            var jobCategories = await graphQlService.GetJobProfilesByCategory(category);
+
             var searchOptions = new SearchOptions
             {
                 Size = 500,

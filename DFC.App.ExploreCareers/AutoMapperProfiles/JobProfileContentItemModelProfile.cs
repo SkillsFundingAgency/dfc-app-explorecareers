@@ -32,6 +32,19 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));
 
+            //TODO: Fix FullUrl to URlName and check if working
+            /*CreateMap<JobProfile, JobProfileIndex>()
+                .ForMember(d => d.Title, s => s.MapFrom(x => x.Title))
+                .ForMember(d => d.AlternativeTitle, s => s.MapFrom(x => x.AlternativeTitle))
+                .ForMember(d => d.Overview, s => s.MapFrom(x => x.Overview))
+                .ForMember(d => d.UrlName, s => s.MapFrom(x => x.FullUrl.Substring(13)))
+                .ForMember(d => d.SalaryStarter, s => s.Ignore())
+                .ForMember(d => d.SalaryExperienced, s => s.Ignore())
+                .ForMember(d => d.EntryQualificationLowestLevel, s => s.Ignore())
+                .ForMember(d => d.MinimumHours, s => s.Ignore())
+                .ForMember(d => d.MaximumHours, s => s.Ignore())
+                .ForMember(d => d.Rank, s => s.Ignore());*/
+
             CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()
                 .ForMember(d => d.AlternativeTitle, o => o.MapFrom(s => s.AlternativeTitle != null ? string.Join(", ", s.AlternativeTitle).Trim().TrimEnd(',') : string.Empty));
 
