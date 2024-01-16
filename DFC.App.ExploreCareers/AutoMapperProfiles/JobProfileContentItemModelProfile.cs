@@ -30,7 +30,7 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
 
             CreateMap<JobProfileCategory, JobCategoryViewModel>()
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
-                .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.FullUrl.Substring(1)));
+                .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));
 
             CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()
                 .ForMember(d => d.AlternativeTitle, o => o.MapFrom(s => s.AlternativeTitle != null ? string.Join(", ", s.AlternativeTitle).Trim().TrimEnd(',') : string.Empty));
