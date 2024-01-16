@@ -9,11 +9,10 @@ using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 
 using DFC.App.ExploreCareers.AzureSearch;
-
+using DFC.App.ExploreCareers.GraphQl;
 using FakeItEasy;
 
 using FluentAssertions;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
@@ -21,13 +20,14 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
     public class AzureSearchServiceTests
     {
         private readonly SearchClient mockClient = A.Fake<SearchClient>();
+        private readonly IGraphQlService graphQLService = A.Fake<IGraphQlService>();
 
         [Fact]
         public async Task GetSuggestionsFromSearchShouldReturnSuggestionsWithAlternativeTitles()
         {
             // Arrange
             SetupMockSearchResponse();
-            var searchService = new AzureSearchService(mockClient);
+            var searchService = new AzureSearchService(mockClient, graphQLService);
 
             // Act
             var response = await searchService.GetSuggestionsFromSearchAsync("b");
@@ -44,7 +44,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         {
             // Arrange
             SetupMockSearchResponse();
-            var searchService = new AzureSearchService(mockClient);
+            var searchService = new AzureSearchService(mockClient, graphQLService);
 
             // Act
             var response = await searchService.GetSuggestionsFromSearchAsync("a alt title 2");
@@ -60,7 +60,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         {
             // Arrange
             SetupMockSearchResponse();
-            var searchService = new AzureSearchService(mockClient);
+            var searchService = new AzureSearchService(mockClient, graphQLService);
 
             // Act
             var response = await searchService.GetProfilesByCategoryAsync("category");
@@ -92,7 +92,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
                 .Invokes((string term, SearchOptions options, CancellationToken token) => searchOptionsUsedForClient = options)
                 .Returns(Response.FromValue(mockResults, mockResponse));
 
-            var searchService = new AzureSearchService(mockClient);
+            var searchService = new AzureSearchService(mockClient, graphQLService);
 
             // Act
             await searchService.SearchAsync("something");
@@ -118,7 +118,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         {
             // Arrange
             SetupMockSearchResponse();
-            var searchService = new AzureSearchService(mockClient);
+            var searchService = new AzureSearchService(mockClient, graphQLService);
 
             // Act
             var response = await searchService.SearchAsync("a");
@@ -141,7 +141,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         {
             // Arrange
             SetupMockSearchResponse();
-            var searchService = new AzureSearchService(mockClient);
+            var searchService = new AzureSearchService(mockClient, graphQLService);
 
             // Act
             var response = await searchService.SearchAsync("a", 2);
