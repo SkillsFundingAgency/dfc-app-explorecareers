@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-
-using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;

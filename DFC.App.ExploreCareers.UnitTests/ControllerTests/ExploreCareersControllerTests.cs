@@ -3,7 +3,6 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.Controllers;
-using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;

@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using AutoMapper;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
 using System.Linq;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
-using DFC.Common.SharedContent.Pkg.Netcore.Repo;
-using NHibernate.Engine;
 
 namespace DFC.App.ExploreCareers.GraphQl
 {
@@ -17,10 +13,10 @@ namespace DFC.App.ExploreCareers.GraphQl
         private readonly ISharedContentRedisInterface sharedContentRedisInterface;
         private readonly IMapper mapper;
 
-        public GraphQlService(IMapper mapper, ISharedContentRedisInterface sharedContentRedisInterface)
+        public GraphQlService(ISharedContentRedisInterface sharedContentRedisInterface, IMapper mapper)
         {
-            this.mapper = mapper;
             this.sharedContentRedisInterface = sharedContentRedisInterface;
+            this.mapper = mapper;
         }
 
         public async Task<List<JobCategoryViewModel>> GetJobCategoriesAsync()

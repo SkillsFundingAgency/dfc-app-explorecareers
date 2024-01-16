@@ -8,6 +8,8 @@ using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Data.Contracts;
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
+using DFC.App.ExploreCareers.GraphQl;
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Compui.Cosmos.Contracts;
 
 using FakeItEasy;
@@ -34,6 +36,10 @@ namespace DFC.App.ExploreCareers.IntegrationTests
 
         internal IAzureSearchService FakeAzureSearchService { get; } = A.Fake<IAzureSearchService>();
 
+        internal IGraphQlService FakeGraphQlService { get; } = A.Fake<IGraphQlService>();
+
+        internal ISharedContentRedisInterface FakeSharedContentRedisInterface { get; } = A.Fake<ISharedContentRedisInterface>();
+
         internal new HttpClient CreateClient()
         {
             var opts = new WebApplicationFactoryClientOptions { AllowAutoRedirect = false };
@@ -58,10 +64,12 @@ namespace DFC.App.ExploreCareers.IntegrationTests
                 var hostedServices = services.Where(descriptor =>
                     descriptor.ServiceType == typeof(IHostedService) ||
                     descriptor.ServiceType == typeof(ICosmosRepository<>) ||
-                    descriptor.ServiceType == typeof(IDocumentService<>) ||
                     descriptor.ServiceType == typeof(IWebhooksService) ||
+                    descriptor.ServiceType == typeof(IDocumentService<>) ||
                     descriptor.ServiceType == typeof(SearchClient) ||
-                    descriptor.ServiceType == typeof(IAzureSearchService))
+                    descriptor.ServiceType == typeof(IAzureSearchService) ||
+                    descriptor.ServiceType == typeof(ISharedContentRedisInterface) ||
+                    descriptor.ServiceType == typeof(IGraphQlService))
                 .ToList();
 
                 foreach (var service in hostedServices)
@@ -74,6 +82,8 @@ namespace DFC.App.ExploreCareers.IntegrationTests
                 services.AddTransient(sp => FakeWebhookService);
                 services.AddTransient(sp => FakeSpellCheckService);
                 services.AddTransient(sp => FakeAzureSearchService);
+                services.AddTransient(sp => FakeSharedContentRedisInterface);
+                services.AddTransient(sp => FakeGraphQlService);
             });
         }
     }

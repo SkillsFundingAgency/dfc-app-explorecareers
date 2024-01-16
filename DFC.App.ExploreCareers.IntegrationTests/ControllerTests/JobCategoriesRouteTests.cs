@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.Data.Models.ContentModels;
-
+using DFC.App.ExploreCareers.ViewModels;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using FakeItEasy;
-
 using FluentAssertions;
-
 using Xunit;
 
 namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
@@ -33,20 +33,39 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
 
+            var jobCategory = new JobProfileCategory
+            {
+                DisplayText = category,
+                PageLocation = new PageLocation
+                {
+                    FullUrl = string.Empty,
+                    UrlName = category
+                }
+            };
+
+            var jobProfileCategoryArray = new JobProfileCategory[] { jobCategory };
+
+            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories"))
+                .Returns(new JobProfileCategoriesResponse
+                {
+                    JobProfileCategories = jobProfileCategoryArray
+                });
+
             A.CallTo(() => factory.FakeDocumentService.GetAllAsync(A<string>._)).Returns(new List<JobCategoryContentItemModel>
             {
                 new JobCategoryContentItemModel { CanonicalName = category, Title = category }
             });
+
             A.CallTo(() => factory.FakeAzureSearchService.GetProfilesByCategoryAsync(category)).Returns(new List<JobProfileIndex>
             {
-                new JobProfileIndex{ Title = "Title" }
+                new JobProfileIndex { Title = "Title" }
             });
 
             // Act
             var response = await client.GetAsync(uri);
 
             // Assert
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.StatusCode.Should().BeOneOf(HttpStatusCode.OK);
             response.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
         }
 
@@ -77,6 +96,26 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             var client = factory.CreateClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
+
+            var jobCategory = new JobProfileCategory
+            {
+                DisplayText = category,
+                PageLocation = new PageLocation
+                {
+                    FullUrl = string.Empty,
+                    UrlName = category
+                }
+            };
+
+            var jobProfileCategoryArray = new JobProfileCategory[] { jobCategory };
+
+            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
+            {
+                JobProfileCategories = jobProfileCategoryArray
+            };
+
+            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories"))
+                .Returns(jobProfileCategoriesResponse);
 
             A.CallTo(() => factory.FakeDocumentService.GetAllAsync(A<string>._)).Returns(new List<JobCategoryContentItemModel>
             {
