@@ -95,7 +95,7 @@ namespace DFC.App.ExploreCareers
             {
                 var option = new GraphQLHttpClientOptions()
                 {
-                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>()),
+                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>() ?? throw new NullReferenceException()),
 
                     HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
                 };
@@ -107,7 +107,7 @@ namespace DFC.App.ExploreCareers
             {
                 var option = new RestClientOptions()
                 {
-                    BaseUrl = new Uri(configuration.GetSection(StaxSqlUrlAppSettings).Get<string>()),
+                    BaseUrl = new Uri(configuration.GetSection(StaxSqlUrlAppSettings).Get<string>() ?? throw new NullReferenceException()),
                     ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
                 };
                 JsonSerializerSettings defaultSettings = new JsonSerializerSettings
