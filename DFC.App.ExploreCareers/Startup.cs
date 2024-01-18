@@ -95,9 +95,9 @@ namespace DFC.App.ExploreCareers
             {
                 var option = new GraphQLHttpClientOptions()
                 {
-                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>() ?? throw new NullReferenceException()),
+                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
 
-                    HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
+                    HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
                 };
                 var client = new GraphQLHttpClient(option, new NewtonsoftJsonSerializer());
                 return client;
@@ -107,8 +107,8 @@ namespace DFC.App.ExploreCareers
             {
                 var option = new RestClientOptions()
                 {
-                    BaseUrl = new Uri(configuration.GetSection(StaxSqlUrlAppSettings).Get<string>() ?? throw new NullReferenceException()),
-                    ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>()),
+                    BaseUrl = new Uri(configuration.GetSection(StaxSqlUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
+                    ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
                 };
                 JsonSerializerSettings defaultSettings = new JsonSerializerSettings
                 {
@@ -122,9 +122,7 @@ namespace DFC.App.ExploreCareers
 
                 var client = new RestClient(option);
                 return client;
-            }
-
-);
+            });
 
             services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
             services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfilesByCategoryQueryStrategy>();

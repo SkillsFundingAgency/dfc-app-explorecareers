@@ -32,7 +32,6 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));
 
-            //TODO: Change FullUrl to URlName and remove substring
             CreateMap<JobProfile, JobProfileIndex>()
                 .ForMember(d => d.Title, s => s.MapFrom(x => x.Title))
                 .ForMember(d => d.AlternativeTitle, m => m.MapFrom(s => s.AlternativeTitle.Split(
