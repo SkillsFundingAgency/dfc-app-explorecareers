@@ -38,7 +38,7 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
                 .ForMember(d => d.AlternativeTitle, m => m.MapFrom(s => s.AlternativeTitle.Split(
                     ',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList()))
                 .ForMember(d => d.Overview, s => s.MapFrom(x => x.Overview))
-                .ForMember(d => d.UrlName, s => s.MapFrom(x => x.Fullurl.Substring(14)))
+                .ForMember(d => d.UrlName, s => s.MapFrom(x => x.UrlName))
                 .ForAllOtherMembers(opts => opts.Ignore());
 
             CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()
