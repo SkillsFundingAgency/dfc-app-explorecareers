@@ -50,7 +50,7 @@ namespace DFC.App.ExploreCareers
         private const string CosmosDbSharedContentConfigAppSettings = "Configuration:CosmosDbConnections:JobCategoryContent";
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
         private const string GraphApiUrlAppSettings = "Cms:StaxGraphApiUrl";
-        private const string StaxSqlUrlAppSettings = "Configuration:StaxConnections:StaxSqlConnectionString";
+        private const string StaxSqlUrlAppSettings = "Configuration:StaxConnections:StaxGraphqlSqlApiUrl";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
