@@ -67,47 +67,28 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             response.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
         }
 
-        //[Fact]
-       // public async Task GetBreadcrumbEndpointReturnSuccessAndCorrectContentType()
-       // {
-            // Arrange
-           // string category = "something";
-           // var uri = new Uri($"/job-categories/{category}/breadcrumb", UriKind.Relative);
-           // var client = factory.CreateClient();
-           // client.DefaultRequestHeaders.Accept.Clear();
-           // client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
+        [Fact]
+        public async Task GetBreadcrumbEndpointReturnSuccessAndCorrectContentType()
+        {
+            //Arrange
+            string category = "something";
+            var uri = new Uri($"/job-categories/{category}/breadcrumb", UriKind.Relative);
+            var client = factory.CreateClient();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
 
-           // var jobCategory = new JobProfileCategory
-           // {
-            //    DisplayText = category,
-            //    PageLocation = new PageLocation
-            //    {
-             //       FullUrl = string.Empty,
-            //        UrlName = category
-           //    }
-           // };
+            var JobCategory = new JobCategoryViewModel { Name = category, CanonicalName = category };
 
-          //  var jobProfileCategoryArray = new JobProfileCategory[] { jobCategory };
+            var JobCategoryViewModelResponse = new List<JobCategoryViewModel>() { JobCategory };
 
-          //  var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
-            //{
-           //     JobProfileCategories = jobProfileCategoryArray
-           // };
+            this.factory.MockGraphQlService.Setup(x => x.GetJobCategoriesAsync()).ReturnsAsync(JobCategoryViewModelResponse);
 
-            //A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories"))
-            //    .Returns(jobProfileCategoriesResponse);
+            //Act
+            var response = await client.GetAsync(uri);
 
-          // A.CallTo(() => factory.FakeDocumentService.GetAllAsync(A<string>._)).Returns(new List<JobCategoryContentItemModel>
-           // {
-            //    new JobCategoryContentItemModel { CanonicalName = category, Title = category }
-           // });
-
-            // Act
-            //var response = await client.GetAsync(uri);
-
-            // Assert
-           // response.StatusCode.Should().Be(HttpStatusCode.OK);
-           // response.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
-       // }
+           // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
+        }
     }
 }
