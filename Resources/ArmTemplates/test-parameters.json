@@ -101,22 +101,22 @@
         "workspaceResourceGroup": {
             "value": "aResourceGroup"
         },
-        "TokenEndPointUrl": {
+        "StaxGraphqlTokenEndpointUrl": {
             "value": "http://url"
         },
-        "GraphApiUrl": {
+        "StaxGraphqlApiUrl": {
             "value": "http://url"
         },
-        "ClientId": {
+        "StaxGraphqlClientId": {
             "value": "clientid"
         },
-        "ClientSecret": {
+        "StaxGraphqlClientSecret": {
             "value": "clientsecret"
         },
         "RedisConnectionString": {
             "value": "teststring"
         },
-        "SqlApiUrl": {
+        "StaxGraphqlSqlApiUrl": {
             "value": "http://url"
         }
     }

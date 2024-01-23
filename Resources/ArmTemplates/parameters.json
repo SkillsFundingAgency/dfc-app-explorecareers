@@ -110,23 +110,23 @@
         "workspaceResourceGroup": {
             "value": "__sharedLogAnalyticsResourceGroup__"
         },
-        "TokenEndPointUrl": {
-            "value": "__TokenEndPointUrl__"
+        "StaxGraphqlTokenEndpointUrl": {
+            "value": "__StaxGraphqlTokenEndpointUrl__"
         },
-        "GraphApiUrl": {
-            "value": "__GraphApiUrl__"
+        "StaxGraphqlApiUrl": {
+            "value": "__StaxGraphqlApiUrl__"
         },
-        "ClientId": {
-            "value": "__ClientId__"
+        "StaxGraphqlClientId": {
+            "value": "__StaxGraphqlClientId__"
         },
-        "ClientSecret": {
-            "value": "__ClientSecret__"
+        "StaxGraphqlClientSecret": {
+            "value": "__StaxGraphqlClientSecret__"
         },
         "RedisConnectionString": {
             "value": "__RedisConnectionString__"
         },
-        "SqlApiUrl": {
-            "value": "__SqlApiUrl__"
+        "StaxGraphqlSqlApiUrl": {
+            "value": "__StaxGraphqlSqlApiUrl__"
         }
     }
 }

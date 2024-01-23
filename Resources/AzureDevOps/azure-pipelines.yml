@@ -168,6 +168,7 @@ stages:
   - group: dfc-compositeui-all
   - group: dfc-app-shared-registration
   - group: dfc-stax-shared-dev
+  - group: 'KeyVault - dfc-dev-shared-kv'
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\DevEnvironmentVariables.yml
 

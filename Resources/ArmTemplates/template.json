@@ -112,22 +112,22 @@
     "workspaceResourceGroup": {
         "type": "string"
     },
-    "TokenEndPointUrl": {
+    "StaxGraphqlTokenEndpointUrl": {
       "type": "string"
     },
-    "GraphApiUrl": {
+    "StaxGraphqlApiUrl": {
       "type": "string"
     },
-    "ClientId": {
+    "StaxGraphqlClientId": {
       "type": "string"
     },
-    "ClientSecret": {
+    "StaxGraphqlClientSecret": {
       "type": "securestring"
     },
     "RedisConnectionString": {
       "type": "securestring"
     },
-    "SqlApiUrl": {
+    "StaxGraphqlSqlApiUrl": {
       "type": "string"
     }
   },
@@ -348,28 +348,28 @@
                 "value": "[parameters('CdnUrl')]"
               },
               {
-                "name": "TokenEndPointUrl",
-                "value": "[parameters('TokenEndPointUrl')]"
+                "name": "StaxGraphqlTokenEndpointUrl",
+                "value": "[parameters('StaxGraphqlTokenEndpointUrl')]"
               },
               {
-                "name": "GraphApiUrl",
-                "value": "[parameters('GraphApiUrl')]"
+                "name": "StaxGraphqlApiUrl",
+                "value": "[parameters('StaxGraphqlApiUrl')]"
               },
               {
-                "name": "ClientId",
-                "value": "[parameters('ClientId')]"
+                "name": "StaxGraphqlClientId",
+                "value": "[parameters('StaxGraphqlClientId')]"
               },
               {
-                "name": "ClientSecret",
-                "value": "[parameters('ClientSecret')]"
+                "name": "StaxGraphqlClientSecret",
+                "value": "[parameters('StaxGraphqlClientSecret')]"
               },
               {
                 "name": "RedisConnectionString",
                 "value": "[parameters('RedisConnectionString')]"
               },
               {
-                "name": "SqlApiUrl",
-                "value": "[parameters('SqlApiUrl')]"
+                "name": "StaxGraphqlSqlApiUrl",
+                "value": "[parameters('StaxGraphqlSqlApiUrl')]"
               }
             ]
           }
