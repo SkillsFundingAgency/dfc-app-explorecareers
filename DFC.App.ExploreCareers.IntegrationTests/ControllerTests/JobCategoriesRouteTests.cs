@@ -11,6 +11,8 @@ using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobPro
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using FakeItEasy;
 using FluentAssertions;
+using FluentNHibernate.Testing.Values;
+using Moq;
 using Xunit;
 
 namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
@@ -23,50 +25,29 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
         public JobCategoriesRouteTests(CustomWebApplicationFactory<Startup> factory) =>
             this.factory = factory;
 
-        //[Fact]
-        //public async Task GetBodyEndpointReturnSuccessAndCorrectContentType()
-        //{
+        [Fact]
+        public async Task GetBodyEndpointReturnSuccessAndCorrectContentType()
+        {
             // Arrange
-            //string category = "something";
-            //var uri = new Uri($"/job-categories/{category}/body", UriKind.Relative);
-            //var client = factory.CreateClient();
-            //client.DefaultRequestHeaders.Accept.Clear();
-            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
+            string category = "something";
+            var uri = new Uri($"/job-categories/{category}/body", UriKind.Relative);
+            var client = factory.CreateClient();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
 
-           // var jobCategory = new JobProfileCategory
-            //{
-             //   DisplayText = category,
-             //   PageLocation = new PageLocation
-             //   {
-             //       FullUrl = string.Empty,
-             //       UrlName = category
-             //   }
-            //};
+            var JobCategory = new JobCategoryViewModel { Name = category, CanonicalName = category };
 
-            //var jobProfileCategoryArray = new JobProfileCategory[] { jobCategory };
+            var JobCategoryViewModelResponse = new List<JobCategoryViewModel>() { JobCategory };
 
-            ///A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories"))
-               // .Returns(new JobProfileCategoriesResponse
-                //{
-                  //  JobProfileCategories = jobProfileCategoryArray
-                //});
+            this.factory.MockGraphQlService.Setup(x => x.GetJobCategoriesAsync()).ReturnsAsync(JobCategoryViewModelResponse);
 
-            //A.CallTo(() => factory.FakeDocumentService.GetAllAsync(A<string>._)).Returns(new List<JobCategoryContentItemModel>
-            //{
-              //  new JobCategoryContentItemModel { CanonicalName = category, Title = category }
-            //});
-
-           // A.CallTo(() => factory.FakeGraphQlService.GetJobProfilesByCategoryAsync(category)).Returns(new List<JobProfileIndex>
-            //{
-              //  new JobProfileIndex { Title = "Title" }
-            //});
             // Act
-            //var response = await client.GetAsync(uri);
+            var response = await client.GetAsync(uri);
 
             // Assert
-            //response.StatusCode.Should().BeOneOf(HttpStatusCode.OK);
-            ////response//.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
-        //}
+            response.StatusCode.Should().BeOneOf(HttpStatusCode.OK);
+            response.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
+        }
 
         [Fact]
         public async Task GetHeadEndpointReturnSuccessAndCorrectContentType()

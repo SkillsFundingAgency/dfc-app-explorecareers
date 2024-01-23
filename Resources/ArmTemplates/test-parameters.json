@@ -101,22 +101,22 @@
         "workspaceResourceGroup": {
             "value": "aResourceGroup"
         },
-        "StaxGraphqlTokenEndpointUrl": {
+        "CmsTokenEndpointUrl": {
             "value": "http://url"
         },
-        "StaxGraphqlApiUrl": {
+        "CmsGraphApiUrl": {
             "value": "http://url"
         },
-        "StaxGraphqlClientId": {
+        "CmsClientId": {
             "value": "clientid"
         },
-        "StaxGraphqlClientSecret": {
+        "CmsClientSecret": {
             "value": "clientsecret"
         },
-        "RedisConnectionString": {
+        "CmsRedisCacheConnectionString": {
             "value": "teststring"
         },
-        "StaxGraphqlSqlApiUrl": {
+        "CmsSqlApiUrl": {
             "value": "http://url"
         }
     }

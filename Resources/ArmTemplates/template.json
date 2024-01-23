@@ -112,22 +112,22 @@
     "workspaceResourceGroup": {
         "type": "string"
     },
-    "StaxGraphqlTokenEndpointUrl": {
+    "CmsTokenEndpointUrl": {
       "type": "string"
     },
-    "StaxGraphqlApiUrl": {
+    "CmsGraphApiUrl": {
       "type": "string"
     },
-    "StaxGraphqlClientId": {
+    "CmsClientId": {
       "type": "string"
     },
-    "StaxGraphqlClientSecret": {
+    "CmsClientSecret": {
       "type": "securestring"
     },
-    "RedisConnectionString": {
+    "CmsRedisCacheConnectionString": {
       "type": "securestring"
     },
-    "StaxGraphqlSqlApiUrl": {
+    "CmsSqlApiUrl": {
       "type": "string"
     }
   },
@@ -348,28 +348,28 @@
                 "value": "[parameters('CdnUrl')]"
               },
               {
-                "name": "StaxGraphqlTokenEndpointUrl",
-                "value": "[parameters('StaxGraphqlTokenEndpointUrl')]"
+                "name": "Cms__TokenEndPointUrl",
+                "value": "[parameters('CmsTokenEndpointUrl')]"
               },
               {
-                "name": "StaxGraphqlApiUrl",
-                "value": "[parameters('StaxGraphqlApiUrl')]"
+                "name": "Cms__GraphApiUrl",
+                "value": "[parameters('CmsGraphApiUrl')]"
               },
               {
-                "name": "StaxGraphqlClientId",
-                "value": "[parameters('StaxGraphqlClientId')]"
+                "name": "Cms__ClientId",
+                "value": "[parameters('CmsClientId')]"
               },
               {
-                "name": "StaxGraphqlClientSecret",
-                "value": "[parameters('StaxGraphqlClientSecret')]"
+                "name": "Cms__ClientSecret",
+                "value": "[parameters('CmsClientSecret')]"
               },
               {
-                "name": "RedisConnectionString",
-                "value": "[parameters('RedisConnectionString')]"
+                "name": "Cms__RedisCacheConnectionString",
+                "value": "[parameters('CmsRedisCacheConnectionString')]"
               },
               {
-                "name": "StaxGraphqlSqlApiUrl",
-                "value": "[parameters('StaxGraphqlSqlApiUrl')]"
+                "name": "Cms__SqlApiUrl",
+                "value": "[parameters('CmsSqlApiUrl')]"
               }
             ]
           }

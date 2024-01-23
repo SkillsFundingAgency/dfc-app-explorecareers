@@ -21,11 +21,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using Moq;
+
 namespace DFC.App.ExploreCareers.IntegrationTests
 {
     public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup>
         where TStartup : class
     {
+        public CustomWebApplicationFactory()
+        {
+            this.MockSharedContentRedis = new Mock<ISharedContentRedisInterface>();
+            this.MockGraphQlService = new Mock<IGraphQlService>();
+        }
+
+        public Mock<ISharedContentRedisInterface> MockSharedContentRedis { get; set; }
+
+        public Mock<IGraphQlService> MockGraphQlService { get; set; }
+
         internal SearchClient FakeClient { get; } = A.Fake<SearchClient>();
 
         internal IDocumentService<JobCategoryContentItemModel> FakeDocumentService { get; } = A.Fake<IDocumentService<JobCategoryContentItemModel>>();
@@ -84,6 +96,8 @@ namespace DFC.App.ExploreCareers.IntegrationTests
                 services.AddTransient(sp => FakeAzureSearchService);
                 services.AddTransient(sp => FakeSharedContentRedisInterface);
                 services.AddTransient(sp => FakeGraphQlService);
+                services.AddScoped<ISharedContentRedisInterface>(_ => MockSharedContentRedis.Object);
+                services.AddScoped<IGraphQlService>(_ => MockGraphQlService.Object);
             });
         }
     }
