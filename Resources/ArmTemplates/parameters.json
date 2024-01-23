@@ -109,6 +109,24 @@
         },
         "workspaceResourceGroup": {
             "value": "__sharedLogAnalyticsResourceGroup__"
+        },
+        "TokenEndPointUrl": {
+            "value": "__TokenEndPointUrl__"
+        },
+        "GraphApiUrl": {
+            "value": "__GraphApiUrl__"
+        },
+        "ClientId": {
+            "value": "__ClientId__"
+        },
+        "ClientSecret": {
+            "value": "__ClientSecret__"
+        },
+        "RedisConnectionString": {
+            "value": "__RedisConnectionString__"
+        },
+        "SqlApiUrl": {
+            "value": "__SqlApiUrl__"
         }
     }
 }

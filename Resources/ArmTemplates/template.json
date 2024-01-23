@@ -111,6 +111,24 @@
     },
     "workspaceResourceGroup": {
         "type": "string"
+    },
+    "TokenEndPointUrl": {
+      "type": "string"
+    },
+    "GraphApiUrl": {
+      "type": "string"
+    },
+    "ClientId": {
+      "type": "string"
+    },
+    "ClientSecret": {
+      "type": "securestring"
+    },
+    "RedisConnectionString": {
+      "type": "securestring"
+    },
+    "SqlApiUrl": {
+      "type": "string"
     }
   },
   "variables": {
@@ -328,6 +346,30 @@
               {
                 "name": "AssetsCdn",
                 "value": "[parameters('CdnUrl')]"
+              },
+              {
+                "name": "TokenEndPointUrl",
+                "value": "[parameters('TokenEndPointUrl')]"
+              },
+              {
+                "name": "GraphApiUrl",
+                "value": "[parameters('GraphApiUrl')]"
+              },
+              {
+                "name": "ClientId",
+                "value": "[parameters('ClientId')]"
+              },
+              {
+                "name": "ClientSecret",
+                "value": "[parameters('ClientSecret')]"
+              },
+              {
+                "name": "RedisConnectionString",
+                "value": "[parameters('RedisConnectionString')]"
+              },
+              {
+                "name": "SqlApiUrl",
+                "value": "[parameters('SqlApiUrl')]"
               }
             ]
           }
