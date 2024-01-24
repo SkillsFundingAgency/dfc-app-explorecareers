@@ -7,27 +7,15 @@ using Azure;
 using Azure.Search.Documents;
 
 using DFC.App.ExploreCareers.AzureSearch;
-using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Configuration;
-using DFC.App.ExploreCareers.Cosmos;
-using DFC.App.ExploreCareers.Data.Contracts;
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.GraphQl;
-using DFC.App.ExploreCareers.HostedServices;
-using DFC.App.ExploreCareers.Services.CacheContentService;
 using DFC.Common.SharedContent.Pkg.Netcore;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.Common.SharedContent.Pkg.Netcore.RequestHandler;
-using DFC.Compui.Cosmos;
-using DFC.Compui.Cosmos.Contracts;
-using DFC.Compui.Subscriptions.Pkg.Netstandard.Extensions;
 using DFC.Compui.Telemetry;
-using DFC.Content.Pkg.Netcore.Data.Models.ClientOptions;
-using DFC.Content.Pkg.Netcore.Data.Models.PollyOptions;
-using DFC.Content.Pkg.Netcore.Extensions;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
@@ -47,10 +35,9 @@ namespace DFC.App.ExploreCareers
     [ExcludeFromCodeCoverage]
     public class Startup
     {
-        private const string CosmosDbSharedContentConfigAppSettings = "Configuration:CosmosDbConnections:JobCategoryContent";
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
-        private const string GraphApiUrlAppSettings = "Cms:StaxGraphApiUrl";
-        private const string StaxSqlUrlAppSettings = "Cms:SqlApiUrl";
+        private const string StaxGraphApiUrlAppSettings = "Cms:StaxGraphApiUrl";
+        private const string SqlApiUrlAppSettings = "Cms:SqlApiUrl";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
@@ -95,7 +82,7 @@ namespace DFC.App.ExploreCareers
             {
                 var option = new GraphQLHttpClientOptions()
                 {
-                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
+                    EndPoint = new Uri(configuration.GetSection(StaxGraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
 
                     HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
                 };
@@ -107,7 +94,7 @@ namespace DFC.App.ExploreCareers
             {
                 var option = new RestClientOptions()
                 {
-                    BaseUrl = new Uri(configuration.GetSection(StaxSqlUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
+                    BaseUrl = new Uri(configuration.GetSection(SqlApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
                     ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
                 };
                 JsonSerializerSettings defaultSettings = new JsonSerializerSettings
@@ -131,44 +118,18 @@ namespace DFC.App.ExploreCareers
 
             services.AddScoped<ISharedContentRedisInterface, SharedContentRedis>();
 
-            var cosmosDbConnectionSharedContent = configuration.GetSection(CosmosDbSharedContentConfigAppSettings).Get<CosmosDbConnection>();
-            services.AddDocumentServices<JobCategoryContentItemModel>(cosmosDbConnectionSharedContent, env.IsDevelopment());
-
             services.AddApplicationInsightsTelemetry();
             services.AddHttpContextAccessor();
             services.AddHostedServiceTelemetryWrapper();
-            services.AddSubscriptionBackgroundService(configuration);
             services.AddAutoMapper(typeof(Startup).Assembly);
 
-            services.AddSingleton(configuration.GetSection(nameof(CmsApiClientOptions)).Get<CmsApiClientOptions>() ?? new CmsApiClientOptions());
-            services.AddSingleton(configuration.GetSection(nameof(SpellCheckApiClientOptions)).Get<SpellCheckApiClientOptions>() ?? new SpellCheckApiClientOptions());
             var searchClientOptions = configuration.GetSection(nameof(JobProfileSearchClientOptions)).Get<JobProfileSearchClientOptions>() ?? new JobProfileSearchClientOptions();
             services.AddTransient(sp => new SearchClient(new Uri(searchClientOptions.BaseAddress), searchClientOptions.IndexName, new AzureKeyCredential(searchClientOptions.ApiKey)));
 
-            services.AddTransient<ICacheReloadService, CacheReloadService>();
-            services.AddTransient<IWebhooksService, WebhooksService>();
-            services.AddTransient<IJobCategoryDocumentService, JobCategoryDocumentService>();
             services.AddTransient<IAzureSearchService, AzureSearchService>();
             services.AddTransient<IGraphQlService, GraphQlService>();
             services.AddTransient<ISharedContentRedisInterface, SharedContentRedis>();
             services.AddTransient<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
-
-            if (bool.TryParse(configuration["Configuration:ReloadCache"], out bool reload) && reload)
-            {
-                services.AddHostedService<CacheReloadBackgroundService>();
-            }
-
-            var policyOptions = configuration.GetSection("Policies").Get<PolicyOptions>() ?? new PolicyOptions();
-            var policyRegistry = services.AddPolicyRegistry();
-
-            services
-                .AddPolicies(policyRegistry, nameof(SpellCheckApiClientOptions), policyOptions)
-                .AddHttpClient<ISpellCheckService, SpellCheckService, SpellCheckApiClientOptions>(
-                    nameof(SpellCheckApiClientOptions),
-                    nameof(PolicyOptions.HttpRetry),
-                    nameof(PolicyOptions.HttpCircuitBreaker));
-
-            services.AddApiServices(configuration, policyRegistry);
 
             services.AddMvc(config =>
                 {

@@ -5,8 +5,6 @@ using System.Linq;
 using AutoMapper;
 
 using DFC.App.ExploreCareers.AzureSearch;
-using DFC.App.ExploreCareers.Data.Models.CmsApiModels;
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
@@ -18,16 +16,6 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
     {
         public JobProfileContentItemModelProfile()
         {
-            CreateMap<CmsApiJobCategoryModel, JobCategoryContentItemModel>()
-                .ForMember(d => d.Id, s => s.MapFrom(x => x.ItemId))
-                .ForMember(d => d.PartitionKey, s => s.MapFrom(x => x.PageLocation))
-                .ForMember(d => d.Etag, s => s.Ignore())
-                .ForMember(d => d.TraceId, s => s.Ignore())
-                .ForMember(d => d.ParentId, s => s.Ignore());
-
-            CreateMap<JobCategoryContentItemModel, JobCategoryViewModel>()
-                .ForMember(d => d.Name, s => s.MapFrom(x => x.Title));
-
             CreateMap<JobProfileCategory, JobCategoryViewModel>()
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));

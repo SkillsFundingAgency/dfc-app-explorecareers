@@ -5,11 +5,7 @@ using System.Threading.Tasks;
 
 using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
-using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.Models;
-using Newtonsoft.Json;
-using NHibernate.Dialect.Schema;
-using NHibernate.Hql.Ast.ANTLR.Tree;
 
 namespace DFC.App.ExploreCareers.AzureSearch
 {

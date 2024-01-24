@@ -9,7 +9,6 @@ using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 
 using DFC.App.ExploreCareers.AzureSearch;
-using DFC.App.ExploreCareers.GraphQl;
 using FakeItEasy;
 
 using FluentAssertions;
