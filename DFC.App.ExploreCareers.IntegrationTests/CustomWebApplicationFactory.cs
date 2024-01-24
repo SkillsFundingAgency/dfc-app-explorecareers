@@ -6,11 +6,8 @@ using Azure.Search.Documents;
 
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.BingSpellCheck;
-using DFC.App.ExploreCareers.Data.Contracts;
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Compui.Cosmos.Contracts;
 
 using FakeItEasy;
 
@@ -39,10 +36,6 @@ namespace DFC.App.ExploreCareers.IntegrationTests
         public Mock<IGraphQlService> MockGraphQlService { get; set; }
 
         internal SearchClient FakeClient { get; } = A.Fake<SearchClient>();
-
-        internal IDocumentService<JobCategoryContentItemModel> FakeDocumentService { get; } = A.Fake<IDocumentService<JobCategoryContentItemModel>>();
-
-        internal IWebhooksService FakeWebhookService { get; } = A.Fake<IWebhooksService>();
 
         internal ISpellCheckService FakeSpellCheckService { get; } = A.Fake<ISpellCheckService>();
 
@@ -75,9 +68,6 @@ namespace DFC.App.ExploreCareers.IntegrationTests
             {
                 var hostedServices = services.Where(descriptor =>
                     descriptor.ServiceType == typeof(IHostedService) ||
-                    descriptor.ServiceType == typeof(ICosmosRepository<>) ||
-                    descriptor.ServiceType == typeof(IWebhooksService) ||
-                    descriptor.ServiceType == typeof(IDocumentService<>) ||
                     descriptor.ServiceType == typeof(SearchClient) ||
                     descriptor.ServiceType == typeof(IAzureSearchService) ||
                     descriptor.ServiceType == typeof(ISharedContentRedisInterface) ||
@@ -90,8 +80,6 @@ namespace DFC.App.ExploreCareers.IntegrationTests
                 }
 
                 services.AddTransient(sp => FakeClient);
-                services.AddTransient(sp => FakeDocumentService);
-                services.AddTransient(sp => FakeWebhookService);
                 services.AddTransient(sp => FakeSpellCheckService);
                 services.AddTransient(sp => FakeAzureSearchService);
                 services.AddTransient(sp => FakeSharedContentRedisInterface);

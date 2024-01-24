@@ -3,15 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
-
-using DFC.App.ExploreCareers.AzureSearch;
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
 using DFC.App.ExploreCareers.ViewModels;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
-using FakeItEasy;
 using FluentAssertions;
-using FluentNHibernate.Testing.Values;
 using Moq;
 using Xunit;
 

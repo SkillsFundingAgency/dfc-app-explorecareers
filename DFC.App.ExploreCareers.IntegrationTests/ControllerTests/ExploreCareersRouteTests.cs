@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mime;
 using System.Threading.Tasks;
-
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
-using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
