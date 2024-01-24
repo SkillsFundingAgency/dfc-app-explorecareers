@@ -18,8 +18,6 @@ using Microsoft.Net.Http.Headers;
 
 using Xunit;
 
-using static DFC.App.ExploreCareers.UnitTests.TestData.TestDataFactory;
-
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 {
     public class ExploreCareersControllerTests
@@ -66,9 +64,13 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            var model = BuildJobCategoryContentItemModel();
-            var expectedViewModel = BuildJobCategoryViewModel();
-            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            var jobCategoryViewModel = new JobCategoryViewModel
+            {
+                Name = "an-article",
+                CanonicalName = "an-article"
+            };
+
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategoryViewModel });
 
             var result = await controller.BodyAsync();
 
@@ -79,8 +81,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             viewModel.JobCategories.Should().NotBeNullOrEmpty();
             var jobCategory = viewModel.JobCategories![0];
-            jobCategory.Name.Should().Be(expectedViewModel.Name);
-            jobCategory.CanonicalName.Should().Be(expectedViewModel.CanonicalName);
+            jobCategory.Name.Should().Be(jobCategoryViewModel.Name);
+            jobCategory.CanonicalName.Should().Be(jobCategoryViewModel.CanonicalName);
 
             A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).MustHaveHappenedOnceExactly();
         }
@@ -91,9 +93,13 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            var model = BuildJobCategoryContentItemModel();
-            var expectedViewModel = BuildJobCategoryViewModel();
-            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            var jobCategoryViewModel = new JobCategoryViewModel
+            {
+                Name = "an-article",
+                CanonicalName = "an-article"
+            };
+
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategoryViewModel });
 
             var result = await controller.DocumentAsync();
 
