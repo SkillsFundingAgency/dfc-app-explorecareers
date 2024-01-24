@@ -36,7 +36,7 @@ namespace DFC.App.ExploreCareers
     public class Startup
     {
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
-        private const string StaxGraphApiUrlAppSettings = "Cms:StaxGraphApiUrl";
+        private const string StaxGraphApiUrlAppSettings = "Cms:GraphApiUrl";
         private const string SqlApiUrlAppSettings = "Cms:SqlApiUrl";
 
         private readonly IConfiguration configuration;
