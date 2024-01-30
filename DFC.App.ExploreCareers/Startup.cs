@@ -7,6 +7,7 @@ using Azure;
 using Azure.Search.Documents;
 
 using DFC.App.ExploreCareers.AzureSearch;
+using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Configuration;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore;
@@ -16,13 +17,14 @@ using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.Common.SharedContent.Pkg.Netcore.RequestHandler;
 using DFC.Compui.Telemetry;
+using DFC.Content.Pkg.Netcore.Data.Models.PollyOptions;
+using DFC.Content.Pkg.Netcore.Extensions;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -125,19 +127,29 @@ namespace DFC.App.ExploreCareers
 
             var searchClientOptions = configuration.GetSection(nameof(JobProfileSearchClientOptions)).Get<JobProfileSearchClientOptions>() ?? new JobProfileSearchClientOptions();
             services.AddTransient(sp => new SearchClient(new Uri(searchClientOptions.BaseAddress), searchClientOptions.IndexName, new AzureKeyCredential(searchClientOptions.ApiKey)));
+            services.AddSingleton(configuration.GetSection(nameof(SpellCheckApiClientOptions)).Get<SpellCheckApiClientOptions>() ?? new SpellCheckApiClientOptions());
 
             services.AddTransient<IAzureSearchService, AzureSearchService>();
             services.AddTransient<IGraphQlService, GraphQlService>();
             services.AddTransient<ISharedContentRedisInterface, SharedContentRedis>();
             services.AddTransient<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
+            var policyOptions = configuration.GetSection("Policies").Get<PolicyOptions>() ?? new PolicyOptions();
+            var policyRegistry = services.AddPolicyRegistry();
+            services
+                .AddPolicies(policyRegistry, nameof(SpellCheckApiClientOptions), policyOptions)
+                .AddHttpClient<ISpellCheckService, SpellCheckService, SpellCheckApiClientOptions>(
+                    nameof(SpellCheckApiClientOptions),
+                    nameof(PolicyOptions.HttpRetry),
+                    nameof(PolicyOptions.HttpCircuitBreaker));
+
+            services.AddApiServices(configuration, policyRegistry);
+
             services.AddMvc(config =>
                 {
                     config.RespectBrowserAcceptHeader = true;
                     config.ReturnHttpNotAcceptable = true;
-                })
-                .AddNewtonsoftJson()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+                });
         }
     }
 }

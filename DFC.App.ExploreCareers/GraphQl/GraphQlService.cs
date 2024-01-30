@@ -24,7 +24,9 @@ namespace DFC.App.ExploreCareers.GraphQl
         {
             var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories")
                 ?? new JobProfileCategoriesResponse();
-            return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories.Where(c => c.DisplayText != null).OrderBy(c => c.DisplayText));
+            return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories
+                .Where(c => c.DisplayText != null)
+                .OrderBy(c => c.DisplayText.Trim().ToString()));
         }
 
         public async Task<List<JobProfileIndex>> GetJobProfilesByCategoryAsync(string jobProfile)
