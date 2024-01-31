@@ -137,7 +137,7 @@ namespace DFC.App.ExploreCareers.Controllers
         private HeadViewModel GetHeadViewModel(string category) =>
             new HeadViewModel
             {
-                CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{JobCategoryViewCanonicalName}", UriKind.RelativeOrAbsolute),
+                CanonicalUrl = new Uri($"{Request.GetBaseAddress()}{JobCategoryViewCanonicalName}", UriKind.RelativeOrAbsolute),
                 Title = string.IsNullOrWhiteSpace(category) ? DefaultPageTitleSuffix : GetTitle(category),
             };
 
