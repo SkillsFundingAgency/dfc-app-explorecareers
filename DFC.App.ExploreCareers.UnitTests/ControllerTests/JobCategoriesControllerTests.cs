@@ -51,7 +51,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
                 .Which;
 
             viewModel.Title.Should().Be("Category name | Explore careers");
-            viewModel.CanonicalUrl!.OriginalString.Should().Be("/job-categories");
+            viewModel.CanonicalUrl!.OriginalString.Should().Be("job-categories");
         }
 
         [Fact]
@@ -203,7 +203,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             viewModel.Head.Should().NotBeNull();
             viewModel.Head.Title.Should().Be("Category name | Explore careers");
-            viewModel.Head.CanonicalUrl!.OriginalString.Should().Be("/job-categories");
+            viewModel.Head.CanonicalUrl!.OriginalString.Should().Be("job-categories");
         }
 
         [Fact]
