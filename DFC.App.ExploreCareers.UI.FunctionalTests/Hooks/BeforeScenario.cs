@@ -13,7 +13,6 @@ using DFC.TestAutomation.UI.Extension;
 using DFC.TestAutomation.UI.Helper;
 using DFC.TestAutomation.UI.Settings;
 using DFC.TestAutomation.UI.Support;
-using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Hooks

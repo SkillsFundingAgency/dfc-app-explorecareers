@@ -2,8 +2,7 @@
 using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.Controllers;
-using DFC.App.ExploreCareers.Cosmos;
-
+using DFC.App.ExploreCareers.GraphQl;
 using FakeItEasy;
 
 using FluentAssertions;
@@ -21,7 +20,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
     {
         private ILogger<SitemapController> FakeLogger { get; } = A.Fake<ILogger<SitemapController>>();
 
-        private IJobCategoryDocumentService FakeDocumentService { get; } = A.Fake<IJobCategoryDocumentService>();
+        private IGraphQlService FakeGraphQlService { get; } = A.Fake<IGraphQlService>();
 
         [Fact]
         public async Task SitemapControllerSitemapReturnsSuccess()
@@ -40,7 +39,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
         private SitemapController BuildSitemapController()
         {
-            var controller = new SitemapController(FakeLogger, FakeDocumentService)
+            var controller = new SitemapController(FakeLogger, FakeGraphQlService)
             {
                 ControllerContext = new ControllerContext()
                 {

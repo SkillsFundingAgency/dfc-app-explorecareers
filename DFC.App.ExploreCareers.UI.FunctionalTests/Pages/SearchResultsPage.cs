@@ -2,9 +2,7 @@
 using DFC.TestAutomation.UI.Extension;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages

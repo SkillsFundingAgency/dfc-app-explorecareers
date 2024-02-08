@@ -1,10 +1,4 @@
-﻿using DFC.TestAutomation.UI.Extension;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Extensions;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Support

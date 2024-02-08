@@ -7,7 +7,7 @@ using AutoMapper;
 using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.Controllers;
-using DFC.App.ExploreCareers.Cosmos;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
 
@@ -32,9 +32,9 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
         private ILogger<JobCategoriesController> Logger { get; } = A.Fake<ILogger<JobCategoriesController>>();
 
-        private IJobCategoryDocumentService DocumentService { get; } = A.Fake<IJobCategoryDocumentService>();
-
         private IAzureSearchService AzureSearchService { get; } = A.Fake<IAzureSearchService>();
+
+        private IGraphQlService GraphQlService { get; } = A.Fake<IGraphQlService>();
 
         [Fact]
         public void HeadReturnsHtml()
@@ -73,7 +73,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
             var jobCategory = new JobCategoryViewModel { Name = "Category name", CanonicalName = CategoryName };
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync($"/{CategoryName}")).Returns(new List<JobCategoryViewModel> { jobCategory });
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategory });
 
             // Act
             var result = await controller.Breadcrumb(CategoryName);
@@ -95,11 +95,11 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
         }
 
         [Fact]
-        public async Task BreadcrumbUnknwonCategoryReturnsNotFound()
+        public async Task BreadcrumbUnknownCategoryReturnsNotFound()
         {
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync($"/{CategoryName}")).Returns(new List<JobCategoryViewModel>());
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel>());
 
             // Act
             var result = await controller.Breadcrumb(CategoryName);
@@ -129,8 +129,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             var jobCategory = new JobCategoryViewModel { Name = "Category name", CanonicalName = CategoryName };
             var jobProfileIndex = new JobProfileIndex { Title = jobCategory.Name, Overview = "some overview", UrlName = CategoryName };
 
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { jobCategory });
-            A.CallTo(() => AzureSearchService.GetProfilesByCategoryAsync(CategoryName)).Returns(new List<JobProfileIndex> { jobProfileIndex });
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategory });
+            A.CallTo(() => GraphQlService.GetJobProfilesByCategoryAsync(CategoryName)).Returns(new List<JobProfileIndex> { jobProfileIndex });
 
             // Act
             var result = await controller.Body(CategoryName);
@@ -159,11 +159,11 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
         }
 
         [Fact]
-        public async Task BodyUnknwonCategoryReturnsNotFound()
+        public async Task BodyUnknownCategoryReturnsNotFound()
         {
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync($"/{CategoryName}")).Returns(new List<JobCategoryViewModel>());
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel>());
 
             // Act
             var result = await controller.Body(CategoryName);
@@ -180,8 +180,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             var jobCategory = new JobCategoryViewModel { Name = "Category name", CanonicalName = CategoryName };
             var jobProfileIndex = new JobProfileIndex { Title = jobCategory.Name, Overview = "some overview", UrlName = CategoryName };
 
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { jobCategory });
-            A.CallTo(() => AzureSearchService.GetProfilesByCategoryAsync(CategoryName)).Returns(new List<JobProfileIndex> { jobProfileIndex });
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategory });
+            A.CallTo(() => GraphQlService.GetJobProfilesByCategoryAsync(CategoryName)).Returns(new List<JobProfileIndex> { jobProfileIndex });
 
             // Act
             var result = await controller.Document(CategoryName);
@@ -220,11 +220,11 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
         }
 
         [Fact]
-        public async Task DocumentUnknwonCategoryReturnsNotFound()
+        public async Task DocumentUnknownCategoryReturnsNotFound()
         {
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
-            A.CallTo(() => DocumentService.GetJobCategoriesAsync($"/{CategoryName}")).Returns(new List<JobCategoryViewModel>());
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel>());
 
             // Act
             var result = await controller.Document(CategoryName);
@@ -239,7 +239,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             httpContext.Request.Headers[HeaderNames.Accept] = mediaTypeName;
 
-            var controller = new JobCategoriesController(Logger, Mapper, DocumentService, AzureSearchService)
+            var controller = new JobCategoriesController(Logger, Mapper, GraphQlService)
             {
                 ControllerContext = new ControllerContext()
                 {
