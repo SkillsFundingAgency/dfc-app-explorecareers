@@ -6,9 +6,8 @@ using Azure.Search.Documents;
 
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.BingSpellCheck;
-using DFC.App.ExploreCareers.Data.Contracts;
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
-using DFC.Compui.Cosmos.Contracts;
+using DFC.App.ExploreCareers.GraphQl;
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 
 using FakeItEasy;
 
@@ -19,20 +18,32 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using Moq;
+
 namespace DFC.App.ExploreCareers.IntegrationTests
 {
     public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup>
         where TStartup : class
     {
+        public CustomWebApplicationFactory()
+        {
+            this.MockSharedContentRedis = new Mock<ISharedContentRedisInterface>();
+            this.MockGraphQlService = new Mock<IGraphQlService>();
+        }
+
+        public Mock<ISharedContentRedisInterface> MockSharedContentRedis { get; set; }
+
+        public Mock<IGraphQlService> MockGraphQlService { get; set; }
+
         internal SearchClient FakeClient { get; } = A.Fake<SearchClient>();
-
-        internal IDocumentService<JobCategoryContentItemModel> FakeDocumentService { get; } = A.Fake<IDocumentService<JobCategoryContentItemModel>>();
-
-        internal IWebhooksService FakeWebhookService { get; } = A.Fake<IWebhooksService>();
 
         internal ISpellCheckService FakeSpellCheckService { get; } = A.Fake<ISpellCheckService>();
 
         internal IAzureSearchService FakeAzureSearchService { get; } = A.Fake<IAzureSearchService>();
+
+        internal IGraphQlService FakeGraphQlService { get; } = A.Fake<IGraphQlService>();
+
+        internal ISharedContentRedisInterface FakeSharedContentRedisInterface { get; } = A.Fake<ISharedContentRedisInterface>();
 
         internal new HttpClient CreateClient()
         {
@@ -57,11 +68,10 @@ namespace DFC.App.ExploreCareers.IntegrationTests
             {
                 var hostedServices = services.Where(descriptor =>
                     descriptor.ServiceType == typeof(IHostedService) ||
-                    descriptor.ServiceType == typeof(ICosmosRepository<>) ||
-                    descriptor.ServiceType == typeof(IDocumentService<>) ||
-                    descriptor.ServiceType == typeof(IWebhooksService) ||
                     descriptor.ServiceType == typeof(SearchClient) ||
-                    descriptor.ServiceType == typeof(IAzureSearchService))
+                    descriptor.ServiceType == typeof(IAzureSearchService) ||
+                    descriptor.ServiceType == typeof(ISharedContentRedisInterface) ||
+                    descriptor.ServiceType == typeof(IGraphQlService))
                 .ToList();
 
                 foreach (var service in hostedServices)
@@ -70,10 +80,12 @@ namespace DFC.App.ExploreCareers.IntegrationTests
                 }
 
                 services.AddTransient(sp => FakeClient);
-                services.AddTransient(sp => FakeDocumentService);
-                services.AddTransient(sp => FakeWebhookService);
                 services.AddTransient(sp => FakeSpellCheckService);
                 services.AddTransient(sp => FakeAzureSearchService);
+                services.AddTransient(sp => FakeSharedContentRedisInterface);
+                services.AddTransient(sp => FakeGraphQlService);
+                services.AddScoped<ISharedContentRedisInterface>(_ => MockSharedContentRedis.Object);
+                services.AddScoped<IGraphQlService>(_ => MockGraphQlService.Object);
             });
         }
     }

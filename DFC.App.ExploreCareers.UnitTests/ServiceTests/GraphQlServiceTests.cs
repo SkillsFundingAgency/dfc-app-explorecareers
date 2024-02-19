@@ -1,0 +1,107 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using AutoMapper;
+
+using DFC.App.ExploreCareers.AutoMapperProfiles;
+using DFC.App.ExploreCareers.GraphQl;
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
+
+using FakeItEasy;
+
+using FluentAssertions;
+
+using Xunit;
+
+namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
+{
+    public class GraphQlServiceTests
+    {
+        [Fact]
+        public async Task GetJobCategoryShouldReturnsResultsOrderedByTitle()
+        {
+            var jobCategory1 = new JobProfileCategory
+            {
+                DisplayText = "a-article",
+                PageLocation = new PageLocation
+                {
+                    FullUrl = "an-article",
+                    UrlName = "/an-article"
+                }
+            };
+            var jobCategory2 = new JobProfileCategory
+            {
+                DisplayText = "b-article",
+                PageLocation = new PageLocation
+                {
+                    FullUrl = "an-article",
+                    UrlName = "/an-article"
+                }
+            };
+
+            var jobProfileCategories = new JobProfileCategory[] { jobCategory2, jobCategory1 };
+
+            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
+            {
+                JobProfileCategories = jobProfileCategories
+            };
+
+            var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
+            var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(A<string>.Ignored)).Returns(jobProfileCategoriesResponse);
+
+            var service = new GraphQlService(fakeSharedContentRedisInterface, mapper);
+
+            // Act
+            var result = await service.GetJobCategoriesAsync();
+
+            // Assert
+            result.Count.Should().Be(2);
+            result[0].Name.Should().Be(jobCategory1.DisplayText);
+            result[1].Name.Should().Be(jobCategory2.DisplayText);
+        }
+
+        [Fact]
+        public async Task GetJobProfilesByCategoryShouldReturnsResultsOrderedByTitle()
+        {
+            var jobCategory = "test";
+            var jobProfile1 = new JobProfile
+            {
+                Title = "a-article",
+                AlternativeTitle = "a-article",
+                Overview = "An article",
+                UrlName = "/an-article"
+            };
+            var jobProfile2 = new JobProfile
+            {
+                Title = "a-article",
+                AlternativeTitle = "a-article",
+                Overview = "An article",
+                UrlName = "/an-article"
+            };
+
+            var jobProfiles = new List<JobProfile> { jobProfile2, jobProfile1 };
+
+            var jobProfilesResponse = new JobProfilesResponse
+            {
+                Items = jobProfiles
+            };
+
+            var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
+            var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponse>(A<string>.Ignored)).Returns(jobProfilesResponse);
+
+            var service = new GraphQlService(fakeSharedContentRedisInterface, mapper);
+
+            // Act
+            var result = await service.GetJobProfilesByCategoryAsync(jobCategory);
+
+            // Assert
+            result.Count.Should().Be(2);
+            result[0].Title.Should().Be(jobProfile1.Title);
+            result[1].Title.Should().Be(jobProfile2.Title);
+        }
+    }
+}

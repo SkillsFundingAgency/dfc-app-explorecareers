@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
-
-using DFC.App.ExploreCareers.AzureSearch;
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
-
-using FakeItEasy;
-
+using DFC.App.ExploreCareers.ViewModels;
 using FluentAssertions;
-
+using Moq;
 using Xunit;
 
 namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
@@ -33,20 +28,17 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
 
-            A.CallTo(() => factory.FakeDocumentService.GetAllAsync(A<string>._)).Returns(new List<JobCategoryContentItemModel>
-            {
-                new JobCategoryContentItemModel { CanonicalName = category, Title = category }
-            });
-            A.CallTo(() => factory.FakeAzureSearchService.GetProfilesByCategoryAsync(category)).Returns(new List<JobProfileIndex>
-            {
-                new JobProfileIndex{ Title = "Title" }
-            });
+            var JobCategory = new JobCategoryViewModel { Name = category, CanonicalName = category };
+
+            var JobCategoryViewModelResponse = new List<JobCategoryViewModel>() { JobCategory };
+
+            this.factory.MockGraphQlService.Setup(x => x.GetJobCategoriesAsync()).ReturnsAsync(JobCategoryViewModelResponse);
 
             // Act
             var response = await client.GetAsync(uri);
 
             // Assert
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.StatusCode.Should().BeOneOf(HttpStatusCode.OK);
             response.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
         }
 
@@ -71,22 +63,23 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
         [Fact]
         public async Task GetBreadcrumbEndpointReturnSuccessAndCorrectContentType()
         {
-            // Arrange
+            //Arrange
             string category = "something";
             var uri = new Uri($"/job-categories/{category}/breadcrumb", UriKind.Relative);
             var client = factory.CreateClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(MediaTypeNames.Text.Html));
 
-            A.CallTo(() => factory.FakeDocumentService.GetAllAsync(A<string>._)).Returns(new List<JobCategoryContentItemModel>
-            {
-                new JobCategoryContentItemModel { CanonicalName = category, Title = category }
-            });
+            var JobCategory = new JobCategoryViewModel { Name = category, CanonicalName = category };
 
-            // Act
+            var JobCategoryViewModelResponse = new List<JobCategoryViewModel>() { JobCategory };
+
+            this.factory.MockGraphQlService.Setup(x => x.GetJobCategoriesAsync()).ReturnsAsync(JobCategoryViewModelResponse);
+
+            //Act
             var response = await client.GetAsync(uri);
 
-            // Assert
+           // Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
             response.Content.Headers.ContentType.MediaType.Should().Be(MediaTypeNames.Text.Html);
         }

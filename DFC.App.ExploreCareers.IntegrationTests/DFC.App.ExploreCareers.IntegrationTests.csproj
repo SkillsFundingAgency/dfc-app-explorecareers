@@ -52,7 +52,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DFC.App.ExploreCareers.Data\DFC.App.ExploreCareers.Data.csproj" />
     <ProjectReference Include="..\DFC.App.ExploreCareers\DFC.App.ExploreCareers.csproj" />
   </ItemGroup>
 

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Mime;
 using System.Threading.Tasks;
-
-using DFC.App.ExploreCareers.Data.Models.ContentModels;
-
+using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using FakeItEasy;
 
 using FluentAssertions;
@@ -20,6 +19,8 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
     {
         private readonly CustomWebApplicationFactory<Startup> factory;
 
+        private ISharedContentRedisInterface FakeSharedContentRedisInterface { get; } = A.Fake<ISharedContentRedisInterface>();
+
         public ExploreCareersRouteTests(CustomWebApplicationFactory<Startup> factory) =>
             this.factory = factory;
 
@@ -31,10 +32,25 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
             var uri = new Uri($"/explore-careers/body", UriKind.Relative);
             var client = GetClient();
 
-            A.CallTo(() => factory.FakeDocumentService.GetAllAsync(A<string>._)).Returns(new List<JobCategoryContentItemModel>
+            var jobCategory = new JobProfileCategory
             {
-                new JobCategoryContentItemModel { CanonicalName = category, Title = category }
-            });
+                DisplayText = category,
+                PageLocation = new PageLocation
+                {
+                    FullUrl = string.Empty,
+                    UrlName = category
+                }
+            };
+
+            var jobProfileCategoryArray = new JobProfileCategory[] { jobCategory };
+
+            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
+            {
+                JobProfileCategories = jobProfileCategoryArray
+            };
+
+            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories"))
+                .Returns(jobProfileCategoriesResponse);
 
             // Act
             var response = await client.GetAsync(uri);

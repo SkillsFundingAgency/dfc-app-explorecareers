@@ -9,11 +9,9 @@ using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 
 using DFC.App.ExploreCareers.AzureSearch;
-
 using FakeItEasy;
 
 using FluentAssertions;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
@@ -53,22 +51,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             response.Should().NotBeNullOrEmpty();
             response.Should().NotHaveCount(1);
             response.First().Label.Should().Be("A (A Alt Title 2)");
-        }
-
-        [Fact]
-        public async Task GetProfilesByCategoryShouldReturnsResultsOrderedByTitle()
-        {
-            // Arrange
-            SetupMockSearchResponse();
-            var searchService = new AzureSearchService(mockClient);
-
-            // Act
-            var response = await searchService.GetProfilesByCategoryAsync("category");
-
-            // Assert
-            response.Count.Should().Be(2);
-            response[0].Title.Should().Be("A");
-            response[1].Title.Should().Be("B");
         }
 
         [Fact]
