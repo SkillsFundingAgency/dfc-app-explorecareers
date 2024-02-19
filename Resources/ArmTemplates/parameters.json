@@ -59,8 +59,8 @@
         "jobProfileBaseAddress": {
             "value": "__jobProfileBaseAddress__"
         },
-        "jobProfileSearchIndexName":{
-          "value": "__jobProfileSearchIndexName__"
+        "jobProfileSearchIndexName": {
+            "value": "__jobProfileSearchIndexName__"
         },
         "jobCategorySearchClientOptionsBaseAddress": {
             "value": "__jobCategoryBaseAddress__"
@@ -99,10 +99,10 @@
             "value": "__SubscriptionSettingsEndpoint__"
         },
         "bingSpellCheckApiUrl": {
-          "value": "__bingSpellCheckApiUrl__"
+            "value": "__bingSpellCheckApiUrl__"
         },
         "bingSpellCheckApiKey": {
-          "value": "__bingSpellCheckApiKey__"
+            "value": "__bingSpellCheckApiKey__"
         },
         "workspaceName": {
             "value": "__sharedLogAnalyticsWorkspace__"
