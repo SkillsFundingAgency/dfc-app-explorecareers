@@ -7,6 +7,7 @@ using AutoMapper;
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
 
 namespace DFC.App.ExploreCareers.AutoMapperProfiles
@@ -16,16 +17,16 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
     {
         public JobProfileContentItemModelProfile()
         {
-            CreateMap<JobProfileCategory, JobCategoryViewModel>()
+            CreateMap<Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory, JobCategoryViewModel>()
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));
 
             CreateMap<JobProfile, JobProfileIndex>()
-                .ForMember(d => d.Title, s => s.MapFrom(x => x.Title))
+                .ForMember(d => d.Title, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.AlternativeTitle, m => m.MapFrom(s => s.AlternativeTitle.Split(
                     ',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList()))
                 .ForMember(d => d.Overview, s => s.MapFrom(x => x.Overview))
-                .ForMember(d => d.UrlName, s => s.MapFrom(x => x.UrlName))
+                .ForMember(d => d.UrlName, s => s.MapFrom(x => x.PageLocation.UrlName))
                 .ForAllOtherMembers(opts => opts.Ignore());
 
             CreateMap<JobProfileIndex, JobProfileByCategoryViewModel>()

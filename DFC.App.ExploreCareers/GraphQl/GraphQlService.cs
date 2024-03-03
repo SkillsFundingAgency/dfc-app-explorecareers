@@ -31,7 +31,7 @@ namespace DFC.App.ExploreCareers.GraphQl
         {
             var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"JobProfiles/{jobProfile}")
                 ?? new JobProfilesResponse();
-            return mapper.Map<List<JobProfileIndex>>(response.Items.OrderBy(c => c.Title));
+            return mapper.Map<List<JobProfileIndex>>(response.JobProfiles.OrderBy(c => c.DisplayText));
         }
     }
 }

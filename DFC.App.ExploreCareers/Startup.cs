@@ -37,7 +37,6 @@ namespace DFC.App.ExploreCareers
     {
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
         private const string StaxGraphApiUrlAppSettings = "Cms:GraphApiUrl";
-        private const string SqlApiUrlAppSettings = "Cms:SqlApiUrl";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
@@ -87,27 +86,6 @@ namespace DFC.App.ExploreCareers
                     HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
                 };
                 var client = new GraphQLHttpClient(option, new NewtonsoftJsonSerializer());
-                return client;
-            });
-
-            services.AddSingleton<IRestClient>(s =>
-            {
-                var option = new RestClientOptions()
-                {
-                    BaseUrl = new Uri(configuration.GetSection(SqlApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
-                    ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
-                };
-                JsonSerializerSettings defaultSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                    DefaultValueHandling = DefaultValueHandling.Include,
-                    TypeNameHandling = TypeNameHandling.None,
-                    NullValueHandling = NullValueHandling.Ignore,
-                    Formatting = Formatting.None,
-                    ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-                };
-
-                var client = new RestClient(option);
                 return client;
             });
 

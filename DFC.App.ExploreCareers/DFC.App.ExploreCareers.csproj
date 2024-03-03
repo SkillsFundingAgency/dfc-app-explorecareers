@@ -18,13 +18,13 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
-    <None Include="appsettings-template.json" />
+    <None Include="appsettings.json" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Azure.Search.Documents" Version="11.3.0" />
-    <PackageReference Include="DFC.Common.SharedContent.Pkg.Netcore" Version="0.1.24" />
+    <PackageReference Include="DFC.Common.SharedContent.Pkg.Netcore" Version="0.1.53" />
     <PackageReference Include="DFC.Compui.Telemetry" Version="1.0.31" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
