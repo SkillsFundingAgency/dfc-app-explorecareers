@@ -6,14 +6,18 @@ using AutoMapper;
 using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 
 using FakeItEasy;
 
 using FluentAssertions;
-
+using Microsoft.Extensions.Configuration;
 using Xunit;
+using JobProfileCategoriesResponse = DFC.Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponse;
+using JobProfileCategory = DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory;
+using PageLocation = DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.PageLocation;
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
@@ -50,9 +54,10 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 
             var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(A<string>.Ignored)).Returns(jobProfileCategoriesResponse);
+            var fakeIConfiguration = A.Fake<IConfiguration>();
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(A<string>.Ignored, "PUBLISHED")).Returns(jobProfileCategoriesResponse);
 
-            var service = new GraphQlService(fakeSharedContentRedisInterface, mapper);
+            var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
             // Act
             var result = await service.GetJobCategoriesAsync();
@@ -69,39 +74,38 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var jobCategory = "test";
             var jobProfile1 = new JobProfile
             {
-                Title = "a-article",
+                DisplayText = "a-article",
                 AlternativeTitle = "a-article",
                 Overview = "An article",
-                UrlName = "/an-article"
             };
             var jobProfile2 = new JobProfile
             {
-                Title = "a-article",
+                DisplayText = "a-article",
                 AlternativeTitle = "a-article",
                 Overview = "An article",
-                UrlName = "/an-article"
             };
 
             var jobProfiles = new List<JobProfile> { jobProfile2, jobProfile1 };
 
             var jobProfilesResponse = new JobProfilesResponse
             {
-                Items = jobProfiles
+                JobProfiles = jobProfiles
             };
 
             var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponse>(A<string>.Ignored)).Returns(jobProfilesResponse);
+            var fakeIConfiguration = A.Fake<IConfiguration>();
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponse>(A<string>.Ignored, "PUBLISHED")).Returns(jobProfilesResponse);
 
-            var service = new GraphQlService(fakeSharedContentRedisInterface, mapper);
+            var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
             // Act
             var result = await service.GetJobProfilesByCategoryAsync(jobCategory);
 
             // Assert
             result.Count.Should().Be(2);
-            result[0].Title.Should().Be(jobProfile1.Title);
-            result[1].Title.Should().Be(jobProfile2.Title);
+            result[0].Title.Should().Be(jobProfile1.DisplayText);
+            result[1].Title.Should().Be(jobProfile2.DisplayText);
         }
     }
 }
