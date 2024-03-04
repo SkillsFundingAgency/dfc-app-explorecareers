@@ -127,6 +127,12 @@
         },
         "CmsSqlApiUrl": {
             "value": "__StaxGraphqlSqlApiUrl__"
+        },
+        "WorkerThreads": {
+            "value": "__WorkerThreads__"
+        },
+        "IocpThreads": {
+            "value": "__IocpThreads__"
         }
     }
 }
