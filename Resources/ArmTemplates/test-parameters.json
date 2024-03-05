@@ -1,123 +1,126 @@
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "CdnUrl": {
-            "value": "https://foo.cdn.nationalcareers.service.uk"
-        },
-        "appSharedResourceGroup": {
-            "value": "dfc-dev-app-sharedresources-rg"
-        },
-        "aspInstances": {
-            "value": 2
-        },
-        "aspTier": {
-            "value": "Standard"
-        },
-        "aspSize": {
-            "value": "2"
-        },
-        "cosmosAccountName": {
-            "value": "dfc-dev-app-sharedresources-cdb"
-        },
-        "cosmosKey": {
-            "value": "key"
-        },
-        "cosmosResourceGroup": {
-            "value": "dfc-dev-app-sharedresources-rg"
-        },
-        "environment": {
-            "value": "dev"
-        },
-        "cosmosDatabaseName": {
-            "value": "database"
-        },
-        "cosmosContainerName": {
-            "value": "container"
-        },
-        "cosmosNeedsCreation": {
-            "value": true
-        },
-        "cosmosThroughput": {
-            "value": 2
-        },
-        "enableAlerts": {
-            "value": false
-        },
-        "jobProfileApiKey": {
-            "value": "jobProfileApiKey"
-        },
-        "jobProfileBaseAddress": {
-            "value": "jobProfileBaseAddress"
-        },
-        "jobProfileSearchIndexName":{
-          "value": "job-profile-index"
-        },
-        "jobCategorySearchClientOptionsBaseAddress": {
-            "value": "jobCategorySearchClientOptionsBaseAddress"
-        },
-        "subscriptionServiceEndpoint": {
-            "value": "subscriptionServiceEndpoint"
-        },
-        "autoCompleteEndpoint": {
-            "value": "autoCompleteEndpoint"
-        },
-        "contentUrl": {
-            "value": "contentUrl"
-        },
-        "apimCompositeApiKey": {
-            "value": "apimCompositeApiKey"
-        },
-        "loggingLogLevelDefault": {
-            "value": "Trace"
-        },
-        "ApimResourceGroup": {
-            "value": "dfc-dev-shared-rg"
-        },
-        "ApimLoggerName": {
-            "value": "composite-ui-logger"
-        },
-        "ApimProductInstanceName": {
-            "value": "composite-ui"
-        },
-        "ApimServiceName": {
-            "value": "dfc-dev-shared-apim"
-        },
-        "ApiName": {
-            "value": "explorecareers"
-        },
-        "SubscriptionSettingsEndpoint": {
-            "value": "http://url"
-        },
-        "bingSpellCheckApiUrl": {
-          "value": "http://url"
-        },
-        "bingSpellCheckApiKey": {
-          "value": "spellCheckKey"
-        },
-        "workspaceName": {
-            "value": "aTestLogAnalyticsAccount"
-        },
-        "workspaceResourceGroup": {
-            "value": "aResourceGroup"
-        },
-        "CmsTokenEndpointUrl": {
-            "value": "http://url"
-        },
-        "CmsGraphApiUrl": {
-            "value": "http://url"
-        },
-        "CmsClientId": {
-            "value": "clientid"
-        },
-        "CmsClientSecret": {
-            "value": "clientsecret"
-        },
-        "CmsRedisCacheConnectionString": {
-            "value": "teststring"
-        },
-        "CmsSqlApiUrl": {
-            "value": "http://url"
-        }
+  "parameters": {
+    "CdnUrl": {
+      "value": "https://foo.cdn.nationalcareers.service.uk"
+    },
+    "appSharedResourceGroup": {
+      "value": "dfc-dev-app-sharedresources-rg"
+    },
+    "aspInstances": {
+      "value": 2
+    },
+    "aspTier": {
+      "value": "Standard"
+    },
+    "aspSize": {
+      "value": "2"
+    },
+    "cosmosAccountName": {
+      "value": "dfc-dev-app-sharedresources-cdb"
+    },
+    "cosmosKey": {
+      "value": "key"
+    },
+    "cosmosResourceGroup": {
+      "value": "dfc-dev-app-sharedresources-rg"
+    },
+    "environment": {
+      "value": "dev"
+    },
+    "cosmosDatabaseName": {
+      "value": "database"
+    },
+    "cosmosContainerName": {
+      "value": "container"
+    },
+    "cosmosNeedsCreation": {
+      "value": true
+    },
+    "cosmosThroughput": {
+      "value": 2
+    },
+    "enableAlerts": {
+      "value": false
+    },
+    "jobProfileApiKey": {
+      "value": "jobProfileApiKey"
+    },
+    "jobProfileBaseAddress": {
+      "value": "jobProfileBaseAddress"
+    },
+    "jobProfileSearchIndexName": {
+      "value": "job-profile-index"
+    },
+    "jobCategorySearchClientOptionsBaseAddress": {
+      "value": "jobCategorySearchClientOptionsBaseAddress"
+    },
+    "subscriptionServiceEndpoint": {
+      "value": "subscriptionServiceEndpoint"
+    },
+    "autoCompleteEndpoint": {
+      "value": "autoCompleteEndpoint"
+    },
+    "contentUrl": {
+      "value": "contentUrl"
+    },
+    "apimCompositeApiKey": {
+      "value": "apimCompositeApiKey"
+    },
+    "loggingLogLevelDefault": {
+      "value": "Trace"
+    },
+    "ApimResourceGroup": {
+      "value": "dfc-dev-shared-rg"
+    },
+    "ApimLoggerName": {
+      "value": "composite-ui-logger"
+    },
+    "ApimProductInstanceName": {
+      "value": "composite-ui"
+    },
+    "ApimServiceName": {
+      "value": "dfc-dev-shared-apim"
+    },
+    "ApiName": {
+      "value": "explorecareers"
+    },
+    "SubscriptionSettingsEndpoint": {
+      "value": "http://url"
+    },
+    "bingSpellCheckApiUrl": {
+      "value": "http://url"
+    },
+    "bingSpellCheckApiKey": {
+      "value": "spellCheckKey"
+    },
+    "workspaceName": {
+      "value": "aTestLogAnalyticsAccount"
+    },
+    "workspaceResourceGroup": {
+      "value": "aResourceGroup"
+    },
+    "CmsTokenEndpointUrl": {
+      "value": "http://url"
+    },
+    "CmsGraphApiUrl": {
+      "value": "http://url"
+    },
+    "CmsClientId": {
+      "value": "clientid"
+    },
+    "CmsClientSecret": {
+      "value": "clientsecret"
+    },
+    "CmsRedisCacheConnectionString": {
+      "value": "teststring"
+    },
+    "CmsSqlApiUrl": {
+      "value": "http://url"
+    },
+    "ContentMode": {
+      "value": "PUBLISHED"
     }
+  }
 }

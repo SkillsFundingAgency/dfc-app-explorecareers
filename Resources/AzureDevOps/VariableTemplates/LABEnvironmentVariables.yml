@@ -13,5 +13,5 @@ variables:
   value: https://dfc-lab-api-eventgridsubscriptions-fa.$(appServiceDomain)
 - name: loggingLogLevelDefault
   value: Trace
-- name: contentMode
+- name: ContentMode
   value: PUBLISHED
