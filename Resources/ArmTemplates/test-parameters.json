@@ -119,6 +119,12 @@
     "CmsSqlApiUrl": {
       "value": "http://url"
     },
+    "WorkerThreads": {
+      "value": "200"
+    },
+    "IocpThreads": {
+      "value": "200"
+    },
     "ContentMode": {
       "value": "PUBLISHED"
     }

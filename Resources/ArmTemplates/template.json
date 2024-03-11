@@ -130,6 +130,12 @@
     "CmsSqlApiUrl": {
       "type": "string"
     },
+    "WorkerThreads": {
+      "type": "string"
+    },
+    "IocpThreads": {
+        "type": "string"
+    },
     "ContentMode": {
       "type": "string"
     }
@@ -373,6 +379,14 @@
               {
                 "name": "Cms__SqlApiUrl",
                 "value": "[parameters('CmsSqlApiUrl')]"
+              },
+              {
+                "name": "ThreadSettings__WorkerThreads",
+                "value": "[parameters('WorkerThreads')]"
+              },
+              {
+                 "name": "ThreadSettings__IocpThreads",
+                 "value": "[parameters('IocpThreads')]"
               },
               {
                 "name": "ContentMode__ContentMode",
