@@ -48,7 +48,7 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"JobProfiles/{jobProfile}", status)
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"{Constants.JobProfileSuffix}/{jobProfile}", status)
                 ?? new JobProfilesResponse();
             return mapper.Map<List<JobProfileIndex>>(response.JobProfiles.OrderBy(c => c.DisplayText));
         }
