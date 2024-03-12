@@ -26,28 +26,28 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         [Fact]
         public async Task GetJobCategoryShouldReturnsResultsOrderedByTitle()
         {
-            var jobCategory1 = new JobProfileCategory
+            var jobCategory1 = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory
             {
                 DisplayText = "a-article",
-                PageLocation = new PageLocation
+                PageLocation = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.PageLocation
                 {
                     FullUrl = "an-article",
                     UrlName = "/an-article"
                 }
             };
-            var jobCategory2 = new JobProfileCategory
+            var jobCategory2 = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory
             {
                 DisplayText = "b-article",
-                PageLocation = new PageLocation
+                PageLocation = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.PageLocation
                 {
                     FullUrl = "an-article",
                     UrlName = "/an-article"
                 }
             };
 
-            var jobProfileCategories = new JobProfileCategory[] { jobCategory2, jobCategory1 };
+            var jobProfileCategories = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory[] { jobCategory2, jobCategory1 };
 
-            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
+            var jobProfileCategoriesResponse = new Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponse
             {
                 JobProfileCategories = jobProfileCategories
             };
@@ -55,7 +55,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
             var fakeIConfiguration = A.Fake<IConfiguration>();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(A<string>.Ignored, "PUBLISHED")).Returns(jobProfileCategoriesResponse);
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponse>(A<string>.Ignored)).Returns(jobProfileCategoriesResponse);
 
             var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
@@ -77,12 +77,22 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
                 DisplayText = "a-article",
                 AlternativeTitle = "a-article",
                 Overview = "An article",
+                PageLocation = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageLocation()
+                {
+                    UrlName = "/an-article"
+                }
+              
             };
             var jobProfile2 = new JobProfile
             {
                 DisplayText = "a-article",
                 AlternativeTitle = "a-article",
                 Overview = "An article",
+                PageLocation = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.PageLocation()
+                {
+                    UrlName = "/an-article"
+                }
+              
             };
 
             var jobProfiles = new List<JobProfile> { jobProfile2, jobProfile1 };

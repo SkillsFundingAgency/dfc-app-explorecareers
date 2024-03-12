@@ -110,27 +110,6 @@ namespace DFC.App.ExploreCareers
                 return client;
             });
 
-            services.AddSingleton<IRestClient>(s =>
-            {
-                var option = new RestClientOptions()
-                {
-                    BaseUrl = new Uri(configuration.GetSection(SqlApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
-                    ConfigureMessageHandler = handler => new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
-                };
-                JsonSerializerSettings defaultSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                    DefaultValueHandling = DefaultValueHandling.Include,
-                    TypeNameHandling = TypeNameHandling.None,
-                    NullValueHandling = NullValueHandling.Ignore,
-                    Formatting = Formatting.None,
-                    ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-                };
-
-                var client = new RestClient(option);
-                return client;
-            });
-
             services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
             services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfilesByCategoryQueryStrategy>();
 
