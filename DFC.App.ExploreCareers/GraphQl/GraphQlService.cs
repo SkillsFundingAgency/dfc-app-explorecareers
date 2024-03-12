@@ -8,6 +8,7 @@ using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.App.ExploreCareers.AzureSearch;
 using Microsoft.Extensions.Configuration;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
+using Constants = DFC.Common.SharedContent.Pkg.Netcore.Constant.ApplicationKeys;
 
 namespace DFC.App.ExploreCareers.GraphQl
 {
@@ -33,7 +34,7 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories", status)
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(Constants.JobProfileCategories, status)
                 ?? new JobProfileCategoriesResponse();
             return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories
                 .Where(c => c.DisplayText != null)

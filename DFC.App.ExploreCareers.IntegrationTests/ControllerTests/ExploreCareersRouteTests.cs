@@ -11,6 +11,7 @@ using FakeItEasy;
 using FluentAssertions;
 
 using Xunit;
+using Constants = DFC.Common.SharedContent.Pkg.Netcore.Constant.ApplicationKeys;
 
 namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
 {
@@ -49,7 +50,7 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
                 JobProfileCategories = jobProfileCategoryArray
             };
 
-            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories", "PUBLISHED"))
+            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(Constants.JobProfileCategories, "PUBLISHED"))
                 .Returns(jobProfileCategoriesResponse);
 
             // Act
