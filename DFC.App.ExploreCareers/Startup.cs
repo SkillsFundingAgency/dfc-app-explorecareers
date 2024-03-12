@@ -2,10 +2,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using AutoMapper;
-
 using Azure;
 using Azure.Search.Documents;
-
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Configuration;
@@ -31,6 +29,9 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using RestSharp;
+using Microsoft.Extensions.Logging;
+using System.Threading;
+using StackExchange.Redis;
 
 namespace DFC.App.ExploreCareers
 {
@@ -38,15 +39,20 @@ namespace DFC.App.ExploreCareers
     public class Startup
     {
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
-        private const string StaxGraphApiUrlAppSettings = "Cms:GraphApiUrl";
+        private const string GraphApiUrlAppSettings = "Cms:GraphApiUrl";
+        private const string SqlApiUrlAppSettings = "Cms:SqlApiUrl";
+        private const string WorkerThreadsConfigAppSettings = "ThreadSettings:WorkerThreads";
+        private const string IocpThreadsConfigAppSettings = "ThreadSettings:IocpThreads";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
+        private readonly ILogger<Startup> logger;
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             this.configuration = configuration;
             this.env = env;
+            this.logger = logger;
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMapper mapper)
@@ -76,14 +82,27 @@ namespace DFC.App.ExploreCareers
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
+            ConfigureMinimumThreads();
 
+            var redisCacheConnectionString = ConfigurationOptions.Parse(configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>() ??
+                throw new ArgumentNullException($"{nameof(RedisCacheConnectionStringAppSettings)} is missing or has an invalid value."));
+
+            services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
+            services.AddSingleton<IConnectionMultiplexer>(option =>
+            ConnectionMultiplexer.Connect(new ConfigurationOptions
+            {
+                EndPoints = { redisCacheConnectionString.EndPoints[0] },
+                AbortOnConnectFail = false,
+                Ssl = true,
+                Password = redisCacheConnectionString.Password,
+            }));
+            services.AddHealthChecks().AddCheck<HealthCheck>("GraphQlRedisConnectionCheck");
             services.AddHttpClient();
             services.AddSingleton<IGraphQLClient>(s =>
             {
                 var option = new GraphQLHttpClientOptions()
                 {
-                    EndPoint = new Uri(configuration.GetSection(StaxGraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
+                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
 
                     HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
                 };
@@ -128,6 +147,25 @@ namespace DFC.App.ExploreCareers
                     config.RespectBrowserAcceptHeader = true;
                     config.ReturnHttpNotAcceptable = true;
                 });
+        }
+
+        private void ConfigureMinimumThreads()
+        {
+            var workerThreads = Convert.ToInt32(configuration[WorkerThreadsConfigAppSettings]);
+
+            var iocpThreads = Convert.ToInt32(configuration[IocpThreadsConfigAppSettings]);
+
+            if (ThreadPool.SetMinThreads(workerThreads, iocpThreads))
+            {
+                logger.LogInformation(
+                    "ConfigureMinimumThreads: Minimum configuration value set. IOCP = {0} and WORKER threads = {1}",
+                    iocpThreads,
+                    workerThreads);
+            }
+            else
+            {
+                logger.LogWarning("ConfigureMinimumThreads: The minimum number of threads was not changed");
+            }
         }
     }
 }

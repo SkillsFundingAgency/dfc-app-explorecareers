@@ -123,6 +123,7 @@ stages:
   - group: dfc-compositeui-all
   - group: dfc-app-shared-registration
   - group: dfc-stax-shared-lab
+  - group: dfc-stax-shared-all
   - group: KeyVault - dfc-lab-shared-kv
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\LABEnvironmentVariables.yml
@@ -169,6 +170,7 @@ stages:
   - group: dfc-compositeui-all
   - group: dfc-app-shared-registration
   - group: dfc-stax-shared-dev
+  - group: dfc-stax-shared-all
   - group: 'KeyVault - dfc-dev-shared-kv'
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\DevEnvironmentVariables.yml
@@ -214,6 +216,7 @@ stages:
   - group: dfc-compositeui-all
   - group: dfc-app-shared-registration
   - group: dfc-stax-shared-sit
+  - group: dfc-stax-shared-all
   - group: KeyVault - dfc-sit-shared-kv
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\SITEnvironmentVariables.yml
@@ -259,6 +262,7 @@ stages:
   - group: dfc-compositeui-all
   - group: dfc-app-shared-registration
   - group: dfc-stax-shared-pp
+  - group: dfc-stax-shared-all
   - group: KeyVault - dfc-pp-shared-kv
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\PPEnvironmentVariables.yml
@@ -304,6 +308,7 @@ stages:
   - group: dfc-compositeui-all
   - group: dfc-app-shared-registration
   - group: dfc-stax-shared-prd
+  - group: dfc-stax-shared-all
   - group: KeyVault - dfc-prd-shared-kv
   - template: VariableTemplates\CommonEnvironmentVariables.yml
   - template: VariableTemplates\PRDEnvironmentVariables.yml
