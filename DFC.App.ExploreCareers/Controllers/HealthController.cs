@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.ViewModels;
-
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 
 namespace DFC.App.ExploreCareers.Controllers
@@ -13,10 +15,12 @@ namespace DFC.App.ExploreCareers.Controllers
         public const string HealthViewCanonicalName = "health";
 
         private readonly ILogger<HealthController> logger;
+        private readonly HealthCheckService healthCheckService;
         private readonly string resourceName = typeof(Program).Namespace!;
 
-        public HealthController(ILogger<HealthController> logger)
+        public HealthController(ILogger<HealthController> logger, HealthCheckService healthCheckService)
         {
+            this.healthCheckService = healthCheckService;
             this.logger = logger;
         }
 
@@ -24,15 +28,31 @@ namespace DFC.App.ExploreCareers.Controllers
         [Route("health")]
         public async Task<IActionResult> Health()
         {
-            logger.LogInformation("Generating Health report");
-            const string message = "Document store is available";
-            logger.LogInformation($"{nameof(Health)} responded with: {resourceName} - {message}");
+            logger.LogInformation($"{nameof(Health)} has been called");
 
-            var viewModel = CreateHealthViewModel(message);
+            try
+            {
+                var report = await healthCheckService.CheckHealthAsync();
+                var status = report.Status;
 
-            logger.LogInformation("Generated Health report");
+                if (status == HealthStatus.Healthy)
+                {
+                    const string message = "Redis and GraphQl are available";
+                    logger.LogInformation($"{nameof(Health)} responded with: {resourceName} - {message}");
 
-            return this.NegotiateContentResult(viewModel, viewModel.HealthItems);
+                    var viewModel = CreateHealthViewModel(message);
+
+                    return this.NegotiateContentResult(viewModel, viewModel.HealthItems);
+                }
+
+                logger.LogError($"{nameof(Health)}: Ping to {resourceName} has failed");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, $"{nameof(Health)}: {resourceName} exception: {ex.Message}");
+            }
+
+            return StatusCode((int)HttpStatusCode.ServiceUnavailable);
         }
 
         [HttpGet]

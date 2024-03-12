@@ -31,6 +31,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using Microsoft.Extensions.Logging;
 using System.Threading;
+using StackExchange.Redis;
 
 namespace DFC.App.ExploreCareers
 {
@@ -38,7 +39,7 @@ namespace DFC.App.ExploreCareers
     public class Startup
     {
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
-        private const string StaxGraphApiUrlAppSettings = "Cms:GraphApiUrl";
+        private const string GraphApiUrlAppSettings = "Cms:GraphApiUrl";
         private const string SqlApiUrlAppSettings = "Cms:SqlApiUrl";
         private const string WorkerThreadsConfigAppSettings = "ThreadSettings:WorkerThreads";
         private const string IocpThreadsConfigAppSettings = "ThreadSettings:IocpThreads";
@@ -83,14 +84,25 @@ namespace DFC.App.ExploreCareers
         {
             ConfigureMinimumThreads();
 
-            services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
+            var redisCacheConnectionString = ConfigurationOptions.Parse(configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>() ??
+                throw new ArgumentNullException($"{nameof(RedisCacheConnectionStringAppSettings)} is missing or has an invalid value."));
 
+            services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
+            services.AddSingleton<IConnectionMultiplexer>(option =>
+            ConnectionMultiplexer.Connect(new ConfigurationOptions
+            {
+                EndPoints = { redisCacheConnectionString.EndPoints[0] },
+                AbortOnConnectFail = false,
+                Ssl = true,
+                Password = redisCacheConnectionString.Password,
+            }));
+            services.AddHealthChecks().AddCheck<HealthCheck>("GraphQlRedisConnectionCheck");
             services.AddHttpClient();
             services.AddSingleton<IGraphQLClient>(s =>
             {
                 var option = new GraphQLHttpClientOptions()
                 {
-                    EndPoint = new Uri(configuration.GetSection(StaxGraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
+                    EndPoint = new Uri(configuration.GetSection(GraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
 
                     HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
                 };
