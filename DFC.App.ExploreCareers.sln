@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32106.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solution Items", "{EE82BC48-5B01-481A-A2FA-EA7F5809071D}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,21 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution Items", "_Solutio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers", "DFC.App.ExploreCareers\DFC.App.ExploreCareers.csproj", "{758A373E-850F-4817-BC66-47CF20A0CC3C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A4225C09-72D7-41EE-9277-5FE0FE80CDAF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.Data", "DFC.App.ExploreCareers.Data\DFC.App.ExploreCareers.Data.csproj", "{58E44E34-4808-49DA-BACC-E14238631AC0}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{589E07BA-30AC-4124-AC9F-3CC9D2B29661}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.Services.CacheContentService", "DFC.App.ExploreCareers.Services.CacheContentService\DFC.App.ExploreCareers.Services.CacheContentService.csproj", "{4A12E1B5-AD0B-41AE-BB5E-5DE7DBBBA8E2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A8670CE6-BB35-4F19-8BAA-68DE715915E3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{2F79E2D4-E4CD-4842-8CBA-4F0C863980B7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{3FE5B848-B668-46D2-A93B-BA3B36DBB7AA}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.Services.CacheContentService.UnitTests", "DFC.App.ExploreCareers.Services.CacheContentService.UnitTests\DFC.App.ExploreCareers.Services.CacheContentService.UnitTests.csproj", "{2DEFDA32-95F7-481C-96B7-EC1B7AD7EA11}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{50B984AB-205D-4651-B752-AC7F4235660C}"
 EndProject
@@ -50,7 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FunctionalTests", "Function
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{420BAB0C-F388-4394-9474-C43995D2465D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DFC.App.ExploreCareers.UI.FunctionalTests", "DFC.App.ExploreCareers.UI.FunctionalTests\DFC.App.ExploreCareers.UI.FunctionalTests.csproj", "{364AEFDC-C996-48E5-8C78-1847999DEB02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DFC.App.ExploreCareers.UI.FunctionalTests", "DFC.App.ExploreCareers.UI.FunctionalTests\DFC.App.ExploreCareers.UI.FunctionalTests.csproj", "{364AEFDC-C996-48E5-8C78-1847999DEB02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,18 +50,6 @@ Global
 		{758A373E-850F-4817-BC66-47CF20A0CC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{758A373E-850F-4817-BC66-47CF20A0CC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{758A373E-850F-4817-BC66-47CF20A0CC3C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58E44E34-4808-49DA-BACC-E14238631AC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58E44E34-4808-49DA-BACC-E14238631AC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58E44E34-4808-49DA-BACC-E14238631AC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58E44E34-4808-49DA-BACC-E14238631AC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A12E1B5-AD0B-41AE-BB5E-5DE7DBBBA8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A12E1B5-AD0B-41AE-BB5E-5DE7DBBBA8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A12E1B5-AD0B-41AE-BB5E-5DE7DBBBA8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A12E1B5-AD0B-41AE-BB5E-5DE7DBBBA8E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DEFDA32-95F7-481C-96B7-EC1B7AD7EA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DEFDA32-95F7-481C-96B7-EC1B7AD7EA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DEFDA32-95F7-481C-96B7-EC1B7AD7EA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DEFDA32-95F7-481C-96B7-EC1B7AD7EA11}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CF964387-04CE-41E0-8848-349A2281D2C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF964387-04CE-41E0-8848-349A2281D2C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF964387-04CE-41E0-8848-349A2281D2C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -91,11 +67,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{58E44E34-4808-49DA-BACC-E14238631AC0} = {A4225C09-72D7-41EE-9277-5FE0FE80CDAF}
-		{4A12E1B5-AD0B-41AE-BB5E-5DE7DBBBA8E2} = {589E07BA-30AC-4124-AC9F-3CC9D2B29661}
 		{2F79E2D4-E4CD-4842-8CBA-4F0C863980B7} = {A8670CE6-BB35-4F19-8BAA-68DE715915E3}
-		{3FE5B848-B668-46D2-A93B-BA3B36DBB7AA} = {2F79E2D4-E4CD-4842-8CBA-4F0C863980B7}
-		{2DEFDA32-95F7-481C-96B7-EC1B7AD7EA11} = {3FE5B848-B668-46D2-A93B-BA3B36DBB7AA}
 		{50B984AB-205D-4651-B752-AC7F4235660C} = {2F79E2D4-E4CD-4842-8CBA-4F0C863980B7}
 		{CF964387-04CE-41E0-8848-349A2281D2C2} = {50B984AB-205D-4651-B752-AC7F4235660C}
 		{17783C02-BBFB-45C1-9618-505E0937C1DB} = {A8670CE6-BB35-4F19-8BAA-68DE715915E3}

@@ -1,5 +1,4 @@
 ﻿using DFC.App.ExploreCareers.UI.FunctionalTests.Model;
-using DFC.App.ExploreCareers.UI.FunctionalTests.StepDefinitions;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support;
 using DFC.App.ExploreCareers.UI.FunctionalTests.Support.Poco;
 using DFC.TestAutomation.UI.Extension;
@@ -8,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages

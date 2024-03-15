@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-
-using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Extensions;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 
@@ -18,14 +17,14 @@ namespace DFC.App.ExploreCareers.Controllers
         public const string DefaultPageTitleSuffix = "Explore careers | National Careers Service";
 
         private readonly ILogger<ExploreCareersController> logger;
-        private readonly IJobCategoryDocumentService documentService;
+        private readonly IGraphQlService graphQlService;
 
         public ExploreCareersController(
             ILogger<ExploreCareersController> logger,
-            IJobCategoryDocumentService documentService)
+            IGraphQlService graphQlService)
         {
             this.logger = logger;
-            this.documentService = documentService;
+            this.graphQlService = graphQlService;
         }
 
         [HttpGet]
@@ -82,8 +81,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private async Task<BodyViewModel> GetBodyViewModelAsync()
         {
-            var jobCategories = await documentService.GetJobCategoriesAsync();
-
+            var jobCategories = await graphQlService.GetJobCategoriesAsync();
             return new BodyViewModel { JobCategories = jobCategories };
         }
     }

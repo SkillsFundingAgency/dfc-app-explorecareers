@@ -23,12 +23,6 @@ This is a self-contained Visual Studio 2019 solution containing a number of proj
 
 Clone the project and open the solution in Visual Studio 2019.
 
-## List of dependencies
-
-|Item	|Purpose|
-|-------|-------|
-|Azure Cosmos DB | Document storage |
-
 ## Local Config Files
 
 Once you have cloned the public repo you need to remove the -template part from the configuration file names listed below.

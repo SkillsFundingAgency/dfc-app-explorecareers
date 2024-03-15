@@ -9,11 +9,9 @@ using Azure.Search.Documents;
 using Azure.Search.Documents.Models;
 
 using DFC.App.ExploreCareers.AzureSearch;
-
 using FakeItEasy;
 
 using FluentAssertions;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
@@ -56,22 +54,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         }
 
         [Fact]
-        public async Task GetProfilesByCategoryShouldReturnsResultsOrderedByTitle()
-        {
-            // Arrange
-            SetupMockSearchResponse();
-            var searchService = new AzureSearchService(mockClient);
-
-            // Act
-            var response = await searchService.GetProfilesByCategoryAsync("category");
-
-            // Assert
-            response.Count.Should().Be(2);
-            response[0].Title.Should().Be("A");
-            response[1].Title.Should().Be("B");
-        }
-
-        [Fact]
         public async Task SearchAsyncShouldUseCorrectSearchOptions()
         {
             // Arrange
@@ -79,8 +61,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var mockResults = SearchModelFactory.SearchResults(
                 new[]
                 {
-                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "B" }, 1.0, null),
-                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "A" }, 0.9, null),
+                    SearchModelFactory.SearchResult(new JobProfileIndex { Title = "B" }, 1.0, null),
+                    SearchModelFactory.SearchResult(new JobProfileIndex { Title = "A" }, 0.9, null),
                 },
                 2,
                 null,
@@ -166,8 +148,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var mockResults = SearchModelFactory.SuggestResults(
                 new[]
                 {
-                  SearchModelFactory.SearchSuggestion(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "B" }, "B"),
-                  SearchModelFactory.SearchSuggestion(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "A" }, "A")
+                  SearchModelFactory.SearchSuggestion(new JobProfileIndex { Title = "B" }, "B"),
+                  SearchModelFactory.SearchSuggestion(new JobProfileIndex { Title = "A" }, "A")
                 }, null);
 
             A.CallTo(() => mockClient.SuggestAsync<JobProfileIndex>(A<string>._, A<string>._, A<SuggestOptions>._, A<CancellationToken>.Ignored))
@@ -183,8 +165,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var mockResults = SearchModelFactory.SearchResults(
                 new[]
                 {
-                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "B", AlternativeTitle = alternativeTitlesB }, 1.0, null),
-                    SearchModelFactory.SearchResult(new JobProfileIndex { IdentityField = Guid.NewGuid().ToString(), Title = "A", AlternativeTitle = alternativeTitlesA }, 0.9, null),
+                    SearchModelFactory.SearchResult(new JobProfileIndex { Title = "B", AlternativeTitle = alternativeTitlesB }, 1.0, null),
+                    SearchModelFactory.SearchResult(new JobProfileIndex { Title = "A", AlternativeTitle = alternativeTitlesA }, 0.9, null),
                 },
                 2,
                 null,

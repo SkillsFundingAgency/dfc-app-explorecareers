@@ -1,11 +1,9 @@
 ﻿using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
-
-using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Extensions;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.Models;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,12 +14,12 @@ namespace DFC.App.ExploreCareers.Controllers
         public const string SitemapViewCanonicalName = "sitemap";
 
         private readonly ILogger<SitemapController> logger;
-        private readonly IJobCategoryDocumentService documentService;
+        private readonly IGraphQlService graphQlService;
 
-        public SitemapController(ILogger<SitemapController> logger, IJobCategoryDocumentService documentService)
+        public SitemapController(ILogger<SitemapController> logger, IGraphQlService graphQlService)
         {
             this.logger = logger;
-            this.documentService = documentService;
+            this.graphQlService = graphQlService;
         }
 
         [HttpGet]
@@ -60,7 +58,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
             async Task AddJobCategoriesRoutesAsync()
             {
-                var jobCategories = await documentService.GetJobCategoriesAsync();
+                var jobCategories = await graphQlService.GetJobCategoriesAsync();
                 if (jobCategories?.Any() is true)
                 {
                     var jobCategoriesUrlPrefix = $"{Request.GetBaseAddress()}{JobCategoriesController.JobCategoryViewCanonicalName}";

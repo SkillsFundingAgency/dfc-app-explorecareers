@@ -3,7 +3,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.Controllers;
-using DFC.App.ExploreCareers.Cosmos;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 
@@ -18,15 +18,13 @@ using Microsoft.Net.Http.Headers;
 
 using Xunit;
 
-using static DFC.App.ExploreCareers.UnitTests.TestData.TestDataFactory;
-
 namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 {
     public class ExploreCareersControllerTests
     {
-        private IJobCategoryDocumentService FakeDocumentService { get; } = A.Fake<IJobCategoryDocumentService>();
-
         private ILogger<ExploreCareersController> FakeLogger { get; } = A.Fake<ILogger<ExploreCareersController>>();
+
+        private IGraphQlService FakeGraphQlService { get; } = A.Fake<IGraphQlService>();
 
         [Fact]
         public void ExploreCareersHeadReturnsHtml()
@@ -66,9 +64,13 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            var model = BuildJobCategoryContentItemModel();
-            var expectedViewModel = BuildJobCategoryViewModel();
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            var jobCategoryViewModel = new JobCategoryViewModel
+            {
+                Name = "an-article",
+                CanonicalName = "an-article"
+            };
+
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategoryViewModel });
 
             var result = await controller.BodyAsync();
 
@@ -79,10 +81,10 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             viewModel.JobCategories.Should().NotBeNullOrEmpty();
             var jobCategory = viewModel.JobCategories![0];
-            jobCategory.Name.Should().Be(expectedViewModel.Name);
-            jobCategory.CanonicalName.Should().Be(expectedViewModel.CanonicalName);
+            jobCategory.Name.Should().Be(jobCategoryViewModel.Name);
+            jobCategory.CanonicalName.Should().Be(jobCategoryViewModel.CanonicalName);
 
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(null)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).MustHaveHappenedOnceExactly();
         }
 
         [Fact]
@@ -91,9 +93,13 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             // Arrange
             using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            var model = BuildJobCategoryContentItemModel();
-            var expectedViewModel = BuildJobCategoryViewModel();
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(A<string>.Ignored)).Returns(new List<JobCategoryViewModel> { expectedViewModel });
+            var jobCategoryViewModel = new JobCategoryViewModel
+            {
+                Name = "an-article",
+                CanonicalName = "an-article"
+            };
+
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategoryViewModel });
 
             var result = await controller.DocumentAsync();
 
@@ -105,7 +111,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             viewModel.Body.Should().NotBeNull();
             viewModel.Head.Should().NotBeNull();
 
-            A.CallTo(() => FakeDocumentService.GetJobCategoriesAsync(null)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).MustHaveHappenedOnceExactly();
         }
 
         private ExploreCareersController BuildController(string mediaTypeName)
@@ -114,7 +120,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             httpContext.Request.Headers[HeaderNames.Accept] = mediaTypeName;
 
-            var controller = new ExploreCareersController(FakeLogger, FakeDocumentService)
+            var controller = new ExploreCareersController(FakeLogger, FakeGraphQlService)
             {
                 ControllerContext = new ControllerContext()
                 {
