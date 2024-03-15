@@ -2,10 +2,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using AutoMapper;
-
 using Azure;
 using Azure.Search.Documents;
-
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Configuration;
@@ -31,6 +29,8 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using RestSharp;
+using Microsoft.Extensions.Logging;
+using System.Threading;
 
 namespace DFC.App.ExploreCareers
 {
@@ -39,14 +39,19 @@ namespace DFC.App.ExploreCareers
     {
         private const string RedisCacheConnectionStringAppSettings = "Cms:RedisCacheConnectionString";
         private const string StaxGraphApiUrlAppSettings = "Cms:GraphApiUrl";
+        private const string SqlApiUrlAppSettings = "Cms:SqlApiUrl";
+        private const string WorkerThreadsConfigAppSettings = "ThreadSettings:WorkerThreads";
+        private const string IocpThreadsConfigAppSettings = "ThreadSettings:IocpThreads";
 
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment env;
+        private readonly ILogger<Startup> logger;
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             this.configuration = configuration;
             this.env = env;
+            this.logger = logger;
         }
 
         public static void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMapper mapper)
@@ -76,6 +81,8 @@ namespace DFC.App.ExploreCareers
 
         public void ConfigureServices(IServiceCollection services)
         {
+            ConfigureMinimumThreads();
+
             services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
 
             services.AddHttpClient();
@@ -128,6 +135,25 @@ namespace DFC.App.ExploreCareers
                     config.RespectBrowserAcceptHeader = true;
                     config.ReturnHttpNotAcceptable = true;
                 });
+        }
+
+        private void ConfigureMinimumThreads()
+        {
+            var workerThreads = Convert.ToInt32(configuration[WorkerThreadsConfigAppSettings]);
+
+            var iocpThreads = Convert.ToInt32(configuration[IocpThreadsConfigAppSettings]);
+
+            if (ThreadPool.SetMinThreads(workerThreads, iocpThreads))
+            {
+                logger.LogInformation(
+                    "ConfigureMinimumThreads: Minimum configuration value set. IOCP = {0} and WORKER threads = {1}",
+                    iocpThreads,
+                    workerThreads);
+            }
+            else
+            {
+                logger.LogWarning("ConfigureMinimumThreads: The minimum number of threads was not changed");
+            }
         }
     }
 }

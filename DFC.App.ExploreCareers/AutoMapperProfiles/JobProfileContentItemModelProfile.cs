@@ -17,7 +17,7 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
     {
         public JobProfileContentItemModelProfile()
         {
-            CreateMap<Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory, JobCategoryViewModel>()
+            CreateMap<DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory, JobCategoryViewModel>()
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));
 
