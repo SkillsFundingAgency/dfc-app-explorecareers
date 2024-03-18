@@ -22,7 +22,7 @@ namespace DFC.App.ExploreCareers.GraphQl
 
         public async Task<List<JobCategoryViewModel>> GetJobCategoriesAsync()
         {
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories")
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>("JobProfiles/Categories", "PUBLISHED")
                 ?? new JobProfileCategoriesResponse();
             return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories
                 .Where(c => c.DisplayText != null)
@@ -31,7 +31,7 @@ namespace DFC.App.ExploreCareers.GraphQl
 
         public async Task<List<JobProfileIndex>> GetJobProfilesByCategoryAsync(string jobProfile)
         {
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"JobProfiles/{jobProfile}")
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"JobProfiles/{jobProfile}", "PUBLISHED")
                 ?? new JobProfilesResponse();
             return mapper.Map<List<JobProfileIndex>>(response.JobProfiles.OrderBy(c => c.DisplayText));
         }
