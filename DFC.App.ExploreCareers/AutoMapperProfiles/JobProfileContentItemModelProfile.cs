@@ -7,8 +7,8 @@ using AutoMapper;
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 
 namespace DFC.App.ExploreCareers.AutoMapperProfiles
 {
