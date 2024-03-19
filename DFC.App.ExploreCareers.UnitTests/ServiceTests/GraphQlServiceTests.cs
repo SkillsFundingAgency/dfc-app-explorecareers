@@ -6,8 +6,8 @@ using AutoMapper;
 using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 
 using FakeItEasy;
@@ -15,9 +15,6 @@ using FakeItEasy;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Xunit;
-using JobProfileCategoriesResponse = DFC.Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponse;
-using JobProfileCategory = DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory;
-using PageLocation = DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.PageLocation;
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
@@ -26,28 +23,28 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
         [Fact]
         public async Task GetJobCategoryShouldReturnsResultsOrderedByTitle()
         {
-            var jobCategory1 = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory
+            var jobCategory1 = new JobProfileCategory
             {
                 DisplayText = "a-article",
-                PageLocation = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.PageLocation
+                PageLocation = new PageLocation
                 {
                     FullUrl = "an-article",
                     UrlName = "/an-article"
                 }
             };
-            var jobCategory2 = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory
+            var jobCategory2 = new JobProfileCategory
             {
                 DisplayText = "b-article",
-                PageLocation = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.PageLocation
+                PageLocation = new PageLocation
                 {
                     FullUrl = "an-article",
                     UrlName = "/an-article"
                 }
             };
 
-            var jobProfileCategories = new Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory[] { jobCategory2, jobCategory1 };
+            var jobProfileCategories = new JobProfileCategory[] { jobCategory2, jobCategory1 };
 
-            var jobProfileCategoriesResponse = new Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponse
+            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
             {
                 JobProfileCategories = jobProfileCategories
             };

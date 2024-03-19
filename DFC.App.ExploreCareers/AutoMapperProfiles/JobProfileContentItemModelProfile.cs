@@ -7,8 +7,8 @@ using AutoMapper;
 using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory;
 
 namespace DFC.App.ExploreCareers.AutoMapperProfiles
 {
@@ -17,7 +17,7 @@ namespace DFC.App.ExploreCareers.AutoMapperProfiles
     {
         public JobProfileContentItemModelProfile()
         {
-            CreateMap<DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems.JobProfiles.JobProfileCategory.JobProfileCategory, JobCategoryViewModel>()
+            CreateMap<JobProfileCategory, JobCategoryViewModel>()
                 .ForMember(d => d.Name, s => s.MapFrom(x => x.DisplayText))
                 .ForMember(d => d.CanonicalName, s => s.MapFrom(x => x.PageLocation.UrlName));
 
