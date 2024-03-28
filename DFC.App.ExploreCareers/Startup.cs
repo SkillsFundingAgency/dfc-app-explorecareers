@@ -99,7 +99,7 @@ namespace DFC.App.ExploreCareers
             });
 
             services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponseExploreCareers>, JobCategoryQueryStrategyExploreCareers>();
-            services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfilesByCategoryQueryStrategy>();
+            services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfilesResponseExploreCareers>, JobProfilesByCategoryQueryStrategy>();
 
             services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 

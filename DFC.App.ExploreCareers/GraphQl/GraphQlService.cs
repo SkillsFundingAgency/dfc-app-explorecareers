@@ -48,8 +48,8 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"{Constants.JobProfileSuffix}/{jobProfile}", status)
-                ?? new JobProfilesResponse();
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>($"{Constants.JobProfileSuffix}/{jobProfile}", status)
+                ?? new JobProfilesResponseExploreCareers();
             return mapper.Map<List<JobProfileIndex>>(response.JobProfiles.OrderBy(c => c.DisplayText));
         }
     }
