@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
-    <None Include="appsettings-template.json" />
+    <None Include="appsettings.json" />
   </ItemGroup>
 
   <ItemGroup>
