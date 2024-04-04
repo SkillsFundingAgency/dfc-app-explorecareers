@@ -85,7 +85,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 
             var jobProfiles = new List<JobProfile> { jobProfile2, jobProfile1 };
 
-            var jobProfilesResponse = new JobProfilesResponse
+            var jobProfilesResponse = new JobProfilesResponseExploreCareers
             {
                 JobProfiles = jobProfiles
             };
@@ -93,7 +93,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
             var fakeIConfiguration = A.Fake<IConfiguration>();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponse>(A<string>.Ignored, "PUBLISHED")).Returns(jobProfilesResponse);
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>(A<string>.Ignored, "PUBLISHED")).Returns(jobProfilesResponse);
 
             var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
