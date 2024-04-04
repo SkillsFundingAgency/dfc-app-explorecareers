@@ -98,8 +98,8 @@ namespace DFC.App.ExploreCareers
                 return client;
             });
 
-            services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponse>, JobCategoryQueryStrategy>();
-            services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfilesResponse>, JobProfilesByCategoryQueryStrategy>();
+            services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfileCategoriesResponseExploreCareers>, JobCategoryQueryStrategyExploreCareers>();
+            services.AddSingleton<ISharedContentRedisInterfaceStrategy<JobProfilesResponseExploreCareers>, JobProfilesByCategoryQueryStrategy>();
 
             services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 

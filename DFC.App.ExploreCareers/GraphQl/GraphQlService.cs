@@ -33,8 +33,8 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(Constants.JobProfileCategories, status)
-                ?? new JobProfileCategoriesResponse();
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponseExploreCareers>(Constants.JobProfileSuffix, status)
+                ?? new JobProfileCategoriesResponseExploreCareers();
             return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories
                 .Where(c => c.DisplayText != null)
                 .OrderBy(c => c.DisplayText.Trim().ToString()));
@@ -47,8 +47,8 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponse>($"{Constants.JobProfileSuffix}/{jobProfile}", status)
-                ?? new JobProfilesResponse();
+            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>($"{Constants.JobProfileSuffix}/{jobProfile}", status)
+                ?? new JobProfilesResponseExploreCareers();
             return mapper.Map<List<JobProfileIndex>>(response.JobProfiles.OrderBy(c => c.DisplayText));
         }
     }
