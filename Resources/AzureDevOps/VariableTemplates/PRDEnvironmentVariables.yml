@@ -13,3 +13,5 @@ variables:
   value: https://dfc-prd-api-eventgridsubscriptions-fa.$(appServiceDomain)
 - name: loggingLogLevelDefault
   value: Warning
+- name: ContentMode
+  value: PUBLISHED

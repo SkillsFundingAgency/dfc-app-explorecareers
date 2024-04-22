@@ -2,10 +2,8 @@
 using DFC.TestAutomation.UI.Extension;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace DFC.App.ExploreCareers.UI.FunctionalTests.Pages

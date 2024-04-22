@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 using AutoMapper;
 
-using DFC.App.ExploreCareers.AzureSearch;
-using DFC.App.ExploreCareers.Cosmos;
 using DFC.App.ExploreCareers.Extensions;
+using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobCategories;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -24,19 +22,16 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<JobCategoriesController> logger;
         private readonly IMapper mapper;
-        private readonly IJobCategoryDocumentService documentService;
-        private readonly IAzureSearchService azureSearchService;
+        private readonly IGraphQlService graphQlService;
 
         public JobCategoriesController(
             ILogger<JobCategoriesController> logger,
             IMapper mapper,
-            IJobCategoryDocumentService documentService,
-            IAzureSearchService azureSearchService)
+            IGraphQlService graphQlService)
         {
             this.logger = logger;
             this.mapper = mapper;
-            this.documentService = documentService;
-            this.azureSearchService = azureSearchService;
+            this.graphQlService = graphQlService;
         }
 
         [HttpGet]
@@ -48,7 +43,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 return BadRequest();
             }
 
-            var jobCategories = await documentService.GetJobCategoriesAsync($"/{category}");
+            var jobCategories = await graphQlService.GetJobCategoriesAsync();
             var jobCategory = jobCategories.FirstOrDefault(c => c.CanonicalName == category);
 
             if (jobCategory is null)
@@ -143,13 +138,13 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private async Task<BodyViewModel> GetBodyViewModelAsync(string category)
         {
-            var jobCategories = await documentService.GetJobCategoriesAsync();
+            var jobCategories = await graphQlService.GetJobCategoriesAsync();
             if (!jobCategories.Any(c => c.CanonicalName == category))
             {
                 return new BodyViewModel();
             }
 
-            var jobProfiles = await azureSearchService.GetProfilesByCategoryAsync(category);
+            var jobProfiles = await graphQlService.GetJobProfilesByCategoryAsync(category);
 
             return new BodyViewModel
             {
