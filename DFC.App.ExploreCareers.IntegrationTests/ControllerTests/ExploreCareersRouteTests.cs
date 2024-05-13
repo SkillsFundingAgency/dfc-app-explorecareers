@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using FakeItEasy;
@@ -45,12 +46,12 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
 
             var jobProfileCategoryArray = new JobProfileCategory[] { jobCategory };
 
-            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
+            var jobProfileCategoriesResponse = new JobProfileCategoriesResponseExploreCareers
             {
                 JobProfileCategories = jobProfileCategoryArray
             };
 
-            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(Constants.JobProfileCategories, "PUBLISHED"))
+            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponseExploreCareers>(Constants.ExploreCareersJobProfileCategories, "PUBLISHED", 4))
                 .Returns(jobProfileCategoriesResponse);
 
             // Act
