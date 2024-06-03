@@ -16,6 +16,7 @@ using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
+
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
     public class GraphQlServiceTests

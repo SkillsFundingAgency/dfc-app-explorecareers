@@ -12,7 +12,6 @@ using FakeItEasy;
 using FluentAssertions;
 
 using Xunit;
-using Constants = DFC.Common.SharedContent.Pkg.Netcore.Constant.ApplicationKeys;
 
 namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
 {
