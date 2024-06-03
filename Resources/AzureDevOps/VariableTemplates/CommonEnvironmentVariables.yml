@@ -5,12 +5,6 @@ variables:
   value: $(ResourcePrefix)-as
 - name: EnableAzureMonitorAlerting
   value: true
-- name: cosmosDatabaseName
-  value: dfc-app-explorecareers
-- name: cosmosContainerName
-  value: job-categories
-- name: cosmosThroughput
-  value: 400
 - name: jobProfileBaseAddress
   value: $(jobProfileSearchAddress)/
 - name: autoCompleteEndpoint
