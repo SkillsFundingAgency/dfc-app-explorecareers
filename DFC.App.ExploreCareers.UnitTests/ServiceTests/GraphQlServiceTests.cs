@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
@@ -40,8 +42,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             };
 
             var jobProfileCategories = new JobProfileCategory[] { jobCategory2, jobCategory1 };
-
-            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
+            var jobProfileCategoriesResponse = new JobProfileCategoriesResponseExploreCareers
             {
                 JobProfileCategories = jobProfileCategories
             };
@@ -50,7 +51,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
 
             var fakeIConfiguration = A.Fake<IConfiguration>();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(A<string>.Ignored, "PUBLISHED", A<double>.Ignored)).Returns(jobProfileCategoriesResponse);
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponseExploreCareers>(A<string>.Ignored, "PUBLISHED", 4)).Returns(jobProfileCategoriesResponse);
 
             var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
@@ -91,7 +92,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
 
             var fakeIConfiguration = A.Fake<IConfiguration>();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>(A<string>.Ignored, "PUBLISHED", A<double>.Ignored)).Returns(jobProfilesResponse);
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>(A<string>.Ignored, "PUBLISHED", 4)).Returns(jobProfilesResponse);
 
             var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
