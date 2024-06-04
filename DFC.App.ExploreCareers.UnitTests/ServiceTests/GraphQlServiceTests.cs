@@ -10,6 +10,8 @@ using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using FakeItEasy;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 using JobProfileCategoriesResponse = DFC.Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponseExploreCareers;
 
@@ -40,7 +42,6 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             };
 
             var jobProfileCategories = new JobProfileCategory[] { jobCategory2, jobCategory1 };
-
             var jobProfileCategoriesResponse = new JobProfileCategoriesResponseExploreCareers
             {
                 JobProfileCategories = jobProfileCategories
@@ -89,6 +90,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 
             var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
+
             var fakeIConfiguration = A.Fake<IConfiguration>();
             A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>(A<string>.Ignored, "PUBLISHED", 4)).Returns(jobProfilesResponse);
 
