@@ -7,7 +7,6 @@ using System.Linq;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using DFC.App.ExploreCareers.AzureSearch;
 using Microsoft.Extensions.Configuration;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using Constants = DFC.Common.SharedContent.Pkg.Netcore.Constant.ApplicationKeys;
 
 namespace DFC.App.ExploreCareers.GraphQl
