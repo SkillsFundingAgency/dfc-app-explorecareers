@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
-using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
+using DFC.Common.SharedContent.Pkg.Netcore.Model.Common; 
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
 using FakeItEasy;
@@ -12,7 +12,6 @@ using FakeItEasy;
 using FluentAssertions;
 
 using Xunit;
-using Constants = DFC.Common.SharedContent.Pkg.Netcore.Constant.ApplicationKeys;
 
 namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
 {

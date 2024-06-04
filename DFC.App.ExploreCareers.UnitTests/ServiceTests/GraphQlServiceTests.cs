@@ -15,6 +15,7 @@ using FakeItEasy;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Xunit;
+using JobProfileCategoriesResponse = DFC.Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponseExploreCareers;
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
