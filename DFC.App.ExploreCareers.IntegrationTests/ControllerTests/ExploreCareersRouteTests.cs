@@ -49,7 +49,7 @@ namespace DFC.App.ExploreCareers.IntegrationTests.ControllerTests
                 JobProfileCategories = jobProfileCategoryArray
             };
 
-            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponseExploreCareers>("JobProfiles/Categories", "PUBLISHED"))
+            A.CallTo(() => factory.FakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponseExploreCareers>("JobProfiles/Categories", "PUBLISHED",A<double>.Ignored))
                 .Returns(jobProfileCategoriesResponse);
 
             // Act

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Net.Http;
-using AutoMapper;
+﻿using AutoMapper;
 using Azure;
 using Azure.Search.Documents;
 using DFC.App.ExploreCareers.AzureSearch;
@@ -23,13 +20,15 @@ using GraphQL.Client.Serializer.Newtonsoft;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json;
-using RestSharp;
 using Microsoft.Extensions.Logging;
+using RestSharp;
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Net.Http;
 using System.Threading;
 
 namespace DFC.App.ExploreCareers
@@ -92,7 +91,11 @@ namespace DFC.App.ExploreCareers
                 {
                     EndPoint = new Uri(configuration.GetSection(StaxGraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
 
-                    HttpMessageHandler = new CmsRequestHandler(s.GetService<IHttpClientFactory>(), s.GetService<IConfiguration>(), s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException()),
+                    HttpMessageHandler = new CmsRequestHandler(
+                        s.GetService<IHttpClientFactory>(), 
+                        s.GetService<IConfiguration>(), 
+                        s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException(),
+                        s.GetService<IMemoryCache>()),
                 };
                 var client = new GraphQLHttpClient(option, new NewtonsoftJsonSerializer());
                 return client;

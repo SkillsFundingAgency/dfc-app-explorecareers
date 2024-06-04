@@ -1,22 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using AutoMapper;
-
+﻿using AutoMapper;
 using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
-
 using FakeItEasy;
-
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 using JobProfileCategoriesResponse = DFC.Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponseExploreCareers;
-
 
 namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 {
@@ -46,7 +41,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 
             var jobProfileCategories = new JobProfileCategory[] { jobCategory2, jobCategory1 };
 
-            var jobProfileCategoriesResponse = new Common.SharedContent.Pkg.Netcore.Model.Response.JobProfileCategoriesResponseExploreCareers
+            var jobProfileCategoriesResponse = new JobProfileCategoriesResponse
             {
                 JobProfileCategories = jobProfileCategories
             };
@@ -55,7 +50,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
 
             var fakeIConfiguration = A.Fake<IConfiguration>();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(A<string>.Ignored, "PUBLISHED")).Returns(jobProfileCategoriesResponse);
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponse>(A<string>.Ignored, "PUBLISHED", A<double>.Ignored)).Returns(jobProfileCategoriesResponse);
 
             var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
@@ -87,15 +82,16 @@ namespace DFC.App.ExploreCareers.UnitTests.ServiceTests
 
             var jobProfiles = new List<JobProfile> { jobProfile2, jobProfile1 };
 
-            var jobProfilesResponse = new JobProfilesResponse
+            var jobProfilesResponse = new JobProfilesResponseExploreCareers
             {
                 JobProfiles = jobProfiles
             };
 
             var fakeSharedContentRedisInterface = A.Fake<ISharedContentRedisInterface>();
             var mapper = new MapperConfiguration(cfg => cfg.AddProfile(new JobProfileContentItemModelProfile())).CreateMapper();
+
             var fakeIConfiguration = A.Fake<IConfiguration>();
-            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponse>(A<string>.Ignored, "PUBLISHED")).Returns(jobProfilesResponse);
+            A.CallTo(() => fakeSharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>(A<string>.Ignored, "PUBLISHED", A<double>.Ignored)).Returns(jobProfilesResponse);
 
             var service = new GraphQlService(fakeSharedContentRedisInterface, mapper, fakeIConfiguration);
 
