@@ -1,17 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-
 using AutoMapper;
-
 using DFC.App.ExploreCareers.AutoMapperProfiles;
 using DFC.App.ExploreCareers.GraphQl;
 using DFC.Common.SharedContent.Pkg.Netcore.Interfaces;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Common;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.ContentItems;
 using DFC.Common.SharedContent.Pkg.Netcore.Model.Response;
-
 using FakeItEasy;
-
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Xunit;
