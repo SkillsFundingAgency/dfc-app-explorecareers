@@ -13,3 +13,5 @@ variables:
     value: Trace
   - name: ContentMode
     value: PUBLISHED
+  - name: Expiry
+    value: 4

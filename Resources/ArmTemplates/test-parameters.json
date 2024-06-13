@@ -100,6 +100,9 @@
     },
     "ContentMode": {
       "value": "PUBLISHED"
+    },
+    "Expiry": {
+      "value": "4"
     }
   }
 }
