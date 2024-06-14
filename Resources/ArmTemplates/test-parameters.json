@@ -8,14 +8,11 @@
     "appSharedResourceGroup": {
       "value": "dfc-dev-app-sharedresources-rg"
     },
-    "aspInstances": {
-      "value": 2
+    "appServiceName": {
+      "value": "dfc-foo-app-explorecareers-as-ver"
     },
-    "aspTier": {
-      "value": "Standard"
-    },
-    "aspSize": {
-      "value": "2"
+    "appServicePlanSuffix": {
+      "value": "-migrated"
     },
     "environment": {
       "value": "dev"

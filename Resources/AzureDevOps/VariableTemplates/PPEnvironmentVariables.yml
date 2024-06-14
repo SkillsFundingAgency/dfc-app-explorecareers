@@ -3,14 +3,14 @@ variables:
   value: PP
 - name: ResourcePrefix
   value: dfc-pp-app-explorecareers
-- name: aspTier
-  value: Standard
-- name: aspInstances
-  value: 4
-- name: aspSize
-  value: 1
+- name: AppServiceName
+  value: $(ResourcePrefix)-as-ver2
+- name: AppServicePlanSuffix
+  value: -migrated
+- name: applicationUrl
+  value: https://$(AppServiceName).$(appServiceDomain)
 - name: subscriptionServiceEndpoint
-  value: https://dfc-pp-api-eventgridsubscriptions-fa.$(appServiceDomain)
+  value: https://dfc-pp-api-eventgridsubscriptions-fa-ver2.$(appServiceDomain)
 - name: loggingLogLevelDefault
   value: Warning
 - name: ContentMode
