@@ -13,10 +13,12 @@ namespace DFC.App.ExploreCareers.GraphQl
 {
     public class GraphQlService : IGraphQlService
     {
+        private const string ExpiryAppSettings = "Cms:Expiry";
         private readonly ISharedContentRedisInterface sharedContentRedisInterface;
         private readonly IMapper mapper;
         private readonly IConfiguration configuration;
         private string status;
+        private double expiry = 4;
 
         public GraphQlService(ISharedContentRedisInterface sharedContentRedisInterface, IMapper mapper, IConfiguration configuration)
         {
@@ -24,6 +26,11 @@ namespace DFC.App.ExploreCareers.GraphQl
             this.mapper = mapper;
             this.configuration = configuration;
             status = configuration.GetSection("contentMode:contentMode").Get<string>();
+            if (this.configuration != null)
+            {
+                string expiryAppString = this.configuration.GetSection(ExpiryAppSettings).Get<string>();
+                this.expiry = double.Parse(string.IsNullOrEmpty(expiryAppString) ? "4" : expiryAppString);
+            }
         }
 
         public async Task<List<JobCategoryViewModel>> GetJobCategoriesAsync()
@@ -33,7 +40,7 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfileCategoriesResponseExploreCareers>(Constants.ExploreCareersJobProfileCategories, status)
+            var response = await sharedContentRedisInterface.GetDataAsyncWithExpiry<JobProfileCategoriesResponseExploreCareers>(Constants.ExploreCareersJobProfileCategories, status, expiry)
                 ?? new JobProfileCategoriesResponseExploreCareers();
             return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories
                 .Where(c => c.DisplayText != null)
@@ -47,7 +54,7 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsync<JobProfilesResponseExploreCareers>($"{Constants.JobProfileSuffix}/{jobProfile}", status)
+            var response = await sharedContentRedisInterface.GetDataAsyncWithExpiry<JobProfilesResponseExploreCareers>($"{Constants.JobProfileSuffix}/{jobProfile}", status, expiry)
                 ?? new JobProfilesResponseExploreCareers();
             return mapper.Map<List<JobProfileIndex>>(response.JobProfiles.OrderBy(c => c.DisplayText));
         }

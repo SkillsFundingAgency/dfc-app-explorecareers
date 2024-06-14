@@ -14,29 +14,8 @@
     "appServicePlanSuffix": {
       "value": "-migrated"
     },
-    "cosmosAccountName": {
-      "value": "dfc-dev-app-sharedresources-cdb"
-    },
-    "cosmosKey": {
-      "value": "key"
-    },
-    "cosmosResourceGroup": {
-      "value": "dfc-dev-app-sharedresources-rg"
-    },
     "environment": {
       "value": "dev"
-    },
-    "cosmosDatabaseName": {
-      "value": "database"
-    },
-    "cosmosContainerName": {
-      "value": "container"
-    },
-    "cosmosNeedsCreation": {
-      "value": true
-    },
-    "cosmosThroughput": {
-      "value": 2
     },
     "enableAlerts": {
       "value": false
@@ -52,9 +31,6 @@
     },
     "jobCategorySearchClientOptionsBaseAddress": {
       "value": "jobCategorySearchClientOptionsBaseAddress"
-    },
-    "subscriptionServiceEndpoint": {
-      "value": "subscriptionServiceEndpoint"
     },
     "autoCompleteEndpoint": {
       "value": "autoCompleteEndpoint"
@@ -82,9 +58,6 @@
     },
     "ApiName": {
       "value": "explorecareers"
-    },
-    "SubscriptionSettingsEndpoint": {
-      "value": "http://url"
     },
     "bingSpellCheckApiUrl": {
       "value": "http://url"
@@ -124,6 +97,9 @@
     },
     "ContentMode": {
       "value": "PUBLISHED"
+    },
+    "Expiry": {
+      "value": "4"
     }
   }
 }
