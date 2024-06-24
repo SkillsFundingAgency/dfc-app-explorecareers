@@ -21,27 +21,6 @@
         "description": "Enable or disable alerting"
       }
     },
-    "cosmosAccountName": {
-      "type": "string"
-    },
-    "cosmosResourceGroup": {
-      "type": "string"
-    },
-    "cosmosDatabaseName": {
-      "type": "string"
-    },
-    "cosmosContainerName": {
-      "type": "string"
-    },
-    "cosmosKey": {
-      "type": "string"
-    },
-    "cosmosThroughput": {
-      "type": "int"
-    },
-    "cosmosNeedsCreation": {
-      "type": "bool"
-    },
     "jobProfileApiKey": {
       "type": "string"
     },
@@ -52,9 +31,6 @@
       "type": "string"
     },
     "jobCategorySearchClientOptionsBaseAddress": {
-      "type": "string"
-    },
-    "subscriptionServiceEndpoint": {
       "type": "string"
     },
     "autoCompleteEndpoint": {
@@ -82,9 +58,6 @@
       "type": "string"
     },
     "ApiName": {
-      "type": "string"
-    },
-    "SubscriptionSettingsEndpoint": {
       "type": "string"
     },
     "bingSpellCheckApiUrl": {
@@ -124,9 +97,12 @@
       "type": "string"
     },
     "IocpThreads": {
-        "type": "string"
+      "type": "string"
     },
     "ContentMode": {
+      "type": "string"
+    },
+    "Expiry": {
       "type": "string"
     }
   },
@@ -137,8 +113,6 @@
     "resourcePrefix": "[tolower(concat('dfc-', parameters('environment'), '-app-explorecareers'))]",
     "appInsightsName": "[concat(variables('resourcePrefix'), '-ai')]",
     "actionGroupName": "[concat('dfc-', replace(tolower(parameters('environment')), '-draft', ''), '-app-sharedresources-actgrp')]",
-    "cosmosEndpoint": "[concat('https://', parameters('cosmosAccountName'), '.documents.azure.com:443/')]",
-    "cosmosPartitionKey": "/PartitionKey",
     "ApiName": "[concat(parameters('ApimProductInstanceName'), '-', parameters('ApiName'))]"
   },
   "resources": [
@@ -190,26 +164,6 @@
                 "value": "dfc-app-explorecareers"
               },
               {
-                "name": "Configuration__CosmosDbConnections__JobCategoryContent__AccessKey",
-                "value": "[parameters('cosmosKey')]"
-              },
-              {
-                "name": "Configuration__CosmosDbConnections__JobCategoryContent__EndpointUrl",
-                "value": "[variables('cosmosEndpoint')]"
-              },
-              {
-                "name": "Configuration__CosmosDbConnections__JobCategoryContent__DatabaseId",
-                "value": "[parameters('cosmosDatabaseName')]"
-              },
-              {
-                "name": "Configuration__CosmosDbConnections__JobCategoryContent__CollectionId",
-                "value": "[parameters('cosmosContainerName')]"
-              },
-              {
-                "name": "Configuration__CosmosDbConnections__JobCategoryContent__PartitionKey",
-                "value": "[variables('cosmosPartitionKey')]"
-              },
-              {
                 "name": "Configuration__ReloadCache",
                 "value": "true"
               },
@@ -244,38 +198,6 @@
               {
                 "name": "JobCategorySearchClientOptions__BaseAddress",
                 "value": "[parameters('jobCategorySearchClientOptionsBaseAddress')]"
-              },
-              {
-                "name": "SubscriptionSettings__Filter__IncludeEventTypes__0",
-                "value": "published"
-              },
-              {
-                "name": "SubscriptionSettings__Filter__IncludeEventTypes__1",
-                "value": "unpublished"
-              },
-              {
-                "name": "SubscriptionSettings__Filter__IncludeEventTypes__2",
-                "value": "deleted"
-              },
-              {
-                "name": "SubscriptionSettings__Endpoint",
-                "value": "[concat(parameters('SubscriptionSettingsEndpoint'),'/api/webhook/ReceiveEvents?subscription-key=',parameters('apimCompositeApiKey'))]"
-              },
-              {
-                "name": "SubscriptionSettings__SubscriptionServiceEndpoint",
-                "value": "[concat(parameters('subscriptionServiceEndpoint'),'/api/Execute')]"
-              },
-              {
-                "name": "SubscriptionSettings__SubscriptionRegistrationDelay",
-                "value": "00:02:00"
-              },
-              {
-                "name": "SubscriptionSettings__Filter__PropertyContainsFilters__0__Key",
-                "value": "subject"
-              },
-              {
-                "name": "SubscriptionSettings__Filter__PropertyContainsFilters__0__Values__0",
-                "value": "/content/Jobprofilecategory"
               },
               {
                 "name": "AutoCompleteEndpoint",
@@ -342,12 +264,16 @@
                 "value": "[parameters('WorkerThreads')]"
               },
               {
-                 "name": "ThreadSettings__IocpThreads",
-                 "value": "[parameters('IocpThreads')]"
+                "name": "ThreadSettings__IocpThreads",
+                "value": "[parameters('IocpThreads')]"
               },
               {
                 "name": "ContentMode__ContentMode",
                 "value": "[parameters('ContentMode')]"
+              },
+              {
+                "name": "Cms__Expiry",
+                "value": "[parameters('Expiry')]"
               }
             ]
           }
@@ -460,67 +386,6 @@
           }
         }
       }
-    },
-    {
-      "name": "[parameters('cosmosDatabaseName')]",
-      "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "[parameters('cosmosResourceGroup')]",
-      "apiVersion": "2017-05-10",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(variables('buildingBlocksDfcBaseUrl'),'CosmosDb/cosmos-database.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "accountName": {
-            "value": "[parameters('cosmosAccountName')]"
-          },
-          "databaseName": {
-            "value": "[parameters('cosmosDatabaseName')]"
-          },
-          "useSharedRequestUnits": {
-            "value": true
-          },
-          "offerThroughput": {
-            "value": "[parameters('cosmosThroughput')]"
-          },
-          "databaseNeedsCreation": {
-            "value": "[parameters('cosmosNeedsCreation')]"
-          }
-        }
-      }
-    },
-    {
-      "apiVersion": "2017-05-10",
-      "name": "[parameters('cosmosContainerName')]",
-      "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "[parameters('CosmosResourceGroup')]",
-      "properties": {
-        "mode": "Incremental",
-        "templateLink": {
-          "uri": "[concat(variables('buildingBlocksDfcBaseUrl'), 'CosmosDb/cosmos-collection.json')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parameters": {
-          "accountName": {
-            "value": "[parameters('cosmosAccountName')]"
-          },
-          "databaseName": {
-            "value": "[parameters('cosmosDatabaseName')]"
-          },
-          "collectionName": {
-            "value": "[parameters('cosmosContainerName')]"
-          },
-          "provisionRequestUnits": {
-            "value": false
-          },
-          "partitionKey": {
-            "value": "[variables('cosmosPartitionKey')]"
-          }
-        }
-      },
-      "dependsOn": [ "[parameters('cosmosDatabaseName')]" ]
     },
     {
       "name": "[variables('ApiName')]",

@@ -14,32 +14,11 @@
         "appServicePlanSuffix": {
             "value": "__AppServicePlanSuffix__"
         },
-        "cosmosAccountName": {
-            "value": "__appSharedCosmosDBName__"
-        },
-        "cosmosKey": {
-            "value": "__appSharedCosmosPrimaryKey__"
-        },
-        "cosmosResourceGroup": {
-            "value": "__appSharedResourceGroup__"
-        },
         "environment": {
             "value": "__releaseEnvironmentName__",
             "metadata": {
                 "comment": "Bug in tokenisation task prevents referencing Release.EnvironmentName directly.  https://github.com/TotalALM/VSTS-Tasks/issues/29"
             }
-        },
-        "cosmosDatabaseName": {
-            "value": "__cosmosDatabaseName__"
-        },
-        "cosmosContainerName": {
-            "value": "__cosmosContainerName__"
-        },
-        "cosmosNeedsCreation": {
-            "value": __CosmosDbDatabaseDoesntExist__
-        },
-        "cosmosThroughput": {
-            "value": __cosmosThroughput__
         },
         "enableAlerts": {
             "value": __enableAzureMonitorAlerting__
@@ -55,9 +34,6 @@
         },
         "jobCategorySearchClientOptionsBaseAddress": {
             "value": "__jobCategoryBaseAddress__"
-        },
-        "subscriptionServiceEndpoint": {
-            "value": "__subscriptionServiceEndpoint__"
         },
         "autoCompleteEndpoint": {
             "value": "__autoCompleteEndpoint__"
@@ -85,9 +61,6 @@
         },
         "ApiName": {
             "value": "__ApiName__"
-        },
-        "SubscriptionSettingsEndpoint": {
-            "value": "__SubscriptionSettingsEndpoint__"
         },
         "bingSpellCheckApiUrl": {
             "value": "__bingSpellCheckApiUrl__"
@@ -127,6 +100,9 @@
         },
         "ContentMode": {
             "value": "__ContentMode__"
+        },
+        "Expiry": {
+          "value": "__Expiry__"
         }
     }
 }
