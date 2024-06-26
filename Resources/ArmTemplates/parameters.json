@@ -92,6 +92,9 @@
         "CmsSqlApiUrl": {
             "value": "__StaxGraphqlSqlApiUrl__"
         },
+        "CmsCacheKeyExpiry": {
+            "value": "__CmsCacheKeyExpiry__"
+        },
         "WorkerThreads": {
             "value": "__WorkerThreads__"
         },
