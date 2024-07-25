@@ -5,6 +5,8 @@ using DFC.App.ExploreCareers.AzureSearch;
 using DFC.App.ExploreCareers.BingSpellCheck;
 using DFC.App.ExploreCareers.Configuration;
 using DFC.App.ExploreCareers.GraphQl;
+using DFC.App.ExploreCareers.Interfaces;
+using DFC.App.ExploreCareers.Services;
 using DFC.Common.SharedContent.Pkg.Netcore;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure;
 using DFC.Common.SharedContent.Pkg.Netcore.Infrastructure.Strategy;
@@ -14,6 +16,8 @@ using DFC.Common.SharedContent.Pkg.Netcore.RequestHandler;
 using DFC.Compui.Telemetry;
 using DFC.Content.Pkg.Netcore.Data.Models.PollyOptions;
 using DFC.Content.Pkg.Netcore.Extensions;
+using DfE.NCS.Framework.Core.Extension;
+using DfE.NCS.Framework.Core.Repository.Interface;
 using GraphQL.Client.Abstractions;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.Newtonsoft;
@@ -138,6 +142,10 @@ namespace DFC.App.ExploreCareers
                     config.RespectBrowserAcceptHeader = true;
                     config.ReturnHttpNotAcceptable = true;
                 });
+
+            services.AddNcsCoreServices(configuration);
+            services.AddScoped<ICmsPreviewHandler, PreviewHandler>();
+            services.AddScoped<IJobSectorService, JobSectorService>();
         }
 
         private void ConfigureMinimumThreads()
