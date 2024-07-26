@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.GraphQl;
+using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -33,6 +35,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
             AddExploreCareersRoutes();
             await AddJobCategoriesRoutesAsync();
+            AddJobSectosRoutesAsync();
 
             if (!sitemap.Locations.Any())
             {
@@ -58,18 +61,37 @@ namespace DFC.App.ExploreCareers.Controllers
 
             async Task AddJobCategoriesRoutesAsync()
             {
-                var jobCategories = await graphQlService.GetJobCategoriesAsync();
-                if (jobCategories?.Any() is true)
+                try
                 {
-                    var jobCategoriesUrlPrefix = $"{Request.GetBaseAddress()}{JobCategoriesController.JobCategoryViewCanonicalName}";
-
-                    sitemap.AddRange(jobCategories.Select(jc => new SitemapLocation
+                    var jobCategories = await graphQlService.GetJobCategoriesAsync();
+                    if (jobCategories?.Any() is true)
                     {
-                        Url = $"{jobCategoriesUrlPrefix}/{jc.CanonicalName}",
-                        ChangeFrequency = SitemapLocation.ChangeFrequencies.Monthly,
-                        Priority = 0.5,
-                    }));
+                        var jobCategoriesUrlPrefix = $"{Request.GetBaseAddress()}{JobCategoriesController.JobCategoryViewCanonicalName}";
+
+                        sitemap.AddRange(jobCategories.Select(jc => new SitemapLocation
+                        {
+                            Url = $"{jobCategoriesUrlPrefix}/{jc.CanonicalName}",
+                            ChangeFrequency = SitemapLocation.ChangeFrequencies.Monthly,
+                            Priority = 0.5,
+                        }));
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            void AddJobSectosRoutesAsync()
+            {
+                var jobSectosUrlPrefix = $"{Request.GetBaseAddress()}{JobProfileSectorController.JobSectorsViewCanonicalName}";
+
+                sitemap.Add(new SitemapLocation
+                {
+                    Url = $"{jobSectosUrlPrefix}",
+                    ChangeFrequency = SitemapLocation.ChangeFrequencies.Monthly,
+                    Priority = 0.5,
+                });
             }
         }
     }
