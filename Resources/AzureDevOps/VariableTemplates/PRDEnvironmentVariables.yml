@@ -3,8 +3,14 @@ variables:
   value: PRD
 - name: ResourcePrefix
   value: dfc-prd-app-explorecareers
+- name: AppServiceName
+  value: $(ResourcePrefix)-as-ver2
+- name: AppServicePlanSuffix
+  value: -migrated
+- name: applicationUrl
+  value: https://$(AppServiceName).$(appServiceDomain)
 - name: subscriptionServiceEndpoint
-  value: https://dfc-prd-api-eventgridsubscriptions-fa.$(appServiceDomain)
+  value: https://dfc-prd-api-eventgridsubscriptions-fa-ver2.$(appServiceDomain)
 - name: loggingLogLevelDefault
   value: Warning
 - name: ContentMode
