@@ -18,7 +18,7 @@ namespace DFC.App.ExploreCareers.GraphQl
         private readonly IMapper mapper;
         private readonly IConfiguration configuration;
         private string status;
-        private double expiry = 4;
+        private double expiryInHours = 4;
 
         public GraphQlService(ISharedContentRedisInterface sharedContentRedisInterface, IMapper mapper, IConfiguration configuration)
         {
@@ -29,7 +29,10 @@ namespace DFC.App.ExploreCareers.GraphQl
             if (this.configuration != null)
             {
                 string expiryAppString = this.configuration.GetSection(ExpiryAppSettings).Get<string>();
-                this.expiry = double.Parse(string.IsNullOrEmpty(expiryAppString) ? "4" : expiryAppString);
+                if (double.TryParse(expiryAppString, out var expiryAppStringParseResult))
+                {
+                    expiryInHours = expiryAppStringParseResult;
+                }
             }
         }
 
@@ -40,7 +43,7 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsyncWithExpiry<JobProfileCategoriesResponseExploreCareers>(Constants.ExploreCareersJobProfileCategories, status, expiry)
+            var response = await sharedContentRedisInterface.GetDataAsyncWithExpiry<JobProfileCategoriesResponseExploreCareers>(Constants.ExploreCareersJobProfileCategories, status, expiryInHours)
                 ?? new JobProfileCategoriesResponseExploreCareers();
             return mapper.Map<List<JobCategoryViewModel>>(response.JobProfileCategories
                 .Where(c => c.DisplayText != null)
@@ -54,7 +57,7 @@ namespace DFC.App.ExploreCareers.GraphQl
                 status = "PUBLISHED";
             }
 
-            var response = await sharedContentRedisInterface.GetDataAsyncWithExpiry<JobProfilesResponseExploreCareers>($"{Constants.JobProfileSuffix}/{jobProfile}", status, expiry)
+            var response = await sharedContentRedisInterface.GetDataAsyncWithExpiry<JobProfilesResponseExploreCareers>($"{Constants.JobProfileSuffix}/{jobProfile}", status, expiryInHours)
                 ?? new JobProfilesResponseExploreCareers();
             return mapper.Map<List<JobProfileIndex>>(response.JobProfiles.OrderBy(c => c.DisplayText));
         }
