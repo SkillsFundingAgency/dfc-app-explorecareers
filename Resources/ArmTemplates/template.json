@@ -93,6 +93,9 @@
     "CmsSqlApiUrl": {
       "type": "string"
     },
+    "CmsCacheKeyExpiry": {
+      "type": "string"
+    },
     "WorkerThreads": {
       "type": "string"
     },
@@ -258,6 +261,10 @@
               {
                 "name": "Cms__SqlApiUrl",
                 "value": "[parameters('CmsSqlApiUrl')]"
+              },
+              {
+                "name": "Cms__CacheKeyExpiry",
+                "value": "[parameters('CmsCacheKeyExpiry')]"
               },
               {
                 "name": "ThreadSettings__WorkerThreads",
