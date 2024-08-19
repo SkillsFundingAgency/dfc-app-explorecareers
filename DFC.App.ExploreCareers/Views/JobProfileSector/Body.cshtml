@@ -1,0 +1,17 @@
+﻿@model DFC.App.ExploreCareers.ViewModels.JobProfileSector.BodyViewModel
+
+<div class='govuk-width-container'>
+    <div class='dfe-grid-container'>
+        @if (Model.JobProfileSectors.Any())
+        {
+            @foreach (var jobProfile in Model.JobProfileSectors)
+            {
+                @Html.Raw(jobProfile.Render)
+            }
+        }
+        else
+        {
+            <p>No job profile sectors available.</p>
+        }
+    </div>
+</div>

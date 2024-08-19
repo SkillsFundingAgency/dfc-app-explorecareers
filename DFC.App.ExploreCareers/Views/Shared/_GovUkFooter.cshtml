@@ -1,5 +1,34 @@
-﻿<footer class="govuk-footer " role="contentinfo">
+﻿<footer class="govuk-footer" role="contentinfo">
     <div class="govuk-width-container ">
+        <div class="govuk-footer__navigation">
+            <div class="govuk-footer__section govuk-grid-column-two-thirds">
+                @* <div class="govuk-footer__heading govuk-heading-m">Website information</div> *@
+                <h2 class="govuk-footer__heading govuk-heading-m">Website information</h2>
+                @await Component.InvokeAsync("ShowHelpLinks")
+            </div>
+            <div class="govuk-footer__section govuk-grid-column-one-third">
+                @*  <div class="govuk-footer__heading govuk-heading-m">Other UK career services</div> *@
+                <h2 class="govuk-footer__heading govuk-heading-m">Other UK career services</h2>
+                <ul class="govuk-footer__list">
+                    <li class="govuk-footer__list-item">
+                        <a class="govuk-footer__link" href="https://www.myworldofwork.co.uk/">
+                            Scotland
+                        </a>
+                    </li>
+                    <li class="govuk-footer__list-item">
+                        <a class="govuk-footer__link" href="https://careerswales.gov.wales/">
+                            Wales
+                        </a>
+                    </li>
+                    <li class="govuk-footer__list-item">
+                        <a class="govuk-footer__link" href="https://www.nidirect.gov.uk/campaigns/careers">
+                            Northern Ireland
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="govuk-footer__section-break">
         <div class="govuk-footer__meta">
             <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
                 <h2 class="govuk-visually-hidden">Support links</h2>

@@ -33,6 +33,36 @@ namespace DFC.App.ExploreCareers.Services
 
         public async Task<List<JobProfileSector>> LoadAll()
         {
+            //string query = @"query MyQuery($first:Int!, $skip: Int!) {
+            //      jobProfileSector(
+            //        first: $first
+            //        skip: $skip
+            //      ) {
+            //        contentItemId
+            //        graphSync {
+            //          nodeId
+            //        }
+            //        displayText
+            //        render
+            //      }
+            //}";
+
+
+            //string query = $@"query MyQuery($status:Status!, $first:Int!, $skip: Int!) {{
+            //      jobProfileSector(
+            //        status: {NcsGraphQLTokens.GraphQLStatusToken}
+            //        first: {NcsGraphQLTokens.PaginationCountToken}
+            //        skip: {NcsGraphQLTokens.SkipCountToken}
+            //      ) {{
+            //        contentItemId
+            //        graphSync {{
+            //          nodeId
+            //        }}
+            //        displayText
+            //        render
+            //      }}
+            //}}";
+
             string query = $@"query MyQuery {{
                                       jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
                                         contentItemId
@@ -47,7 +77,18 @@ namespace DFC.App.ExploreCareers.Services
             try
             {
                 Func<JobProfileSectorResponse, List<JobProfileSector>> recSelector = col => col.JobProfileSector;
+
                 var response = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyJobProfileSector, recSelector);
+
+
+
+                // Ensure response is properly initialized and has non-null Data
+                if (response.Data == null)
+                {
+                    // Handle the null case, e.g., throw an exception, return a default value, etc.
+                    throw new InvalidOperationException("Data cannot be null.");
+                }
+
                 return response.Data;
             }
             catch (Exception ex)

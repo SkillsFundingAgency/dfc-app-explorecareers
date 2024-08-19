@@ -89,15 +89,15 @@ namespace DFC.App.ExploreCareers
             services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
 
             services.AddHttpClient();
+
             services.AddSingleton<IGraphQLClient>(s =>
             {
                 var option = new GraphQLHttpClientOptions()
                 {
                     EndPoint = new Uri(configuration.GetSection(StaxGraphApiUrlAppSettings).Get<string>() ?? throw new ArgumentNullException()),
-
                     HttpMessageHandler = new CmsRequestHandler(
-                        s.GetService<IHttpClientFactory>(), 
-                        s.GetService<IConfiguration>(), 
+                        s.GetService<IHttpClientFactory>(),
+                        s.GetService<IConfiguration>(),
                         s.GetService<IHttpContextAccessor>() ?? throw new ArgumentNullException(),
                         s.GetService<IMemoryCache>()),
                 };
@@ -105,8 +105,9 @@ namespace DFC.App.ExploreCareers
                 return client;
             });
 
-            services.AddSingleton<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCategoriesResponseExploreCareers>, JobCategoryQueryStrategyExploreCareers>();
-            services.AddSingleton<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponseExploreCareers>, JobProfilesByCategoryQueryStrategy>();
+
+            services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfileCategoriesResponseExploreCareers>, JobCategoryQueryStrategyExploreCareers>();
+            services.AddScoped<ISharedContentRedisInterfaceStrategyWithRedisExpiry<JobProfilesResponseExploreCareers>, JobProfilesByCategoryQueryStrategy>();
 
             services.AddSingleton<ISharedContentRedisInterfaceStrategyFactory, SharedContentRedisStrategyFactory>();
 
