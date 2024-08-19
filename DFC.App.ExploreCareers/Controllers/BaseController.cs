@@ -18,11 +18,11 @@ namespace DFC.App.ExploreCareers.Controllers
             {
                 Breadcrumbs = new List<BreadcrumbItemViewModel>()
                 {
-                    //new BreadcrumbItemViewModel()
-                    //{
-                    //    Route = "/",
-                    //    Title = "Home",
-                    //},
+                    new BreadcrumbItemViewModel()
+                    {
+                        Route = "/",
+                        Title = "Home",
+                    },
                     new BreadcrumbItemViewModel()
                     {
                         Route = $"/{ExploreCareersController.ExploreCareersViewCanonicalName}",
