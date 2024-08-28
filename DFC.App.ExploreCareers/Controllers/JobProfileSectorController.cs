@@ -29,6 +29,24 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
+        [Route("head")]
+        public IActionResult Head()
+        {
+            var viewModel = GetHeadViewModel();
+
+            logger.LogInformation($"{nameof(Head)} has returned content");
+            return this.NegotiateContentResult(viewModel);
+        }
+
+        [HttpGet]
+        [Route("bodytop")]
+        public IActionResult BodyTop()
+        {
+            logger.LogInformation($"{nameof(BodyTop)} has returned content");
+            return this.NegotiateContentResult(null);
+        }
+
+        [HttpGet]
         [Route("")]
         [Route("document")]
         public async Task<IActionResult> DocumentAsync()
@@ -42,13 +60,6 @@ namespace DFC.App.ExploreCareers.Controllers
             return this.NegotiateContentResult(viewModel);
         }
 
-        [HttpGet]
-        [Route("bodytop")]
-        public IActionResult BodyTop()
-        {
-            logger.LogInformation($"{nameof(BodyTop)} has returned content");
-            return this.NegotiateContentResult(null);
-        }
 
         [HttpGet]
         [Route("body")]

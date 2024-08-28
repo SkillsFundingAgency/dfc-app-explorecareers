@@ -47,14 +47,18 @@ namespace DFC.App.ExploreCareers.Extensions
             }
 
             // Create the new HTML structure for the card
+            var titleUrl = title.ToLower()
+                    .Replace(" ", "-")
+                    .Replace(",", string.Empty);
+
             var newHtml = $@"
-            <div class='dfe-card'>
+            <div class='dfe-card dfe-card-expolore-career'>
                 {imgTag}
                 <div class='dfe-card-container'>
                     <h3 class='govuk-heading-m'>
-                        <a href='#' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
+                        <a href='/sector-landing-page/{titleUrl}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
                     </h3>
-                    <p class='dfe-card-description'>{description}</p>
+                    <p class='dfe-card-description dfe-card-description-expolore-career'>{description}</p>
                 </div>
             </div>";
 

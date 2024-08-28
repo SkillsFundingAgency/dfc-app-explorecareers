@@ -6,7 +6,7 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfileSector
     public class JobProfileSectorResponse
     {
         [JsonProperty("jobProfileSector")]
-        public List<JobProfileSector> JobProfileSector { get; set; }
+        public List<JobProfileSector> JobProfileSector { get; set; } = new List<JobProfileSector>();
     }
 
     public class JobProfileSector
@@ -29,6 +29,9 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfileSector
         [JsonProperty("render")]
         public string Render { get; set; }
 
+        //[JsonProperty("sectorLandingPage")]
+        //public SectorLandingPage SectorLandingPage { get; set; }
+
         //[JsonProperty("isActive")]
         //public bool IsActive { get; set; }
 
@@ -45,9 +48,24 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfileSector
         public string NodeId { get; set; }
     }
 
+    public class SectorLandingPage
+    {
+        // Represents the list of content items within the sector landing page
+        [JsonProperty("contentItems")]
+        public List<ContentItem> ContentItems { get; set; } = new List<ContentItem>();
+    }
+
+    public class ContentItem
+    {
+        [JsonProperty("contentItemId")]
+        public string ContentItemId { get; set; }
+    }
+
     public class Content
     {
         [JsonProperty("html")]
         public string Html { get; set; }
     }
+
+
 }

@@ -10,12 +10,14 @@ using DfE.NCS.Framework.Core.Repository.Interface;
 using DfE.NCS.Framework.SharedContent.Cms;
 using DfE.NCS.Framework.SharedContent.Cms.Model;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace DFC.App.ExploreCareers.Services
 {
     public class JobSectorService : CmsRepositoryBase, IJobSectorService
     {
         public const string CacheKeyJobProfileSector = "job-sector";
+        public const string CacheKeyLandingSectorPage = "sector-landing-page";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobSectorService"/> class.
@@ -23,12 +25,49 @@ namespace DFC.App.ExploreCareers.Services
         /// <param name="querymanager">The querymanager.</param>
         /// <param name="logger">The logger.</param>
         public JobSectorService(ICmsQueryManager querymanager, ILogger<CmsRepositoryBase> logger) : base(querymanager, logger)
+        { }
+        public async Task<List<JobProfileSector>> GetItemByKey(string key)
         {
-        }
+            var query = $@"
+                query MyQuery {{
+                    sectorLandingPage(
+                        where: {{
+                            contentItemId: ""{key}"",
+                            displayText: ""Agriculture, environmental and animal care""
+                        }}
+                    ) {{
+                        displayText
+                        modifiedUtc
+                        publishedUtc
+                        createdUtc
+                        render
+                        videoType
+                        videoTitle
+                        videoURL
+                        videoDuration
+                        videoLinkText
+                        videoTranscript
+                        withinThisSectorTitle
+                        realStoryTitle
+                        aboutThisSector
+                    }}
+                }}";
 
-        public Task<List<JobProfileSector>> GetItemByKey(string key)
-        {
-            throw new NotImplementedException();
+            // Call GetData to execute the query
+            //var result = await _cmsQueryManager.GetData<string>(query, CacheKeyLandingSectorPage);
+
+            var result = await _cmsQueryManager.GetData<dynamic>(query, CacheKeyLandingSectorPage);
+
+            // Handle the response
+            if (result.Data == null)
+            {
+                return null;
+            }
+
+            //Deserialize the JSON response into a list of JobProfileSector
+           var jobProfileSectors = JsonConvert.DeserializeObject<List<dynamic>>(result.Data);
+
+            return null;
         }
 
         public async Task<List<JobProfileSector>> LoadAll()
@@ -73,6 +112,22 @@ namespace DFC.App.ExploreCareers.Services
                                         render
                                       }}
                                     }}";
+
+            //string query = $@"query MyQuery {{
+            //                          jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
+            //                            contentItemId
+            //                            graphSync {{
+            //                              nodeId
+            //                            }}
+            //                            displayText
+            //                            render
+            //                          }}
+            //                          sectorLandingPage {{
+            //                            contentItems {{
+            //                            contentItemId
+            //                            }}
+            //                          }}
+            //                        }}";
 
             try
             {
