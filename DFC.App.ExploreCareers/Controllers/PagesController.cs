@@ -21,6 +21,7 @@ namespace DFC.App.ExploreCareers.Controllers
                     new IndexDocumentViewModel { Title = SitemapController.SitemapViewCanonicalName },
                     new IndexDocumentViewModel { Title = RobotController.RobotsViewCanonicalName },
                     new IndexDocumentViewModel { Title = ExploreCareersController.ExploreCareersViewCanonicalName },
+                    new IndexDocumentViewModel { Title = JobProfileSectorController.JobSectorsViewCanonicalName },
                 },
             };
 
