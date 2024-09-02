@@ -133,9 +133,7 @@ namespace DFC.App.ExploreCareers.Services
             {
                 Func<JobProfileSectorResponse, List<JobProfileSector>> recSelector = col => col.JobProfileSector;
 
-                var response = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyJobProfileSector, recSelector, cacheExpirySeconds: 43200);
-
-
+                var response = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyJobProfileSector, recSelector);
 
                 // Ensure response is properly initialized and has non-null Data
                 if (response.Data == null)
