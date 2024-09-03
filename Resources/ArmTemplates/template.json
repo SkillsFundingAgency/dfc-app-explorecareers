@@ -104,6 +104,12 @@
     },
     "Expiry": {
       "type": "string"
+    },
+    "RedisCacheEnabled": {
+      "type": "bool"
+    },
+    "RedisCacheExpiryInSeconds": {
+      "type": "int"
     }
   },
   "variables": {
@@ -274,6 +280,18 @@
               {
                 "name": "Cms__Expiry",
                 "value": "[parameters('Expiry')]"
+              },
+              {
+                "name": "RedisCache__CacheEnabled",
+                "value": "[parameters('RedisCacheEnabled')]"
+              },
+              {
+                "name": "RedisCache__ConnectionString",
+                "value": "[parameters('CmsRedisCacheConnectionString')]"
+              },
+              {
+                "name": "RedisCache__CacheExpirySeconds",
+                "value": "[parameters('RedisCacheExpiryInSeconds')]"
               }
             ]
           }
