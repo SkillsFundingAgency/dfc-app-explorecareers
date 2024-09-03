@@ -102,10 +102,10 @@
       "value": "4"
     },
     "RedisCacheEnabled": {
-      "value": true
+      "value": "true"
     },
     "RedisCacheExpiryInSeconds": {
-      "value": 100
+      "value": "100"
     }
   }
 }

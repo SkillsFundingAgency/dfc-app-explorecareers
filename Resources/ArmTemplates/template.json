@@ -106,10 +106,10 @@
       "type": "string"
     },
     "RedisCacheEnabled": {
-      "type": "bool"
+      "type": "string"
     },
     "RedisCacheExpiryInSeconds": {
-      "type": "int"
+      "type": "string"
     }
   },
   "variables": {
