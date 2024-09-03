@@ -20,4 +20,8 @@ variables:
 - name: SubscriptionSettingsEndpoint
   value: $(ApimProxyAddress)/composite-ui/explorecareers
 - name: bingSpellCheckApiUrl
-  value: https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
+  value: https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/\
+- name: RedisCacheEnabled
+  value: true
+- name: RedisCacheExpiryInSeconds
+  value: 43200
