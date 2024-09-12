@@ -1,38 +1,48 @@
 ﻿.dfe-grid-container-expolore-career {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px; /* Space between items */
+    gap: 15px;
+    /* Space between items */
 }
 
 .dfe-card-expolore-career {
-    flex: 1 1 calc(33.333% - 15px); /* Three items per row with space */
+    flex: 1 1 calc(33.333% - 15px);
+    /* Three items per row with space */
     box-sizing: border-box;
-    padding: 15px; /* Optional padding */
-    background: #f0f0f0; /* Gray background color */
-    color: #ffffff; /* Optional: Set text color to white for better contrast */
-    border-bottom: 5px solid #5694ca;
-    h3
-
-{
-    font-family: 'Transport', sans-serif;
-    font-weight: 300;
-    font-size: 19px;
-    color: #1D70B8; /* Header color */
-    margin: 0 0 10px 0;
-}
+    background: #F3F2F1;
+    /* Gray background color */
+    color: #ffffff;
+    /* Optional: Set text color to white for better contrast */
+    border-bottom: 4px solid #b1b4b6;
+    h2
+    {
+        font-family: 'Transport', arial, sans-serif;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 25px;
+        color: #1d70b8;
+        /* Header color */
+        margin: 30px 0 15px 20px;
+        /* top right bottom left */
+    }
 
 .dfe-card-description-expolore-career {
-    font-family: 'Transport', sans-serif;
+    font-family: 'Transport', arial, sans-serif;
     font-weight: 300;
     font-size: 19px;
-    color: #000; /* Set color if needed */
-    margin: 0;
+    color: #000;
+    line-height: 25px;
+    /* Set color if needed */
+    margin: 0 0 20px 20px;
 }
 
 a {
-    text-decoration: none; /* Remove underline from card titles */
-    color: #1D70B8; /* Link color */
-    font-weight: bold; /* Make link text bold */
+    text-decoration: none;
+    /* Remove underline from card titles */
+    color: #1D70B8;
+    /* Link color */
+    font-weight: bold;
+    /* Make link text bold */
 }
 
 img {
@@ -44,20 +54,25 @@ img {
 }
 
 .dfe-card-placeholder {
-    background: none; /* Gray background color for placeholder */
-    border: none; /* No border */
-    padding: 15px; /* Padding to match other cards */
-    height: 150px; /* Example height, adjust as needed */
+    background: none;
+    /* Gray background color for placeholder */
+    border: none;
+    /* No border */
+    padding: 15px;
+    /* Padding to match other cards */
+    height: 150px;
+    /* Example height, adjust as needed */
 }
 
 #speaktoanadvisor {
     background-color: #5694ca25 !important;
-    margin: 5em 0 !important; /* Adjust margin values for top/bottom and remove left/right margin */
+    margin: 5em 0 !important;
+    /* Adjust margin values for top/bottom and remove left/right margin */
 
     p
 
 {
-    font-family: 'Transport', sans-serif;
+    font-family: 'Transport', arial, sans-serif;
     font-weight: 300;
     font-size: 19px;
 }
@@ -79,9 +94,34 @@ img {
     border-bottom: 10px solid #5694ca;
 }
 
+/*.ncs-hero .content .block.ncs span {
+    font-family: "GDS Transport", arial, sans-serif;
+    color: #0b0c0c !important;
+    font-size: 48px;
+}*/
+
+.block-ncs-app-explorer span {
+    font-family: "GDS Transport", arial, sans-serif;
+    color: #0b0c0c !important;
+    font-size: 48px;
+}
+
+
+/*.ncs-hero .content .sub-heading .block span {
+    padding: 2px 0;
+    font-size: 24px;
+}*/
+
+.sub-heading-app-explorer span {
+    padding: 2px 0;
+    font-size: 24px;
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .dfe-card-expolore-career {
-        flex: 1 1 100%; /* Full width on small screens */
+        flex: 1 1 100%;
+        /* Full width on small screens */
     }
 }

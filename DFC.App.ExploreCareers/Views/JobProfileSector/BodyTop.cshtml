@@ -1,27 +1,21 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
- <section aria-label="Search">
-   <div class="ncs-hero page-hero">    
-        <!-- Desktop image -->
-         <div class="d-only">
-            <img src="@Configuration["AssetsCdn"]media/headers/explore-careers-desktop-header.png" alt="a female wind farm engineer at work wearing a high visibility jacket and a blue hard hat. There are wind turbines across the landscape in the background." />
-        </div> 
 
-        <!-- Mobile image -->
-         <div class="m-only">
-                <img src="@Configuration["AssetsCdn"]media/headers/explore-careers-mobile-header.png" alt="a female wind farm engineer at work wearing a high visibility jacket and a blue hard hat. There are wind turbines across the landscape in the background." />
-        </div> 
- 
+<section aria-label="Search">
+    <div class="ncs-hero page-hero">
         <div class="content govuk-width-container">
-            <div class="govuk-grid-row">               
+            <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <h1 class="govuk-heading-xl">
-                        <div class="block ncs">
-                            <span>Explore by job sector</span>
+                        <div class="block ncs block-ncs-app-explorer">
+                            <span>Explore</span>
+                            <span>by</span>
+                            <span>job</span>
+                            <span>sector</span>
                         </div>
                     </h1>
-                    <div class="sub-heading">
+                    <div class="sub-heading sub-heading-app-explorer">
                         <p class="block">
                             <span>Choose</span>
                             <span>a</span>
@@ -29,48 +23,29 @@
                             <span>sector</span>
                             <span>that</span>
                             <span>interest</span>
-                            <span>you</span>                        
-                            <span>to</span>                        
-                            <span>learn</span>                        
-                            <span>more</span>                        
+                            <span>you</span>
+                            <span>to</span>
+                            <span>learn</span>
+                            <span>more</span>
                             <span>about</span>
                             <span>it.</span>
                         </p>
                     </div>
                 </div>
             </div>
-        </div>    
-   </div> 
+        </div>
+    </div>
 
-
-         <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
-            <div class="search-wrapper ncs-search-form__container">
-                <div class="govuk-width-container">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-two-thirds">
+    <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
+        <div class="search-wrapper">
+            <div class="govuk-width-container">
+                <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-two-thirds">
+                        <div class="govuk-form-group">
                         </div>
                     </div>
                 </div>
             </div>
-        </form> 
-
-      @*    <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
-            <div class="search-wrapper ncs-search-form__container">
-                <div class="govuk-width-container">
-                    <div class="govuk-grid-row">
-                        <div class="govuk-grid-column-two-thirds">
-                            <div class="govuk-form-group">
-                                <label class="ncs-label govuk-label" for="searchTerm">Search job titles</label>
-                                <div class="input-wrapper">
-                                        <input id="searchTerm" name="searchTerm" type="search" class="govuk-input search-input js-search-focus focus js-autocomplete ui-autocomplete-input" aria-label="Enter a job title" placeholder="Enter a job title" data-autocomplete-maxlength="7" data-autocomplete-minlength="2" data-autocomplete-source="/searchautocomplete" autocomplete="off" />
-                                    <div class="input-search-item input-submit-wrapper"> 
-                                        <button id="search-button" class="input-search-submit" type="submit" data-module="govuk-button" value="Search">Search</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>  *@
- </section> 
+        </div>
+    </form>
+</section>

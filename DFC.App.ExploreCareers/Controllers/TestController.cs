@@ -3,43 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DFC.App.ExploreCareers.Extensions;
-using DFC.App.ExploreCareers.GraphQl;
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobProfileSector;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
-    [Route("explore-careers/job-sector")]
-    public class JobProfileSectorController : BaseController
+    [Route("explore-test")]
+    public class TestController : Controller
     {
-        public const string JobSectorsViewCanonicalName = "job-sector";
-        public const string DefaultPageTitleSuffix = "Explore careers | Job Profile Sector";
+        public const string ExploreTestViewCanonicalName = "explore-test";
+        public const string DefaultPageTitleSuffix = "Explore careers | National Careers Service";
 
-        private readonly ILogger<JobProfileSectorController> logger;
+        private readonly ILogger<TestController> logger;
         private readonly IJobSectorService jobSectorService;
 
-        public JobProfileSectorController(
-            ILogger<JobProfileSectorController> logger,
+        public TestController(
+            ILogger<TestController> logger,
             IJobSectorService jobSectorService)
         {
             this.logger = logger;
             this.jobSectorService = jobSectorService;
         }
-
-        [HttpPost]
-        [Route("sector-landing-page")]
-        public IActionResult SectorLandingPage(string titleUrl, string hiddenProperty)
-        {
-            // Your business logic, such as logging the clicked URL or processing data
-            logger.LogInformation($"Clicked on job sector with URL: {titleUrl}");
-
-            // Redirect or return a view as needed
-            return RedirectToAction("DocumentAsync"); // Example: redirecting to another action
-        }
-
 
         [HttpGet]
         [Route("head")]
@@ -96,7 +84,7 @@ namespace DFC.App.ExploreCareers.Controllers
             var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
-                Breadcrumb = BuildBreadcrumb("Explore by job sector"),
+                //Breadcrumb = BuildBreadcrumb("Explore by job sector"),
                 Body = new BodyViewModel { JobProfileSectors = jobSectors }
             };
 
@@ -155,14 +143,14 @@ namespace DFC.App.ExploreCareers.Controllers
         {
             return new HeadViewModel
             {
-                CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{JobSectorsViewCanonicalName}", UriKind.RelativeOrAbsolute),
+                CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{ExploreTestViewCanonicalName}", UriKind.RelativeOrAbsolute),
                 Title = string.IsNullOrWhiteSpace(pageTitle)
                     ? DefaultPageTitleSuffix
                     : $"{pageTitle} | {DefaultPageTitleSuffix}"
             };
         }
 
-        private static BreadcrumbViewModel BuildBreadcrumb(string title) =>
-            BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "#" });
+        //private static BreadcrumbViewModel BuildBreadcrumb(string title) =>
+        //    BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "#" });
     }
 }

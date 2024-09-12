@@ -1,62 +1,111 @@
-﻿<div class='govuk-width-container'>
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model DFC.App.ExploreCareers.ViewModels.SectorLandingPage.BodyViewModel
+
+<div class='govuk-width-container'>
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-half">
-            <h1 class="govuk-heading-l">About this sector</h1>
-            Includijng many outdoor roles, the agriculture, environmental and animal care sector is broad, with opportunities from entry-level up to managment.</p>
+           @Html.Raw(@Model.SectorLandingPage[0].Description.Html)
         </div>
         <div class="govuk-grid-column-one-half">
-            <p>Place holder for the video</p>
+            <img src="@Configuration["AssetsCdn"]media/@Html.Raw(@Model.SectorLandingPage[0].VideoImage.Paths[0])" alt="" />
+            <p class="govuk-body">
+                @Model.SectorLandingPage[0].VideoDuration
+            </p>
+            <span><a href="#">@Model.SectorLandingPage[0].VideoTranscript</a></span>.
         </div>
     </div>
 
     <div class="govuk-grid-row">
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-        <p class="govuk-body">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+    </div>
+
+    <div class="govuk-grid-row">
+
+        @Html.Raw(@Model.SectorLandingPage[0].ProfileDescription.Html)
+
+      @*   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+        <p class="govuk-body">
+            It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here,' making it look like readable English.
+            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many websites still in their infancy.
             Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-        </p>
+        </p> *@
+    </div>
+
+    <div class="dfe-grid-container dfe-grid-container-explore-career">
+      @*   <div class="dfe-card dfe-card-explore-career">
+            <div class="dfe-card-container">
+                <h2 class="govuk-heading-m">displayText</h2>
+                <p>overview</p>
+                <h3 class="govuk-heading-m">
+                    <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Card title</a>
+                </h3>
+            </div>
+        </div> *@
+        @foreach (var item in Model.SectorLandingPage[0].JobProfile.ContentItems)
+        {
+            <div class="dfe-card dfe-card-explore-career">
+                <div class="dfe-card-container">
+                    <!-- Display job title -->
+                    <h2 class="govuk-heading-m">@item.DisplayText</h2>
+                    <!-- Display job overview -->
+                    <p>@item.Overview</p>
+                    <!-- Display salary range -->
+                    <p>Salary: @item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")</p>
+                </div>
+            </div>
+        }
     </div>
 
 
-    <div class="dfe-grid-container dfe-grid-container-expolore-career">
-        <div class="dfe-card dfe-card-expolore-career">
-            <div class="dfe-card-container">
-                <h2 class="govuk-heading-m">Job One</h2>
-                <p>A short description for the card.</p>
-                <h3 class="govuk-heading-m">
-                    <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Card title</a>
-                </h3>
-            </div>
-        </div>
-        <div class="dfe-card dfe-card-expolore-career">
-            <div class="dfe-card-container">
-                <h2 class="govuk-heading-m">Job Two</h2>
-                <p>A short description for the card.</p>
-                <h3 class="govuk-heading-m">
-                    <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Card title</a>
-                </h3>
-            </div>
-        </div>
-        <div class="dfe-card dfe-card-expolore-career">
-            <div class="dfe-card-container">
-                <h2 class="govuk-heading-m">Job Three</h2>
-                <p>A short description for the card.</p>
-                <h3 class="govuk-heading-m">
-                    <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Card title</a>
-                </h3>
-            </div>
-        </div>
+    <a class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1" href="https://lab.nationalcareersservice.org.uk/discover-your-skills-and-careers">
+        @Html.Raw(@Model.SectorLandingPage[0].JobDescription.Html)
+    </a> 
+   @*  <p class="govuk-body-m"></p>
+    <p class="govuk-body-m"> *@
+       @*  <a class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1" href="https://lab.nationalcareersservice.org.uk/discover-your-skills-and-careers">
+            @Html.Raw(@Model.SectorLandingPage[0].JobDescription.Html)
+        </a> *@
+  @*   </p> *@
 
+    <div class="govuk-grid-row">
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
     </div>
 
-    <p class="govuk-body-m"></p>
-    <p class="govuk-body-m">
-        <a class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1" href="https://lab.nationalcareersservice.org.uk/discover-your-skills-and-careers">
-            Go to discover your skills and careers
-        </a>
-    </p>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Further inspiration</h1>
+            <p class="govuk-body">
+              still to add in CMS
+            </p>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="dfe-grid-container dfe-grid-container-explore-career">
+            @foreach (var item in Model.SectorLandingPage[0].JobProfileInspiration.ContentItems)
+            {
+                <div class="dfe-card dfe-card-explore-career">
+                    <div class="dfe-card-container">
+                        <!-- Display job title -->
+                        <h2 class="govuk-heading-m">@item.DisplayText</h2>
+                        <!-- Display job overview -->
+                        <p>@item.Overview</p>
+                        <!-- Display salary range -->
+                        <p>Salary: @item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            @Html.Raw(@Model.SectorLandingPage[0].JobProfileInspirationDescription.Html)
+        </div>
+    </div>
 
     <div class="govuk-grid-row">
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -64,15 +113,12 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-half">
-            <h1 class="govuk-heading-l">Real career stories</h1>
-            <img src="/assets/images/assessment-blog.png" alt="Sample Image">
+            @Html.Raw(@Model.SectorLandingPage[0].RealStoryDescription.Html)
+            @Html.Raw(@Model.SectorLandingPage[0].RealStoryImage.Html)
         </div>
         <div class="govuk-grid-column-one-half">
             <p class="govuk-body">
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-                Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-                Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                @Html.Raw(@Model.SectorLandingPage[0].RealStoryImageDescription.Html)
             </p>
         </div>
     </div>
@@ -81,10 +127,19 @@
         <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
     </div>
 
-    <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">
-            if you're not sure that this the right sector for you, you can <span><a href="#">explore all sectors</a></span> and discover what each sector has to offer.
-        </p>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-l">Explore all sectors</h1>
+            <p class="govuk-body">
+                If you're not sure that this is the right sector for you, you can <span><a href="#">explore all sectors</a></span> and discover what each sector has to offer.
+            </p>
+        </div>
     </div>
+
+    <div class="govuk-grid-row">
+        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+    </div>
+
+    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
 
 </div>

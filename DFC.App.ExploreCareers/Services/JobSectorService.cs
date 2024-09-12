@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels.JobProfileSector;
+using DFC.App.ExploreCareers.ViewModels.SectorLandingPage;
 using DfE.NCS.Framework.Core.Constants;
 using DfE.NCS.Framework.Core.Repository;
 using DfE.NCS.Framework.Core.Repository.Interface;
@@ -28,46 +29,100 @@ namespace DFC.App.ExploreCareers.Services
         { }
         public async Task<List<JobProfileSector>> GetItemByKey(string key)
         {
-            var query = $@"
-                query MyQuery {{
-                    sectorLandingPage(
-                        where: {{
-                            contentItemId: ""{key}"",
-                            displayText: ""Agriculture, environmental and animal care""
-                        }}
-                    ) {{
-                        displayText
-                        modifiedUtc
-                        publishedUtc
-                        createdUtc
-                        render
-                        videoType
-                        videoTitle
-                        videoURL
-                        videoDuration
-                        videoLinkText
-                        videoTranscript
-                        withinThisSectorTitle
-                        realStoryTitle
-                        aboutThisSector
+            string query = $@"
+            query MyQuery {{
+              sectorLandingPage(
+                where: {{contentItemId: ""{key}""}}
+                status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
+                ) {{
+                displayText
+                heroBanner {{
+                  html
+                }}
+                image {{
+                  html
+                }}
+                description {{
+                  html
+                }}
+                videoImage {{
+                  paths
+                  urls
+                }}
+                videoDuration
+                videoTranscript
+                profileDescription {{
+                    html
+                }}
+                jobProfile {{
+                  contentItems {{
+                    displayText
+                    ... on JobProfile {{
+                      modifiedUtc
+                      overview
+                      salarystarterperyear
+                      salaryexperiencedperyear
                     }}
-                }}";
+                  }}
+                }}
+                jobDescription {{
+                    html
+                }}
+                jobProfileInspiration {{
+                  contentItems {{
+                    displayText
+                    ... on JobProfile {{
+                      displayText
+                      overview
+                      salarystarterperyear
+                      salaryexperiencedperyear
+                    }}
+                  }}
+                }}
+                jobProfileInspirationDescription {{
+                    html
+                }}
+                realStoryDescription {{
+                  html
+                }}
+                realStoryImage {{
+                  html
+                }}
+                realStoryImageDescription {{
+                  html
+                }}
+              }}
+            }}";
 
-            // Call GetData to execute the query
-            //var result = await _cmsQueryManager.GetData<string>(query, CacheKeyLandingSectorPage);
 
-            var result = await _cmsQueryManager.GetData<dynamic>(query, CacheKeyLandingSectorPage);
+            Func<SectorLandingPageResponse, List<ViewModels.SectorLandingPage.SectorLandingPage>> recSelector = col => col.SectorLandingPage;
+
+            var result = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyLandingSectorPage, recSelector);
 
             // Handle the response
-            if (result.Data == null)
+            if (result?.Data == null)
             {
                 return null;
             }
 
-            //Deserialize the JSON response into a list of JobProfileSector
-           var jobProfileSectors = JsonConvert.DeserializeObject<List<dynamic>>(result.Data);
 
-            return null;
+            //var sectorLandingPages = JsonConvert.DeserializeObject<List<ViewModels.SectorLandingPage.SectorLandingPage>>(result.Data.ToString());
+
+            // Step 5: Map SectorLandingPage to JobProfileSector and return
+            var jobProfileSectors = new List<JobProfileSector>();
+
+            foreach (var sectorLandingPage in result.Data)
+            {
+                var jobProfileSector = new JobProfileSector
+                {
+                    SectorLandingPageSearchResults = result?.Data
+                };
+
+                jobProfileSectors.Add(jobProfileSector);
+            }
+
+            return jobProfileSectors;
+
         }
 
         public async Task<List<JobProfileSector>> LoadAll()
@@ -102,17 +157,6 @@ namespace DFC.App.ExploreCareers.Services
             //      }}
             //}}";
 
-            string query = $@"query MyQuery {{
-                                      jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
-                                        contentItemId
-                                        graphSync {{
-                                          nodeId
-                                        }}
-                                        displayText
-                                        render
-                                      }}
-                                    }}";
-
             //string query = $@"query MyQuery {{
             //                          jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
             //                            contentItemId
@@ -122,12 +166,24 @@ namespace DFC.App.ExploreCareers.Services
             //                            displayText
             //                            render
             //                          }}
-            //                          sectorLandingPage {{
-            //                            contentItems {{
-            //                            contentItemId
-            //                            }}
-            //                          }}
             //                        }}";
+
+            string query = $@"query MyQuery {{
+                                      jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
+                                        contentItemId
+                                        graphSync {{
+                                          nodeId
+                                        }}
+                                        displayText
+                                        description
+                                        render
+                                        sectorLandingPage {{
+                                            contentItems {{
+                                            contentItemId
+                                            }}
+                                        }}
+                                      }}
+                                    }}";
 
             try
             {

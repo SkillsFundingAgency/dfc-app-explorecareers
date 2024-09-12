@@ -5,11 +5,12 @@ using DFC.App.ExploreCareers.ViewModels.SectorLandingPage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
-    [Route("sector-landing-page/{title}")]
+    [Route("sector-landing-page")]
     public class SectorLandingPageController : BaseController
     {
         public const string SectorLandingPageViewCanonicalName = "sector-landing-page";
@@ -27,7 +28,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("head")]
+        [Route("{titleUrl}/head")]
         public IActionResult Head()
         {
             var viewModel = GetHeadViewModel();
@@ -37,7 +38,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("bodytop")]
+        [Route("{titleUrl}/bodytop")]
         public IActionResult BodyTop()
         {
             logger.LogInformation($"{nameof(BodyTop)} has returned content");
@@ -45,11 +46,13 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("")]
-        [Route("document")]
-        public async Task<IActionResult> Document(string JobSectorTitle)
+        [Route("{titleUrl}")]
+        [Route("{titleUrl}/document")]
+        public async Task<IActionResult> Document(string titleUrl)
         {
-            var viewModel = await CreateDocumentViewModelAsync();
+            var contentItemId = Request.Query["id"].ToString();
+
+            var viewModel = await CreateDocumentViewModelAsync(contentItemId);
             if (viewModel == null)
             {
                 return NotFound();
@@ -61,10 +64,10 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("body")]
-        public async Task<IActionResult> BodyAsync()
+        [Route("{titleUrl}/body")]
+        public async Task<IActionResult> BodyAsync(string key)
         {
-            var bodyViewModel = await CreateBodyViewModelAsync();
+            var bodyViewModel = await CreateBodyViewModelAsync(key);
             if (bodyViewModel == null)
             {
                 return NotFound();
@@ -74,26 +77,50 @@ namespace DFC.App.ExploreCareers.Controllers
             return this.NegotiateContentResult(bodyViewModel);
         }
 
-        private async Task<DocumentViewModel?> CreateDocumentViewModelAsync()
+        private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(string key)
         {
 
-            //var sectorLandingPage = await jobSectorService.GetItemByKey("4rsm1xx8j2c81sgdgfjw6nhqnh");
+            var jobSectors = await jobSectorService.GetItemByKey(key);
+
+            if (jobSectors == null) return null;
+
+            List<SectorLandingPage> sectorLandingPages = new List<SectorLandingPage>();
+
+            foreach (var item in jobSectors)
+            {
+                sectorLandingPages = item.SectorLandingPageSearchResults;
+            }
+
+            ViewData["DisplayText"] = sectorLandingPages[0].DisplayText;
+            ViewBag.Message = sectorLandingPages[0].DisplayText;
 
             var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
                 Breadcrumb = BuildBreadcrumb("Agriculture, environmental and animal care"),
-                Body = new BodyViewModel { SectorLandingPage = "test" }
+                Body = new BodyViewModel { SectorLandingPage = sectorLandingPages }
             };
 
-            await Task.Delay(1, cancellationToken: default).ConfigureAwait(false);
+            ////await Task.Delay(1, cancellationToken: default).ConfigureAwait(false);
 
             return viewModel;
         }
 
-        private async Task<BodyViewModel?> CreateBodyViewModelAsync()
+        private async Task<BodyViewModel?> CreateBodyViewModelAsync(string key)
         {
-            var bodyViewModel = new BodyViewModel { SectorLandingPage = "test" };
+
+            var jobSectors = await jobSectorService.GetItemByKey(key);
+
+            if (jobSectors == null) return null;
+
+            List<SectorLandingPage> sectorLandingPages = new List<SectorLandingPage>();
+
+            foreach (var item in jobSectors)
+            {
+                sectorLandingPages = item.SectorLandingPageSearchResults;
+            }
+
+            var bodyViewModel = new BodyViewModel { SectorLandingPage = sectorLandingPages };
 
             await Task.Delay(1, cancellationToken: default).ConfigureAwait(false);
 

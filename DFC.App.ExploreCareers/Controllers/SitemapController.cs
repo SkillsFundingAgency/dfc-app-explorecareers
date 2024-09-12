@@ -36,6 +36,7 @@ namespace DFC.App.ExploreCareers.Controllers
             AddExploreCareersRoutes();
             await AddJobCategoriesRoutesAsync();
             AddJobSectosRoutesAsync();
+            AddExploreTestRoutes();
 
             if (!sitemap.Locations.Any())
             {
@@ -89,6 +90,18 @@ namespace DFC.App.ExploreCareers.Controllers
                 sitemap.Add(new SitemapLocation
                 {
                     Url = $"{jobSectosUrlPrefix}",
+                    ChangeFrequency = SitemapLocation.ChangeFrequencies.Monthly,
+                    Priority = 0.5,
+                });
+            }
+
+
+            void AddExploreTestRoutes()
+            {
+                var exploreCareersUrlPrefix = $"{Request.GetBaseAddress()}{TestController.ExploreTestViewCanonicalName}";
+                sitemap.Add(new SitemapLocation
+                {
+                    Url = exploreCareersUrlPrefix,
                     ChangeFrequency = SitemapLocation.ChangeFrequencies.Monthly,
                     Priority = 0.5,
                 });

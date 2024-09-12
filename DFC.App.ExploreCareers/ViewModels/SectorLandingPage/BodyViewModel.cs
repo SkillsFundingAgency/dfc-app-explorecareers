@@ -5,6 +5,6 @@ namespace DFC.App.ExploreCareers.ViewModels.SectorLandingPage
 {
     public class BodyViewModel
     {
-        public dynamic? SectorLandingPage { get; set; }
+        public IList<SectorLandingPage>? SectorLandingPage { get; set; } = new List<SectorLandingPage>();
     }
 }

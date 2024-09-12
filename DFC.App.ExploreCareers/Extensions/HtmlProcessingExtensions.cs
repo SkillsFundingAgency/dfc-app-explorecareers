@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using DFC.App.ExploreCareers.ViewModels.JobProfileSector;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DFC.App.ExploreCareers.Extensions
 {
     public static class HtmlProcessingExtensions
     {
-        public static string RearrangeHtml(string htmlContent)
+        public static string RearrangeHtml(string htmlContent, string? sectorPageLandingId)
         {
             // Initialize variables
             string title = "Default Title";
@@ -55,16 +57,15 @@ namespace DFC.App.ExploreCareers.Extensions
             <div class='dfe-card dfe-card-expolore-career'>
                 {imgTag}
                 <div class='dfe-card-container'>
-                    <h3 class='govuk-heading-m'>
-                        <a href='/sector-landing-page/{titleUrl}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
-                    </h3>
+                    <h2 class='govuk-heading-m'>
+                        <a href='/sector-landing-page/{titleUrl}?id={sectorPageLandingId}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
+                    </h2>
                     <p class='dfe-card-description dfe-card-description-expolore-career'>{description}</p>
                 </div>
             </div>";
 
             return newHtml;
         }
-
 
         public static List<string> GenerateGridHtml(List<string> cardsHtml)
         {
@@ -78,7 +79,7 @@ namespace DFC.App.ExploreCareers.Extensions
                     Html = html,
                     Title = ExtractTitleFromHtml(html)
                 })
-                .OrderBy(card => card.Title)
+                .OrderBy(card => card.Title, StringComparer.OrdinalIgnoreCase)
                 .ToList();
 
             // Create a list of cards, adding placeholders if necessary
@@ -106,7 +107,7 @@ namespace DFC.App.ExploreCareers.Extensions
 
         private static string ExtractTitleFromHtml(string html)
         {
-            int titleStartIndex = html.IndexOf("<h3 class='govuk-heading-m'>") + 27;
+            int titleStartIndex = html.IndexOf("<h2 class='govuk-heading-m'>") + 27;
             int titleEndIndex = html.IndexOf("</a>", titleStartIndex);
             if (titleStartIndex > 26 && titleEndIndex > titleStartIndex)
             {
