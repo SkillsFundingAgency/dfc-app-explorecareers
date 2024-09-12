@@ -102,7 +102,13 @@
             "value": "__ContentMode__"
         },
         "Expiry": {
-          "value": "__Expiry__"
+            "value": "__Expiry__"
+        },
+        "RedisCacheEnabled": {
+            "value": "__RedisCacheEnabled__"
+        },
+        "RedisCacheExpiryInSeconds": {
+            "value": "__RedisCacheExpiryInSeconds__"
         }
     }
 }
