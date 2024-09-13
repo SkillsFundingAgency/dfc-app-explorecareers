@@ -18,7 +18,7 @@ namespace DFC.App.ExploreCareers.Services
     public class JobSectorService : CmsRepositoryBase, IJobSectorService
     {
         public const string CacheKeyJobProfileSector = "job-sector";
-        public const string CacheKeyLandingSectorPage = "sector-landing-page";
+       
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JobSectorService"/> class.
@@ -27,6 +27,7 @@ namespace DFC.App.ExploreCareers.Services
         /// <param name="logger">The logger.</param>
         public JobSectorService(ICmsQueryManager querymanager, ILogger<CmsRepositoryBase> logger) : base(querymanager, logger)
         { }
+
         public async Task<List<JobProfileSector>> GetItemByKey(string key)
         {
             string query = $@"
@@ -37,9 +38,6 @@ namespace DFC.App.ExploreCareers.Services
                 ) {{
                 displayText
                 heroBanner {{
-                  html
-                }}
-                image {{
                   html
                 }}
                 description {{
@@ -68,6 +66,9 @@ namespace DFC.App.ExploreCareers.Services
                 jobDescription {{
                     html
                 }}
+                furtherInspiration {{
+                    html
+                }}
                 jobProfileInspiration {{
                   contentItems {{
                     displayText
@@ -86,9 +87,14 @@ namespace DFC.App.ExploreCareers.Services
                   html
                 }}
                 realStoryImage {{
-                  html
+                  paths
+                  urls
+                  mediaText
                 }}
                 realStoryImageDescription {{
+                  html
+                }}
+                exploreAllSectors {{
                   html
                 }}
               }}
@@ -97,14 +103,13 @@ namespace DFC.App.ExploreCareers.Services
 
             Func<SectorLandingPageResponse, List<ViewModels.SectorLandingPage.SectorLandingPage>> recSelector = col => col.SectorLandingPage;
 
-            var result = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyLandingSectorPage, recSelector);
+            var result = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: key, recSelector);
 
             // Handle the response
             if (result?.Data == null)
             {
                 return null;
             }
-
 
             //var sectorLandingPages = JsonConvert.DeserializeObject<List<ViewModels.SectorLandingPage.SectorLandingPage>>(result.Data.ToString());
 

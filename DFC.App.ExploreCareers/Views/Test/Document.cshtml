@@ -1,4 +1,4 @@
-﻿@model DFC.App.ExploreCareers.ViewModels.JobProfileSector.DocumentViewModel
+﻿@* @model DFC.App.ExploreCareers.ViewModels.SectorLandingPage.DocumentViewModel
 
 @{
     Layout = "_LocalLayout";
@@ -10,8 +10,9 @@
 }
 
 <partial name="Breadcrumb" model=@Model.Breadcrumb />
-<partial name="BodyTop" />
+<partial name="BodyTop" model=@Model.Body />
 
 <div class="govuk-main-wrapper">
     <partial name="Body" model=@Model.Body />
 </div>
+ *@

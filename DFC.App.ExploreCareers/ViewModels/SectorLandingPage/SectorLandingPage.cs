@@ -20,9 +20,6 @@
         [JsonProperty("heroBanner")]
         public HtmlContent HeroBanner { get; set; }
 
-        [JsonProperty("image")]
-        public HtmlContent Image { get; set; }
-
         [JsonProperty("description")]
         public HtmlContent Description { get; set; }
 
@@ -44,8 +41,11 @@
         [JsonProperty("jobDescription")]
         public HtmlContent JobDescription { get; set; }
 
+        [JsonProperty("furtherInspiration")]
+        public HtmlContent FurtherInspiration { get; set; }
+
         [JsonProperty("jobProfileInspiration")]
-        public JobProfileInspiration JobProfileInspiration { get; set; }
+        public JobProfileInspiration JobProfileInspiration { get; set; } 
 
         [JsonProperty("jobProfileInspirationDescription")]
         public HtmlContent JobProfileInspirationDescription { get; set; }
@@ -54,10 +54,14 @@
         public HtmlContent RealStoryDescription { get; set; }
 
         [JsonProperty("realStoryImage")]
-        public HtmlContent RealStoryImage { get; set; }
+        //public HtmlContent RealStoryImage { get; set; }
+        public RealStoryImage RealStoryImage { get; set; }
 
         [JsonProperty("realStoryImageDescription")]
         public HtmlContent RealStoryImageDescription { get; set; }
+
+        [JsonProperty("exploreAllSectors")]
+        public HtmlContent ExploreAllSectors { get; set; }
     }
 
     public class HtmlContent
@@ -73,6 +77,18 @@
 
         [JsonProperty("urls")]
         public List<string> Urls { get; set; }
+    }
+
+    public class RealStoryImage
+    {
+        [JsonProperty("paths")]
+        public List<string> Paths { get; set; } = new List<string>();
+
+        [JsonProperty("urls")]
+        public List<string> Urls { get; set; } = new List<string>();
+
+        [JsonProperty("mediaText")]
+        public List<string> MediaText { get; set; } = new List<string>();
     }
 
     public class JobProfile
@@ -102,7 +118,7 @@
     public class JobProfileInspiration
     {
         [JsonProperty("contentItems")]
-        public List<JobProfileInspirationItem> ContentItems { get; set; } = new List<JobProfileInspirationItem>();
+        public List<JobProfileInspirationItem> ContentItems { get; set; }
     }
 
     public class JobProfileInspirationItem

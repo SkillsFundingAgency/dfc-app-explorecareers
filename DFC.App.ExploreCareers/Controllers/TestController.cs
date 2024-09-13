@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
-using DFC.App.ExploreCareers.ViewModels.JobProfileSector;
+using DFC.App.ExploreCareers.ViewModels.SectorLandingPage;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,9 +13,9 @@ using Microsoft.Extensions.Logging;
 namespace DFC.App.ExploreCareers.Controllers
 {
     [Route("explore-test")]
-    public class TestController : Controller
+    public class TestController : BaseController
     {
-        public const string ExploreTestViewCanonicalName = "explore-test";
+        public const string SectorLandingPageViewCanonicalName = "explore-test";
         public const string DefaultPageTitleSuffix = "Explore careers | National Careers Service";
 
         private readonly ILogger<TestController> logger;
@@ -29,128 +29,117 @@ namespace DFC.App.ExploreCareers.Controllers
             this.jobSectorService = jobSectorService;
         }
 
-        [HttpGet]
-        [Route("head")]
-        public IActionResult Head()
-        {
-            var viewModel = GetHeadViewModel();
+        //[HttpGet]
+        //[Route("{titleUrl}/head")]
+        //public IActionResult Head()
+        //{
+        //    var viewModel = GetHeadViewModel();
 
-            logger.LogInformation($"{nameof(Head)} has returned content");
-            return this.NegotiateContentResult(viewModel);
-        }
+        //    logger.LogInformation($"{nameof(Head)} has returned content");
+        //    return this.NegotiateContentResult(viewModel);
+        //}
 
-        [HttpGet]
-        [Route("bodytop")]
-        public IActionResult BodyTop()
-        {
-            logger.LogInformation($"{nameof(BodyTop)} has returned content");
-            return this.NegotiateContentResult(null);
-        }
+        //[HttpGet]
+        //[Route("{titleUrl}/bodytop")]
+        //public IActionResult BodyTop()
+        //{
+        //    logger.LogInformation($"{nameof(BodyTop)} has returned content");
+        //    return this.NegotiateContentResult(null);
+        //}
 
-        [HttpGet]
-        [Route("")]
-        [Route("document")]
-        public async Task<IActionResult> DocumentAsync()
-        {
-            var viewModel = await CreateDocumentViewModelAsync();
-            if (viewModel == null)
-            {
-                return NotFound();
-            }
+        //[HttpGet]
+        //[Route("{titleUrl}")]
+        //[Route("{titleUrl}/document")]
+        //public async Task<IActionResult> DocumentAsync(string titleUrl)
+        //{
+        //    var contentItemId = Request.Query["id"].ToString();
 
-            return this.NegotiateContentResult(viewModel);
-        }
+        //    var viewModel = await CreateDocumentViewModelAsync(contentItemId);
+        //    if (viewModel == null)
+        //    {
+        //        return NotFound();
+        //    }
 
+        //    return this.NegotiateContentResult(viewModel);
 
-        [HttpGet]
-        [Route("body")]
-        public async Task<IActionResult> BodyAsync()
-        {
-            var bodyViewModel = await CreateBodyViewModelAsync();
-            if (bodyViewModel == null)
-            {
-                return NotFound();
-            }
+        //    //return View("~/Views/SectorLandingPage/Document.cshtml");
+        //}
 
-            logger.LogInformation($"{nameof(BodyAsync)} has returned content");
-            return this.NegotiateContentResult(bodyViewModel);
-        }
+        //[HttpGet]
+        //[Route("{titleUrl}/body")]
+        //public async Task<IActionResult> BodyAsync(string titleUrl)
+        //{
+        //    var contentItemId = Request.Query["id"].ToString();
 
-        private async Task<DocumentViewModel?> CreateDocumentViewModelAsync()
-        {
-            var jobSectors = await LoadAndProcessJobSectorsAsync();
-            if (jobSectors == null) return null;
+        //    var bodyViewModel = await CreateBodyViewModelAsync(titleUrl);
+        //    if (bodyViewModel == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var viewModel = new DocumentViewModel
-            {
-                Head = GetHeadViewModel(),
-                //Breadcrumb = BuildBreadcrumb("Explore by job sector"),
-                Body = new BodyViewModel { JobProfileSectors = jobSectors }
-            };
+        //    logger.LogInformation($"{nameof(BodyAsync)} has returned content");
+        //    return this.NegotiateContentResult(bodyViewModel);
+        //}
 
-            return viewModel;
-        }
+        //private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(string key)
+        //{
 
-        private async Task<BodyViewModel?> CreateBodyViewModelAsync()
-        {
-            var jobSectors = await LoadAndProcessJobSectorsAsync();
-            if (jobSectors == null) return null;
+        //    var jobSectors = await jobSectorService.GetItemByKey(key);
 
-            var bodyViewModel = new BodyViewModel { JobProfileSectors = jobSectors };
-            return bodyViewModel;
-        }
+        //    if (jobSectors == null) return null;
 
-        private async Task<List<JobProfileSector>?> LoadAndProcessJobSectorsAsync()
-        {
-            // Load all job sectors from the repository
-            var jobSectors = await jobSectorService.LoadAll();
-            if (jobSectors == null) return null;
+        //    List<SectorLandingPage> sectorLandingPages = new List<SectorLandingPage>();
 
-            // Limit to a maximum of 15 cards and process each job sector
-            jobSectors = jobSectors.Take(15).ToList();
-            foreach (var jobProfile in jobSectors)
-            {
-                var sectorPageLandingId = jobProfile.SectorLandingPage?.ContentItems?.FirstOrDefault()?.ContentItemId ?? "0";
-                jobProfile.Render = HtmlProcessingExtensions.RearrangeHtml(jobProfile.Render, sectorPageLandingId);
-            }
+        //    foreach (var item in jobSectors)
+        //    {
+        //        sectorLandingPages = item.SectorLandingPageSearchResults;
+        //    }
 
-            // Generate HTML for each job sector to be used in the grid
-            var cardsHtml = jobSectors.Select(jobProfile => jobProfile.Render).ToList();
-            var gridHtml = HtmlProcessingExtensions.GenerateGridHtml(cardsHtml);
+        //    ViewData["DisplayText"] = sectorLandingPages[0].DisplayText;
+        //    ViewBag.Message = sectorLandingPages[0].DisplayText;
 
-            // Update job sectors with grid HTML or add new placeholders
-            UpdateJobSectorsWithGridHtml(jobSectors, gridHtml);
+        //    var viewModel = new DocumentViewModel
+        //    {
+        //        Head = GetHeadViewModel(),
+        //        Breadcrumb = BuildBreadcrumb("Agriculture, environmental and animal care"),
+        //        Body = new BodyViewModel { SectorLandingPage = sectorLandingPages }
+        //    };
 
-            return jobSectors;
-        }
+        //    ////await Task.Delay(1, cancellationToken: default).ConfigureAwait(false);
 
-        private static void UpdateJobSectorsWithGridHtml(List<JobProfileSector> jobSectors, List<string> gridHtml)
-        {
-            for (int i = 0; i < gridHtml.Count; i++)
-            {
-                if (i < jobSectors.Count)
-                {
-                    jobSectors[i].Render = gridHtml[i];
-                }
-                else
-                {
-                    jobSectors.Add(new JobProfileSector { Render = gridHtml[i] });
-                }
-            }
-        }
+        //    return viewModel;
+        //}
 
-        private HeadViewModel GetHeadViewModel(string? pageTitle = null)
-        {
-            return new HeadViewModel
-            {
-                CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{ExploreTestViewCanonicalName}", UriKind.RelativeOrAbsolute),
-                Title = string.IsNullOrWhiteSpace(pageTitle)
-                    ? DefaultPageTitleSuffix
-                    : $"{pageTitle} | {DefaultPageTitleSuffix}"
-            };
-        }
+        //private async Task<BodyViewModel?> CreateBodyViewModelAsync(string key)
+        //{
+        //    var jobSectors = await jobSectorService.GetItemByKey(key);
+
+        //    if (jobSectors == null) return null;
+
+        //    List<SectorLandingPage> sectorLandingPages = new List<SectorLandingPage>();
+
+        //    foreach (var item in jobSectors)
+        //    {
+        //        sectorLandingPages = item.SectorLandingPageSearchResults;
+        //    }
+
+        //    var bodyViewModel = new BodyViewModel { SectorLandingPage = sectorLandingPages };
+
+        //    return bodyViewModel;
+        //}
+
+        //private HeadViewModel GetHeadViewModel(string? pageTitle = null)
+        //{
+        //    return new HeadViewModel
+        //    {
+        //        CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{SectorLandingPageViewCanonicalName}", UriKind.RelativeOrAbsolute),
+        //        Title = string.IsNullOrWhiteSpace(pageTitle)
+        //            ? DefaultPageTitleSuffix
+        //            : $"{pageTitle} | {DefaultPageTitleSuffix}"
+        //    };
+        //}
 
         //private static BreadcrumbViewModel BuildBreadcrumb(string title) =>
-        //    BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "#" });
+        //     BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "#" });
     }
 }

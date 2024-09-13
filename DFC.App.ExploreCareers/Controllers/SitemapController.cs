@@ -95,10 +95,9 @@ namespace DFC.App.ExploreCareers.Controllers
                 });
             }
 
-
             void AddExploreTestRoutes()
             {
-                var exploreCareersUrlPrefix = $"{Request.GetBaseAddress()}{TestController.ExploreTestViewCanonicalName}";
+                var exploreCareersUrlPrefix = $"{Request.GetBaseAddress()}{TestController.SectorLandingPageViewCanonicalName}";
                 sitemap.Add(new SitemapLocation
                 {
                     Url = exploreCareersUrlPrefix,

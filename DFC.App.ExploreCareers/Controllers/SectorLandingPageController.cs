@@ -65,9 +65,11 @@ namespace DFC.App.ExploreCareers.Controllers
 
         [HttpGet]
         [Route("{titleUrl}/body")]
-        public async Task<IActionResult> BodyAsync(string key)
+        public async Task<IActionResult> BodyAsync(string titleUrl)
         {
-            var bodyViewModel = await CreateBodyViewModelAsync(key);
+            var contentItemId = Request.Query["id"].ToString();
+
+            var bodyViewModel = await CreateBodyViewModelAsync(titleUrl);
             if (bodyViewModel == null)
             {
                 return NotFound();
@@ -97,7 +99,7 @@ namespace DFC.App.ExploreCareers.Controllers
             var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
-                Breadcrumb = BuildBreadcrumb("Agriculture, environmental and animal care"),
+                Breadcrumb = BuildBreadcrumb(sectorLandingPages[0].DisplayText),
                 Body = new BodyViewModel { SectorLandingPage = sectorLandingPages }
             };
 
@@ -108,7 +110,6 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private async Task<BodyViewModel?> CreateBodyViewModelAsync(string key)
         {
-
             var jobSectors = await jobSectorService.GetItemByKey(key);
 
             if (jobSectors == null) return null;
@@ -121,8 +122,6 @@ namespace DFC.App.ExploreCareers.Controllers
             }
 
             var bodyViewModel = new BodyViewModel { SectorLandingPage = sectorLandingPages };
-
-            await Task.Delay(1, cancellationToken: default).ConfigureAwait(false);
 
             return bodyViewModel;
         }

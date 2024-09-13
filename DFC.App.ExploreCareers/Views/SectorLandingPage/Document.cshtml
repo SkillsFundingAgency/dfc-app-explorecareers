@@ -2,16 +2,16 @@
 
 @{
     Layout = "_LocalLayout";
-    var displayText = string.Empty;
+  
     if (!string.IsNullOrWhiteSpace(Model.Head?.Title))
     {
         ViewData["Title"] = Model.Head.Title;
-        displayText = ViewData["DisplayText"] as string;
     }
 }
 
 <partial name="Breadcrumb" model=@Model.Breadcrumb />
 <partial name="BodyTop" model=@Model.Body />
+
 
 <div class="govuk-main-wrapper">
     <partial name="Body" model=@Model.Body />

@@ -1,17 +1,1 @@
-﻿@model DFC.App.ExploreCareers.ViewModels.JobProfileSector.BodyViewModel
-
-<div class="govuk-width-container"> Hell Test body
-    <div class='dfe-grid-container dfe-grid-container-expolore-career'>
-        @if (Model.JobProfileSectors.Any())
-        {
-            @foreach (var jobProfile in Model.JobProfileSectors)
-            {
-                @Html.Raw(jobProfile.Render)
-            }
-        }
-        else
-        {
-            <p>No job profile sectors available.</p>
-        }
-    </div>
-</div>
+﻿

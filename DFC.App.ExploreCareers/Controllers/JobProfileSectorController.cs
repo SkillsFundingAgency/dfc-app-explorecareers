@@ -29,18 +29,6 @@ namespace DFC.App.ExploreCareers.Controllers
             this.jobSectorService = jobSectorService;
         }
 
-        [HttpPost]
-        [Route("sector-landing-page")]
-        public IActionResult SectorLandingPage(string titleUrl, string hiddenProperty)
-        {
-            // Your business logic, such as logging the clicked URL or processing data
-            logger.LogInformation($"Clicked on job sector with URL: {titleUrl}");
-
-            // Redirect or return a view as needed
-            return RedirectToAction("DocumentAsync"); // Example: redirecting to another action
-        }
-
-
         [HttpGet]
         [Route("head")]
         public IActionResult Head()
@@ -63,6 +51,7 @@ namespace DFC.App.ExploreCareers.Controllers
         [Route("")]
         [Route("document")]
         public async Task<IActionResult> DocumentAsync()
+        
         {
             var viewModel = await CreateDocumentViewModelAsync();
             if (viewModel == null)
