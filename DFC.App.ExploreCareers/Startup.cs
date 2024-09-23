@@ -147,6 +147,7 @@ namespace DFC.App.ExploreCareers
             services.AddNcsCoreServices(configuration);
             services.AddScoped<ICmsPreviewHandler, PreviewHandler>();
             services.AddScoped<IJobSectorService, JobSectorService>();
+            services.AddScoped<IJobProfileService, JobProfileService>();
         }
 
         private void ConfigureMinimumThreads()

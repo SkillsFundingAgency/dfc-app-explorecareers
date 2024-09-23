@@ -2,6 +2,7 @@
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.SectorLandingPage;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -39,7 +40,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
         [HttpGet]
         [Route("{titleUrl}/bodytop")]
-        public IActionResult BodyTop()
+        public IActionResult BodyTop(string titleUrl)
         {
             logger.LogInformation($"{nameof(BodyTop)} has returned content");
             return this.NegotiateContentResult(null);
@@ -52,6 +53,14 @@ namespace DFC.App.ExploreCareers.Controllers
         {
             var contentItemId = Request.Query["id"].ToString();
 
+            // Check if contentItemId is "0" or invalid
+            if (contentItemId == "0")
+            {
+                // Return an empty view model if contentItemId is 0 or invalid
+                var emptyViewModel = new DocumentViewModel(); // Create an empty instance of the view model
+                return this.NegotiateContentResult(emptyViewModel); // Return the empty view model
+            }
+
             var viewModel = await CreateDocumentViewModelAsync(contentItemId);
             if (viewModel == null)
             {
@@ -59,9 +68,8 @@ namespace DFC.App.ExploreCareers.Controllers
             }
 
             return this.NegotiateContentResult(viewModel);
-
-            //return View("~/Views/SectorLandingPage/Document.cshtml");
         }
+
 
         [HttpGet]
         [Route("{titleUrl}/body")]
@@ -79,9 +87,19 @@ namespace DFC.App.ExploreCareers.Controllers
             return this.NegotiateContentResult(bodyViewModel);
         }
 
+        [HttpGet]
+        public IActionResult RedirectToJobsProfile(string displayText, string contentItemId)
+        {
+            // Store the contentItemId in TempData to pass it to the GET action
+            TempData["ContentItemId"] = contentItemId;
+
+            // Redirect to DocumentAsync GET method with displayText in the URL (jobSector)
+            return RedirectToAction("DocumentAsync", "job-profiles", new { jobSector = displayText });
+        }
+
+
         private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(string key)
         {
-
             var jobSectors = await jobSectorService.GetItemByKey(key);
 
             if (jobSectors == null) return null;
@@ -92,9 +110,6 @@ namespace DFC.App.ExploreCareers.Controllers
             {
                 sectorLandingPages = item.SectorLandingPageSearchResults;
             }
-
-            ViewData["DisplayText"] = sectorLandingPages[0].DisplayText;
-            ViewBag.Message = sectorLandingPages[0].DisplayText;
 
             var viewModel = new DocumentViewModel
             {

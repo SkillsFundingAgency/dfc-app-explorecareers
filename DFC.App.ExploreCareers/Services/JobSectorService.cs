@@ -18,15 +18,13 @@ namespace DFC.App.ExploreCareers.Services
     public class JobSectorService : CmsRepositoryBase, IJobSectorService
     {
         public const string CacheKeyJobProfileSector = "job-sector";
-       
-
         /// <summary>
         /// Initializes a new instance of the <see cref="JobSectorService"/> class.
         /// </summary>
         /// <param name="querymanager">The querymanager.</param>
         /// <param name="logger">The logger.</param>
-        public JobSectorService(ICmsQueryManager querymanager, ILogger<CmsRepositoryBase> logger) : base(querymanager, logger)
-        { }
+        public JobSectorService(ICmsQueryManager querymanager, ILogger<CmsRepositoryBase> logger) : base(querymanager, logger) 
+        {}
 
         public async Task<List<JobProfileSector>> GetItemByKey(string key)
         {
@@ -36,6 +34,7 @@ namespace DFC.App.ExploreCareers.Services
                 where: {{contentItemId: ""{key}""}}
                 status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
                 ) {{
+                contentItemId
                 displayText
                 heroBanner {{
                   html
@@ -60,6 +59,9 @@ namespace DFC.App.ExploreCareers.Services
                       overview
                       salarystarterperyear
                       salaryexperiencedperyear
+                      pageLocation {{
+                        fullUrl
+                      }}
                     }}
                   }}
                 }}
@@ -77,6 +79,9 @@ namespace DFC.App.ExploreCareers.Services
                       overview
                       salarystarterperyear
                       salaryexperiencedperyear
+                      pageLocation {{
+                        fullUrl
+                      }}
                     }}
                   }}
                 }}

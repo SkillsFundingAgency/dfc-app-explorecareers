@@ -1,20 +1,58 @@
 ﻿@model DFC.App.ExploreCareers.ViewModels.JobProfile.BodyViewModel
 
 <div class='govuk-width-container'>
-    <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-grid-row">
-            <h2 class="govuk-heading-m">
-                Showing 1 to 20 of 69 job profiles
-            </h2>
-             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-        </div>
+    <div id="results">
+        <div class="results-block">
+            <div class="inner-block">
+                <p id="result-count" class="result-count">
+                    Showing 1 to 20 of @Model.JobProfile.Count job profiles
+                </p>
+                @if (Model.JobProfile != null && Model.JobProfile.Any())
+                {
+                    <ol class="results-list">
+                        @foreach (var job in Model.JobProfile)
+                        {
+                             <li class="dfc-code-search-resultitem">
+                                <h3><a class="dfc-code-search-jpTitle" href="/sector-landing-page/xxx">@job.DisplayText</a></h3>
 
-        <div class="govuk-grid-row">
-            <h2 class="govuk-heading-m">
-                <a href='/sector-landing-page/{titleUrl}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>Agricultural contractor</a>
-            </h2>
-            <span class="govuk-caption-m">Agricultural contractor</span>
-            <p class="govuk-body-m">Salary: Variable</p>
+                                @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
+                                {
+                                    <p class="meta dfc-code-search-jpAltTitle"><span class="sr-hidden">Alternative titles for this job include </span>@job.AlternativeTitle</p>
+                                }
+
+                                <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
+
+                                <p class="results-salary">
+                                    Salary: <span class="dfc-code-search-jpSalary">@job.SalaryStarterPerYear.ToString("C0") to @job.SalaryExperiencedPerYear.ToString("C0")</span>
+                                </p>
+
+                                @if (job.JobProfileSector != null && job.JobProfileSector.ContentItems.Any())
+                                {
+                                    <p class="results-categories">
+                                        Found in:
+                                        @Html.Raw(string.Join(", ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='/sector-landing-page{sector.FullUrl}'>{sector.DisplayText}</a>")))
+                                    </p>
+                                   @*  <p class="results-categories">
+                                        Found in:
+                                        @Html.Raw(string.Join(", ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='#'>{sector.DisplayText}</a>")))
+                                    </p> *@
+                                } 
+                                else
+                                {
+                                    <p class="results-categories">
+                                        Found in:
+                                            <p>No job profile sectors available.</p>
+                                    </p>
+                                }
+                            </li>
+                        }
+                    </ol>
+                }
+                else
+                {
+                    <p>No job profile is available.</p>
+                }
+            </div>
         </div>
     </div>
 

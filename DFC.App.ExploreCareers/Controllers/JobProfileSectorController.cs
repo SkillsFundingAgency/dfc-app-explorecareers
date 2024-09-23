@@ -51,7 +51,6 @@ namespace DFC.App.ExploreCareers.Controllers
         [Route("")]
         [Route("document")]
         public async Task<IActionResult> DocumentAsync()
-        
         {
             var viewModel = await CreateDocumentViewModelAsync();
             if (viewModel == null)
@@ -61,7 +60,6 @@ namespace DFC.App.ExploreCareers.Controllers
 
             return this.NegotiateContentResult(viewModel);
         }
-
 
         [HttpGet]
         [Route("body")]

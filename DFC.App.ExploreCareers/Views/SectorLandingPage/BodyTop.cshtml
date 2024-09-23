@@ -6,41 +6,23 @@
 <section aria-label="Search">
     <div class="ncs-hero page-hero">
 
-      @*   @Html.Raw(@Model.SectorLandingPage[0].HeroBanner.Html)
- *@
-         <!-- Desktop image -->
-        <div class="d-only">
-            @Html.Raw(@Model.SectorLandingPage[0].HeroBanner.Html)
-        </div>
-
-        <!-- Mobile image -->
-        <div class="m-only">
-             @Html.Raw(@Model.SectorLandingPage[0].HeroBanner.Html)
-        </div>
-
-        @* <div class="content govuk-width-container">
-            <div class="govuk-grid-row">
-                <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl">
-                        <div class="block ncs block-ncs-app-explorer">
-                            <span>@Model.SectorLandingPage[0].DisplayText</span>
-                        </div>
-                    </h1>
-                </div>
+        @if (Model?.SectorLandingPage != null && Model.SectorLandingPage.Any() && Model.SectorLandingPage[0]?.HeroBanner?.Html != null)
+        {
+            <div class="d-only">
+                @Html.Raw(Model.SectorLandingPage[0].HeroBanner.Html)
             </div>
-        </div> *@
+
+            <!-- Mobile image -->
+            <div class="m-only">
+                @Html.Raw(Model.SectorLandingPage[0].HeroBanner.Html)
+            </div>
+        }
+        else
+        {
+            <div>
+                <p>No content available.</p>
+            </div>
+        }
+
     </div>
-
-@*     <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
-        <div class="search-wrapper">
-            <div class="govuk-width-container">
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-two-thirds">
-                        <div class="govuk-form-group">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form> *@
 </section>

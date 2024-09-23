@@ -2,7 +2,7 @@
 
 @{
     Layout = "_LocalLayout";
-  
+
     if (!string.IsNullOrWhiteSpace(Model.Head?.Title))
     {
         ViewData["Title"] = Model.Head.Title;
@@ -10,12 +10,29 @@
 }
 
 <partial name="Breadcrumb" model=@Model.Breadcrumb />
-<partial name="BodyTop" model=@Model.Body />
 
+@if (Model.Body != null)
+{
+    <partial name="BodyTop" model=@Model.Body />
 
-<div class="govuk-main-wrapper">
-    <partial name="Body" model=@Model.Body />
-</div>
+   
+    <div class="govuk-main-wrapper">
+        <partial name="Body" model=@Model.Body />
+    </div>
+}
+else
+{
+    <div id="compuiShell-ErrorSummary" class="govuk-error-summary" aria-labelledby="compuiShell-error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="compuiShell-error-summary-title">
+            Job Profile Sectors
+        </h2>
+        <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+                <li>The content you're looking for is not available at the moment. Please try again later.</li>
+            </ul>
+        </div>
+    </div>
+}
 
 
 

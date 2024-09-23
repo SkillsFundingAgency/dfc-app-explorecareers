@@ -1,50 +1,56 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace DFC.App.ExploreCareers.ViewModels.JobProfile
 {
-    public class JobProfileSectorResponse
+    public class JobProfileResponse
     {
         [JsonProperty("jobProfile")]
-        public List<JobProfile> JobProfileSector { get; set; } = new List<JobProfile>();
+        public List<JobProfile> JobProfiles { get; set; }
     }
 
     public class JobProfile
     {
-        /// <summary>
-        /// Gets or sets the Job profile sector DisplayText.
-        /// </summary>
-        /// <value>
-        /// The Banner HTML.
-        /// </value>
-        [JsonProperty("contentItemId")]
-        public string ContentItemId { get; set; }
-
-        [JsonProperty("graphSync")]
-        public GraphSync GraphSync { get; set; }
+        [JsonProperty("jobSectorTitle")]
+        public string JobSectorTitle { get; set; } = string.Empty;
 
         [JsonProperty("displayText")]
         public string DisplayText { get; set; }
 
-        [JsonProperty("render")]
-        public string Render { get; set; }
+        [JsonProperty("alternativeTitle")]
+        public string AlternativeTitle { get; set; }
 
-        //[JsonProperty("sectorLandingPage")]
-        //public SectorLandingPage SectorLandingPage { get; set; }
+        [JsonProperty("contentItemId")]
+        public string ContentItemId { get; set; }
 
-        //[JsonProperty("isActive")]
-        //public bool IsActive { get; set; }
+        [JsonProperty("overview")]
+        public string Overview { get; set; }
 
-        //[JsonProperty("isGlobal")]
-        //public bool IsGlobal { get; set; }
+        [JsonProperty("salarystarterperyear")]
+        public int SalaryStarterPerYear { get; set; }
 
-        //[JsonProperty("content")]
-        //public Content Content { get; set; }
+        [JsonProperty("salaryexperiencedperyear")]
+        public int SalaryExperiencedPerYear { get; set; }
+
+        [JsonProperty("jobProfileSector")]
+        public JobProfileSector JobProfileSector { get; set; }
     }
 
-    public class GraphSync
+    public class JobProfileSector
     {
-        [JsonProperty("nodeId")]
-        public string NodeId { get; set; }
+        [JsonProperty("contentItems")]
+        public List<JobProfileSectorContentItem> ContentItems { get; set; }
+    }
+
+    public class JobProfileSectorContentItem
+    {
+        [JsonProperty("displayText")]
+        public string DisplayText { get; set; } = string.Empty;
+
+        [JsonProperty("fullUrl")]
+        public string FullUrl { get; set; } = string.Empty;
+
+        [JsonProperty("urlName")]
+        public string UrlName { get; set; } = string.Empty;
     }
 }

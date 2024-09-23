@@ -70,10 +70,10 @@ namespace DFC.App.ExploreCareers.Extensions
         public static List<string> GenerateGridHtml(List<string> cardsHtml)
         {
             //// Limit to a maximum of 15 cards
-            //var limitedCards = cardsHtml.Take(15).ToList();
+            var limitedCards = cardsHtml.Take(15).ToList();
 
             // Extract titles and pair with HTML
-            var cardsWithTitles = cardsHtml
+            var cardsWithTitles = limitedCards
                 .Select(html => new
                 {
                     Html = html,

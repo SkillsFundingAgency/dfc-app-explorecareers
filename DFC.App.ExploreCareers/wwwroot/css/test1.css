@@ -117,6 +117,39 @@ img {
     font-size: 24px;
 }
 
+/*Sector landing page scss*/
+
+.govuk-grid-row-sector-landing {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dfe-card-expolore-career-sector-landing {
+    flex: 1 1 30%; /* Ensure cards fill the available space and stay at one-third of the row */
+    margin: 10px;
+    display: flex;
+}
+
+.dfe-card-container-sector-landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out the content */
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+}
+
+.dfe-card-description-sector-landing {
+    flex-grow: 1; /* This will allow the description to take up remaining space */
+}
+
+.sector-landing-image img {
+    width: 100%; /* Ensure the image takes up 100% of the card's width */
+    max-width: 100%; /* Prevents the image from exceeding the card's width */
+    height: auto; /* Maintain the image's aspect ratio */
+    object-fit: cover; /* Ensure the image covers the available space */
+    display: flex; /* Removes any space below the image */
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

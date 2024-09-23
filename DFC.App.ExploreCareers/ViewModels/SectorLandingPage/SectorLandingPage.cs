@@ -13,6 +13,8 @@
 
     public class SectorLandingPage
     {
+        [JsonProperty("contentItemId")]
+        public string ContentItemId { get; set; }
 
         [JsonProperty("displayText")]
         public string DisplayText { get; set; }
@@ -113,6 +115,9 @@
 
         [JsonProperty("salaryexperiencedperyear")]
         public int SalaryExperiencedPerYear { get; set; }
+
+        [JsonProperty("pageLocation")]
+        public PageLocation PageLocation { get; set; }
     }
 
     public class JobProfileInspiration
@@ -134,6 +139,15 @@
 
         [JsonProperty("salaryexperiencedperyear")]
         public int SalaryExperiencedPerYear { get; set; }
+
+        [JsonProperty("pageLocation")]
+        public PageLocation PageLocation { get; set; }
+    }
+
+    public class PageLocation
+    {
+        [JsonProperty("fullUrl")]
+        public string FullUrl { get; set; }
     }
 
 }

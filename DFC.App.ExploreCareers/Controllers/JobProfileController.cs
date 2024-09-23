@@ -2,6 +2,7 @@
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobProfile;
+using DFC.App.ExploreCareers.ViewModels.JobProfile.SectorLandingPage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NHibernate.Mapping;
@@ -11,25 +12,25 @@ using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
-    [Route("job-profiles")]
+    [Route("explore-careers/job-sector")]
     public class JobProfileController : BaseController
     {
         public const string JobProfilesViewCanonicalName = "job-profiles";
         public const string DefaultPageTitleSuffix = "Explore careers | Job Profile";
 
         private readonly ILogger<JobProfileController> logger;
-        private readonly IJobSectorService jobSectorService;
+        private readonly IJobProfileService jobProfileService;
 
         public JobProfileController(
            ILogger<JobProfileController> logger,
-           IJobSectorService jobSectorService)
+           IJobProfileService jobProfileService)
         {
             this.logger = logger;
-            this.jobSectorService = jobSectorService;
+            this.jobProfileService = jobProfileService;
         }
 
         [HttpGet]
-        [Route("head")]
+        [Route("{jobSector}/head")]
         public IActionResult Head()
         {
             var viewModel = GetHeadViewModel();
@@ -39,19 +40,28 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("bodytop")]
-        public IActionResult BodyTop()
+        [Route("{jobSector}/bodytop")]
+        public IActionResult BodyTop(string titleUrl)
         {
             logger.LogInformation($"{nameof(BodyTop)} has returned content");
             return this.NegotiateContentResult(null);
         }
 
         [HttpGet]
-        [Route("")]
-        [Route("document")]
-        public async Task<IActionResult> DocumentAsync()
+        [Route("{jobSector}")]
+        [Route("{jobSector}/document")]
+        public async Task<IActionResult> DocumentAsync(string jobSector)
         {
-            var viewModel = await CreateDocumentViewModelAsync();
+            var contentItemId = Request.Query["id"].ToString();
+
+            if (contentItemId == "0")
+            {
+                // Return an empty view model if contentItemId is 0 or invalid
+                var emptyViewModel = new DocumentViewModel(); // Create an empty instance of the view model
+                return this.NegotiateContentResult(emptyViewModel); // Return the empty view model
+            }
+
+            var viewModel = await CreateDocumentViewModelAsync(contentItemId);
             if (viewModel == null)
             {
                 return NotFound();
@@ -60,17 +70,20 @@ namespace DFC.App.ExploreCareers.Controllers
             return this.NegotiateContentResult(viewModel);
         }
 
-        private async Task<DocumentViewModel?> CreateDocumentViewModelAsync()
+        private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(string key)
         {
-            var jobSectors = new List<JobProfile>();
-            if (jobSectors == null) return null;
+            var jobProfiles = await jobProfileService.GetItemByKey(key);
+
+            if (jobProfiles == null) return null;
 
             var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
-                Breadcrumb = BuildBreadcrumb("Explore by job sector"),
-                Body = new BodyViewModel { JobProfile = jobSectors }
+                Breadcrumb = BuildBreadcrumb("All careers"),
+                Body = new BodyViewModel { JobProfile = jobProfiles }
             };
+
+            //ViewData["displayText"] = viewModel.Body.JobProfile;
 
             return viewModel;
         }
