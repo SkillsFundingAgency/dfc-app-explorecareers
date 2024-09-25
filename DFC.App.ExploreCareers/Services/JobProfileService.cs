@@ -110,6 +110,10 @@ namespace DFC.App.ExploreCareers.Services
                     overview
                     salarystarterperyear
                     salaryexperiencedperyear
+                    pageLocation {{
+                        fullUrl
+                        urlName
+                    }}
                     jobProfileSector {{
                         contentItems {{
                         displayText
@@ -132,18 +136,22 @@ namespace DFC.App.ExploreCareers.Services
 
             responseJobProfiles.Data[0].JobSectorTitle = response.Data[0].DisplayText;
 
-            //return responseJobProfiles.Data;
-
-
-
             var JobSectorDisplayTexts = new List<string>();
-            //var JobSectorContentItemIds = new List<string>();
 
-            foreach (var jobSector in responseJobProfiles.Data[0].JobProfileSector.ContentItems)
+            for (int i = 0; i < responseJobProfiles.Data.Count; i++)
             {
 
-                JobSectorDisplayTexts.Add(jobSector.DisplayText);
-                        //contentItemIds.Add(item.ContentItemId);
+                var jobProfileSector = responseJobProfiles.Data[i].JobProfileSector;
+
+
+                if (jobProfileSector != null && jobProfileSector.ContentItems != null)
+                {
+
+                    for (int j = 0; j < jobProfileSector.ContentItems.Count; j++)
+                    {
+                        JobSectorDisplayTexts.Add(jobProfileSector.ContentItems[j].DisplayText);
+                    }
+                }
             }
 
             var formattedJobSectorDisplayTexts = string.Join(", ", JobSectorDisplayTexts.Select(text => $"\"{text}\""));
@@ -214,42 +222,15 @@ namespace DFC.App.ExploreCareers.Services
                 return null;
             }
 
-
-            // Assuming that both responseJobSectorLandingUrl.Data[0].SectorLandingPage.ContentItems 
-            // and responseJobProfiles.Data[0].JobProfileSector.ContentItems are of the same length
-
-            //for (int i = 0; i < responseJobSectorLandingUrl.Data[0].SectorLandingPage.ContentItems.Count; i++)
-            //{
-            //    // Assign values from one array to another
-            //    responseJobProfiles.Data[0].JobProfileSector.ContentItems[i].FullUrl = responseJobSectorLandingUrl.Data[0].SectorLandingPage.ContentItems[i].PageLocation.FullUrl;
-            //    responseJobProfiles.Data[0].JobProfileSector.ContentItems[i].UrlName = responseJobSectorLandingUrl.Data[0].SectorLandingPage.ContentItems[i].PageLocation.UrlName;
-            //}
-
-
-            //for (int i = 0; i < responseJobSectorLandingUrl.Data.Count; i++)
-            //{
-            //    var sectorLandingPage = responseJobSectorLandingUrl.Data[i].SectorLandingPage;
-
-            //    // Check if SectorLandingPage or ContentItems is null before proceeding
-            //    if (sectorLandingPage != null && sectorLandingPage.ContentItems != null)
-            //    {
-
-            //        responseJobProfiles.Data[0].JobProfileSector.ContentItems[i].FullUrl = sectorLandingPage.ContentItems[0].PageLocation.FullUrl;
-
-            //    }
-
-            //}
-
-
             Dictionary<string, string> kvp = new Dictionary<string, string>();
 
 
-            for (int i = 0; i < responseJobProfiles.Data.Count; i++)
+            for (int i = 0; i < responseJobSectorLandingUrl.Data.Count; i++)
             {
                 var sectorLandingPage = responseJobSectorLandingUrl.Data[i].SectorLandingPage;
 
                 // Check if SectorLandingPage and ContentItems are not null
-                if (sectorLandingPage != null && sectorLandingPage.ContentItems != null)
+                if (sectorLandingPage != null && sectorLandingPage.ContentItems != null && sectorLandingPage.ContentItems.Count > 0)
                 {
                     // Ensure that the index for ContentItems does not exceed its length
                     for (int j = 0; j < sectorLandingPage.ContentItems.Count; j++)
@@ -257,7 +238,7 @@ namespace DFC.App.ExploreCareers.Services
                         // Add to your KeyValuePair or dictionary
                         //kvp.Add(sectorLandingPage.ContentItems[j].DisplayText, sectorLandingPage.ContentItems[j].PageLocation.FullUrl);
 
-                        var fullUrlValue = $"{sectorLandingPage.ContentItems[j].PageLocation.FullUrl}?id={sectorLandingPage.ContentItems[j].ContentItemId}";
+                        var fullUrlValue = $"sector-page={sectorLandingPage.ContentItems[j].PageLocation.FullUrl.TrimStart('/')}&id={sectorLandingPage.ContentItems[j].ContentItemId}";
 
                         kvp.Add(sectorLandingPage.ContentItems[j].DisplayText, fullUrlValue);
                     }
@@ -276,21 +257,19 @@ namespace DFC.App.ExploreCareers.Services
 
                     for (int j = 0; j < jobProfileSector.ContentItems.Count; j++)
                     {
+                        var textToDisplay = jobProfileSector.ContentItems[j].DisplayText.ToLower(); // Convert the lookup key to lowercase
 
-                        var textToDisplay = jobProfileSector.ContentItems[j].DisplayText;
+                        // Convert the dictionary to use lowercase keys
+                        var lowerCaseDictionary = kvp.ToDictionary(k => k.Key.ToLower(), v => v.Value);
 
-                        // Try to find the FullUrl in the dictionary using DisplayText as the key
-                        if (kvp.TryGetValue(textToDisplay, out string fullUrl))
+                        // Try to find the FullUrl in the dictionary using the lowercase DisplayText as the key
+                        if (lowerCaseDictionary.TryGetValue(textToDisplay, out string fullUrl))
                         {
                             responseJobProfiles.Data[i].JobProfileSector.ContentItems[j].FullUrl = $"{fullUrl}";
                         }
                     }
                 }
             }
-
-
-
-
 
             return responseJobProfiles.Data;
         }

@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
-    [Route("sector-landing-page")]
+    [Route("explore-careers/job-sector-landing")]
     public class SectorLandingPageController : BaseController
     {
-        public const string SectorLandingPageViewCanonicalName = "sector-landing-page";
-        public const string DefaultPageTitleSuffix = "Explore careers";
+        public const string SectorLandingPageViewCanonicalName = "job-sector-landing";
+        public const string DefaultPageTitleSuffix = "Explore careers | job-sector-landing";
 
         private readonly ILogger<SectorLandingPageController> logger;
         private readonly IJobSectorService jobSectorService;
@@ -29,7 +29,8 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("{titleUrl}/head")]
+        //[Route("head")]
+        [Route("head")]
         public IActionResult Head()
         {
             var viewModel = GetHeadViewModel();
@@ -39,19 +40,20 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("{titleUrl}/bodytop")]
-        public IActionResult BodyTop(string titleUrl)
+        [Route("bodytop")]
+        public IActionResult BodyTop()
         {
             logger.LogInformation($"{nameof(BodyTop)} has returned content");
             return this.NegotiateContentResult(null);
         }
 
         [HttpGet]
-        [Route("{titleUrl}")]
-        [Route("{titleUrl}/document")]
-        public async Task<IActionResult> Document(string titleUrl)
+        [Route("document")]
+        public async Task<IActionResult> Document()
         {
             var contentItemId = Request.Query["id"].ToString();
+
+            var titleUrl = Request.Query["sector-page"].ToString();
 
             // Check if contentItemId is "0" or invalid
             if (contentItemId == "0")
@@ -72,10 +74,11 @@ namespace DFC.App.ExploreCareers.Controllers
 
 
         [HttpGet]
-        [Route("{titleUrl}/body")]
-        public async Task<IActionResult> BodyAsync(string titleUrl)
+        [Route("body")]
+        public async Task<IActionResult> BodyAsync()
         {
             var contentItemId = Request.Query["id"].ToString();
+            var titleUrl = Request.Query["sector-page"].ToString();
 
             var bodyViewModel = await CreateBodyViewModelAsync(titleUrl);
             if (bodyViewModel == null)
@@ -113,7 +116,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
             var viewModel = new DocumentViewModel
             {
-                Head = GetHeadViewModel(),
+                Head = GetHeadViewModel(sectorLandingPages[0].DisplayText),
                 Breadcrumb = BuildBreadcrumb(sectorLandingPages[0].DisplayText),
                 Body = new BodyViewModel { SectorLandingPage = sectorLandingPages }
             };
@@ -141,16 +144,28 @@ namespace DFC.App.ExploreCareers.Controllers
             return bodyViewModel;
         }
 
-        private HeadViewModel GetHeadViewModel(string? pageTitle = null)
+        private HeadViewModel GetHeadViewModel(string titleUrl = null)
         {
+            var pageTitle = titleUrl; // Use the titleUrl as the page title
+            var pageTitleSuffix = DefaultPageTitleSuffix.Replace("{titleUrl}", pageTitle); // Replace {titleUrl} with actual value
+
             return new HeadViewModel
             {
                 CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{SectorLandingPageViewCanonicalName}", UriKind.RelativeOrAbsolute),
-                Title = string.IsNullOrWhiteSpace(pageTitle)
-                    ? DefaultPageTitleSuffix
-                    : $"{pageTitle} | {DefaultPageTitleSuffix}"
+                Title = $"{pageTitle} | {pageTitleSuffix}"  // Set the dynamic title here
             };
         }
+
+        //private HeadViewModel GetHeadViewModel(string? pageTitle = null)
+        //{
+        //    return new HeadViewModel
+        //    {
+        //        CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{SectorLandingPageViewCanonicalName}", UriKind.RelativeOrAbsolute),
+        //        Title = string.IsNullOrWhiteSpace(pageTitle)
+        //            ? DefaultPageTitleSuffix
+        //            : $"{pageTitle} | {DefaultPageTitleSuffix}"
+        //    };
+        //}
 
         private static BreadcrumbViewModel BuildBreadcrumb(string title) =>
              BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "#" });

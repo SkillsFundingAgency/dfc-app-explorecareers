@@ -58,7 +58,7 @@ namespace DFC.App.ExploreCareers.Extensions
                 {imgTag}
                 <div class='dfe-card-container'>
                     <h2 class='govuk-heading-m'>
-                        <a href='/sector-landing-page/{titleUrl}?id={sectorPageLandingId}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
+                        <a href='/explore-careers/job-sector-landing?sector-page={titleUrl}&id={sectorPageLandingId}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
                     </h2>
                     <p class='dfe-card-description dfe-card-description-expolore-career'>{description}</p>
                 </div>

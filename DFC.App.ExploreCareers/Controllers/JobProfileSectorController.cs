@@ -16,7 +16,7 @@ namespace DFC.App.ExploreCareers.Controllers
     public class JobProfileSectorController : BaseController
     {
         public const string JobSectorsViewCanonicalName = "job-sector";
-        public const string DefaultPageTitleSuffix = "Explore careers | Job Profile Sector";
+        public const string DefaultPageTitleSuffix = "Explore careers | Job Sector";
 
         private readonly ILogger<JobProfileSectorController> logger;
         private readonly IJobSectorService jobSectorService;

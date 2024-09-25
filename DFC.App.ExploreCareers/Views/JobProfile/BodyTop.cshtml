@@ -3,22 +3,40 @@
 @model string;
 
 <section aria-label="Search">
-    <div class="ncs-hero page-hero">
+    <div class="ncs-hero page-hero dfe-ncs-hero-explore-career">
         <div class="content govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl">
-                        <div class="block ncs block-ncs-app-explorer">
-                            <span>@Model</span>
+                    <div class="block ncs">
+                        <h1 class="govuk-heading-xl block-ncs-app-explorer">
+                            <span>All careers in the @Model sector</span>
+                        </h1>
+
+                        <div class="sub-heading sub-heading-app-explorer">
+
+                            <p class="govuk-body">
+                                <span>Select</span>
+                                <span>a</span>
+                                <span>job</span>
+                                <span>profile</span>
+                                <span>to</span>
+                                <span>find</span>
+                                <span>out</span>
+                                <span>more</span>
+                                <span>about</span>
+                                <span>that</span>
+                                <span>job.</span>
+                            </p>
                         </div>
-                    </h1>
+
+                    </div>
                    
                 </div>
             </div>
         </div>
     </div>
 
-    <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
+@*     <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
         <div class="search-wrapper">
             <div class="govuk-width-container">
                 <div class="govuk-grid-row">
@@ -29,5 +47,5 @@
                 </div>
             </div>
         </div>
-    </form>
+    </form> *@
 </section>

@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
-    [Route("explore-careers/job-sector")]
+    [Route("explore-careers/job-sector/all-careers")]
     public class JobProfileController : BaseController
     {
         public const string JobProfilesViewCanonicalName = "job-profiles";
-        public const string DefaultPageTitleSuffix = "Explore careers | Job Profile";
+        public const string DefaultPageTitleSuffix = "Explore careers | All Careers";
 
         private readonly ILogger<JobProfileController> logger;
         private readonly IJobProfileService jobProfileService;
@@ -30,7 +30,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("{jobSector}/head")]
+        [Route("head")]
         public IActionResult Head()
         {
             var viewModel = GetHeadViewModel();
@@ -40,7 +40,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("{jobSector}/bodytop")]
+        [Route("bodytop")]
         public IActionResult BodyTop(string titleUrl)
         {
             logger.LogInformation($"{nameof(BodyTop)} has returned content");
@@ -48,11 +48,11 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("{jobSector}")]
-        [Route("{jobSector}/document")]
-        public async Task<IActionResult> DocumentAsync(string jobSector)
+        [Route("document")]
+        public async Task<IActionResult> DocumentAsync()
         {
             var contentItemId = Request.Query["id"].ToString();
+            var jobSector = Request.Query["sector-page"].ToString();
 
             if (contentItemId == "0")
             {

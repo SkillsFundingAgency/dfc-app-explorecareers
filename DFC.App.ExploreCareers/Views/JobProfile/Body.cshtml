@@ -13,7 +13,7 @@
                         @foreach (var job in Model.JobProfile)
                         {
                              <li class="dfc-code-search-resultitem">
-                                <h3><a class="dfc-code-search-jpTitle" href="/sector-landing-page/xxx">@job.DisplayText</a></h3>
+                                <h3><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
 
                                 @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
                                 {
@@ -30,7 +30,7 @@
                                 {
                                     <p class="results-categories">
                                         Found in:
-                                        @Html.Raw(string.Join(", ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='/sector-landing-page{sector.FullUrl}'>{sector.DisplayText}</a>")))
+                                        @Html.Raw(string.Join(" ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='/explore-careers/job-sector-landing?{sector.FullUrl}'>{sector.DisplayText}</a>")))
                                     </p>
                                    @*  <p class="results-categories">
                                         Found in:

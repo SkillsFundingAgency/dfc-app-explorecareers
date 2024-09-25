@@ -1,4 +1,13 @@
-﻿.dfe-grid-container-expolore-career {
+﻿
+.dfe-ncs-hero-explore-career {
+    background-color: #1d70b8 !important;
+}
+
+.dfe-ncs-govuk-main-wrapper-explore-career {
+    padding-top: 80px !important;
+}
+
+.dfe-grid-container-expolore-career {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
@@ -100,21 +109,25 @@ img {
     font-size: 48px;
 }*/
 
+.block-ncs-app-explorer {
+    background-color: #1d70b8 !important;
+}
+
 .block-ncs-app-explorer span {
     font-family: "GDS Transport", arial, sans-serif;
-    color: #0b0c0c !important;
+    color: #f3f2f1 !important;
     font-size: 48px;
 }
 
 
-/*.ncs-hero .content .sub-heading .block span {
-    padding: 2px 0;
-    font-size: 24px;
-}*/
+.sub-heading-app-explorer {
+    background-color: #1d70b8 !important;
+}
 
 .sub-heading-app-explorer span {
     padding: 2px 0;
-    font-size: 24px;
+    color: #f3f2f1 !important;
+    /*font-size: 24px;*/
 }
 
 /*Sector landing page scss*/

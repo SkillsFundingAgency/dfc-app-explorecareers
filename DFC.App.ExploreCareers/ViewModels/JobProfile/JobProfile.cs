@@ -32,6 +32,9 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfile
         [JsonProperty("salaryexperiencedperyear")]
         public int SalaryExperiencedPerYear { get; set; }
 
+        [JsonProperty("pageLocation")]
+        public PageLocation PageLocation { get; set; }
+
         [JsonProperty("jobProfileSector")]
         public JobProfileSector JobProfileSector { get; set; }
     }
@@ -47,6 +50,15 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfile
         [JsonProperty("displayText")]
         public string DisplayText { get; set; } = string.Empty;
 
+        [JsonProperty("fullUrl")]
+        public string FullUrl { get; set; } = string.Empty;
+
+        [JsonProperty("urlName")]
+        public string UrlName { get; set; } = string.Empty;
+    }
+
+    public class PageLocation
+    {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; } = string.Empty;
 
