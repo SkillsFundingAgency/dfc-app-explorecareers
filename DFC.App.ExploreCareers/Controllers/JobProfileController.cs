@@ -2,12 +2,9 @@
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobProfile;
-using DFC.App.ExploreCareers.ViewModels.JobProfile.SectorLandingPage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using NHibernate.Mapping;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers

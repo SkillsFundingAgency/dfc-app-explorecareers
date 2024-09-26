@@ -1,0 +1,217 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model DFC.App.ExploreCareers.ViewModels.SectorLandingPage.BodyViewModel
+
+<div class='govuk-width-container'>
+    @if (Model.SectorLandingPage != null && Model.SectorLandingPage.Any())
+    {
+        @foreach (var sectorLandingPage in Model.SectorLandingPage)
+        {
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-full">
+                    <div class="dfc-app-pages-alignment-left">
+                        <section class="govuk-!-margin-top-5">
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-one-half">
+                                    @Html.Raw(sectorLandingPage.Description?.Html ?? "No description available.")
+                                </div>
+
+                                <div class="govuk-grid-column-one-half">
+                                    <div class="dfe-grid-container">
+                                        <div class="dfe-card sector-landing-image">
+                                            @if (sectorLandingPage.VideoImage?.Paths != null && sectorLandingPage.VideoImage.Paths.Any())
+                                            {
+                                                <img src="@Configuration["AssetsCdn"]media/@sectorLandingPage.VideoImage.Paths[0]" alt="Video Image" />
+                                            }
+                                            else
+                                            {
+                                                <p>No video image available.</p>
+                                            }
+                                            <div class="dfe-card-container">
+                                                <p class="govuk-details__summary-text">@sectorLandingPage.VideoDuration</p>
+                                                <details class="govuk-details govuk-!-margin-top-3" data-module="govuk-details">
+                                                    <summary class="govuk-details__summary">
+                                                        <span class="govuk-details__summary-text">@sectorLandingPage.VideoTranscript</span>
+                                                    </summary>
+                                                </details>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="govuk-grid-row">
+                            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                        </div>
+
+                        <section class="govuk-!-margin-top-5">
+                            <div class="govuk-grid-row govuk-!-margin-top-5">
+                                <div class="govuk-grid-column-two-thirds">
+                                    @Html.Raw(sectorLandingPage.ProfileDescription?.Html ?? "No profile description available.")
+                                </div>
+                            </div>
+                            <div class="govuk-grid-row govuk-grid-row-sector-landing">
+                                @if (sectorLandingPage.JobProfile?.ContentItems != null && sectorLandingPage.JobProfile.ContentItems.Any())
+                                {
+                                    @foreach (var item in sectorLandingPage.JobProfile.ContentItems)
+                                    {
+                                        <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
+                                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing">
+                                                <div class="dfe-card-container">
+                                                    <h3 class="dfc-code-search-jpTitle"><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a></h3>
+
+                                                    <p class="results-salary ">
+                                                        Salary: <span class="dfc-code-search-jpSalary">@item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")</span>
+                                                    </p>
+
+                                                    <p class="result-description dfc-code-search-jpOverview">@item.Overview</p>
+                                                    
+                                                  @*   <p class="dfe-card-description dfe-card-description-expolore-career dfe-card-description-sector-landing">@item.Overview</p> *@
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No job profiles available.</p>
+                                }
+                            </div>
+
+                            <div class="govuk-grid-row govuk-!-margin-top-5">
+                                <div class="govuk-grid-column-two-thirds">
+
+
+                                        @Html.Raw(sectorLandingPage.JobDescription?.Html ?? "No job description available.")
+
+                                @*     <p class="govuk-body-m">
+                                        <a class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1" href="/job-profiles/@sectorLandingPage.DisplayText?id=@sectorLandingPage.ContentItemId">Click Me!</a>
+                                    </p> *@
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="govuk-grid-row">
+                            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                        </div>
+
+                        <section class="govuk-!-margin-top-5">
+                            <div class="govuk-grid-row govuk-!-margin-top-5">
+                                <div class="govuk-grid-column-two-thirds">
+                                    @Html.Raw(sectorLandingPage.FurtherInspiration?.Html ?? "No further inspiration available.")
+                                </div>
+                            </div>
+                            <div class="govuk-grid-row govuk-grid-row-sector-landing">
+                                @if (sectorLandingPage.JobProfileInspiration?.ContentItems != null && sectorLandingPage.JobProfileInspiration.ContentItems.Any())
+                                {
+                                    @foreach (var item in sectorLandingPage.JobProfileInspiration.ContentItems)
+                                    {
+
+                                        <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
+                                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing">
+                                                <div class="dfe-card-container">
+                                                    <h3 class="dfc-code-search-jpTitle">
+                                                        <a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a>
+                                                    </h3>
+
+                                                    <p class="results-salary ">
+                                                        Salary: <span class="dfc-code-search-jpSalary">@item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")</span>
+                                                    </p>
+
+                                                    <p class="result-description dfc-code-search-jpOverview">@item.Overview</p>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                       @*  <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
+                                            <div class="dfe-card dfe-card-expolore-career dfe-card-expolore-career-sector-landing">
+                                                <div class="dfe-card-container dfe-card-container-sector-landing">
+                                                    <h2 class="govuk-heading-m"><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{ @item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a></h2>
+                                                    <p class="dfe-card-description dfe-card-description-expolore-career dfe-card-description-sector-landing">@item.Overview</p>
+                                                    <p class="dfe-card-description dfe-card-description-expolore-career dfe-card-description-sector-landing">
+                                                        Salary: @item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div> *@
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No job profiles available.</p>
+                                }
+                            </div>
+
+                            <div class="govuk-grid-row govuk-!-margin-top-5">
+                                <div class="govuk-grid-column-two-thirds">
+                                    @Html.Raw(sectorLandingPage.JobProfileInspirationDescription?.Html ?? "No inspiration description available.")
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="govuk-grid-row">
+                            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                        </div>
+
+                        <section class="govuk-!-margin-top-5">
+                            <div class="govuk-grid-row govuk-!-margin-top-5">
+                                <div class="govuk-grid-column-two-thirds">
+                                    @Html.Raw(sectorLandingPage.RealStoryDescription?.Html ?? "No real story description available.")
+                                </div>
+                            </div>
+                            <div class="govuk-grid-row">
+                                <div class="govuk-grid-column-one-half">
+                                    <div class="dfe-grid-container">
+                                        <div class="dfe-card sector-landing-image">
+                                            @if (sectorLandingPage.RealStoryImage?.Paths != null && sectorLandingPage.RealStoryImage.Paths.Any())
+                                            {
+                                                <img src="@Configuration["AssetsCdn"]media/@sectorLandingPage.RealStoryImage.Paths[0]" alt="Real Story Image" />
+                                            }
+                                            else
+                                            {
+                                                <p>No real story image available.</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="govuk-grid-column-one-half">
+                                    <div class="dfe-grid-container">
+                                        <div class="dfe-card sector-landing-image">
+                                            @Html.Raw(sectorLandingPage.RealStoryImageDescription?.Html ?? "No real story image description available.")
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="govuk-grid-row">
+                            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                        </div>
+
+                        <section class="govuk-!-margin-top-5">
+                            <div class="govuk-grid-row govuk-!-margin-top-5">
+                                <div class="govuk-grid-column-two-thirds">
+                                    @Html.Raw(sectorLandingPage.ExploreAllSectors?.Html ?? "No explore all sectors information available.")
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="govuk-grid-row">
+                            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No sector landing pages available.</p>
+    }
+</div>

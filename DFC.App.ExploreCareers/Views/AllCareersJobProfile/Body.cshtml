@@ -1,0 +1,174 @@
+﻿@model DFC.App.ExploreCareers.ViewModels.AllCareersJobProfile.BodyViewModel
+
+<div class='govuk-width-container'>
+    <div class="govuk-grid-row">
+
+        <div class="govuk-grid-column-one-half">
+            <div id="results">
+                <div class="results-block">
+                    <div class="inner-block">
+                        <h2 class="govuk-heading-s">Job categories</h2>
+
+                        <form method="get" action="@Url.Action("document", "AllCareersJobProfile")">
+                            @if (Model.CategoryContentItems != null && Model.CategoryContentItems.Any())
+                            {
+                                int index = 0;
+
+                                foreach (var category in Model.CategoryContentItems)
+                                {
+                                    <div class="govuk-form-group">
+                                        <fieldset class="govuk-fieldset">
+                                            <div class="govuk-checkboxes">
+                                                <div class="govuk-checkboxes__item">
+                                                    <input class="govuk-checkboxes__input"
+                                                           id="category_@index"
+                                                           name="selectedCategoryIds"
+                                                           type="checkbox"
+                                                           value="@category.ContentItemId"
+                                                    @(Model.selectedCategoryIds != null && Model.selectedCategoryIds.Contains(category.ContentItemId) ? "checked" : "")>
+                                                    <label class="govuk-label govuk-checkboxes__label" for="category_@index">
+                                                        @category.DisplayText
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+
+                                    index++;
+                                }
+                            }
+
+                            <p>
+                                <button type="submit" class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1">
+                                    Apply filters
+                                </button>
+                            </p>
+
+                            <p>
+                                <button type="submit" class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1" name="clearFilters" value="true">
+                                    Clear filters
+                                </button>
+                            </p>
+
+                        </form>
+
+                       @*  <p>
+                            <a class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1"
+                               href="@Url.Action("document", "AllCareersJobProfile")">
+                                Clear filters
+                            </a>
+                        </p> *@
+
+
+                      @*   @if (Model.CategoryContentItems != null && Model.CategoryContentItems.Any())
+                        {
+                            int index = 0; // Initialize an index to append to the id and name
+
+                            foreach (var category in Model.CategoryContentItems)
+                            {
+                                <div class="govuk-form-group">
+                                    <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                            <div class="govuk-checkboxes__item">
+                                                <input class="govuk-checkboxes__input"
+                                                       id="category_@index" 
+                                                       name="selectedCategoryIds" 
+                                                       type="checkbox"
+                                                       value="@category.ContentItemId">
+                                                <label class="govuk-label govuk-checkboxes__label" for="category_@index">
+                                                    @category.DisplayText
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                index++; // Increment the index for the next iteration
+                            }
+                        } *@
+
+                        <!-- Apply filters -->
+                       @*  <p>
+                            <a class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1"
+                               href="@Url.Action("ApplyFilters", "AllCareersJobProfile")">
+                                Apply filters
+                            </a>
+                        </p> *@
+
+                     @*    <!-- Apply filters -->
+                        <p>
+                            <button type="submit" class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1" formaction="@Url.Action("ApplyFilters", "AllCareersJobProfile")">
+                                Apply filters
+                            </button>
+                        </p>
+
+                        <!-- Clear filters -->
+                        <p>
+                            <a class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1"
+                               href="@Url.Action("ClearFilters", "AllCareersJobProfile")">
+                                Clear filters
+                            </a>
+                        </p> *@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+
+            <div id="results">
+                <div class="results-block">
+                    <div class="inner-block">
+                        <p id="result-count" class="result-count">
+                            Showing 1 to @Model.JobProfile.Count of @Model.JobProfile.Count job profiles
+                        </p>
+                        @if (Model.JobProfile != null && Model.JobProfile.Any())
+                        {
+                            <ol class="results-list">
+                                @foreach (var job in Model.JobProfile)
+                                {
+                                    <li class="dfc-code-search-resultitem">
+                                        <h3><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
+
+                                        @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
+                                        {
+                                            <p class="meta dfc-code-search-jpAltTitle"><span class="sr-hidden">Alternative titles for this job include </span>@job.AlternativeTitle</p>
+                                        }
+
+                                        <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
+
+                                        <p class="results-salary">
+                                            Salary: <span class="dfc-code-search-jpSalary">@job.SalaryStarterPerYear to @job.SalaryExperiencedPerYear</span>
+                                        </p>
+
+                                        @if (job.JobProfileCategory != null && job.JobProfileCategory.ContentItems.Any())
+                                        {
+                                            <p class="results-categories">
+                                                Found in:
+                                                @Html.Raw(string.Join(", ", job.JobProfileCategory.ContentItems.Select(category => $"<sap>{category.DisplayText}</span>")))
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="results-categories">
+                                                Found in:
+                                            <p>No job profile sectors available.</p>
+                                            </p>
+                                        }
+                                    </li>
+                                }
+                            </ol>
+                        }
+                        else
+                        {
+                            <p>No job profile is available.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+  
+</div>

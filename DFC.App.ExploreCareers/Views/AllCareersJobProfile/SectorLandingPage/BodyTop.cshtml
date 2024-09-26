@@ -1,0 +1,28 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@model DFC.App.ExploreCareers.ViewModels.SectorLandingPage.BodyViewModel
+
+
+<section aria-label="Search">
+    <div class="ncs-hero page-hero">
+
+        @if (Model?.SectorLandingPage != null && Model.SectorLandingPage.Any() && Model.SectorLandingPage[0]?.HeroBanner?.Html != null)
+        {
+            <div class="d-only">
+                @Html.Raw(Model.SectorLandingPage[0].HeroBanner.Html)
+            </div>
+
+            <!-- Mobile image -->
+            <div class="m-only">
+                @Html.Raw(Model.SectorLandingPage[0].HeroBanner.Html)
+            </div>
+        }
+        else
+        {
+            <div>
+                <p>No content available.</p>
+            </div>
+        }
+
+    </div>
+</section>
