@@ -2,6 +2,7 @@
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.AllCareersJobProfile;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -49,21 +50,40 @@ namespace DFC.App.ExploreCareers.Controllers
 
         [HttpGet]
         [Route("document")]
-        public async Task<IActionResult> DocumentAsync()
+        public async Task<IActionResult> DocumentAsync([FromQuery] int page = 1, int pageSize = 20)
         {
-
+            int skip = (page - 1) * pageSize; // Calculate how many records to skip for pagination
             var selectedCategoryIds = Request.Query["selectedCategoryIds"].ToList();
 
             // Check if 'clearFilters' exists in the query string and its value is true
             var clearFilters = Request.Query["clearFilters"].ToString() == "true";
 
-
             if (clearFilters == true)
             {
                 selectedCategoryIds = null;
+                HttpContext.Session.Remove("selectedCategoryIds");
+                HttpContext.Session.Clear();
             }
 
-            var viewModel = await CreateDocumentViewModelAsync(selectedCategoryIds);
+            if (selectedCategoryIds != null && selectedCategoryIds.Count > 0)
+            {
+                HttpContext.Session.Remove("selectedCategoryIds");
+                HttpContext.Session.Clear();
+                var serializedSelectedCategoryIds = JsonConvert.SerializeObject(selectedCategoryIds);
+                HttpContext.Session.SetString("selectedCategoryIds", serializedSelectedCategoryIds);
+            }
+
+            // Retrieve the data from session
+            var sessionData = HttpContext.Session.GetString("selectedCategoryIds");
+
+            // If data exists in session, deserialize it back to a list
+            if (!string.IsNullOrEmpty(sessionData))
+            {
+                selectedCategoryIds = JsonConvert.DeserializeObject<List<string>>(sessionData);
+            }
+
+            var viewModel = await CreateDocumentViewModelAsync(selectedCategoryIds, skip, pageSize);
+
             if (viewModel == null)
             {
                 return NotFound();
@@ -72,7 +92,15 @@ namespace DFC.App.ExploreCareers.Controllers
             return this.NegotiateContentResult(viewModel);
         }
 
-        private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(List<string>? selectedCategoryIds = null)
+
+        // Set or update string list in session
+        public void SetStringListInSession(List<string> selectedCategoryIds)
+        {
+            // Store the list in session
+            HttpContext.Session.SetString("StringList", JsonConvert.SerializeObject(selectedCategoryIds));
+        }
+
+        private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(List<string>? selectedCategoryIds = null, int skip = 0, int pageSize = 20)
         {
             // Retrieve all job profiles
             var allCareersJobProfile = await jobProfileService.GetAllJobProfile(selectedCategoryIds);
@@ -108,6 +136,16 @@ namespace DFC.App.ExploreCareers.Controllers
             //    .OrderBy(item => item.DisplayText)
             //    .ToList();
 
+
+            // Apply pagination logic
+            var paginatedJobProfiles = allCareersJobProfile
+                .Skip(skip)             // Skip the number of records for pagination
+                .Take(pageSize)          // Take the required number of records for the current page
+                .ToList();
+
+            var totalJobProfilesCount = allCareersJobProfile.Count();
+
+
             // Build the view model
             var viewModel = new DocumentViewModel
             {
@@ -115,11 +153,30 @@ namespace DFC.App.ExploreCareers.Controllers
                 Breadcrumb = BuildBreadcrumb("All careers"),
                 Body = new BodyViewModel
                 {
-                    JobProfile = allCareersJobProfile,
+                    JobProfile = paginatedJobProfiles,  // Use paginated job profiles
                     CategoryContentItems = allJobCategories,
-                    selectedCategoryIds = selectedCategoryIds
+                    selectedCategoryIds = selectedCategoryIds,
+
+                    // Pagination properties
+                    PageNumber = (skip / pageSize) + 1,  // Calculate current page
+                    PageSize = pageSize,
+                    TotalResults = totalJobProfilesCount,
+                    TotalPages = (int)Math.Ceiling((double)totalJobProfilesCount / pageSize)
                 }
             };
+
+            //// Build the view model
+            //var viewModel = new DocumentViewModel
+            //{
+            //    Head = GetHeadViewModel(),
+            //    Breadcrumb = BuildBreadcrumb("All careers"),
+            //    Body = new BodyViewModel
+            //    {
+            //        JobProfile = allCareersJobProfile,
+            //        CategoryContentItems = allJobCategories,
+            //        selectedCategoryIds = selectedCategoryIds
+            //    }
+            //};
 
             return viewModel;
         }

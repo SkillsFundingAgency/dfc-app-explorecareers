@@ -71,6 +71,7 @@ namespace DFC.App.ExploreCareers
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession(); // Enable session middleware
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
@@ -89,6 +90,18 @@ namespace DFC.App.ExploreCareers
             services.AddStackExchangeRedisCache(options => { options.Configuration = configuration.GetSection(RedisCacheConnectionStringAppSettings).Get<string>(); });
 
             services.AddHttpClient();
+
+            //services.AddSession();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Set idle timeout (optional)
+                options.Cookie.HttpOnly = true; // Ensures session cookie is only accessible server-side
+                options.Cookie.IsEssential = true; // Ensure session is active even with GDPR-compliant consent policies
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // For HTTPS only (optional)
+                options.Cookie.SameSite = SameSiteMode.Strict; // Helps with cross-site request issues
+                options.Cookie.IsEssential = true; // Allows session cookie to be set without user consent
+                options.Cookie.MaxAge = null; // No expiration, so it ends when the browser closes
+            });
 
             services.AddSingleton<IGraphQLClient>(s =>
             {
@@ -148,6 +161,8 @@ namespace DFC.App.ExploreCareers
             services.AddScoped<ICmsPreviewHandler, PreviewHandler>();
             services.AddScoped<IJobSectorService, JobSectorService>();
             services.AddScoped<IJobProfileService, JobProfileService>();
+
+
         }
 
         private void ConfigureMinimumThreads()
