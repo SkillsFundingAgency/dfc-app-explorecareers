@@ -48,10 +48,16 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("")]
         [Route("document")]
-        public async Task<IActionResult> DocumentAsync([FromQuery] List<string> selectedCategoryIds, bool? clearFilters = null)
+        public async Task<IActionResult> DocumentAsync()
         {
+
+            var selectedCategoryIds = Request.Query["selectedCategoryIds"].ToList();
+
+            // Check if 'clearFilters' exists in the query string and its value is true
+            var clearFilters = Request.Query["clearFilters"].ToString() == "true";
+
+
             if (clearFilters == true)
             {
                 selectedCategoryIds = null;
