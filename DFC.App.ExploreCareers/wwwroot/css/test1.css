@@ -195,6 +195,7 @@ img {
 
 .govuk-grid-row-extra {
     margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .imag-explore-career {
@@ -214,8 +215,22 @@ img {
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1) !important; /* Soft shadow, adjust as needed */
 }
 
-.dc-ec-explore {
-    margin-right: 30px !important; /* Add 30px gap between cards */
+.govuk-grid-row-card {
+    display: flex; /* Arrange items in a row */
+    gap: 25px; /* 30px gap between the cards */
+}
+
+.dfe-ec-landing-card {
+    flex: 1; /* Allow cards to take equal width */
+    max-width: 45%; /* Optional: Control the max width of each card */
+}
+
+.dfc-code-search-jpTitle-extra {
+    margin-left: 20px;
+}
+
+.dfc-code-ancher-underline {
+    text-decoration: underline !important; /* Apply underline */
 }
 
 
