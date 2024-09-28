@@ -6,7 +6,13 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfile
     {
         public IList<JobProfile> JobProfile { get; set; } = new List<JobProfile>();
 
+        public string sectorlandingContentItemId { get; set; }
+
+        public string jobSector { get; set; }
+
         public int TotalPages { get; set; }
+
+        public int PageSize { get; set; } = 20;
 
         public int PageNumber { get; set; } = 1;
 

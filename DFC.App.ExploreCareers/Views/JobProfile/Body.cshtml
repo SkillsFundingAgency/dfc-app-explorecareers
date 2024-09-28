@@ -1,12 +1,18 @@
 ﻿@model DFC.App.ExploreCareers.ViewModels.JobProfile.BodyViewModel
 
 <div class='govuk-width-container'>
+
     <div id="results">
         <div class="results-block">
             <div class="inner-block">
                 <p id="result-count" class="result-count">
-                    Showing 1 to @Model.JobProfile.Count of @Model.JobProfile.Count job profiles
+                    Showing 1 to @Model.JobProfile.Count of @Model.TotalResults job profiles
                 </p>
+
+                <div class="govuk-grid-row">
+                    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                </div>
+
                 @if (Model.JobProfile != null && Model.JobProfile.Any())
                 {
                     <ol class="results-list">
@@ -23,7 +29,7 @@
                                 <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
 
                                 <p class="results-salary">
-                                    Salary: <span class="dfc-code-search-jpSalary">@job.SalaryStarterPerYear.ToString("C0") to @job.SalaryExperiencedPerYear.ToString("C0")</span>
+                                    Salary: <span class="dfc-code-search-jpSalary">£@job.SalaryStarterPerYear to £@job.SalaryExperiencedPerYear</span>
                                 </p>
 
                                 @if (job.JobProfileSector != null && job.JobProfileSector.ContentItems.Any())
@@ -53,7 +59,51 @@
                     <p>No job profile is available.</p>
                 }
             </div>
+
+
+            <div class="govuk-grid-row">
+                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+            </div>
+
+            <!-- Pagination -->
+            <nav class="govuk-pagination" aria-label="Pagination">
+                <ul class="govuk-pagination__list">
+                    @{
+                        // Calculate total pages
+                        int totalPages = (int)Math.Ceiling((double)@Model.TotalResults / @Model.PageSize);
+                        int startPage = Math.Max(1, @Model.PageNumber - 2);
+                        int endPage = Math.Min(startPage + 4, totalPages);
+
+                        // Render page numbers
+                        for (int i = startPage; i <= endPage; i++)
+                        {
+                            <li class="govuk-pagination__item @(Model.PageNumber == i ? "govuk-pagination__item--current" : "")">
+                                <a class="govuk-link govuk-pagination__link" href="?sector-page=@Model.jobSector&id=@Model.sectorlandingContentItemId&page=@i" aria-label="Page @i" @(Model.PageNumber == i ? "aria-current=\"page\"" : "")>
+                                    @i
+                                </a>
+                            </li>
+                        }
+                    }
+                </ul>
+
+                @if (Model.PageNumber < totalPages)
+                {
+                    <!-- Next Page Link -->
+                    <div class="govuk-pagination__next">
+                        <a class="govuk-link govuk-pagination__link" href="?sector-page=@Model.jobSector&id=@Model.sectorlandingContentItemId&page=@(Model.PageNumber + 1)" rel="next">
+                            <span class="govuk-pagination__link-title">
+                                Next<span class="govuk-visually-hidden"> page</span>
+                            </span>
+                            <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                                <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                }
+            </nav>
+
         </div>
     </div>
 
+    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
 </div>

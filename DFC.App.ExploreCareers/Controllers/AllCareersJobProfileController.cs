@@ -49,11 +49,28 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
+        //[Route("")]
         [Route("document")]
-        public async Task<IActionResult> DocumentAsync([FromQuery] int page = 1, int pageSize = 20)
+        //public async Task<IActionResult> DocumentAsync([FromQuery] int page = 0, int pageSize = 20)
+        public async Task<IActionResult> DocumentAsync()
         {
-            int skip = (page - 1) * pageSize; // Calculate how many records to skip for pagination
+            //int skip = (page - 1) * pageSize; // Calculate how many records to skip for pagination
             var selectedCategoryIds = Request.Query["selectedCategoryIds"].ToList();
+
+            // Try to parse 'page' and 'pageSize' to integers, use default values if parsing fails
+            int page = 0; // Default page number
+            int pageSize = 20; // Default page size
+
+            if (!string.IsNullOrEmpty(Request.Query["page"]))
+            {
+                int.TryParse(Request.Query["page"], out page); // If it fails, page will remain the default value (1)
+            }
+
+            if (!string.IsNullOrEmpty(Request.Query["pageSize"]))
+            {
+                int.TryParse(Request.Query["pageSize"], out pageSize); // If it fails, pageSize will remain the default value (20)
+            }
+
 
             // Check if 'clearFilters' exists in the query string and its value is true
             var clearFilters = Request.Query["clearFilters"].ToString() == "true";
@@ -63,6 +80,10 @@ namespace DFC.App.ExploreCareers.Controllers
                 selectedCategoryIds = null;
                 HttpContext.Session.Remove("selectedCategoryIds");
                 HttpContext.Session.Clear();
+
+                // Redirect back to the base URL without query parameters
+                //return RedirectToAction("Document", new { page = 0, pageSize = 20 });
+                //return Redirect("/explore-careers/all-careers");
             }
 
             if (selectedCategoryIds != null && selectedCategoryIds.Count > 0)
@@ -72,6 +93,14 @@ namespace DFC.App.ExploreCareers.Controllers
                 var serializedSelectedCategoryIds = JsonConvert.SerializeObject(selectedCategoryIds);
                 HttpContext.Session.SetString("selectedCategoryIds", serializedSelectedCategoryIds);
             }
+            else if (page == 0)
+            {
+                page = 1;
+                HttpContext.Session.Remove("selectedCategoryIds");
+                HttpContext.Session.Clear();
+            }
+
+            int skip = (page - 1) * pageSize; // Calculate how many records to skip for pagination
 
             // Retrieve the data from session
             var sessionData = HttpContext.Session.GetString("selectedCategoryIds");

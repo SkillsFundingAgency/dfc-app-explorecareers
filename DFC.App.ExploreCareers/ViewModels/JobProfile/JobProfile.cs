@@ -27,10 +27,10 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfile
         public string Overview { get; set; }
 
         [JsonProperty("salarystarterperyear")]
-        public int SalaryStarterPerYear { get; set; }
+        public decimal SalaryStarterPerYear { get; set; }
 
         [JsonProperty("salaryexperiencedperyear")]
-        public int SalaryExperiencedPerYear { get; set; }
+        public decimal SalaryExperiencedPerYear { get; set; }
 
         [JsonProperty("pageLocation")]
         public PageLocation PageLocation { get; set; }

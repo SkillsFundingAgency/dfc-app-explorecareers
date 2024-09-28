@@ -62,7 +62,7 @@
                                                     <h3 class="dfc-code-search-jpTitle"><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a></h3>
 
                                                     <p class="results-salary ">
-                                                        Salary: <span class="dfc-code-search-jpSalary">@item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")</span>
+                                                        Salary: <span class="dfc-code-search-jpSalary">£@item.SalaryStarterPerYear to £@item.SalaryExperiencedPerYear</span>
                                                     </p>
 
                                                     <p class="result-description dfc-code-search-jpOverview">@item.Overview</p>
@@ -118,7 +118,7 @@
                                                     </h3>
 
                                                     <p class="results-salary ">
-                                                        Salary: <span class="dfc-code-search-jpSalary">@item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")</span>
+                                                        Salary: <span class="dfc-code-search-jpSalary">£@item.SalaryStarterPerYear to £@item.SalaryExperiencedPerYear</span>
                                                     </p>
 
                                                     <p class="result-description dfc-code-search-jpOverview">@item.Overview</p>
@@ -214,4 +214,6 @@
     {
         <p>No sector landing pages available.</p>
     }
+
+    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
 </div>

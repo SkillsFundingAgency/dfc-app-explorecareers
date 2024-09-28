@@ -48,6 +48,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
+        [Route("")]
         [Route("document")]
         public async Task<IActionResult> Document()
         {

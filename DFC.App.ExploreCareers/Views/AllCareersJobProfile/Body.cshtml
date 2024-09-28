@@ -9,7 +9,7 @@
                     <div class="inner-block">
                         <h2 class="govuk-heading-s">Job categories</h2>
 
-                        <form method="get" action="@Url.Action("document", "AllCareersJobProfile")">
+                        <form method="get" action="/explore-careers/all-careers">
                             @if (Model.CategoryContentItems != null && Model.CategoryContentItems.Any())
                             {
                                 int index = 0;
@@ -138,6 +138,9 @@
                         }
                     </div>
 
+                     <div class="govuk-grid-row">
+                        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                    </div>
 
                     <!-- Pagination -->
                     <nav class="govuk-pagination" aria-label="Pagination">
@@ -175,13 +178,12 @@
                             </div>
                         }
                     </nav>
-
-
-
                 </div>
             </div>
         </div>
 
-    </div> 
+    </div>
+
+    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
   
 </div>

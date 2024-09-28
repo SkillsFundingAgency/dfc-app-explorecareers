@@ -79,18 +79,26 @@ img {
     /* Adjust margin values for top/bottom and remove left/right margin */
 
     p
+    {
+        font-family: 'Transport', arial, sans-serif;
+        font-weight: 300;
+        font-size: 19px;
+    }
 
-{
-    font-family: 'Transport', arial, sans-serif;
-    font-weight: 300;
-    font-size: 19px;
 }
 
-}
 
 #speaktoanadvisorheader {
     margin-top: 2em;
     color: #1D70B8;
+}
+
+.speak-to-adviser__header__max-width {
+    max-width: 330px !important;
+}
+
+.adviser__header__width-text {
+    max-width: 2000px !important;
 }
 
 #phonenumberspan {
