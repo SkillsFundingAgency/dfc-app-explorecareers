@@ -16,7 +16,7 @@ namespace DFC.App.ExploreCareers.Controllers
     [Route("explore-careers/all-careers")]
     public class AllCareersJobProfileController : BaseController
     {
-        public const string AllCareersJobeProfileViewCanonicalName = "all-careers";
+        public const string AllCareersJobeProfileViewCanonicalName = "View all careers";
         public const string DefaultPageTitleSuffix = "Explore careers | All Careers";
 
         private readonly ILogger<AllCareersJobProfileController> logger;
@@ -179,7 +179,7 @@ namespace DFC.App.ExploreCareers.Controllers
             var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
-                Breadcrumb = BuildBreadcrumb("All careers"),
+                Breadcrumb = BuildBreadcrumb(AllCareersJobeProfileViewCanonicalName),
                 Body = new BodyViewModel
                 {
                     JobProfile = paginatedJobProfiles,  // Use paginated job profiles

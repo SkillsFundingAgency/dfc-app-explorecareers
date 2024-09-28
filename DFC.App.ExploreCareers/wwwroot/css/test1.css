@@ -1,6 +1,7 @@
 ﻿
 .dfe-ncs-hero-explore-career {
     background-color: #1d70b8 !important;
+   /* height: 220px !important;*/
 }
 
 .dfe-ncs-govuk-main-wrapper-explore-career {
@@ -143,6 +144,7 @@ img {
 .govuk-grid-row-sector-landing {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 
@@ -172,6 +174,50 @@ img {
     object-fit: cover; /* Ensure the image covers the available space */
     display: flex; /* Removes any space below the image */
 }
+
+
+/* Explore career page */
+
+.blue-banner {
+    position: relative;
+    padding: 20px;
+}
+
+.explore-compass-image {
+    position: absolute;
+    width: 122px;
+    right: 140px;
+    top: 51px;
+    bottom: 51px;
+    margin: auto 0;
+    object-fit: contain;
+}
+
+.govuk-grid-row-extra {
+    margin-top: 60px;
+}
+
+.imag-explore-career {
+    margin-bottom: 30px;
+}
+
+.dfe-card_explorer {
+    width: 300px;
+    height: 184px;
+    top: 870px;
+    left: 140px;
+    gap: 0px; /* No gap between children if applicable */
+    border: 0px; /* No initial border */
+    opacity: 1; /* Assuming you meant opacity is set to visible (if it's 0px it would be invisible) */
+    border-bottom: 4px solid #B1B4B6 !important; /* Bottom border styling */
+    /* Optional: If you want to add box-shadow or some elevation */
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1) !important; /* Soft shadow, adjust as needed */
+}
+
+.dc-ec-explore {
+    margin-right: 30px !important; /* Add 30px gap between cards */
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

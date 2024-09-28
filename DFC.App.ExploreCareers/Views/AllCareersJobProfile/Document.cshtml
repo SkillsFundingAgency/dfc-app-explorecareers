@@ -8,9 +8,9 @@
     }
 }
 
-@* <partial name="Breadcrumb" model=@Model.Breadcrumb /> *@
 @if (Model.Body != null)
 {
+    <partial name="Breadcrumb" model=@Model.Breadcrumb />
     <partial name="BodyTop"/>
 
     <div class="govuk-main-wrapper">

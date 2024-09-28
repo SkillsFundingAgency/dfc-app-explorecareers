@@ -101,7 +101,7 @@ namespace DFC.App.ExploreCareers.Controllers
            var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
-                Breadcrumb = BuildBreadcrumb("All careers"),
+                Breadcrumb = BuildBreadcrumb(jobProfiles[0].JobSectorTitle),
                 Body = new BodyViewModel 
                 { 
                     JobProfile = paginatedJobProfiles,
@@ -132,6 +132,6 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         private static BreadcrumbViewModel BuildBreadcrumb(string title) =>
-            BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "#" });
+            BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = "All careers", Route = "#", AlternativeTitle = title });
     }
 }

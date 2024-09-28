@@ -14,7 +14,7 @@ namespace DFC.App.ExploreCareers.Controllers
     [Route("explore-careers/job-sector-landing")]
     public class SectorLandingPageController : BaseController
     {
-        public const string SectorLandingPageViewCanonicalName = "job-sector-landing";
+        public const string SectorLandingPageViewCanonicalName = "Sector landing page";
         public const string DefaultPageTitleSuffix = "Explore careers | job-sector-landing";
 
         private readonly ILogger<SectorLandingPageController> logger;
@@ -48,7 +48,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        //[Route("")]
         [Route("document")]
         public async Task<IActionResult> Document()
         {

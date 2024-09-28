@@ -1,4 +1,4 @@
-﻿@model DFC.App.ExploreCareers.ViewModels.ExploreCareers.BodyViewModel
+﻿@* @model DFC.App.ExploreCareers.ViewModels.ExploreCareers.BodyViewModel
 
 <div class="govuk-width-container">
     <h2 class="govuk-heading-m">Explore by job category</h2>
@@ -11,22 +11,22 @@
             }
         }
     </ul>
-</div>
+</div> *@
 
-@* @using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
 
 <div class="govuk-width-container">
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
+  @*   <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full"> *@
             <div class="dfc-app-pages-alignment-left">
                 <section class="govuk-!-margin-top-5">
-                    <div class="govuk-grid-row">
+            <div class="govuk-grid-row govuk-grid-row-extra">
                         <div class="govuk-grid-column-two-thirds">
                             <div class="dfe-grid-container">
                                 <div class="dfe-card sector-landing-image">
-                                    <img src="@Configuration["AssetsCdn"]/images/explore-career-home.jpg" alt="explore career Image" />
+                                    <img class="imag-explore-career" src="@Configuration["AssetsCdn"]/images/explore-career-home.jpg" alt="explore career Image" />
                                     
                                     
                                     <div class="dfe-card-container">
@@ -41,8 +41,8 @@
 
 
                                     <div class="govuk-grid-row govuk-grid-row-sector-landing">
-                                        <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
-                                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing">
+                                        <div class="dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
+                                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing dfe-card_explorer">
                                                 <div class="dfe-card-container">
                                                     <h3 class="dfc-code-search-jpTitle"><a class="dfc-code-search-jpTitle" href="/explore-careers/job-sector"  style="text-decoration: underline;">Explore by sector</a></h3>
 
@@ -53,8 +53,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
-                                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing">
+                                         <div class="dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
+                                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing dfe-card_explorer">
                                                 <div class="dfe-card-container">
                                                     <h3 class="dfc-code-search-jpTitle"><a class="dfc-code-search-jpTitle" href="/explore-careers/all-careers" style="text-decoration: underline;">Filter by category</a></h3>
 
@@ -84,8 +84,9 @@
                     </div>
                 </section>
             </div>
-        </div>
-    </div>
-</div> *@
+       @*  </div>
+    </div> *@
+    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
+</div>
 
 
