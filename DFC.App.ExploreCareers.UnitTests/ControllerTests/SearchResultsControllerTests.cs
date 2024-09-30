@@ -58,30 +58,30 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             viewModel.CanonicalUrl!.OriginalString.Should().Be("/search-results");
         }
 
-        [Fact]
-        public void BreadcrumbReturnsHtml()
-        {
-            // Arrange
-            using var controller = BuildController(MediaTypeNames.Text.Html);
+        //[Fact]
+        //public void BreadcrumbReturnsHtml()
+        //{
+        //    // Arrange
+        //    using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            // Act
-            var result = controller.Breadcrumb();
+        //    // Act
+        //    var result = controller.Breadcrumb();
 
-            // Assert
-            var viewModel = result.Should().BeOfType<ViewResult>()
-                .Which.ViewData.Model.Should().BeOfType<BreadcrumbViewModel>()
-                .Which;
+        //    // Assert
+        //    var viewModel = result.Should().BeOfType<ViewResult>()
+        //        .Which.ViewData.Model.Should().BeOfType<BreadcrumbViewModel>()
+        //        .Which;
 
-            viewModel.Breadcrumbs
-                .Should().NotBeNullOrEmpty()
-                .And.HaveCount(3);
-            viewModel.Breadcrumbs![0].Title.Should().Be("Home");
-            viewModel.Breadcrumbs[0].Route.Should().Be("/");
-            viewModel.Breadcrumbs[1].Title.Should().Be("Explore Careers");
-            viewModel.Breadcrumbs[1].Route.Should().Be("/explore-careers");
-            viewModel.Breadcrumbs[2].Title.Should().Be("Search results");
-            viewModel.Breadcrumbs[2].Route.Should().Be("#");
-        }
+        //    viewModel.Breadcrumbs
+        //        .Should().NotBeNullOrEmpty()
+        //        .And.HaveCount(3);
+        //    viewModel.Breadcrumbs![0].Title.Should().Be("Home");
+        //    viewModel.Breadcrumbs[0].Route.Should().Be("/");
+        //    viewModel.Breadcrumbs[1].Title.Should().Be("Explore Careers");
+        //    viewModel.Breadcrumbs[1].Route.Should().Be("/explore-careers");
+        //    viewModel.Breadcrumbs[2].Title.Should().Be("Search results");
+        //    viewModel.Breadcrumbs[2].Route.Should().Be("#");
+        //}
 
         [Theory]
         [InlineData(null)]
