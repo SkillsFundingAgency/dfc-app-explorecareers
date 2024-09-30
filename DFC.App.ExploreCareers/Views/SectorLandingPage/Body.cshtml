@@ -54,25 +54,57 @@
                             <div class="govuk-grid-row govuk-grid-row-sector-landing">
                                 @if (sectorLandingPage.JobProfile?.ContentItems != null && sectorLandingPage.JobProfile.ContentItems.Any())
                                 {
+
+
+
                                     @foreach (var item in sectorLandingPage.JobProfile.ContentItems)
+                                    {
+
+                                        <div class="govuk-width-container">
+                                            <div class="dfe-grid-container dfe-grid-container-expolore-career">
+                                                <div class="dfe-card dfe-card-expolore-career">
+                                                    {imgTag}
+                                                    <div class="dfe-card-container">
+                                                        <h2 class="govuk-heading-m">
+                                                            <a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{
+                                                                 @item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a>
+                                                        </h2>
+
+                                                        <p class="dfe-card-description dfe-card-description-expolore-career">
+                                                            Salary: <span class="dfc-code-search-jpSalary">£@item.SalaryStarterPerYear to £@item.SalaryExperiencedPerYear</span>
+                                                        </p>
+
+                                                        <p class="dfe-card-description dfe-card-description-expolore-career">@item.Overview</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                       
+                                    }
+
+
+
+
+                                  @*   @foreach (var item in sectorLandingPage.JobProfile.ContentItems)
                                     {
                                         <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
                                             <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing">
                                                 <div class="dfe-card-container">
                                                     <h3 class="dfc-code-search-jpTitle"><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a></h3>
 
-                                                    <p class="results-salary ">
+                                                    <p class="results-salary">
                                                         Salary: <span class="dfc-code-search-jpSalary">£@item.SalaryStarterPerYear to £@item.SalaryExperiencedPerYear</span>
                                                     </p>
 
                                                     <p class="result-description dfc-code-search-jpOverview">@item.Overview</p>
-                                                    
-                                                  @*   <p class="dfe-card-description dfe-card-description-expolore-career dfe-card-description-sector-landing">@item.Overview</p> *@
-                                                    
+                                                                                                        
                                                 </div>
                                             </div>
                                         </div>
-                                    }
+                                    } *@
+
+
                                 }
                                 else
                                 {
@@ -110,6 +142,26 @@
                                     @foreach (var item in sectorLandingPage.JobProfileInspiration.ContentItems)
                                     {
 
+                                        <div class="govuk-width-container">
+                                            <div class="dfe-grid-container dfe-grid-container-expolore-career">
+                                                <div class="dfe-card dfe-card-expolore-career">
+                                                    {imgTag}
+                                                    <div class="dfe-card-container">
+                                                        <h2 class="govuk-heading-m">
+                                                            <a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{
+                                                                     @item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a>
+                                                        </h2>
+
+                                                        <p class="dfe-card-description dfe-card-description-expolore-career">
+                                                            Salary: <span class="dfc-code-search-jpSalary">£@item.SalaryStarterPerYear to £@item.SalaryExperiencedPerYear</span>
+                                                        </p>
+
+                                                        <p class="dfe-card-description dfe-card-description-expolore-career">@item.Overview</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+@* 
                                         <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
                                             <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing">
                                                 <div class="dfe-card-container">
@@ -123,19 +175,6 @@
 
                                                     <p class="result-description dfc-code-search-jpOverview">@item.Overview</p>
                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                       @*  <div class="govuk-grid-column-one-third dfe-card-expolore-career-sector-landing govuk-!-margin-top-2">
-                                            <div class="dfe-card dfe-card-expolore-career dfe-card-expolore-career-sector-landing">
-                                                <div class="dfe-card-container dfe-card-container-sector-landing">
-                                                    <h2 class="govuk-heading-m"><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{ @item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a></h2>
-                                                    <p class="dfe-card-description dfe-card-description-expolore-career dfe-card-description-sector-landing">@item.Overview</p>
-                                                    <p class="dfe-card-description dfe-card-description-expolore-career dfe-card-description-sector-landing">
-                                                        Salary: @item.SalaryStarterPerYear.ToString("C0") to @item.SalaryExperiencedPerYear.ToString("C0")
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div> *@

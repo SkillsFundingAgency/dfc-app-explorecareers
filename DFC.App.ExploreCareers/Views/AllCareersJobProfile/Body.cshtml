@@ -1,189 +1,160 @@
 ﻿@model DFC.App.ExploreCareers.ViewModels.AllCareersJobProfile.BodyViewModel
 
 <div class='govuk-width-container'>
-    <div class="govuk-grid-row">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+                <div id="results">
+                    <div class="results-block">
+                        <div class="inner-block inner-block-extras-one-third">
+                            <h2 class="govuk-heading-s">Job categories</h2>
 
-        <div class="govuk-grid-column-one-half">
-            <div id="results">
-                <div class="results-block">
-                    <div class="inner-block">
-                        <h2 class="govuk-heading-s">Job categories</h2>
-
-                        <form method="get" action="/explore-careers/all-careers">
-                            @if (Model.CategoryContentItems != null && Model.CategoryContentItems.Any())
-                            {
-                                int index = 0;
-
-                                foreach (var category in Model.CategoryContentItems)
+                            <form method="get" action="/explore-careers/all-careers">
+                                @if (Model.CategoryContentItems != null && Model.CategoryContentItems.Any())
                                 {
-                                    <div class="govuk-form-group">
-                                        <fieldset class="govuk-fieldset">
-                                            <div class="govuk-checkboxes">
-                                                <div class="govuk-checkboxes__item">
-                                                    <input class="govuk-checkboxes__input"
-                                                           id="category_@index"
-                                                           name="selectedCategoryIds"
-                                                           type="checkbox"
-                                                           value="@category.ContentItemId"
-                                                    @(Model.selectedCategoryIds != null && Model.selectedCategoryIds.Contains(category.ContentItemId) ? "checked" : "")>
-                                                    <label class="govuk-label govuk-checkboxes__label" for="category_@index">
-                                                        @category.DisplayText
-                                                    </label>
+                                    int index = 0;
+
+                                    foreach (var category in Model.CategoryContentItems)
+                                    {
+                                        <div class="govuk-form-group">
+                                            <fieldset class="govuk-fieldset">
+                                                <div class="govuk-checkboxes">
+                                                    <div class="govuk-checkboxes__item">
+                                                        <input class="govuk-checkboxes__input"
+                                                               id="category_@index"
+                                                               name="selectedCategoryIds"
+                                                               type="checkbox"
+                                                               value="@category.ContentItemId"
+                                                        @(Model.selectedCategoryIds != null && Model.selectedCategoryIds.Contains(category.ContentItemId) ? "checked" : "")>
+                                                        <label class="govuk-label govuk-checkboxes__label" for="category_@index">
+                                                            @category.DisplayText
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
+                                            </fieldset>
+                                        </div>
 
-                                    index++;
+                                        index++;
+                                    }
                                 }
-                            }
 
-                            <p>
-                                <button type="submit" class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1">
-                                    Apply filters
-                                </button>
-                            </p>
+                                <p>
+                                    <button type="submit" class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1">
+                                        Apply filters
+                                    </button>
+                                </p>
 
-                            <p>
-                                <button type="submit" class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1" name="clearFilters" value="true">
-                                    Clear filters
-                                </button>
-                            </p>
+                                <p>
+                                    <button type="submit" class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1" name="clearFilters" value="true">
+                                        Clear filters
+                                    </button>
+                                </p>
 
-                        </form>
+                            </form>
 
-                       @*  <p>
-                            <a class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1"
-                               href="@Url.Action("document", "AllCareersJobProfile")">
-                                Clear filters
-                            </a>
-                        </p> *@
-
-                        <!-- Apply filters -->
-                       @*  <p>
-                            <a class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1"
-                               href="@Url.Action("ApplyFilters", "AllCareersJobProfile")">
-                                Apply filters
-                            </a>
-                        </p> *@
-
-                     @*    <!-- Apply filters -->
-                        <p>
-                            <button type="submit" class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1" formaction="@Url.Action("ApplyFilters", "AllCareersJobProfile")">
-                                Apply filters
-                            </button>
-                        </p>
-
-                        <!-- Clear filters -->
-                        <p>
-                            <a class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1"
-                               href="@Url.Action("ClearFilters", "AllCareersJobProfile")">
-                                Clear filters
-                            </a>
-                        </p> *@
-
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="govuk-grid-column-one-half">
+            <div class="govuk-grid-column-two-thirds">
 
-            <div id="results">
-                <div class="results-block">
-                    <div class="inner-block">
-                        <p id="result-count" class="result-count">
-                            Showing 1 to @Model.JobProfile.Count of @Model.TotalResults job profiles
-                        </p>
-                        @if (Model.JobProfile != null && Model.JobProfile.Any())
-                        {
-                            <ol class="results-list">
-                                @foreach (var job in Model.JobProfile)
-                                {
-                                    <li class="dfc-code-search-resultitem">
-                                        <h3><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
-
-                                        @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
-                                        {
-                                            <p class="meta dfc-code-search-jpAltTitle"><span class="sr-hidden">Alternative titles for this job include </span>@job.AlternativeTitle</p>
-                                        }
-
-                                        <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
-
-                                        <p class="results-salary">
-                                            Salary: <span class="dfc-code-search-jpSalary">£@job.SalaryStarterPerYear to £@job.SalaryExperiencedPerYear</span>
-                                        </p>
-
-                                        @if (job.JobProfileCategory != null && job.JobProfileCategory.ContentItems.Any())
-                                        {
-                                            <p class="results-categories">
-                                                Found in:
-                                                @Html.Raw(string.Join(", ", job.JobProfileCategory.ContentItems.Select(category => $"<sap>{category.DisplayText}</span>")))
-                                            </p>
-                                        }
-                                        else
-                                        {
-                                            <p class="results-categories">
-                                                Found in:
-                                            <p>No job profile sectors available.</p>
-                                            </p>
-                                        }
-                                    </li>
-                                }
-                            </ol>
-                        }
-                        else
-                        {
-                            <p>No job profile is available.</p>
-                        }
-                    </div>
-
-                     <div class="govuk-grid-row">
-                        <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-                    </div>
-
-                    <!-- Pagination -->
-                    <nav class="govuk-pagination" aria-label="Pagination">
-                        <ul class="govuk-pagination__list">
-                            @{
-                                // Calculate total pages
-                                int totalPages = (int)Math.Ceiling((double)@Model.TotalResults / @Model.PageSize);
-                                int startPage = Math.Max(1, @Model.PageNumber - 2);
-                                int endPage = Math.Min(startPage + 4, totalPages);
-
-                                // Render page numbers
-                                for (int i = startPage; i <= endPage; i++)
-                                {
-                                    <li class="govuk-pagination__item @(Model.PageNumber == i ? "govuk-pagination__item--current" : "")">
-                                        <a class="govuk-link govuk-pagination__link" href="?page=@i" aria-label="Page @i" @(Model.PageNumber == i ? "aria-current=\"page\"" : "")>
-                                            @i
-                                        </a>
-                                    </li>
-                                }
-                            }
-                        </ul>
-
-                        @if (Model.PageNumber < totalPages)
-                        {
-                            <!-- Next Page Link -->
-                            <div class="govuk-pagination__next">
-                                <a class="govuk-link govuk-pagination__link" href="?page=@(Model.PageNumber + 1)" rel="next">
-                                    <span class="govuk-pagination__link-title">
-                                        Next<span class="govuk-visually-hidden"> page</span>
-                                    </span>
-                                    <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-                                        <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-                                    </svg>
-                                </a>
+                <div id="results">
+                    <div class="results-block">
+                        <div class="inner-block govuk-heading-s">
+                            <p class="govuk-heading-s">
+                                Showing 1 to @Model.JobProfile.Count of @Model.TotalResults job profiles
+                            </p>
+                            <div class="govuk-grid-row section-break-two-thirds">
+                                <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
                             </div>
-                        }
-                    </nav>
+                            @if (Model.JobProfile != null && Model.JobProfile.Any())
+                            {
+                                <ol class="results-list results-list__extra ">
+                                    @foreach (var job in Model.JobProfile)
+                                    {
+                                        <li class="dfc-code-search-resultitem">
+                                            <h3><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
+
+                                            @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
+                                            {
+                                                <p class="meta dfc-code-search-jpAltTitle"><span class="sr-hidden">Alternative titles for this job include </span>@job.AlternativeTitle</p>
+                                            }
+
+                                            <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
+
+                                            <p class="results-salary">
+                                                Salary: <span class="dfc-code-search-jpSalary">£@job.SalaryStarterPerYear to £@job.SalaryExperiencedPerYear</span>
+                                            </p>
+
+                                            @if (job.JobProfileCategory != null && job.JobProfileCategory.ContentItems.Any())
+                                            {
+                                                <p class="results-categories">
+                                                    Found in:
+                                                    @Html.Raw(string.Join(", ", job.JobProfileCategory.ContentItems.Select(category => $"<sap>{category.DisplayText}</span>")))
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p class="results-categories">
+                                                    Found in:
+                                                <p>No job profile sectors available.</p>
+                                                </p>
+                                            }
+                                        </li>
+                                    }
+                                </ol>
+                            }
+                            else
+                            {
+                                <p>No job profile is available.</p>
+                            }
+                        </div>
+
+                        @*  <div class="govuk-grid-row"> *@
+                            <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+                       @*  </div> *@
+
+                        <!-- Pagination -->
+                        <nav class="govuk-pagination" aria-label="Pagination">
+                            <ul class="govuk-pagination__list">
+                                @{
+                                    // Calculate total pages
+                                    int totalPages = (int)Math.Ceiling((double)@Model.TotalResults / @Model.PageSize);
+                                    int startPage = Math.Max(1, @Model.PageNumber - 2);
+                                    int endPage = Math.Min(startPage + 4, totalPages);
+
+                                    // Render page numbers
+                                    for (int i = startPage; i <= endPage; i++)
+                                    {
+                                        <li class="govuk-pagination__item @(Model.PageNumber == i ? "govuk-pagination__item--current" : "")">
+                                            <a class="govuk-link govuk-pagination__link" href="?page=@i" aria-label="Page @i" @(Model.PageNumber == i ? "aria-current=\"page\"" : "")>
+                                                @i
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+
+                            @if (Model.PageNumber < totalPages)
+                            {
+                                <!-- Next Page Link -->
+                                <div class="govuk-pagination__next">
+                                    <a class="govuk-link govuk-pagination__link" href="?page=@(Model.PageNumber + 1)" rel="next">
+                                        <span class="govuk-pagination__link-title">
+                                            Next<span class="govuk-visually-hidden"> page</span>
+                                        </span>
+                                        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+                                            <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+                                        </svg>
+                                </a> 
+                                </div>
+                            }
+                        </nav>
+                    </div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-
-    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
-  
+        <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
 </div>
