@@ -35,8 +35,8 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfileSector
         [JsonProperty("sectorLandingPage")]
         public SectorLandingPage? SectorLandingPage { get; set; }
 
-        //[JsonProperty("image")]
-        //public Image Image { get; set; }
+        [JsonProperty("image")]
+        public Image Image { get; set; }
 
         [JsonProperty("sectorLandingPages")]
         public List<ViewModels.SectorLandingPage.SectorLandingPage>? SectorLandingPageSearchResults { get; set; } = new List<ViewModels.SectorLandingPage.SectorLandingPage>();

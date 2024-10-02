@@ -1,0 +1,43 @@
+﻿.dfe-card-container-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 30px; /* Add spacing between the cards */
+    margin-bottom: 20px;
+}
+
+/*.dfe-card-explore-career {
+    background-color: #f5f5f5;*/ /* Example background color */
+    /*padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}*/
+
+/*.dfe-card img {
+    max-width: 100%;*/ /* Make sure images are responsive */
+    /*height: auto;
+    margin-bottom: 10px;
+}*/
+
+/*.dfe-card-container h2 {
+    margin: 10px 0;
+}*/
+
+/*.dfe-card-description {
+    color: #666;
+    font-size: 14px;
+}*/
+
+
+@media (max-width: 768px) {
+    .dfe-card-container-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablet screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .dfe-card-container-grid {
+        grid-template-columns: 1fr; /* 1 card per row on mobile screens */
+    }
+}
+

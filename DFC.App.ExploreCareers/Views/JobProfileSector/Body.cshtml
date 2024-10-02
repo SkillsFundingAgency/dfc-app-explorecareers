@@ -2,7 +2,64 @@
 
 <div class='govuk-width-container'>
     <div class='dfe-grid-container dfe-grid-container-expolore-career'>
+
+
+
+
+       @*  <div class="dfe-card dfe-card-expolore-career">
+            <img src="https://lab-cdn.nationalcareersservice.org.uk/media/animal-care-jpeg.jpg" alt="animal-care-jpeg.jpg">
+            <div class="dfe-card-container">
+                <h2 class="govuk-heading-m">
+                    <a href="/explore-careers/job-sector/" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Catering and Hospitality</a>
+                </h2>
+                <p class="dfe-card-description dfe-card-description-expolore-career">Catering and hospitality jobs involve food preparation, service, tourism and taking care of guests.</p>
+            </div>
+        </div> *@
+
+
+     
+
         @if (Model.JobProfileSectors.Any())
+        {
+            <div class="dfe-card-container-grid">
+                @foreach (var jobProfile in Model.JobProfileSectors)
+                {
+                    var urlName = string.Empty;
+
+                    if (jobProfile.SectorLandingPage?.ContentItems != null)
+                    {
+                        urlName = jobProfile.SectorLandingPage.ContentItems
+                        .Select(x => x.PageLocation?.UrlName)
+                        .FirstOrDefault() ?? string.Empty;
+                    }
+
+                    <div class="dfe-card dfe-card-explore-career">
+                        @if (jobProfile.Image?.Urls != null && jobProfile.Image.Urls.Any())
+                        {
+                            <img src="@jobProfile.Image.Urls[0]" alt="job-sector-image">
+                        }
+
+                        <div class="dfe-card-container">
+                            <h2 class="govuk-heading-m">
+                                <a href="/explore-careers/job-sector/@urlName" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">@jobProfile.DisplayText</a>
+                            </h2>
+                            <p class="dfe-card-description dfe-card-description-explore-career">@jobProfile.Description</p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+
+        }
+        else
+        {
+            <p>No job profile sectors available.</p>
+        }
+
+
+
+
+       @*  @if (Model.JobProfileSectors.Any())
         {
             @foreach (var jobProfile in Model.JobProfileSectors)
             {
@@ -12,7 +69,7 @@
         else
         {
             <p>No job profile sectors available.</p>
-        }
+        } *@
     </div>
 
     <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using Azure.Core;
 using DFC.App.ExploreCareers.Interfaces;
@@ -248,6 +249,9 @@ namespace DFC.App.ExploreCareers.Services
                                         }}
                                         displayText
                                         description
+                                        image {{
+                                            urls
+                                        }}
                                         render
                                         sectorLandingPage {{
                                           contentItems {{
