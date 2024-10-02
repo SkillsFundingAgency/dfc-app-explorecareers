@@ -28,10 +28,89 @@ namespace DFC.App.ExploreCareers.Services
 
         public async Task<List<JobProfileSector>> GetItemByKey(string key)
         {
+            //string query = $@"
+            //query MyQuery {{
+            //  sectorLandingPage(
+            //    where: {{contentItemId: ""{key}""}}
+            //    status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
+            //    ) {{
+            //    contentItemId
+            //    displayText
+            //    heroBanner {{
+            //      html
+            //    }}
+            //    description {{
+            //      html
+            //    }}
+            //    videoImage {{
+            //      paths
+            //      urls
+            //    }}
+            //    videoDuration
+            //    videoTranscript
+            //    profileDescription {{
+            //        html
+            //    }}
+            //    jobProfile {{
+            //      contentItems {{
+            //        displayText
+            //        ... on JobProfile {{
+            //          modifiedUtc
+            //          overview
+            //          salarystarterperyear
+            //          salaryexperiencedperyear
+            //          pageLocation {{
+            //            fullUrl
+            //          }}
+            //        }}
+            //      }}
+            //    }}
+            //    jobDescription {{
+            //        html
+            //    }}
+            //    furtherInspiration {{
+            //        html
+            //    }}
+            //    jobProfileInspiration {{
+            //      contentItems {{
+            //        displayText
+            //        ... on JobProfile {{
+            //          displayText
+            //          overview
+            //          salarystarterperyear
+            //          salaryexperiencedperyear
+            //          pageLocation {{
+            //            fullUrl
+            //          }}
+            //        }}
+            //      }}
+            //    }}
+            //    jobProfileInspirationDescription {{
+            //        html
+            //    }}
+            //    realStoryDescription {{
+            //      html
+            //    }}
+            //    realStoryImage {{
+            //      paths
+            //      urls
+            //      mediaText
+            //    }}
+            //    realStoryImageDescription {{
+            //      html
+            //    }}
+            //    exploreAllSectors {{
+            //      html
+            //    }}
+            //  }}
+            //}}";
+
+
+
             string query = $@"
             query MyQuery {{
               sectorLandingPage(
-                where: {{contentItemId: ""{key}""}}
+                where: {{pageLocation: {{urlName: ""{key}""}}}}
                 status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
                 ) {{
                 contentItemId
@@ -105,7 +184,6 @@ namespace DFC.App.ExploreCareers.Services
               }}
             }}";
 
-
             Func<SectorLandingPageResponse, List<ViewModels.SectorLandingPage.SectorLandingPage>> recSelector = col => col.SectorLandingPage;
 
             var result = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: key, recSelector);
@@ -137,35 +215,6 @@ namespace DFC.App.ExploreCareers.Services
 
         public async Task<List<JobProfileSector>> LoadAll()
         {
-            //string query = @"query MyQuery($first:Int!, $skip: Int!) {
-            //      jobProfileSector(
-            //        first: $first
-            //        skip: $skip
-            //      ) {
-            //        contentItemId
-            //        graphSync {
-            //          nodeId
-            //        }
-            //        displayText
-            //        render
-            //      }
-            //}";
-
-
-            //string query = $@"query MyQuery($status:Status!, $first:Int!, $skip: Int!) {{
-            //      jobProfileSector(
-            //        status: {NcsGraphQLTokens.GraphQLStatusToken}
-            //        first: {NcsGraphQLTokens.PaginationCountToken}
-            //        skip: {NcsGraphQLTokens.SkipCountToken}
-            //      ) {{
-            //        contentItemId
-            //        graphSync {{
-            //          nodeId
-            //        }}
-            //        displayText
-            //        render
-            //      }}
-            //}}";
 
             //string query = $@"query MyQuery {{
             //                          jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
@@ -174,12 +223,25 @@ namespace DFC.App.ExploreCareers.Services
             //                              nodeId
             //                            }}
             //                            displayText
+            //                            description
             //                            render
+            //                            sectorLandingPage {{
+            //                                contentItems {{
+            //                                contentItemId
+            //                                }}
+            //                            }}
             //                          }}
             //                        }}";
 
+
+
+
             string query = $@"query MyQuery {{
-                                      jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
+                                      jobProfileSector(
+                                        status: {NcsGraphQLTokens.GraphQLStatusToken}, 
+                                        first: {NcsGraphQLTokens.PaginationCountToken}, 
+                                        skip: {NcsGraphQLTokens.SkipCountToken},
+                                        orderBy: {{displayText: ASC}}) {{
                                         contentItemId
                                         graphSync {{
                                           nodeId
@@ -188,9 +250,16 @@ namespace DFC.App.ExploreCareers.Services
                                         description
                                         render
                                         sectorLandingPage {{
-                                            contentItems {{
+                                          contentItems {{
                                             contentItemId
+                                            ... on SectorLandingPage {{
+                                              displayText
+                                              pageLocation {{
+                                                fullUrl
+                                                urlName
+                                              }}
                                             }}
+                                          }}
                                         }}
                                       }}
                                     }}";
@@ -199,9 +268,10 @@ namespace DFC.App.ExploreCareers.Services
             {
                 Func<JobProfileSectorResponse, List<JobProfileSector>> recSelector = col => col.JobProfileSector;
 
-                var response = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyJobProfileSector, recSelector);
+                var response = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: Guid.NewGuid().ToString(), recSelector);
 
                 // Ensure response is properly initialized and has non-null Data
+
                 if (response.Data == null)
                 {
                     // Handle the null case, e.g., throw an exception, return a default value, etc.

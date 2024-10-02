@@ -35,6 +35,9 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfileSector
         [JsonProperty("sectorLandingPage")]
         public SectorLandingPage? SectorLandingPage { get; set; }
 
+        //[JsonProperty("image")]
+        //public Image Image { get; set; }
+
         [JsonProperty("sectorLandingPages")]
         public List<ViewModels.SectorLandingPage.SectorLandingPage>? SectorLandingPageSearchResults { get; set; } = new List<ViewModels.SectorLandingPage.SectorLandingPage>();
 
@@ -65,12 +68,33 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfileSector
     {
         [JsonProperty("contentItemId")]
         public string ContentItemId { get; set; } = string.Empty;
+
+        [JsonProperty("displayText")]
+        public string DisplayText { get; set; }
+
+        [JsonProperty("pageLocation")]
+        public PageLocation PageLocation { get; set; }
     }
 
     public class Content
     {
         [JsonProperty("html")]
         public string Html { get; set; }
+    }
+
+    public class PageLocation
+    {
+        [JsonProperty("fullUrl")]
+        public string FullUrl { get; set; }
+
+        [JsonProperty("urlName")]
+        public string UrlName { get; set; } = string.Empty;
+    }
+
+    public class Image
+    {
+        [JsonProperty("Urls")]
+        public List<string> Urls { get; set; } 
     }
 
 

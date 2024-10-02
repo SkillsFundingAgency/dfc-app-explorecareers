@@ -28,16 +28,16 @@ namespace DFC.App.ExploreCareers.Controllers
                         Route = $"/{ExploreCareersController.ExploreCareersViewCanonicalName}",
                         Title = BradcrumbTitle,
                     },
-                    new BreadcrumbItemViewModel()
-                    {
-                        Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}",
-                        Title = "Explore by job sector",
-                    },
-                    new BreadcrumbItemViewModel()
-                    {
-                        Route = $"/{JobProfileController.JobProfilesViewCanonicalName}",
-                        Title = breadcrumbItemModel.AlternativeTitle,
-                    },
+                    //new BreadcrumbItemViewModel()
+                    //{
+                    //    Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}",
+                    //    Title = "Explore by job sector",
+                    //},
+                    //new BreadcrumbItemViewModel()
+                    //{
+                    //    Route = $"/{JobProfileController.JobProfilesViewCanonicalName}",
+                    //    Title = breadcrumbItemModel.AlternativeTitle,
+                    //},
 
                 },
             };

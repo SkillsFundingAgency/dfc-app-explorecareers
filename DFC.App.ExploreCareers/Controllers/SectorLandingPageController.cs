@@ -11,7 +11,9 @@ using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
-    [Route("explore-careers/job-sector-landing")]
+    //[Route("explore-careers/job-sector-landing")]
+    [Route("explore-careers")]
+    //[Route("explore-careers/job-sector/{sectorName}")]
     public class SectorLandingPageController : BaseController
     {
         public const string SectorLandingPageViewCanonicalName = "Sector landing page";
@@ -30,8 +32,8 @@ namespace DFC.App.ExploreCareers.Controllers
 
         [HttpGet]
         //[Route("head")]
-        [Route("head")]
-        public IActionResult Head()
+        [Route("job-sector/{sectorName}/head")]
+        public IActionResult Head(string sectorName)
         {
             var viewModel = GetHeadViewModel();
 
@@ -40,7 +42,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("bodytop")]
+        [Route("job-sector/{sectorName}/bodytop")]
         public IActionResult BodyTop()
         {
             logger.LogInformation($"{nameof(BodyTop)} has returned content");
@@ -48,9 +50,9 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        //[Route("")]
-        [Route("document")]
-        public async Task<IActionResult> Document()
+        [Route("job-sector/{sectorName}/document")]
+        //public async Task<IActionResult> Document(string sectorName)
+        public async Task<IActionResult> Document(string sectorName)
         {
             var contentItemId = Request.Query["id"].ToString();
 
@@ -64,7 +66,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 return this.NegotiateContentResult(emptyViewModel); // Return the empty view model
             }
 
-            var viewModel = await CreateDocumentViewModelAsync(contentItemId);
+            var viewModel = await CreateDocumentViewModelAsync(sectorName);
             if (viewModel == null)
             {
                 return NotFound();
@@ -75,7 +77,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
 
         [HttpGet]
-        [Route("body")]
+        [Route("job-sector/{sectorName}/body")]
         public async Task<IActionResult> BodyAsync()
         {
             var contentItemId = Request.Query["id"].ToString();
@@ -90,17 +92,6 @@ namespace DFC.App.ExploreCareers.Controllers
             logger.LogInformation($"{nameof(BodyAsync)} has returned content");
             return this.NegotiateContentResult(bodyViewModel);
         }
-
-        [HttpGet]
-        public IActionResult RedirectToJobsProfile(string displayText, string contentItemId)
-        {
-            // Store the contentItemId in TempData to pass it to the GET action
-            TempData["ContentItemId"] = contentItemId;
-
-            // Redirect to DocumentAsync GET method with displayText in the URL (jobSector)
-            return RedirectToAction("DocumentAsync", "job-profiles", new { jobSector = displayText });
-        }
-
 
         private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(string key)
         {

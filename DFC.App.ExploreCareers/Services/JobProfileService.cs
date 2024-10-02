@@ -21,7 +21,6 @@ namespace DFC.App.ExploreCareers.Services
 {
     public class JobProfileService : CmsRepositoryBase, IJobProfileService
     {
-        public const string CacheKeyAllJobProfile = "all-job-profile";
         public const string CacheKeyAllCategories = "all-categories";
 
         public JobProfileService(ICmsQueryManager querymanager, ILogger<CmsRepositoryBase> logger) : base(querymanager, logger)

@@ -7,7 +7,7 @@ namespace DFC.App.ExploreCareers.Extensions
 {
     public static class HtmlProcessingExtensions
     {
-        public static string RearrangeHtml(string htmlContent, string? sectorPageLandingId)
+        public static string RearrangeHtml(string htmlContent, string? sectorPageLandingId, string? urlName)
         {
             // Initialize variables
             string title = "Default Title";
@@ -53,16 +53,28 @@ namespace DFC.App.ExploreCareers.Extensions
                     .Replace(" ", "-")
                     .Replace(",", string.Empty);
 
+
             var newHtml = $@"
             <div class='dfe-card dfe-card-expolore-career'>
                 {imgTag}
                 <div class='dfe-card-container'>
                     <h2 class='govuk-heading-m'>
-                        <a href='/explore-careers/job-sector-landing?sector-page={titleUrl}&id={sectorPageLandingId}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
+                        <a href='/explore-careers/job-sector/{urlName}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
                     </h2>
                     <p class='dfe-card-description dfe-card-description-expolore-career'>{description}</p>
                 </div>
             </div>";
+
+            //var newHtml = $@"
+            //<div class='dfe-card dfe-card-expolore-career'>
+            //    {imgTag}
+            //    <div class='dfe-card-container'>
+            //        <h2 class='govuk-heading-m'>
+            //            <a href='/explore-careers/job-sector-landing?sector-page={titleUrl}&id={sectorPageLandingId}' class='govuk-link govuk-link--no-visited-state dfe-card-link--header'>{title}</a>
+            //        </h2>
+            //        <p class='dfe-card-description dfe-card-description-expolore-career'>{description}</p>
+            //    </div>
+            //</div>";
 
             return newHtml;
         }
