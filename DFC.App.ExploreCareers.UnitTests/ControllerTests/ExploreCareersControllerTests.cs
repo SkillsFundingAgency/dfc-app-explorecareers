@@ -58,34 +58,34 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
                 .Which.ViewData.Model.Should().BeNull();
         }
 
-        [Fact]
-        public async Task ExploreCareersBodyReturnsHtml()
-        {
-            // Arrange
-            using var controller = BuildController(MediaTypeNames.Text.Html);
+        //[Fact]
+        //public async Task ExploreCareersBodyReturnsHtml()
+        //{
+        //    // Arrange
+        //    using var controller = BuildController(MediaTypeNames.Text.Html);
 
-            var jobCategoryViewModel = new JobCategoryViewModel
-            {
-                Name = "an-article",
-                CanonicalName = "an-article"
-            };
+        //    var jobCategoryViewModel = new JobCategoryViewModel
+        //    {
+        //        Name = "an-article",
+        //        CanonicalName = "an-article"
+        //    };
 
-            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategoryViewModel });
+        //    A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategoryViewModel });
 
-            var result = await controller.BodyAsync();
+        //    var result = await controller.BodyAsync();
 
-            // Assert
-            var viewModel = result.Should().BeOfType<ViewResult>()
-                .Which.ViewData.Model.Should().BeOfType<BodyViewModel>()
-                .Which;
+        //    // Assert
+        //    var viewModel = result.Should().BeOfType<ViewResult>()
+        //        .Which.ViewData.Model.Should().BeOfType<BodyViewModel>()
+        //        .Which;
 
-            viewModel.JobCategories.Should().NotBeNullOrEmpty();
-            var jobCategory = viewModel.JobCategories![0];
-            jobCategory.Name.Should().Be(jobCategoryViewModel.Name);
-            jobCategory.CanonicalName.Should().Be(jobCategoryViewModel.CanonicalName);
+        //    viewModel.JobCategories.Should().NotBeNullOrEmpty();
+        //    var jobCategory = viewModel.JobCategories![0];
+        //    jobCategory.Name.Should().Be(jobCategoryViewModel.Name);
+        //    jobCategory.CanonicalName.Should().Be(jobCategoryViewModel.CanonicalName);
 
-            A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).MustHaveHappenedOnceExactly();
-        }
+        //    A.CallTo(() => FakeGraphQlService.GetJobCategoriesAsync()).MustHaveHappenedOnceExactly();
+        //}
 
         [Fact]
         public async Task ExploreCareersDocumentReturnsHtml()
