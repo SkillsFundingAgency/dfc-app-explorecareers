@@ -11,9 +11,7 @@ using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
-    //[Route("explore-careers/job-sector-landing")]
     [Route("explore-careers")]
-    //[Route("explore-careers/job-sector/{sectorName}")]
     public class SectorLandingPageController : BaseController
     {
         public const string SectorLandingPageViewCanonicalName = "Sector landing page";
@@ -31,8 +29,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        //[Route("head")]
-        [Route("job-sector/{sectorName}/head")]
+        [Route("head/job-sector/{sectorName}")]
         public IActionResult Head(string sectorName)
         {
             var viewModel = GetHeadViewModel();
@@ -42,7 +39,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("job-sector/{sectorName}/bodytop")]
+        [Route("bodytop/job-sector/{sectorName}")]
         public IActionResult BodyTop()
         {
             logger.LogInformation($"{nameof(BodyTop)} has returned content");
@@ -50,8 +47,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        [Route("job-sector/{sectorName}/document")]
-        //public async Task<IActionResult> Document(string sectorName)
+        [Route("document/job-sector/{sectorName}")]
         public async Task<IActionResult> Document(string sectorName)
         {
             var contentItemId = Request.Query["id"].ToString();
@@ -75,23 +71,22 @@ namespace DFC.App.ExploreCareers.Controllers
             return this.NegotiateContentResult(viewModel);
         }
 
+        //[HttpGet]
+        //[Route("body/job-sector/{sectorName}")]
+        //public async Task<IActionResult> BodyAsync()
+        //{
+        //    var contentItemId = Request.Query["id"].ToString();
+        //    var titleUrl = Request.Query["sector-page"].ToString();
 
-        [HttpGet]
-        [Route("job-sector/{sectorName}/body")]
-        public async Task<IActionResult> BodyAsync()
-        {
-            var contentItemId = Request.Query["id"].ToString();
-            var titleUrl = Request.Query["sector-page"].ToString();
+        //    var bodyViewModel = await CreateBodyViewModelAsync(titleUrl);
+        //    if (bodyViewModel == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var bodyViewModel = await CreateBodyViewModelAsync(titleUrl);
-            if (bodyViewModel == null)
-            {
-                return NotFound();
-            }
-
-            logger.LogInformation($"{nameof(BodyAsync)} has returned content");
-            return this.NegotiateContentResult(bodyViewModel);
-        }
+        //    logger.LogInformation($"{nameof(BodyAsync)} has returned content");
+        //    return this.NegotiateContentResult(bodyViewModel);
+        //}
 
         private async Task<DocumentViewModel?> CreateDocumentViewModelAsync(string key)
         {
@@ -112,8 +107,6 @@ namespace DFC.App.ExploreCareers.Controllers
                 Breadcrumb = BuildBreadcrumb(sectorLandingPages[0].DisplayText),
                 Body = new BodyViewModel { SectorLandingPage = sectorLandingPages }
             };
-
-            ////await Task.Delay(1, cancellationToken: default).ConfigureAwait(false);
 
             return viewModel;
         }
@@ -148,18 +141,7 @@ namespace DFC.App.ExploreCareers.Controllers
             };
         }
 
-        //private HeadViewModel GetHeadViewModel(string? pageTitle = null)
-        //{
-        //    return new HeadViewModel
-        //    {
-        //        CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{SectorLandingPageViewCanonicalName}", UriKind.RelativeOrAbsolute),
-        //        Title = string.IsNullOrWhiteSpace(pageTitle)
-        //            ? DefaultPageTitleSuffix
-        //            : $"{pageTitle} | {DefaultPageTitleSuffix}"
-        //    };
-        //}
-
         private static BreadcrumbViewModel BuildBreadcrumb(string title) =>
-             BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "#" });
+             BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = title, Route = "job-sector" });
     }
 }

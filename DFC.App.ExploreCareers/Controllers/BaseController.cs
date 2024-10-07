@@ -14,6 +14,9 @@ namespace DFC.App.ExploreCareers.Controllers
         protected static BreadcrumbViewModel BuildBreadcrumb(BreadcrumbItemModel? breadcrumbItemModel)
         {
             const string BradcrumbTitle = "Explore Careers";
+
+
+
             var viewModel = new BreadcrumbViewModel
             {
                 Breadcrumbs = new List<BreadcrumbItemViewModel>()
@@ -28,17 +31,6 @@ namespace DFC.App.ExploreCareers.Controllers
                         Route = $"/{ExploreCareersController.ExploreCareersViewCanonicalName}",
                         Title = BradcrumbTitle,
                     },
-                    //new BreadcrumbItemViewModel()
-                    //{
-                    //    Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}",
-                    //    Title = "Explore by job sector",
-                    //},
-                    //new BreadcrumbItemViewModel()
-                    //{
-                    //    Route = $"/{JobProfileController.JobProfilesViewCanonicalName}",
-                    //    Title = breadcrumbItemModel.AlternativeTitle,
-                    //},
-
                 },
             };
 
@@ -46,6 +38,17 @@ namespace DFC.App.ExploreCareers.Controllers
                 !breadcrumbItemModel.Title.Equals(BradcrumbTitle, StringComparison.OrdinalIgnoreCase) &&
                 !string.IsNullOrWhiteSpace(breadcrumbItemModel.Route))
             {
+                if (breadcrumbItemModel.Route == "job-sector")
+                {
+                    var articlePathJobSectorPathViewModel = new BreadcrumbItemViewModel
+                    {
+                        Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}",
+                        Title = "Explore by job sector",
+                    };
+
+                    viewModel.Breadcrumbs.Add(articlePathJobSectorPathViewModel);
+                }
+
                 var articlePathViewModel = new BreadcrumbItemViewModel
                 {
                     Route = breadcrumbItemModel.Route,

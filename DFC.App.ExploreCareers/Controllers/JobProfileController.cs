@@ -98,12 +98,12 @@ namespace DFC.App.ExploreCareers.Controllers
 
             var totalJobProfilesCount = jobProfiles.Count;
 
-           var viewModel = new DocumentViewModel
+            var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
                 Breadcrumb = BuildBreadcrumb(jobProfiles[0].JobSectorTitle),
                 Body = new BodyViewModel 
-                { 
+                {
                     JobProfile = paginatedJobProfiles,
                     sectorlandingContentItemId = key,
                     jobSector = jobSector,

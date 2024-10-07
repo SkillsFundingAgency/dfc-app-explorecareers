@@ -52,7 +52,7 @@ namespace DFC.App.ExploreCareers.Controllers
         {
             var viewModel = new DocumentViewModel
             {
-                Head = GetHeadViewModel(),
+                //Head = GetHeadViewModel(),
                 Body = await GetBodyViewModelAsync(),
             };
 
@@ -60,15 +60,15 @@ namespace DFC.App.ExploreCareers.Controllers
             return this.NegotiateContentResult(viewModel);
         }
 
-        [HttpGet]
-        [Route("body")]
-        public async Task<IActionResult> BodyAsync()
-        {
-            BodyViewModel viewModel = await GetBodyViewModelAsync();
+        //[HttpGet]
+        //[Route("body")]
+        //public async Task<IActionResult> BodyAsync()
+        //{
+        //    BodyViewModel viewModel = await GetBodyViewModelAsync();
 
-            logger.LogInformation($"{nameof(BodyAsync)} has returned content");
-            return this.NegotiateContentResult(viewModel);
-        }
+        //    logger.LogInformation($"{nameof(BodyAsync)} has returned content");
+        //    return this.NegotiateContentResult(viewModel);
+        //}
 
         private HeadViewModel GetHeadViewModel(string? pageTitle = null)
         {

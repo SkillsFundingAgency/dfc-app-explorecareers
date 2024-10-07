@@ -241,28 +241,6 @@ namespace DFC.App.ExploreCareers.Services
 
             var formattedcontentItemIds = string.Join(", ", contentItemIds.Select(id => $"\"{id}\""));
 
-            //// Construct the GraphQL query contentItemId_in
-            //var jobProfileQuery = $@"
-            //    query MyQuery {{
-            //        jobProfile(
-            //        where: {{contentItemId_in: [{formattedcontentItemIds}]}},
-            //        status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
-            //            ) 
-            //        {{
-            //        displayText
-            //        contentItemId
-            //        overview
-            //        salarystarterperyear
-            //        salaryexperiencedperyear
-            //        jobProfileSector {{
-            //            contentItems {{
-            //            displayText
-            //            }}
-            //        }}
-            //        }}
-            //    }}";
-
-
             // Construct the GraphQL query contentItemId_in
             var jobProfileQuery = $@"
                 query MyQuery {{
@@ -324,36 +302,6 @@ namespace DFC.App.ExploreCareers.Services
             }
 
             var formattedJobSectorDisplayTexts = string.Join(", ", JobSectorDisplayTexts.Select(text => $"\"{text}\""));
-
-            //var formattedcontentItemIds = string.Join(", ", contentItemIds.Select(id => $"\"{id}\""));
-
-
-            //string sectorLandingPageUrlQuery = $@"
-            //    query MyQuery {{
-            //      jobProfileSector(
-            //        where: {{contentItemId_in: [{formattedcontentItemIds}]}},
-            //        status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
-            //      ) {{
-            //        contentItemId
-            //        displayText
-            //        sectorLandingPage {{
-            //          contentItems {{
-            //            displayText
-            //            contentItemId
-            //            ... on SectorLandingPage {{
-            //              displayText
-            //              modifiedUtc
-            //              pageLocation {{
-            //                fullUrl
-            //                urlName
-            //              }}
-            //            }}
-            //          }}
-            //        }}
-            //      }}
-            //    }}";
-
-
             string sectorLandingPageUrlQuery = $@"
                 query MyQuery {{
                   jobProfileSector(

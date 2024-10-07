@@ -29,102 +29,23 @@ namespace DFC.App.ExploreCareers.Services
 
         public async Task<List<JobProfileSector>> GetItemByKey(string key)
         {
-            //string query = $@"
-            //query MyQuery {{
-            //  sectorLandingPage(
-            //    where: {{contentItemId: ""{key}""}}
-            //    status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
-            //    ) {{
-            //    contentItemId
-            //    displayText
-            //    heroBanner {{
-            //      html
-            //    }}
-            //    description {{
-            //      html
-            //    }}
-            //    videoImage {{
-            //      paths
-            //      urls
-            //    }}
-            //    videoDuration
-            //    videoTranscript
-            //    profileDescription {{
-            //        html
-            //    }}
-            //    jobProfile {{
-            //      contentItems {{
-            //        displayText
-            //        ... on JobProfile {{
-            //          modifiedUtc
-            //          overview
-            //          salarystarterperyear
-            //          salaryexperiencedperyear
-            //          pageLocation {{
-            //            fullUrl
-            //          }}
-            //        }}
-            //      }}
-            //    }}
-            //    jobDescription {{
-            //        html
-            //    }}
-            //    furtherInspiration {{
-            //        html
-            //    }}
-            //    jobProfileInspiration {{
-            //      contentItems {{
-            //        displayText
-            //        ... on JobProfile {{
-            //          displayText
-            //          overview
-            //          salarystarterperyear
-            //          salaryexperiencedperyear
-            //          pageLocation {{
-            //            fullUrl
-            //          }}
-            //        }}
-            //      }}
-            //    }}
-            //    jobProfileInspirationDescription {{
-            //        html
-            //    }}
-            //    realStoryDescription {{
-            //      html
-            //    }}
-            //    realStoryImage {{
-            //      paths
-            //      urls
-            //      mediaText
-            //    }}
-            //    realStoryImageDescription {{
-            //      html
-            //    }}
-            //    exploreAllSectors {{
-            //      html
-            //    }}
-            //  }}
-            //}}";
-
-
-
             string query = $@"
             query MyQuery {{
-              sectorLandingPage(
+                sectorLandingPage(
                 where: {{pageLocation: {{urlName: ""{key}""}}}}
                 status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
                 ) {{
                 contentItemId
                 displayText
                 heroBanner {{
-                  html
+                    html
                 }}
                 description {{
-                  html
+                    html
                 }}
                 videoImage {{
-                  paths
-                  urls
+                    paths
+                    urls
                 }}
                 videoDuration
                 videoTranscript
@@ -132,18 +53,18 @@ namespace DFC.App.ExploreCareers.Services
                     html
                 }}
                 jobProfile {{
-                  contentItems {{
+                    contentItems {{
                     displayText
                     ... on JobProfile {{
-                      modifiedUtc
-                      overview
-                      salarystarterperyear
-                      salaryexperiencedperyear
-                      pageLocation {{
+                        modifiedUtc
+                        overview
+                        salarystarterperyear
+                        salaryexperiencedperyear
+                        pageLocation {{
                         fullUrl
-                      }}
+                        }}
                     }}
-                  }}
+                    }}
                 }}
                 jobDescription {{
                     html
@@ -152,37 +73,37 @@ namespace DFC.App.ExploreCareers.Services
                     html
                 }}
                 jobProfileInspiration {{
-                  contentItems {{
+                    contentItems {{
                     displayText
                     ... on JobProfile {{
-                      displayText
-                      overview
-                      salarystarterperyear
-                      salaryexperiencedperyear
-                      pageLocation {{
+                        displayText
+                        overview
+                        salarystarterperyear
+                        salaryexperiencedperyear
+                        pageLocation {{
                         fullUrl
-                      }}
+                        }}
                     }}
-                  }}
+                    }}
                 }}
                 jobProfileInspirationDescription {{
                     html
                 }}
                 realStoryDescription {{
-                  html
+                    html
                 }}
                 realStoryImage {{
-                  paths
-                  urls
-                  mediaText
+                    paths
+                    urls
+                    mediaText
                 }}
                 realStoryImageDescription {{
-                  html
+                    html
                 }}
                 exploreAllSectors {{
-                  html
+                    html
                 }}
-              }}
+                }}
             }}";
 
             Func<SectorLandingPageResponse, List<ViewModels.SectorLandingPage.SectorLandingPage>> recSelector = col => col.SectorLandingPage;
@@ -195,9 +116,6 @@ namespace DFC.App.ExploreCareers.Services
                 return null;
             }
 
-            //var sectorLandingPages = JsonConvert.DeserializeObject<List<ViewModels.SectorLandingPage.SectorLandingPage>>(result.Data.ToString());
-
-            // Step 5: Map SectorLandingPage to JobProfileSector and return
             var jobProfileSectors = new List<JobProfileSector>();
 
             foreach (var sectorLandingPage in result.Data)
@@ -216,26 +134,6 @@ namespace DFC.App.ExploreCareers.Services
 
         public async Task<List<JobProfileSector>> LoadAll()
         {
-
-            //string query = $@"query MyQuery {{
-            //                          jobProfileSector(status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}) {{
-            //                            contentItemId
-            //                            graphSync {{
-            //                              nodeId
-            //                            }}
-            //                            displayText
-            //                            description
-            //                            render
-            //                            sectorLandingPage {{
-            //                                contentItems {{
-            //                                contentItemId
-            //                                }}
-            //                            }}
-            //                          }}
-            //                        }}";
-
-
-
 
             string query = $@"query MyQuery {{
                                       jobProfileSector(

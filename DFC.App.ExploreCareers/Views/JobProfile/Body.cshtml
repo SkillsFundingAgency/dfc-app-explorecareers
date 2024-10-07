@@ -29,7 +29,11 @@
                                 <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
 
                                 <p class="results-salary">
-                                    Salary: <span class="dfc-code-search-jpSalary">£@job.SalaryStarterPerYear to £@job.SalaryExperiencedPerYear</span>
+                                    Salary:   <span class="dfc-code-search-jpSalary">
+                                        @((job.SalaryStarterPerYear == 0 && job.SalaryExperiencedPerYear == 0)
+                                            ? "Variable"
+                                            : ("£" + job.SalaryStarterPerYear.ToString("N0") + " to £" + job.SalaryExperiencedPerYear.ToString("N0")))
+                                    </span>
                                 </p>
 
                                 @if (job.JobProfileSector != null && job.JobProfileSector.ContentItems.Any())
@@ -38,10 +42,6 @@
                                         Found in:
                                         @Html.Raw(string.Join(" ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='/explore-careers/job-sector-landing?{sector.FullUrl}'>{sector.DisplayText}</a>")))
                                     </p>
-                                   @*  <p class="results-categories">
-                                        Found in:
-                                        @Html.Raw(string.Join(", ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='#'>{sector.DisplayText}</a>")))
-                                    </p> *@
                                 } 
                                 else
                                 {

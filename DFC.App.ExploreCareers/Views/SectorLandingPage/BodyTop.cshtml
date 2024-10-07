@@ -4,18 +4,13 @@
 
 
 <section aria-label="Search">
-    <div class="ncs-hero page-hero">
+  @*   <div class="ncs-hero page-hero">
 
         @if (Model?.SectorLandingPage != null && Model.SectorLandingPage.Any() && Model.SectorLandingPage[0]?.HeroBanner?.Html != null)
         {
-            <div class="d-only">
-                @Html.Raw(Model.SectorLandingPage[0].HeroBanner.Html)
-            </div>
-
-          @*   <!-- Mobile image -->
-            <div class="m-only">
-                @Html.Raw(Model.SectorLandingPage[0].HeroBanner.Html)
-            </div> *@
+          
+             @Html.Raw(Model.SectorLandingPage[0].HeroBanner.Html)
+          
         }
         else
         {
@@ -24,5 +19,22 @@
             </div>
         }
 
-    </div>
+    </div> *@
+
+    @* @Html.Raw(Model?.SectorLandingPage?[0]?.HeroBanner?.Html ?? "") *@
+
+
+    <section aria-label="Search">
+        <div class="ncs-hero page-hero">
+            <div class="content govuk-width-container">
+                @Html.Raw(Model?.SectorLandingPage?[0]?.HeroBanner?.Html ?? "")
+               @*  <div class="govuk-grid-row">
+                    <div class="block ncs">
+                        @Html.Raw(Model?.SectorLandingPage?[0]?.HeroBanner?.Html ?? "")
+                    </div>
+                </div> *@
+            </div>
+        </div>
+    </section>
+
 </section>
