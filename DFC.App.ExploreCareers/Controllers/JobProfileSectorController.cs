@@ -99,6 +99,7 @@ namespace DFC.App.ExploreCareers.Controllers
             return bodyViewModel;
         }
 
+
         private async Task<List<JobProfileSector>?> LoadAndProcessJobSectorsAsync()
         {
 
@@ -120,20 +121,46 @@ namespace DFC.App.ExploreCareers.Controllers
                                 .Select(x => x.PageLocation?.UrlName)
                                 .FirstOrDefault() ?? string.Empty;
                 }
-
-                var sectorPageLandingId = jobProfile.SectorLandingPage?.ContentItems?.FirstOrDefault()?.ContentItemId ?? "0";
-                jobProfile.Render = HtmlProcessingExtensions.RearrangeHtml(jobProfile.Render, sectorPageLandingId, urlName);
             }
-
-            // Generate HTML for each job sector to be used in the grid
-            var cardsHtml = jobSectors.Select(jobProfile => jobProfile.Render).ToList();
-            var gridHtml = HtmlProcessingExtensions.GenerateGridHtml(cardsHtml);
-
-            // Update job sectors with grid HTML or add new placeholders
-            UpdateJobSectorsWithGridHtml(jobSectors, gridHtml);
 
             return jobSectors;
         }
+
+        //private async Task<List<JobProfileSector>?> LoadAndProcessJobSectorsAsync()
+        //{
+
+        //    // Load all job sectors from the repository
+        //    var jobSectors = await jobSectorService.LoadAll();
+        //    if (jobSectors == null) return null;
+
+        //    // Limit to a maximum of 15 cards and process each job sector
+        //    jobSectors = jobSectors.Take(15).ToList();
+        //    foreach (var jobProfile in jobSectors)
+        //    {
+        //        var urlName = string.Empty;
+
+        //        if (jobProfile.SectorLandingPage != null &&
+        //          jobProfile.SectorLandingPage.ContentItems != null &&
+        //          jobProfile.SectorLandingPage.ContentItems.Any())
+        //        {
+        //            urlName = jobProfile.SectorLandingPage.ContentItems
+        //                        .Select(x => x.PageLocation?.UrlName)
+        //                        .FirstOrDefault() ?? string.Empty;
+        //        }
+
+        //        var sectorPageLandingId = jobProfile.SectorLandingPage?.ContentItems?.FirstOrDefault()?.ContentItemId ?? "0";
+        //        jobProfile.Render = HtmlProcessingExtensions.RearrangeHtml(jobProfile.Render, sectorPageLandingId, urlName);
+        //    }
+
+        //    // Generate HTML for each job sector to be used in the grid
+        //    var cardsHtml = jobSectors.Select(jobProfile => jobProfile.Render).ToList();
+        //    var gridHtml = HtmlProcessingExtensions.GenerateGridHtml(cardsHtml);
+
+        //    // Update job sectors with grid HTML or add new placeholders
+        //    UpdateJobSectorsWithGridHtml(jobSectors, gridHtml);
+
+        //    return jobSectors;
+        //}
 
         private static void UpdateJobSectorsWithGridHtml(List<JobProfileSector> jobSectors, List<string> gridHtml)
         {

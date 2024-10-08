@@ -49,6 +49,26 @@ namespace DFC.App.ExploreCareers.Controllers
                     viewModel.Breadcrumbs.Add(articlePathJobSectorPathViewModel);
                 }
 
+
+                if (breadcrumbItemModel.Title == "All careers")
+                {
+                    var articlePathJobSectorPathViewModel = new BreadcrumbItemViewModel
+                    {
+                        Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}",
+                        Title = "Explore by job sector",
+                    };
+
+                    viewModel.Breadcrumbs.Add(articlePathJobSectorPathViewModel);
+
+                    var articlePathJobProfilePathViewModel = new BreadcrumbItemViewModel
+                    {
+                        Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}/{breadcrumbItemModel.AlternativeTitle}",
+                        Title = breadcrumbItemModel.Route,
+                    };
+
+                    viewModel.Breadcrumbs.Add(articlePathJobProfilePathViewModel);
+                }
+
                 var articlePathViewModel = new BreadcrumbItemViewModel
                 {
                     Route = breadcrumbItemModel.Route,

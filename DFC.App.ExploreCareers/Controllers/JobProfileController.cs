@@ -48,6 +48,7 @@ namespace DFC.App.ExploreCareers.Controllers
         [HttpGet]
         [Route("document")]
         public async Task<IActionResult> DocumentAsync()
+        
         {
             var contentItemId = Request.Query["id"].ToString();
             var jobSector = Request.Query["sector-page"].ToString();
@@ -101,8 +102,8 @@ namespace DFC.App.ExploreCareers.Controllers
             var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
-                Breadcrumb = BuildBreadcrumb(jobProfiles[0].JobSectorTitle),
-                Body = new BodyViewModel 
+                Breadcrumb = BuildBreadcrumb(jobProfiles[0].JobSectorTitle, $"{jobSector}"),
+                Body = new BodyViewModel
                 {
                     JobProfile = paginatedJobProfiles,
                     sectorlandingContentItemId = key,
@@ -131,7 +132,12 @@ namespace DFC.App.ExploreCareers.Controllers
             };
         }
 
-        private static BreadcrumbViewModel BuildBreadcrumb(string title) =>
-            BuildBreadcrumb(new Models.BreadcrumbItemModel { Title = "All careers", Route = "#", AlternativeTitle = title });
+        private static BreadcrumbViewModel BuildBreadcrumb(string title, string queryParams = "") =>
+            BuildBreadcrumb(new Models.BreadcrumbItemModel 
+            {
+                Title = "All careers",
+                Route = title,
+                AlternativeTitle = queryParams
+            });
     }
 }

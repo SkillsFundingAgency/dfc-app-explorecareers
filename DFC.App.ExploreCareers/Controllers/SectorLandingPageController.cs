@@ -14,8 +14,8 @@ namespace DFC.App.ExploreCareers.Controllers
     [Route("explore-careers")]
     public class SectorLandingPageController : BaseController
     {
-        public const string SectorLandingPageViewCanonicalName = "Sector landing page";
-        public const string DefaultPageTitleSuffix = "Explore careers | job-sector-landing";
+        public const string SectorLandingPageViewCanonicalName = "explore-careers";
+        public const string DefaultPageTitleSuffix = "Sector landing page | Explore careers ";
 
         private readonly ILogger<SectorLandingPageController> logger;
         private readonly IJobSectorService jobSectorService;
@@ -132,12 +132,12 @@ namespace DFC.App.ExploreCareers.Controllers
         private HeadViewModel GetHeadViewModel(string titleUrl = null)
         {
             var pageTitle = titleUrl; // Use the titleUrl as the page title
-            var pageTitleSuffix = DefaultPageTitleSuffix.Replace("{titleUrl}", pageTitle); // Replace {titleUrl} with actual value
+            var pageTitleSuffix = DefaultPageTitleSuffix.Replace("Sector landing page", pageTitle); // Replace {titleUrl} with actual value
 
             return new HeadViewModel
             {
                 CanonicalUrl = new Uri($"{Request.GetBaseAddress()}/{SectorLandingPageViewCanonicalName}", UriKind.RelativeOrAbsolute),
-                Title = $"{pageTitle} | {pageTitleSuffix}"  // Set the dynamic title here
+                Title = $"{pageTitleSuffix}" // Set the dynamic title here
             };
         }
 
