@@ -10,4 +10,4 @@ variables:
 - name: ContentMode
   value: PUBLISHED
 - name: Expiry
-  value: 4
+  value: 0.08
