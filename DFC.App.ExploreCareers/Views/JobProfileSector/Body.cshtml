@@ -33,15 +33,15 @@
                         .FirstOrDefault() ?? string.Empty;
                     }
 
-                    <div class="dfe-card dfe-card-explore-career">
+                    <div class="dfe-card dfe-card-expolore-career">
                         @if (jobProfile.Image?.Urls != null && jobProfile.Image.Urls.Any())
                         {
-                            <img src="@jobProfile.Image.Urls[0]" alt="job-sector-image">
+                            <img class="explore-sector-img" src="@jobProfile.Image.Urls[0]" alt="job-sector-image">
                         }
 
                         <div class="dfe-card-container">
                             <h2 class="govuk-heading-m">
-                                <a href="/explore-careers/job-sector/@urlName" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">@jobProfile.DisplayText</a>
+                                <a href="/explore-careers/job-sector/@urlName" class="govuk-link--no-visited-state dfe-card-link--header">@jobProfile.DisplayText</a>
                             </h2>
                             <p class="dfe-card-description dfe-card-description-explore-career">@jobProfile.Description</p>
                         </div>

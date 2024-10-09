@@ -19,15 +19,8 @@
       },
       {
         "PageRegion": 3,
-        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/bodytop",
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/document",
         "HealthCheckRequired": false,
-        "IsHealthy": true
-      },
-      {
-        "PageRegion": 4,
-        "HealthCheckRequired": false,
-        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/body",
-        "OfflineHtml": "<div class=\"govuk-width-container\"><H3>Explore Careers Service Unavailable</H3></div>",
         "IsHealthy": true
       }
     ]
@@ -107,6 +100,84 @@
       {
         "PageRegion": 4,
         "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/searchautocomplete",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      }
+    ]
+  },
+  {
+    "Path": "explore-careers/job-sector",
+    "TopNavigationText": "Explore careers",
+    "TopNavigationOrder": 100,
+    "Layout": 5,
+    "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
+    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete an independent survey to <a target=\"_blank\" class=\"govuk-link\" href=\"https://online.ipsosinteractive.com/mriweb/mriweb.dll?i.project=S23006601&id=&I.user1=1\"> give us feedback  </a>about our website.</span> </p></div></div>",
+    "IsOnline": true,
+    "SitemapUrl": "https://__AppServiceName__.__appServiceDomain__/sitemap.xml",
+    "RobotsUrl": "https://__AppServiceName__.__appServiceDomain__/robots.txt",
+    "ExternalURL": null,
+    "Regions": [
+      {
+        "PageRegion": 1,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/job-sector/head",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      },
+      {
+        "PageRegion": 3,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/job-sector/document",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      }
+    ]
+  },
+  {
+    "Path": "explore-careers/job-sector/all-careers",
+    "TopNavigationText": "Explore careers",
+    "TopNavigationOrder": 100,
+    "Layout": 5,
+    "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
+    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete an independent survey to <a target=\"_blank\" class=\"govuk-link\" href=\"https://online.ipsosinteractive.com/mriweb/mriweb.dll?i.project=S23006601&id=&I.user1=1\"> give us feedback  </a>about our website.</span> </p></div></div>",
+    "IsOnline": true,
+    "SitemapUrl": "https://__AppServiceName__.__appServiceDomain__/sitemap.xml",
+    "RobotsUrl": "https://__AppServiceName__.__appServiceDomain__/robots.txt",
+    "ExternalURL": null,
+    "Regions": [
+      {
+        "PageRegion": 1,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/job-sector/all-careers/{0}/head",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      },
+      {
+        "PageRegion": 3,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/job-sector/all-careers/{0}/document",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      }
+    ]
+  },
+  {
+    "Path": "explore-careers/all-careers",
+    "TopNavigationText": "Explore careers",
+    "TopNavigationOrder": 100,
+    "Layout": 5,
+    "OfflineHtml": "<div class=\"govuk-width-container\"><H2>Explore Careers Service Unavailable</H2></div>",
+    "PhaseBannerHtml": "<div class=\"govuk-width-container\"><div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag \">beta</strong> <span class=\"govuk-phase-banner__text\">Complete an independent survey to <a target=\"_blank\" class=\"govuk-link\" href=\"https://online.ipsosinteractive.com/mriweb/mriweb.dll?i.project=S23006601&id=&I.user1=1\"> give us feedback  </a>about our website.</span> </p></div></div>",
+    "IsOnline": true,
+    "SitemapUrl": "https://__AppServiceName__.__appServiceDomain__/sitemap.xml",
+    "RobotsUrl": "https://__AppServiceName__.__appServiceDomain__/robots.txt",
+    "ExternalURL": null,
+    "Regions": [
+      {
+        "PageRegion": 1,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers//all-careers/{0}/head",
+        "HealthCheckRequired": false,
+        "IsHealthy": true
+      },
+      {
+        "PageRegion": 3,
+        "RegionEndpoint": "https://__AppServiceName__.__appServiceDomain__/explore-careers/all-careers/{0}/document",
         "HealthCheckRequired": false,
         "IsHealthy": true
       }

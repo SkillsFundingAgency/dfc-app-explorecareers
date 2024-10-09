@@ -11,6 +11,7 @@ using DfE.NCS.Framework.Core.Repository;
 using DfE.NCS.Framework.Core.Repository.Interface;
 using DfE.NCS.Framework.SharedContent.Cms;
 using DfE.NCS.Framework.SharedContent.Cms.Model;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -130,6 +131,34 @@ namespace DFC.App.ExploreCareers.Services
 
             return jobProfileSectors;
 
+        }
+
+        public async Task<List<SectorLandingPageDisplayText>> GetSectorLandingDisplayText(string urlName = "")
+        {
+            string query = $@"
+            query MyQuery {{
+                sectorLandingPage(
+                where: {{pageLocation: {{urlName: ""{urlName}""}}}}
+                status: {NcsGraphQLTokens.GraphQLStatusToken}, first: {NcsGraphQLTokens.PaginationCountToken}, skip: {NcsGraphQLTokens.SkipCountToken}
+                ) {{
+                contentItemId
+                displayText
+                }}
+            }}";
+
+
+            Func<SectorLandingPageDisplayTextResponse, List<ViewModels.SectorLandingPage.SectorLandingPageDisplayText>> recSelector = col => col.SectorLandingPage;
+
+            var result = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: urlName, recSelector);
+
+
+            // Handle the response
+            if (result?.Data == null)
+            {
+                return null;
+            }
+
+            return result.Data;
         }
 
         public async Task<List<JobProfileSector>> LoadAll()

@@ -150,4 +150,18 @@
         public string FullUrl { get; set; }
     }
 
+
+    public class SectorLandingPageDisplayText
+    {
+        public string DisplayText { get; set; }
+        public string ContentItemId { get; set; }
+    }
+
+    public class SectorLandingPageDisplayTextResponse
+    {
+        public List<SectorLandingPageDisplayText> SectorLandingPage { get; set; }
+    }
+
+
+
 }
