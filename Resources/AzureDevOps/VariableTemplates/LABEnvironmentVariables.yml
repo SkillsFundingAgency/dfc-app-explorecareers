@@ -10,4 +10,6 @@ variables:
 - name: ContentMode
   value: PUBLISHED
 - name: Expiry
-  value: 0.08
+  value: 4
+- name: RedisCacheExpiryInSeconds
+  value: 43200
