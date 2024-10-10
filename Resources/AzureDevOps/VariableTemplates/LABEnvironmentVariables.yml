@@ -12,4 +12,4 @@ variables:
 - name: Expiry
   value: 4
 - name: RedisCacheExpiryInSeconds
-  value: 43200
+  value: 300
