@@ -30,9 +30,9 @@ namespace DFC.App.ExploreCareers.Controllers
 
         [HttpGet]
         [Route("head/job-sector/{sectorName}")]
-        public IActionResult Head(string sectorName)
+        public async Task<IActionResult> Head(string sectorName)
         {
-            var viewModel = GetHeadViewModel();
+            var viewModel = await GetHeadViewModel(sectorName);
 
             logger.LogInformation($"{nameof(Head)} has returned content");
             return this.NegotiateContentResult(viewModel);
@@ -103,7 +103,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
             var viewModel = new DocumentViewModel
             {
-                Head = GetHeadViewModel(sectorLandingPages[0].DisplayText),
+                //Head = GetHeadViewModel(sectorLandingPages[0].DisplayText),
                 Breadcrumb = BuildBreadcrumb(sectorLandingPages[0].DisplayText),
                 Body = new BodyViewModel { SectorLandingPage = sectorLandingPages }
             };
@@ -129,10 +129,13 @@ namespace DFC.App.ExploreCareers.Controllers
             return bodyViewModel;
         }
 
-        private HeadViewModel GetHeadViewModel(string titleUrl = null)
+        private async Task<HeadViewModel> GetHeadViewModel(string titleUrl = null)
         {
-            var pageTitle = titleUrl; // Use the titleUrl as the page title
-            var pageTitleSuffix = DefaultPageTitleSuffix.Replace("Sector landing page", pageTitle); // Replace {titleUrl} with actual value
+
+            var SectorLandingPage = await jobSectorService.GetSectorLandingDisplayText(titleUrl);
+
+            //var pageTitle = titleUrl; // Use the titleUrl as the page title
+            var pageTitleSuffix = DefaultPageTitleSuffix.Replace("Sector landing page", SectorLandingPage[0].DisplayText); // Replace {titleUrl} with actual value
 
             return new HeadViewModel
             {
