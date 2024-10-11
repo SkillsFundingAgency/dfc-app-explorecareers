@@ -28,7 +28,7 @@ namespace DFC.App.ExploreCareers.Controllers
                     },
                     new BreadcrumbItemViewModel()
                     {
-                        Route = $"/{ExploreCareersController.ExploreCareersViewCanonicalName}",
+                        Route = $"{ExploreCareersController.ExploreCareersViewCanonicalName}",
                         Title = BradcrumbTitle,
                     },
                 },
