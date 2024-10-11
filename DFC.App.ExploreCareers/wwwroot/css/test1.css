@@ -248,10 +248,12 @@ section[aria-label="Search"] {
 
 .dfc-code-search-jpTitle-extra {
     margin-left: 20px;
+    
 }
 
 .dfc-code-ancher-underline {
     text-decoration: underline !important; /* Apply underline */
+    color: #1d70b8;
 }
 
 
@@ -272,6 +274,131 @@ section[aria-label="Search"] {
 .results-list__extra {
     padding-top: 0 !important;
 }
+
+/*Explore Career home page*/
+
+.explore-dfe-grid-container-one {
+    width: 630px !important;
+    right: 140px !important; /* 140px from the right */
+    margin-right: 30px !important;
+}
+
+.explore-dfe-grid-container-two {
+    width: 262px !important;
+    right: 140px !important; /* 140px from the right */
+    margin-left: 30px !important;
+}
+
+.imag-explore-career {
+    width: 630px !important;
+    height: 212px !important;
+    margin-bottom: 30px !important;
+    object-fit: cover;
+}
+
+.explore-govuk-body {
+    font-size: 19px !important;
+    margin-bottom: 20px !important;
+}
+
+.explore-dfe-grid-container {
+    display: flex;
+    gap: 30px; /* 30px gap between the cards */
+    justify-content: space-between; /* Ensures the cards are spaced evenly */
+    flex-wrap: wrap; /* Ensures cards wrap to the next row if the screen is too small */
+}
+
+.explore-dfe-card {
+    width: 300px; /* Set the width of each card */
+    background-color: #f5f5f5; /* Optional background color */
+    border: 1px solid #dcdcdc; /* Optional border */
+    border-radius: 8px; /* Optional rounded corners */
+    padding: 16px; /* Optional padding inside the card */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Optional box shadow for the card */
+}
+
+.explore-dfe-card-container h3 {
+    font-size: 19px !important;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.explore-dfe-card-container p {
+    font-size: 19px !important;
+    color: #6a6a6a; /* Optional text color */
+}
+
+.explore-heading-xl {
+    font-size: 48px !important;
+    margin-bottom: 15px !important;
+}
+
+.explore-block-ncs span {
+    font-size: 48px !important; /* Ensure the font size for spans inside the block ncs */
+}
+
+.explore-sub-heading {
+    font-size: 24px !important;
+    margin-bottom: 55px !important;
+}
+
+.explore-body span {
+    font-size: 24px !important;
+}
+
+/* Additional styles for the images if needed */
+.explore-careers-image {
+    width: 100%; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+
+/*Explore Career Banner */
+
+.explore-search {
+    margin-bottom: 70px !important;
+}
+
+.explore-hero {
+    height: 225px !important;
+    background-color: #1d70b8 !important;
+}
+
+.explore-heading-xl {
+    font-family: "GDS Transport", arial, sans-serif;
+    background-color: #1d70b8 !important;
+    font-size: 48px !important;
+    margin-bottom: 15px !important;
+}
+
+.explore-block-ncs span {
+    color: #f3f2f1 !important;
+    font-size: 48px !important; /* Ensure the font size for spans inside the block ncs */
+}
+
+.explore-sub-heading {
+    font-size: 24px !important;
+    margin-bottom: 55px !important;
+}
+
+.explore-body span {
+    color: #f3f2f1 !important;
+    font-size: 24px !important;
+}
+
+
+
+
+
+
+.explore-card__tile {
+}
+
+
+
+
+
 
 .pagination-container {
     display: flex;

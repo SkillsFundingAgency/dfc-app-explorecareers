@@ -1,9 +1,9 @@
 ﻿@using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
-<section aria-label="Search">
-   <div class="ncs-hero page-hero dfe-ncs-hero-explore-career">   
-       @*  <!-- Desktop image -->
+<section aria-label="Search explore-search">
+    <div class="ncs-hero page-hero explore-hero">
+        @*  <!-- Desktop image -->
         <div class="d-only">
             <img src="@Configuration["AssetsCdn"]media/headers/explore-careers-desktop-header.png" alt="a female wind farm engineer at work wearing a high visibility jacket and a blue hard hat. There are wind turbines across the landscape in the background." />
         </div>
@@ -13,17 +13,17 @@
                 <img src="@Configuration["AssetsCdn"]media/headers/explore-careers-mobile-header.png" alt="a female wind farm engineer at work wearing a high visibility jacket and a blue hard hat. There are wind turbines across the landscape in the background." />
         </div> *@
 
-        <div class="content govuk-width-container blue-banner">
+        <div class="content govuk-width-container">
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
-                    <h1 class="govuk-heading-xl block-ncs-app-explorer">
-                        <div class="block ncs explore-careers-title">
+                    <h1 class="govuk-heading-xl explore-heading-xl">
+                        <div class="block ncs explore-block-ncs">
                             <span>Explore</span>
                             <span>careers</span>
                         </div>
                     </h1>
-                    <div class="sub-heading sub-heading-app-explorer job-profiles-text">
-                        <p class="govuk-body">
+                    <div class="sub-heading explore-sub-heading">
+                        <p class="govuk-body explore-body">
                             <span>View</span>
                             <span>all</span>
                             <span>job</span>
@@ -36,10 +36,10 @@
                         </p>
                     </div>
                 </div>
-                <img class="home-product-tile-header-image-ec explore-careers-image compass-image explore-compass-image" alt="" src="https://lab-cdn.nationalcareersservice.org.uk/nationalcareers_toolkit/images/compass.png">
+                @* <img class="home-product-tile-header-image-ec explore-careers-image compass-image explore-compass-image" alt="" src="https://lab-cdn.nationalcareersservice.org.uk/nationalcareers_toolkit/images/compass.png"> *@
             </div>
         </div>
-    </div>
+   </div>
 
     <form action="/search-results" class="ncs-search ncs-search__bar site-search ui-front" id="header-search" method="get">
         <div class="search-wrapper">
