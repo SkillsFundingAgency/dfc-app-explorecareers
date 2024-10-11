@@ -131,7 +131,7 @@ section[aria-label="Search"] {
 
 .block-ncs-app-explorer {
     margin-top: 70px !important;
-/*     background: #F3F2F1;*/
+    background-color: #1d70b8 !important;
 }
 
 .block-ncs-app-explorer span {
@@ -386,19 +386,6 @@ section[aria-label="Search"] {
     color: #f3f2f1 !important;
     font-size: 24px !important;
 }
-
-
-
-
-
-
-.explore-card__tile {
-}
-
-
-
-
-
 
 .pagination-container {
     display: flex;

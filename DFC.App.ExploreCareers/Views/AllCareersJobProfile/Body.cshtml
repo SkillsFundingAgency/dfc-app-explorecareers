@@ -73,7 +73,7 @@
                                     @foreach (var job in Model.JobProfile)
                                     {
                                         <li class="dfc-code-search-resultitem">
-                                            <h3><a class="dfc-code-search-jpTitle" href="https://nationalcareers.service.gov.uk/job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
+                                            <h3><a class="dfc-code-search-jpTitle" href="/job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
 
                                             @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
                                             {
@@ -82,8 +82,16 @@
 
                                             <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
 
-                                            <p class="results-salary">
+                                           @*  <p class="results-salary">
                                                 Salary: <span class="dfc-code-search-jpSalary">£@job.SalaryStarterPerYear to £@job.SalaryExperiencedPerYear</span>
+                                            </p> *@
+
+                                            <p class="results-salary">
+                                                Salary:   <span class="dfc-code-search-jpSalary">
+                                                    @((job.SalaryStarterPerYear == 0 && job.SalaryExperiencedPerYear == 0)
+                                                        ? "Variable"
+                                                        : ("£" + job.SalaryStarterPerYear?.ToString("N0") + " to £" + job.SalaryExperiencedPerYear?.ToString("N0")))
+                                                </span>
                                             </p>
 
                                             @if (job.JobProfileCategory != null && job.JobProfileCategory.ContentItems.Any())
