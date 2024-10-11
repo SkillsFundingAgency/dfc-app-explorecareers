@@ -355,9 +355,11 @@ namespace DFC.App.ExploreCareers.Services
                         // Add to your KeyValuePair or dictionary
                         //kvp.Add(sectorLandingPage.ContentItems[j].DisplayText, sectorLandingPage.ContentItems[j].PageLocation.FullUrl);
 
-                        var fullUrlValue = $"sector-page={sectorLandingPage.ContentItems[j].PageLocation.FullUrl.TrimStart('/')}&id={sectorLandingPage.ContentItems[j].ContentItemId}";
+                        //var fullUrlValue = $"sector-page={sectorLandingPage.ContentItems[j].PageLocation.FullUrl.TrimStart('/')}&id={sectorLandingPage.ContentItems[j].ContentItemId}";
 
-                        kvp.Add(sectorLandingPage.ContentItems[j].DisplayText, fullUrlValue);
+                        //kvp.Add(sectorLandingPage.ContentItems[j].DisplayText, fullUrlValue);
+
+                        kvp.Add(sectorLandingPage.ContentItems[j].DisplayText, sectorLandingPage.ContentItems[j].PageLocation.UrlName);
                     }
                 }
             }

@@ -40,7 +40,7 @@
                                 {
                                     <p class="results-categories">
                                         Found in:
-                                        @Html.Raw(string.Join(" ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='explore-careers/job-sector-landing?{sector.FullUrl}'>{sector.DisplayText}</a>")))
+                                        @Html.Raw(string.Join(" ", job.JobProfileSector.ContentItems.Select(sector => $"<a href='/explore-careers/job-sector/{sector.FullUrl}'>{sector.DisplayText}</a>")))
                                     </p>
                                 } 
                                 else
