@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Policy;
 using System.Threading.Tasks;
 using Azure.Core;
+using Castle.Components.DictionaryAdapter.Xml;
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels.JobProfileSector;
 using DFC.App.ExploreCareers.ViewModels.SectorLandingPage;
@@ -109,7 +110,7 @@ namespace DFC.App.ExploreCareers.Services
 
             Func<SectorLandingPageResponse, List<ViewModels.SectorLandingPage.SectorLandingPage>> recSelector = col => col.SectorLandingPage;
 
-            var result = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: key, recSelector);
+            var result = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: $"ExploreCareer/SectorLanding/{key}/PUBLISHED", recSelector);
 
             // Handle the response
             if (result?.Data == null)
@@ -135,6 +136,8 @@ namespace DFC.App.ExploreCareers.Services
 
         public async Task<List<SectorLandingPageDisplayText>> GetSectorLandingDisplayText(string urlName = "")
         {
+
+            string key = $"ExploreCareer/SectorLanding/{urlName}/displayText";
             string query = $@"
             query MyQuery {{
                 sectorLandingPage(
@@ -149,7 +152,7 @@ namespace DFC.App.ExploreCareers.Services
 
             Func<SectorLandingPageDisplayTextResponse, List<ViewModels.SectorLandingPage.SectorLandingPageDisplayText>> recSelector = col => col.SectorLandingPage;
 
-            var result = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: urlName, recSelector);
+            var result = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: key, recSelector);
 
 
             // Handle the response
@@ -199,8 +202,8 @@ namespace DFC.App.ExploreCareers.Services
             {
                 Func<JobProfileSectorResponse, List<JobProfileSector>> recSelector = col => col.JobProfileSector;
 
-                var response = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: Guid.NewGuid().ToString(), recSelector);
-                //var response = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyJobProfileSector, recSelector);
+                //var response = await _cmsQueryManager.GetDataWithPagination(query, cacheKey: Guid.NewGuid().ToString(), recSelector);
+                var response = await _cmsQueryManager.GetDataWithPagination(query, CacheKeyJobProfileSector, recSelector);
 
                 // Ensure response is properly initialized and has non-null Data
 
