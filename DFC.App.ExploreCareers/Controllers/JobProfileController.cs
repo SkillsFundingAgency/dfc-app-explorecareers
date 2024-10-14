@@ -54,7 +54,7 @@ namespace DFC.App.ExploreCareers.Controllers
             var jobSector = Request.Query["sector-page"].ToString();
 
             // Try to parse 'page' and 'pageSize' to integers, use default values if parsing fails
-            int page = 0; // Default page number
+            int page = 1; // Default page number
             int pageSize = 20; // Default page size
 
             if (!string.IsNullOrEmpty(Request.Query["page"]))

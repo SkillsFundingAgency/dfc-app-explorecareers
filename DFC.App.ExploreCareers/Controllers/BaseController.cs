@@ -28,7 +28,7 @@ namespace DFC.App.ExploreCareers.Controllers
                     },
                     new BreadcrumbItemViewModel()
                     {
-                        Route = $"{ExploreCareersController.ExploreCareersViewCanonicalName}",
+                        Route = $"/{ExploreCareersController.ExploreCareersViewCanonicalName}",
                         Title = BradcrumbTitle,
                     },
                 },
@@ -42,7 +42,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 {
                     var articlePathJobSectorPathViewModel = new BreadcrumbItemViewModel
                     {
-                        Route = $"{JobProfileSectorController.JobSectorsViewCanonicalName}",
+                        Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}",
                         Title = "Explore by job sector",
                     };
 
@@ -54,7 +54,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 {
                     var articlePathJobSectorPathViewModel = new BreadcrumbItemViewModel
                     {
-                        Route = $"{JobProfileSectorController.JobSectorsViewCanonicalName}",
+                        Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}",
                         Title = "Explore by job sector",
                     };
 
@@ -62,7 +62,7 @@ namespace DFC.App.ExploreCareers.Controllers
 
                     var articlePathJobProfilePathViewModel = new BreadcrumbItemViewModel
                     {
-                        Route = $"{JobProfileSectorController.JobSectorsViewCanonicalName}/{breadcrumbItemModel.AlternativeTitle}",
+                        Route = $"/{JobProfileSectorController.JobSectorsViewCanonicalName}/{breadcrumbItemModel.AlternativeTitle}",
                         Title = breadcrumbItemModel.Route,
                     };
 
