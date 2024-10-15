@@ -284,10 +284,11 @@ section[aria-label="Search"] {
 }
 
 .explore-dfe-grid-container-two {
-    width: 262px !important;
+    width: 300px !important;
     right: 140px !important; /* 140px from the right */
     margin-left: 30px !important;
 }
+
 
 .imag-explore-career {
     width: 630px !important;
@@ -345,6 +346,14 @@ section[aria-label="Search"] {
 .explore-body span {
     font-size: 24px !important;
 }
+
+.explor-career-govuk-grid-column-full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 60px 15px;
+}
+
+
 
 /* Additional styles for the images if needed */
 .explore-careers-image {

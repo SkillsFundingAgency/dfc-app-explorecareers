@@ -2,7 +2,7 @@
 @inject IConfiguration Configuration
 
 <section aria-label="Search explore-search">
-    <div class="ncs-hero page-hero explore-hero">
+   <div class="ncs-hero page-hero explore-hero">
         @*  <!-- Desktop image -->
         <div class="d-only">
             <img src="@Configuration["AssetsCdn"]media/headers/explore-careers-desktop-header.png" alt="a female wind farm engineer at work wearing a high visibility jacket and a blue hard hat. There are wind turbines across the landscape in the background." />
@@ -14,6 +14,8 @@
         </div> *@
 
         <div class="content govuk-width-container">
+
+
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <h1 class="govuk-heading-xl explore-heading-xl">
@@ -22,6 +24,11 @@
                             <span>careers</span>
                         </div>
                     </h1>
+
+                   @*  <div class="img-container">
+                        <img class="home-product-tile-header-image" alt="" src="https://lab-cdn.nationalcareersservice.org.uk/media/compass.svg">
+                    </div> *@
+
                     <div class="sub-heading explore-sub-heading">
                         <p class="govuk-body explore-body">
                             <span>View</span>
@@ -36,6 +43,7 @@
                         </p>
                     </div>
                 </div>
+               
                 @* <img class="home-product-tile-header-image-ec explore-careers-image compass-image explore-compass-image" alt="" src="https://lab-cdn.nationalcareersservice.org.uk/nationalcareers_toolkit/images/compass.png"> *@
             </div>
         </div>
@@ -47,9 +55,9 @@
                 <div class="govuk-grid-row">
                     <div class="govuk-grid-column-two-thirds">
                         <div class="govuk-form-group">
-                            <label class="ncs-label govuk-label" for="searchTerm">Search job titles</label>
+                            <label class="ncs-label govuk-label" for="searchTerm">Enter a job title or keyword to search</label>
                             <div class="input-wrapper">
-                                <input id="searchTerm" name="searchTerm" type="search" class="govuk-input search-input js-search-focus focus js-autocomplete ui-autocomplete-input" aria-label="Enter a job title" placeholder="Enter a job title" data-autocomplete-maxlength="7" data-autocomplete-minlength="2" data-autocomplete-source="/searchautocomplete" autocomplete="off" />
+                                <input id="searchTerm" name="searchTerm" type="search" class="govuk-input search-input js-search-focus focus js-autocomplete ui-autocomplete-input" aria-label="Enter a job title" placeholder="for example, teaching assistant" data-autocomplete-maxlength="7" data-autocomplete-minlength="2" data-autocomplete-source="/searchautocomplete" autocomplete="off" />
                                 <div class="input-search-item input-submit-wrapper">
                                     <button id="search-button" class="input-search-submit" type="submit" data-module="govuk-button" value="Search">Search</button>
                                 </div>

@@ -1,7 +1,7 @@
 ﻿@model DFC.App.ExploreCareers.ViewModels.ExploreCareers.DocumentViewModel
 
 @{
-    // Layout = "_LocalLayout";
+    Layout = "_LocalLayout";
 
     if (!string.IsNullOrWhiteSpace(Model.Head?.Title))
     {
@@ -16,4 +16,4 @@
    @*  <partial name="Body" model=@Model.Body /> *@
 
     <partial name="Body" />
-@* </div> *@
+</div>
