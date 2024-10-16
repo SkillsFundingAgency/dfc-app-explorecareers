@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using DFC.App.ExploreCareers.Controllers;
 using DFC.App.ExploreCareers.GraphQl;
+using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 
@@ -25,6 +26,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
         private ILogger<ExploreCareersController> FakeLogger { get; } = A.Fake<ILogger<ExploreCareersController>>();
 
         private IGraphQlService FakeGraphQlService { get; } = A.Fake<IGraphQlService>();
+
+        private ISpeakToAnAdvisorService SpeakToAnAdvisorService { get; } = A.Fake<ISpeakToAnAdvisorService>();
 
         [Fact]
         public void ExploreCareersHeadReturnsHtml()
@@ -120,7 +123,7 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
 
             httpContext.Request.Headers[HeaderNames.Accept] = mediaTypeName;
 
-            var controller = new ExploreCareersController(FakeLogger, FakeGraphQlService)
+            var controller = new ExploreCareersController(FakeLogger, FakeGraphQlService, SpeakToAnAdvisorService)
             {
                 ControllerContext = new ControllerContext()
                 {
