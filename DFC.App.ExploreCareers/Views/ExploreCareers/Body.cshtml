@@ -28,76 +28,105 @@
     </ul>
 </div> *@
 
+@model DFC.App.ExploreCareers.ViewModels.ExploreCareers.BodyViewModel
+
 @using Microsoft.Extensions.Configuration
 @inject IConfiguration Configuration
 
 
 <div class="govuk-width-container">
     <div class="govuk-grid-column-full explor-career-govuk-grid-column-full">
-                    
-        <div class="govuk-grid-column-two-thirds">
-            <div class="dfe-grid-container explore-dfe-grid-container-one">
-                <div class="dfe-card">
 
-                    <img class="imag-explore-career" src="@Configuration["AssetsCdn"]nationalcareers_toolkit/images/explore-career-home.jpg" alt="Two people looking at a single laptop together with interest." />
+        <div class="govuk-grid-row">
 
-                    <div class="dfe-card-container">
-                        <div class="govuk-!-margin-top-5">
-                            <p class="govuk-body explore-govuk-body">
-                                Choose a way to explore careers for each job profile,
-                                you'll find qualifications needed, salary,
-                                progression opportunities and a description of daily tasks involved.
-                            </p>
+            <div class="govuk-grid-column-two-thirds">
+                <div class="dfe-grid-container explore-dfe-grid-container-one">
+                    <div class="dfe-card">
+
+                        <img class="imag-explore-career" src="http://127.0.0.1:8080/images/explore-careers-homepage-image.svg" alt="Two people looking at a single laptop together with interest." />
+
+    @*                     <img class="imag-explore-career" src="@Configuration["AssetsCdn"]nationalcareers_toolkit/images/explore-career-home.jpg" alt="Two people looking at a single laptop together with interest." />
+     *@
+                        <div class="dfe-card-container">
+                            <div class="govuk-!-margin-top-5">
+                                <p class="govuk-body explore-govuk-body">
+                                    Choose a way to explore careers for each job profile,
+                                    you'll find qualifications needed, salary,
+                                    progression opportunities and a description of daily tasks involved.
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="govuk-grid-row govuk-grid-row-card govuk-grid-row-sector-landing">
-                        <div class="dfe-card-expolore-career-sector-landing dfe-ec-landing-card govuk-!-margin-top-2">
-                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing dfe-card_explorer">
-                                <div class="dfe-card-container">
-                                    <h3 class="dfc-code-search-jpTitle ">
-                                        <a href="explore-careers/job-sector" class="dfc-code-search-jpTitle dfc-code-search-jpTitle-extra dfc-code-ancher-underline">
-                                            Explore by sector
-                                        </a>
-                                    </h3>
+                        <div class="govuk-grid-row govuk-grid-row-card govuk-grid-row-sector-landing">
+                            <div class="dfe-card-expolore-career-sector-landing dfe-ec-landing-card govuk-!-margin-top-2">
+                                <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing dfe-card_explorer">
+                                    <div class="dfe-card-container">
+                                        <h3 class="dfc-code-search-jpTitle ">
+                                            <a href="explore-careers/job-sector" class="dfc-code-search-jpTitle dfc-code-search-jpTitle-extra dfc-code-ancher-underline">
+                                                Explore by sector
+                                            </a>
+                                        </h3>
 
-                                    <p class="govuk-body dfc-code-search-jpTitle-extra">
-                                        Find out what each sector involves and discover the types of jobs you'll find in each sector.
-                                    </p>
+                                        <p class="govuk-body dfc-code-search-jpTitle-extra">
+                                            Find out what each sector involves and discover the types of jobs you'll find in each sector.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dfe-card-expolore-career-sector-landing dfe-ec-landing-card  govuk-!-margin-top-2">
+                                <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing dfe-card_explorer">
+                                    <div class="dfe-card-container">
+                                        <h3 class="dfc-code-search-jpTitle"><a class="dfc-code-search-jpTitle dfc-code-search-jpTitle-extra dfc-code-ancher-underline" href="explore-careers/all-careers">Filter by category</a></h3>
+
+                                        <p class="govuk-body dfc-code-search-jpTitle-extra">
+                                            Filter all job profiles by category. Apply filters to view all careers in those categories.
+                                        </p>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="dfe-card-expolore-career-sector-landing dfe-ec-landing-card  govuk-!-margin-top-2">
-                            <div class="dfe-card dfe-card-expolore-career dfe-card-container-sector-landing dfe-card_explorer">
-                                <div class="dfe-card-container">
-                                    <h3 class="dfc-code-search-jpTitle"><a class="dfc-code-search-jpTitle dfc-code-search-jpTitle-extra dfc-code-ancher-underline" href="explore-careers/all-careers">Filter by category</a></h3>
-
-                                    <p class="govuk-body dfc-code-search-jpTitle-extra">
-                                        Filter all job profiles by category. Apply filters to view all careers in those categories.
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 
+                    </div>
+                </div>
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+
+                <div class="dfe-grid-container explore-dfe-grid-container-two">
+                    <h3><a class="class=" govuk-header__link" href="skills-assessment">Take a skills assessment</a></h3>
+                    <p class="govuk-body">
+                        If you're not sure where to start, answer questions about your interests to find out which sectors may be best for you.
+                    </p>
                 </div>
             </div>
         </div>
 
-        <div class="govuk-grid-column-one-third">
-
-            <div class="dfe-grid-container explore-dfe-grid-container-two">
-                <h3><a class="class=" govuk-header__link" href="skills-assessment">Take a skills assessment</a></h3>
-                <p class="govuk-body">
-                    If you're not sure where to start, answer questions about your interests to find out which sectors may be best for you.
-                </p>
+        @if (Model?.SharedContents != null && Model.SharedContents.Count > 0 && Model.SharedContents[0]?.Content?.Html != null)
+        {
+            <div class="govuk-grid-row">
+                @Html.Raw(Model.SharedContents[0].Content.Html)
             </div>
-        </div>
-             
+        }
+        else
+        {
+            <div class="govuk-grid-row">
+                <p>No content available</p>
+            </div>
+        }
+
+       
     </div>
+
+  
 </div>
+
+
+
+
+
+
 
 
 

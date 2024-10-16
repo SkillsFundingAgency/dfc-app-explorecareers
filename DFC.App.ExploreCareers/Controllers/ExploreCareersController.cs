@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.GraphQl;
+using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.ExploreCareers;
 
@@ -18,13 +19,16 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<ExploreCareersController> logger;
         private readonly IGraphQlService graphQlService;
+        private readonly ISpeakToAnAdvisorService speakToAnAdvisorService;
 
         public ExploreCareersController(
             ILogger<ExploreCareersController> logger,
-            IGraphQlService graphQlService)
+            IGraphQlService graphQlService,
+            ISpeakToAnAdvisorService speakToAnAdvisorService)
         {
             this.logger = logger;
             this.graphQlService = graphQlService;
+            this.speakToAnAdvisorService = speakToAnAdvisorService;
         }
 
         [HttpGet]
@@ -81,8 +85,13 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private async Task<BodyViewModel> GetBodyViewModelAsync()
         {
+            var speakToAnAdvisorKey = "Speak to an adviser";
+
             var jobCategories = await graphQlService.GetJobCategoriesAsync();
-            return new BodyViewModel { JobCategories = jobCategories };
+
+            var sharedContent = await speakToAnAdvisorService.GetItemByKey(speakToAnAdvisorKey);
+
+            return new BodyViewModel { JobCategories = jobCategories, SharedContents = sharedContent };
         }
     }
 }

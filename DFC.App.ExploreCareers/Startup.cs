@@ -161,6 +161,7 @@ namespace DFC.App.ExploreCareers
             services.AddScoped<ICmsPreviewHandler, PreviewHandler>();
             services.AddScoped<IJobSectorService, JobSectorService>();
             services.AddScoped<IJobProfileService, JobProfileService>();
+            services.AddScoped<ISpeakToAnAdvisorService, SpeakToAnAdvisorService>();
 
 
         }

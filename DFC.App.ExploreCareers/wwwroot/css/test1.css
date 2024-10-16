@@ -218,11 +218,6 @@ section[aria-label="Search"] {
 }
 
 
-
-.imag-explore-career {
-    margin-bottom: 30px;
-}
-
 .dfe-card_explorer {
     width: 300px;
     height: 184px;
@@ -281,6 +276,7 @@ section[aria-label="Search"] {
     width: 630px !important;
     right: 140px !important; /* 140px from the right */
     margin-right: 30px !important;
+    margin-left: -12px !important;
 }
 
 .explore-dfe-grid-container-two {
@@ -291,7 +287,7 @@ section[aria-label="Search"] {
 
 
 .imag-explore-career {
-    width: 630px !important;
+     width: 630px !important;
     height: 212px !important;
     margin-bottom: 30px !important;
     object-fit: cover;
@@ -354,6 +350,19 @@ section[aria-label="Search"] {
 }
 
 
+.img-container {
+    position: absolute; /* Absolute positioning for the layout */
+    top: 51px; /* Position the image from the top */
+    left: 840px; /* Position the image from the left */
+    right:140px;
+    bottom:51px;
+    width: 121.75px; /* Set width as per the requirement */
+    height: 120.15px; /* Set height as per the requirement */
+    display: flex; /* In case you add other items later */
+    justify-content: center;
+    align-items: center;
+    /*opacity: 0;*/ /* Set initial opacity to 0 */
+}
 
 /* Additional styles for the images if needed */
 .explore-careers-image {
@@ -364,7 +373,6 @@ section[aria-label="Search"] {
 
 
 /*Explore Career Banner */
-
 .explore-search {
     margin-bottom: 70px !important;
 }
@@ -395,6 +403,10 @@ section[aria-label="Search"] {
     color: #f3f2f1 !important;
     font-size: 24px !important;
 }
+
+/*.explore-govuk-footer {
+    border-top : 1px solid #b1b4b6
+}*/
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

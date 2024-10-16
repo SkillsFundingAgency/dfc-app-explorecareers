@@ -7,5 +7,7 @@ namespace DFC.App.ExploreCareers.ViewModels.ExploreCareers
     public class BodyViewModel
     {
         public List<JobCategoryViewModel>? JobCategories { get; set; }
+
+        public List<SharedContent>? SharedContents { get; set; }
     }
 }
