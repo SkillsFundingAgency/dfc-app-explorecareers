@@ -1,4 +1,4 @@
-﻿
+
 .dfe-ncs-hero-explore-career {
     background-color: #1d70b8 !important;
     /*height: 225px !important;*/
@@ -23,7 +23,7 @@ section[aria-label="Search"] {
 
 
 .dfe-ncs-govuk-main-wrapper-explore-career {
-   /* padding-top: 80px !important;*/
+    /* padding-top: 80px !important;*/
     margin-top: 60px;
 }
 
@@ -49,28 +49,29 @@ section[aria-label="Search"] {
     left: 140px !important;
     gap: 0 !important;
     h2
-    {
-        font-family: 'Transport', arial, sans-serif;
-        font-weight: 700;
-        font-size: 19px;
-        line-height: 25px;
-        color: #1d70b8;
-        /* Header color */
-        margin: 20px 20px 20px 20px;
-        /* top right bottom left */
-    }
+
+{
+    font-family: 'Transport', arial, sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+    color: #1d70b8;
+    /* Header color */
+    margin: 20px 20px 20px 20px;
+    /* top right bottom left */
+}
+
 }
 
 .dfe-card-description-expolore-career {
-
-        font-family: 'Transport', arial, sans-serif;
-        font-weight: 300;
-        font-size: 19px;
-        color: #000;
-        line-height: 25px;
-        /* Set color if needed */
-        margin: 20px 20px 20px 20px;
- }
+    font-family: 'Transport', arial, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+    color: #000;
+    line-height: 25px;
+    /* Set color if needed */
+    margin: 20px 20px 20px 20px;
+}
 
 .explore-sector-img {
     max-width: 100%;
@@ -97,11 +98,12 @@ section[aria-label="Search"] {
     /* Adjust margin values for top/bottom and remove left/right margin */
 
     p
-    {
-        font-family: 'Transport', arial, sans-serif;
-        font-weight: 300;
-        font-size: 19px;
-    }
+
+{
+    font-family: 'Transport', arial, sans-serif;
+    font-weight: 300;
+    font-size: 19px;
+}
 
 }
 
@@ -134,11 +136,11 @@ section[aria-label="Search"] {
     background-color: #1d70b8 !important;
 }
 
-.block-ncs-app-explorer span {
-    font-family: "GDS Transport", arial, sans-serif;
-    color: #f3f2f1 !important;
-    font-size: 48px;
-}
+    .block-ncs-app-explorer span {
+        font-family: "GDS Transport", arial, sans-serif;
+        color: #f3f2f1 !important;
+        font-size: 48px;
+    }
 
 
 .sub-heading-app-explorer {
@@ -147,11 +149,11 @@ section[aria-label="Search"] {
     /*margin-bottom: 55px !important;*/
 }
 
-.sub-heading-app-explorer span {
-    padding: 2px 0;
-    color: #f3f2f1 !important;
-    font-size: 24px;
-}
+    .sub-heading-app-explorer span {
+        padding: 2px 0;
+        color: #f3f2f1 !important;
+        font-size: 24px;
+    }
 
 /*Sector landing page scss*/
 
@@ -243,7 +245,6 @@ section[aria-label="Search"] {
 
 .dfc-code-search-jpTitle-extra {
     margin-left: 20px;
-    
 }
 
 .dfc-code-ancher-underline {
@@ -254,7 +255,8 @@ section[aria-label="Search"] {
 
 /*all-careers*/
 .inner-block-extras-one-third {
-    margin-top: 90px !important;;
+    margin-top: 90px !important;
+    ;
 }
 
 .inner-block-extras-two-thirds {
@@ -287,7 +289,7 @@ section[aria-label="Search"] {
 
 
 .imag-explore-career {
-     width: 630px !important;
+    width: 630px !important;
     height: 212px !important;
     margin-bottom: 30px !important;
     object-fit: cover;
@@ -345,8 +347,8 @@ section[aria-label="Search"] {
     position: absolute; /* Absolute positioning for the layout */
     top: 51px; /* Position the image from the top */
     left: 840px; /* Position the image from the left */
-    right:140px;
-    bottom:51px;
+    right: 140px;
+    bottom: 51px;
     width: 121.75px; /* Set width as per the requirement */
     height: 120.15px; /* Set height as per the requirement */
     display: flex; /* In case you add other items later */
