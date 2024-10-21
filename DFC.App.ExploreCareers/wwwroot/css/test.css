@@ -1,7 +1,5 @@
-
 .dfe-ncs-hero-explore-career {
     background-color: #1d70b8 !important;
-    /*height: 225px !important;*/
     min-height: 300px;
     left: -3px !important;
     gap: 0 !important;
@@ -21,47 +19,35 @@ section[aria-label="Search"] {
     margin-bottom: 60px !important;
 }
 
-
 .dfe-ncs-govuk-main-wrapper-explore-career {
-    /* padding-top: 80px !important;*/
     margin-top: 60px;
 }
 
 .dfe-grid-container-expolore-career {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    /* Space between items */
+    gap: 20px; /* Space between items */
 }
 
 .dfe-card-expolore-career {
-    flex: 1 1 calc(33.333% - 15px);
-    /* Three items per row with space */
+    flex: 1 1 calc(33.333% - 15px); /* Three items per row with space */
     box-sizing: border-box;
-    width: 300px !important;
-    /*height: 371px !important;*/
-    background: #F3F2F1;
-    /* Gray background color */
-    color: #ffffff;
-    /* Optional: Set text color to white for better contrast */
-    /* border-bottom: 4px solid #b1b4b6;*/
+    width: 300px !important; /* Fixed width */
+    background: #F3F2F1; /* Gray background color */
+    color: #ffffff; /* Optional: Set text color to white for better contrast */
     top: 501px !important;
     left: 140px !important;
     gap: 0 !important;
-    h2
-
-{
-    font-family: 'Transport', arial, sans-serif;
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 25px;
-    color: #1d70b8;
-    /* Header color */
-    margin: 20px 20px 20px 20px;
-    /* top right bottom left */
 }
 
-}
+    .dfe-card-expolore-career h2 {
+        font-family: 'Transport', arial, sans-serif;
+        font-weight: 700;
+        font-size: 19px;
+        line-height: 25px;
+        color: #1d70b8; /* Header color */
+        margin: 20px;
+    }
 
 .dfe-card-description-expolore-career {
     font-family: 'Transport', arial, sans-serif;
@@ -69,8 +55,7 @@ section[aria-label="Search"] {
     font-size: 19px;
     color: #000;
     line-height: 25px;
-    /* Set color if needed */
-    margin: 20px 20px 20px 20px;
+    margin: 20px;
 }
 
 .explore-sector-img {
@@ -79,34 +64,23 @@ section[aria-label="Search"] {
     margin-bottom: 15px;
 }
 
-
-
 .dfe-card-placeholder {
-    background: none;
-    /* Gray background color for placeholder */
-    border: none;
-    /* No border */
-    padding: 15px;
-    /* Padding to match other cards */
-    height: 150px;
-    /* Example height, adjust as needed */
+    background: none; /* Gray background color for placeholder */
+    border: none; /* No border */
+    padding: 15px; /* Padding to match other cards */
+    height: 150px; /* Example height, adjust as needed */
 }
 
 #speaktoanadvisor {
     background-color: #5694ca25 !important;
-    margin: 5em 0 !important;
-    /* Adjust margin values for top/bottom and remove left/right margin */
-
-    p
-
-{
-    font-family: 'Transport', arial, sans-serif;
-    font-weight: 300;
-    font-size: 19px;
+    margin: 5em 0 !important; /* Adjust margin values for top/bottom and remove left/right margin */
 }
 
-}
-
+    #speaktoanadvisor p {
+        font-family: 'Transport', arial, sans-serif;
+        font-weight: 300;
+        font-size: 19px;
+    }
 
 #speaktoanadvisorheader {
     margin-top: 2em;
@@ -142,11 +116,9 @@ section[aria-label="Search"] {
         font-size: 48px;
     }
 
-
 .sub-heading-app-explorer {
     background-color: #1d70b8 !important;
     margin-top: 15px !important;
-    /*margin-bottom: 55px !important;*/
 }
 
     .sub-heading-app-explorer span {
@@ -155,19 +127,23 @@ section[aria-label="Search"] {
         font-size: 24px;
     }
 
-/*Sector landing page scss*/
-
+/* Sector landing page scss */
 .govuk-grid-row-sector-landing {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
 }
 
-
 .dfe-card-expolore-career-sector-landing {
-    flex: 1 1 30%; /* Ensure cards fill the available space and stay at one-third of the row */
+    flex: 1 1 45%; /* Allow two cards per row, adjust this percentage if needed */
     margin: 10px;
     display: flex;
+}
+
+@media (max-width: 768px) {
+    .dfe-card-expolore-career-sector-landing {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
 }
 
 .dfe-card-container-sector-landing {
@@ -191,9 +167,7 @@ section[aria-label="Search"] {
     display: flex; /* Removes any space below the image */
 }
 
-
 /* Explore career page */
-
 .blue-banner {
     position: relative;
     padding: 20px;
@@ -219,7 +193,6 @@ section[aria-label="Search"] {
     margin-bottom: 60px;
 }
 
-
 .dfe-card_explorer {
     width: 300px;
     height: 184px;
@@ -227,9 +200,8 @@ section[aria-label="Search"] {
     left: 140px;
     gap: 0px; /* No gap between children if applicable */
     border: 0px; /* No initial border */
-    opacity: 1; /* Assuming you meant opacity is set to visible (if it's 0px it would be invisible) */
+    opacity: 1; /* Assuming you meant opacity is set to visible */
     border-bottom: 4px solid #B1B4B6 !important; /* Bottom border styling */
-    /* Optional: If you want to add box-shadow or some elevation */
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1) !important; /* Soft shadow, adjust as needed */
 }
 
@@ -252,11 +224,9 @@ section[aria-label="Search"] {
     color: #1d70b8;
 }
 
-
-/*all-careers*/
+/* all-careers */
 .inner-block-extras-one-third {
     margin-top: 90px !important;
-    ;
 }
 
 .inner-block-extras-two-thirds {
@@ -272,33 +242,59 @@ section[aria-label="Search"] {
     padding-top: 0 !important;
 }
 
-/*Explore Career home page*/
-
+/* Explore Career home page */
 .explore-dfe-grid-container-one {
     width: 630px !important;
-    right: 140px !important; /* 140px from the right */
+    right: 140px !important;
     margin-right: 30px !important;
     margin-left: -12px !important;
+    box-sizing: border-box; /* Include padding and border in width */
+  /*  background-color: darkred;*/
 }
+
 
 .explore-dfe-grid-container-two {
     width: 300px !important;
     right: 140px !important; /* 140px from the right */
-    margin-left: 30px !important;
+  /*  margin-left: 30px !important;*/
 }
 
+/*.imag-explore-career {
+    width: 100%;*/ /* Make the image take the full width of its parent */
+    /*max-width: 630px;*/ /* Optional: Set a maximum width to prevent it from getting too wide */
+    /*height: 212px !important;
+    margin-bottom: 30px;*/ /* Keep margin as is, no need for !important */
+    /*object-fit: cover;*/ /* Maintain the aspect ratio and cover the container */
+/*}
 
-.imag-explore-career {
-    width: 630px !important;
-    height: 212px !important;
-    margin-bottom: 30px !important;
-    object-fit: cover;
+
+@media (max-width: 768px) {
+    .imag-explore-career {
+        max-width: 100%;*/ /* Allow the image to use full width on smaller screens */
+        /*height: auto;*/ /* Maintain aspect ratio */
+    /*}
+}*/
+
+
+/*.explore-govuk-body {
+    font-size: 19px;*/ /* Default font size */
+    /*margin-bottom: 20px;*/ /* Keep margin as is */
+/*}*/
+
+/* Responsive adjustments */
+/*@media (max-width: 768px) {
+    .explore-govuk-body {
+        font-size: 16px;*/ /* Smaller font size for smaller screens */
+        /*margin-bottom: 15px;*/ /* Optional: Adjust bottom margin for smaller screens */
+    /*}
 }
 
-.explore-govuk-body {
-    font-size: 19px !important;
-    margin-bottom: 20px !important;
-}
+@media (min-width: 769px) {
+    .explore-govuk-body {
+        font-size: 21px;*/ /* Larger font size for larger screens */
+    /*}
+}*/
+
 
 .explore-dfe-grid-container {
     display: flex;
@@ -336,15 +332,26 @@ section[aria-label="Search"] {
     margin-bottom: 55px !important;
 }
 
+
 .explor-career-govuk-grid-column-full {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 60px 15px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    width: 100%; /* Maintain full width */
+    padding: 60px 15px; /* Padding for spacing */
+    max-width: 1200px; /* Limit the maximum width for larger screens */
+    margin: 0 auto; /* Center the element */
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .explor-career-govuk-grid-column-full {
+        padding: 30px 10px; /* Less padding on smaller screens */
+    }
 }
 
 
 .img-container {
-    position: absolute; /* Absolute positioning for the layout */
+    position: absolute;  
     top: 51px; /* Position the image from the top */
     left: 840px; /* Position the image from the left */
     right: 140px;
@@ -354,24 +361,31 @@ section[aria-label="Search"] {
     display: flex; /* In case you add other items later */
     justify-content: center;
     align-items: center;
-    /*opacity: 0;*/ /* Set initial opacity to 0 */
 }
 
-/* Additional styles for the images if needed */
 .explore-careers-image {
     width: 100%; /* Adjust as needed */
     height: auto; /* Maintain aspect ratio */
 }
 
+@media (max-width: 768px) {
+    .img-container {
+        padding-top: 10px; /* Adjust for smaller screens */
+    }
 
+    .explore-careers-image {
+        max-width: 100%; /* Allow the image to fill */
+        height: auto; /* Maintain aspect ratio */
+    }
+}
 
-/*Explore Career Banner */
+/* Explore Career Banner */
 .explore-search {
     margin-bottom: 70px !important;
 }
 
 .explore-hero {
-    height: 225px !important;
+    height: 275px !important;
     background-color: #1d70b8 !important;
 }
 
@@ -387,24 +401,17 @@ section[aria-label="Search"] {
     font-size: 48px !important; /* Ensure the font size for spans inside the block ncs */
 }
 
-.explore-sub-heading {
-    font-size: 24px !important;
-    margin-bottom: 55px !important;
-}
-
 .explore-body span {
     color: #f3f2f1 !important;
     font-size: 24px !important;
 }
 
-/*.explore-govuk-footer {
-    border-top : 1px solid #b1b4b6
-}*/
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .dfe-card-expolore-career {
-        flex: 1 1 100%;
-        /* Full width on small screens */
+        flex: 1 1 100%; /* Full width on small screens */
     }
 }
+
+
+
