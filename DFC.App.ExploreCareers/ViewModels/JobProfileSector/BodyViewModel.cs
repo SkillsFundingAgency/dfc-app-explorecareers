@@ -6,5 +6,6 @@ namespace DFC.App.ExploreCareers.ViewModels.JobProfileSector
     {
         public IList<JobProfileSector> JobProfileSectors { get; set; } = new List<JobProfileSector>();
 
+        public List<SharedContent>? SharedContents { get; set; }
     }
 }

@@ -64,68 +64,6 @@ namespace DFC.App.ExploreCareers.Services
         {
             string getAllJobProfiles = string.Empty;
 
-            //if (selectedCategoryIds != null && selectedCategoryIds.Count > 0)
-            //{
-            //    var contentItemIds = string.Join(", ", selectedCategoryIds.Select(id => $"\"{id}\""));
-
-            //    getAllJobProfiles = $@"
-            //    query MyQuery {{
-            //        jobProfile(
-            //        where: {{jobProfileSimplification: {{jobProfileCategory_in: [{contentItemIds}]}}}},
-            //        status: {NcsGraphQLTokens.GraphQLStatusToken}, 
-            //        first: {NcsGraphQLTokens.PaginationCountToken}, 
-            //        skip: {NcsGraphQLTokens.SkipCountToken},
-            //        orderBy: {{displayText: ASC}}
-            //        ) {{
-            //        contentItemId
-            //        displayText
-            //        alternativeTitle
-            //        overview
-            //        salarystarterperyear
-            //        salaryexperiencedperyear
-            //        pageLocation {{
-            //            fullUrl
-            //            urlName
-            //        }}
-            //        jobProfileCategory {{
-            //            contentItems {{
-            //            contentItemId
-            //            displayText
-            //            }}
-            //        }}
-            //        }}
-            //    }}";
-            //}
-            //else
-            //{
-            //    getAllJobProfiles = $@"
-            //    query MyQuery {{
-            //        jobProfile(
-            //            status: {NcsGraphQLTokens.GraphQLStatusToken}, 
-            //            first: {NcsGraphQLTokens.PaginationCountToken}, 
-            //            skip: {NcsGraphQLTokens.SkipCountToken}, 
-            //            orderBy: {{ displayText: ASC }}) {{
-            //        contentItemId
-            //        displayText
-            //        alternativeTitle
-            //        overview
-            //        salarystarterperyear
-            //   salaryexperiencedperyear
-            //        pageLocation {{
-            //            fullUrl
-            //            urlName
-            //        }}
-            //        jobProfileCategory {{
-            //            contentItems {{
-            //            contentItemId
-            //            displayText
-            //            }}
-            //        }}
-            //        }}
-            //    }}";
-            //}
-
-
             getAllJobProfiles = $@"
                 query MyQuery {{
                     jobProfile(

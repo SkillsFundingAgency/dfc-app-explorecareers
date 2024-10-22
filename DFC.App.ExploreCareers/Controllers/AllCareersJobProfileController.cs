@@ -21,13 +21,16 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<AllCareersJobProfileController> logger;
         private readonly IJobProfileService jobProfileService;
+        private readonly ISpeakToAnAdvisorService speakToAnAdvisorService;
 
         public AllCareersJobProfileController(
             ILogger<AllCareersJobProfileController> logger,
-            IJobProfileService jobProfileService)
+            IJobProfileService jobProfileService,
+            ISpeakToAnAdvisorService speakToAnAdvisorService)
         {
             this.logger = logger;
             this.jobProfileService = jobProfileService;
+            this.speakToAnAdvisorService = speakToAnAdvisorService;
         }
 
         [HttpGet]
@@ -100,7 +103,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 HttpContext.Session.Clear();
             }
 
-            int skip = (page - 1) * pageSize; // Calculate how many records to skip for pagination
+            int skip = page == 0 ? 0 * pageSize : (page - 1) * pageSize; // Calculate how many records to skip for pagination
 
             // Retrieve the data from session
             var sessionData = HttpContext.Session.GetString("selectedCategoryIds");
@@ -134,10 +137,8 @@ namespace DFC.App.ExploreCareers.Controllers
             // Retrieve all job profiles
             var allCareersJobProfile = await jobProfileService.GetAllJobProfile(selectedCategoryIds);
 
-
             // Retrieve all job profiles categories
             var allJobCategories = await jobProfileService.GetAllCategories();
-
 
             // If there are no job profiles, return null
             if (allCareersJobProfile == null) return null;
@@ -160,20 +161,20 @@ namespace DFC.App.ExploreCareers.Controllers
                 }
             }
 
-            //// Order the distinct category items by DisplayText after ensuring distinctness
-            //var orderedCategoryContentItems = categoryContentItems
-            //    .OrderBy(item => item.DisplayText)
-            //    .ToList();
-
-
             // Apply pagination logic
             var paginatedJobProfiles = allCareersJobProfile
-                .Skip(skip)             // Skip the number of records for pagination
-                .Take(pageSize)          // Take the required number of records for the current page
+                .Skip(skip) // Skip the number of records for pagination
+                .Take(pageSize) // Take the required number of records for the current page
                 .ToList();
 
             var totalJobProfilesCount = allCareersJobProfile.Count();
 
+            var startIndex = skip + 1; // The starting index of the results for the current page
+
+            var endIndex = Math.Min(skip + pageSize, totalJobProfilesCount); // The ending index of the results for the current page
+
+            var speakToAnAdvisorKey = "Speak to an adviser";
+            var sharedContent = await speakToAnAdvisorService.GetItemByKey(speakToAnAdvisorKey);
 
             // Build the view model
             var viewModel = new DocumentViewModel
@@ -186,26 +187,18 @@ namespace DFC.App.ExploreCareers.Controllers
                     CategoryContentItems = allJobCategories,
                     selectedCategoryIds = selectedCategoryIds,
 
+                    SharedContents = sharedContent, // speak to an adviser content
                     // Pagination properties
                     PageNumber = (skip / pageSize) + 1,  // Calculate current page
                     PageSize = pageSize,
                     TotalResults = totalJobProfilesCount,
-                    TotalPages = (int)Math.Ceiling((double)totalJobProfilesCount / pageSize)
+                    TotalPages = (int)Math.Ceiling((double)totalJobProfilesCount / pageSize),
+
+                    // Start and end index for the current page
+                    StartIndex = startIndex,
+                    EndIndex = endIndex
                 }
             };
-
-            //// Build the view model
-            //var viewModel = new DocumentViewModel
-            //{
-            //    Head = GetHeadViewModel(),
-            //    Breadcrumb = BuildBreadcrumb("All careers"),
-            //    Body = new BodyViewModel
-            //    {
-            //        JobProfile = allCareersJobProfile,
-            //        CategoryContentItems = allJobCategories,
-            //        selectedCategoryIds = selectedCategoryIds
-            //    }
-            //};
 
             return viewModel;
         }

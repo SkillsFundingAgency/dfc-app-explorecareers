@@ -7,8 +7,7 @@ namespace DFC.App.ExploreCareers.ViewModels.AllCareersJobProfile
         public IList<AllCareersJobProfile> JobProfile { get; set; } = new List<AllCareersJobProfile>();
 
         public List<JobProfileCategoryContentItem> CategoryContentItems { get; set; } = new List<JobProfileCategoryContentItem>();
-
-        //public IList<JobProfileCategoryContentItem> JobProfileCategories { get; set; } = new List<JobProfileCategoryContentItem>();
+        public List<SharedContent>? SharedContents { get; set; }
 
         public List<string> selectedCategoryIds = new List<string>();
 
@@ -31,5 +30,8 @@ namespace DFC.App.ExploreCareers.ViewModels.AllCareersJobProfile
         public string? PreviousPageUrl { get; set; }
 
         public string? PreviousPageUrlText { get; set; }
+
+        public int StartIndex { get; set; }
+        public int EndIndex { get; set; }
     }
 }

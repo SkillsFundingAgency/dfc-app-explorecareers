@@ -3,22 +3,6 @@
 <div class='govuk-width-container'>
     <div class='dfe-grid-container dfe-grid-container-expolore-career'>
 
-
-
-
-       @*  <div class="dfe-card dfe-card-expolore-career">
-            <img src="https://lab-cdn.nationalcareersservice.org.uk/media/animal-care-jpeg.jpg" alt="animal-care-jpeg.jpg">
-            <div class="dfe-card-container">
-                <h2 class="govuk-heading-m">
-                    <a href="/explore-careers/job-sector/" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">Catering and Hospitality</a>
-                </h2>
-                <p class="dfe-card-description dfe-card-description-expolore-career">Catering and hospitality jobs involve food preparation, service, tourism and taking care of guests.</p>
-            </div>
-        </div> *@
-
-
-     
-
         @if (Model.JobProfileSectors.Any())
         {
             <div class="dfe-card-container-grid">
@@ -56,21 +40,19 @@
             <p>No job profile sectors available.</p>
         }
 
-
-
-
-       @*  @if (Model.JobProfileSectors.Any())
-        {
-            @foreach (var jobProfile in Model.JobProfileSectors)
-            {
-                @Html.Raw(jobProfile.Render)
-            }
-        }
-        else
-        {
-            <p>No job profile sectors available.</p>
-        } *@
     </div>
 
-    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
+
+    @if (Model?.SharedContents != null && Model.SharedContents.Count > 0 && Model.SharedContents[0]?.Content?.Html != null)
+    {
+        <div class="govuk-grid-row">
+            @Html.Raw(Model.SharedContents[0].Content.Html)
+        </div>
+    }
+    else
+    {
+        <div class="govuk-grid-row">
+            <p>No content available</p>
+        </div>
+    }
 </div>

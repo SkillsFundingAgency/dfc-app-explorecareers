@@ -18,13 +18,16 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<JobProfileController> logger;
         private readonly IJobProfileService jobProfileService;
+        private readonly ISpeakToAnAdvisorService speakToAnAdvisorService;
 
         public JobProfileController(
            ILogger<JobProfileController> logger,
-           IJobProfileService jobProfileService)
+           IJobProfileService jobProfileService,
+           ISpeakToAnAdvisorService speakToAnAdvisorService)
         {
             this.logger = logger;
             this.jobProfileService = jobProfileService;
+            this.speakToAnAdvisorService = speakToAnAdvisorService;
         }
 
         [HttpGet]
@@ -48,7 +51,6 @@ namespace DFC.App.ExploreCareers.Controllers
         [HttpGet]
         [Route("document")]
         public async Task<IActionResult> DocumentAsync()
-        
         {
             var contentItemId = Request.Query["id"].ToString();
             var jobSector = Request.Query["sector-page"].ToString();
@@ -92,6 +94,9 @@ namespace DFC.App.ExploreCareers.Controllers
             if (jobProfiles == null) return null;
 
 
+            var speakToAnAdvisorKey = "Speak to an adviser";
+            var sharedContent = await speakToAnAdvisorService.GetItemByKey(speakToAnAdvisorKey);
+
             var paginatedJobProfiles = jobProfiles
                 .Skip(skip)
                 .Take(pageSize)
@@ -106,6 +111,7 @@ namespace DFC.App.ExploreCareers.Controllers
                 Body = new BodyViewModel
                 {
                     JobProfile = paginatedJobProfiles,
+                    SharedContents = sharedContent, // speak to an adviser content
                     sectorlandingContentItemId = key,
                     jobSector = jobSector,
                     // Pagination properties

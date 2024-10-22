@@ -67,32 +67,32 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
             result.Should().BeOfType<BadRequestResult>();
         }
 
-        //[Fact]
-        //public async Task BreadcrumbReturnsHtml()
-        //{
-        //    // Arrange
-        //    using var controller = BuildController(MediaTypeNames.Text.Html);
-        //    var jobCategory = new JobCategoryViewModel { Name = "Category name", CanonicalName = CategoryName };
-        //    A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategory });
+        [Fact]
+        public async Task BreadcrumbReturnsHtml()
+        {
+            // Arrange
+            using var controller = BuildController(MediaTypeNames.Text.Html);
+            var jobCategory = new JobCategoryViewModel { Name = "Category name", CanonicalName = CategoryName };
+            A.CallTo(() => GraphQlService.GetJobCategoriesAsync()).Returns(new List<JobCategoryViewModel> { jobCategory });
 
-        //    // Act
-        //    var result = await controller.Breadcrumb(CategoryName);
+            // Act
+            var result = await controller.Breadcrumb(CategoryName);
 
-        //    // Assert
-        //    var viewModel = result.Should().BeOfType<ViewResult>()
-        //        .Which.ViewData.Model.Should().BeOfType<BreadcrumbViewModel>()
-        //        .Which;
+            // Assert
+            var viewModel = result.Should().BeOfType<ViewResult>()
+                .Which.ViewData.Model.Should().BeOfType<BreadcrumbViewModel>()
+                .Which;
 
-        //    viewModel.Breadcrumbs
-        //        .Should().NotBeNullOrEmpty()
-        //        .And.HaveCount(3);
-        //    viewModel.Breadcrumbs![0].Title.Should().Be("Home");
-        //    viewModel.Breadcrumbs[0].Route.Should().Be("/");
-        //    viewModel.Breadcrumbs[1].Title.Should().Be("Explore Careers");
-        //    viewModel.Breadcrumbs[1].Route.Should().Be("/explore-careers");
-        //    viewModel.Breadcrumbs[2].Title.Should().Be("Category name");
-        //    viewModel.Breadcrumbs[2].Route.Should().Be("#");
-        //}
+            viewModel.Breadcrumbs
+                .Should().NotBeNullOrEmpty()
+                .And.HaveCount(3);
+            viewModel.Breadcrumbs![0].Title.Should().Be("Home");
+            viewModel.Breadcrumbs[0].Route.Should().Be("/");
+            viewModel.Breadcrumbs[1].Title.Should().Be("Explore Careers");
+            viewModel.Breadcrumbs[1].Route.Should().Be("/explore-careers");
+            viewModel.Breadcrumbs[2].Title.Should().Be("Category name");
+            viewModel.Breadcrumbs[2].Route.Should().Be("#");
+        }
 
         [Fact]
         public async Task BreadcrumbUnknownCategoryReturnsNotFound()

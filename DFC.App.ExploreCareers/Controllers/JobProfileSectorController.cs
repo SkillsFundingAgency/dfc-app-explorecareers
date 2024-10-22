@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DFC.App.ExploreCareers.Extensions;
-using DFC.App.ExploreCareers.GraphQl;
+﻿using DFC.App.ExploreCareers.Extensions;
 using DFC.App.ExploreCareers.Interfaces;
 using DFC.App.ExploreCareers.ViewModels;
 using DFC.App.ExploreCareers.ViewModels.JobProfileSector;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DFC.App.ExploreCareers.Controllers
 {
@@ -20,13 +19,16 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<JobProfileSectorController> logger;
         private readonly IJobSectorService jobSectorService;
+        private readonly ISpeakToAnAdvisorService speakToAnAdvisorService;
 
         public JobProfileSectorController(
             ILogger<JobProfileSectorController> logger,
-            IJobSectorService jobSectorService)
+            IJobSectorService jobSectorService,
+            ISpeakToAnAdvisorService speakToAnAdvisorService)
         {
             this.logger = logger;
             this.jobSectorService = jobSectorService;
+            this.speakToAnAdvisorService = speakToAnAdvisorService;
         }
 
         [HttpGet]
@@ -80,11 +82,17 @@ namespace DFC.App.ExploreCareers.Controllers
             var jobSectors = await LoadAndProcessJobSectorsAsync();
             if (jobSectors == null) return null;
 
+            var speakToAnAdvisorKey = "Speak to an adviser";
+            var sharedContent = await speakToAnAdvisorService.GetItemByKey(speakToAnAdvisorKey);
+
             var viewModel = new DocumentViewModel
             {
                 Head = GetHeadViewModel(),
                 Breadcrumb = BuildBreadcrumb("Explore by job sector"),
-                Body = new BodyViewModel { JobProfileSectors = jobSectors }
+                Body = new BodyViewModel { 
+                    JobProfileSectors = jobSectors,
+                    SharedContents = sharedContent, // speak to an adviser content
+                }
             };
 
             return viewModel;

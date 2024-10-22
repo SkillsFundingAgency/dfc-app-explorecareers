@@ -64,7 +64,7 @@
 
                         <div class="inner-block govuk-heading-s">
                             <p class="govuk-heading-s">
-                                Showing 1 to @Model.JobProfile.Count of @Model.TotalResults job profiles
+                                 Showing @Model.StartIndex to @Model.EndIndex of @Model.TotalResults job profiles
                             </p>
                             <div class="govuk-grid-row section-break-two-thirds">
                                 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -130,7 +130,7 @@
                     <!-- Pagination -->
                     <nav class="hods-pagination__navigation govuk-!-margin-top-6" role="navigation" aria-label="Pagination Navigation">
                         <div class="hods-pagination__navigation__summary">
-                            Showing 1 to @Model.JobProfile?.Count of @Model.TotalResults job profiles
+                            Showing @Model.StartIndex to @Model.EndIndex of @Model.TotalResults job profiles
                         </div>
 
                         <ul class="hods-pagination__navigation__list-items">
@@ -172,50 +172,22 @@
                         </ul>
                     </nav>
 
-
-
-
-                        <!-- Pagination -->
-                      @*   <nav class="govuk-pagination" aria-label="Pagination">
-                            <ul class="govuk-pagination__list">
-                                @{
-                                   
-                                    int totalPages = (int)Math.Ceiling((double)@Model.TotalResults / @Model.PageSize);
-                                    int startPage = Math.Max(1, @Model.PageNumber - 2);
-                                    int endPage = Math.Min(startPage + 4, totalPages);
-
-                                   
-                                    for (int i = startPage; i <= endPage; i++)
-                                    {
-                                        <li class="govuk-pagination__item @(Model.PageNumber == i ? "govuk-pagination__item--current" : "")">
-                                            <a class="govuk-link govuk-pagination__link" href="?page=@i" aria-label="Page @i" @(Model.PageNumber == i ? "aria-current=\"page\"" : "")>
-                                                @i
-                                            </a>
-                                        </li>
-                                    }
-                                }
-                            </ul>
-
-                            @if (Model.PageNumber < totalPages)
-                            {
-                              
-                                <div class="govuk-pagination__next">
-                                    <a class="govuk-link govuk-pagination__link" href="?page=@(Model.PageNumber + 1)" rel="next">
-                                        <span class="govuk-pagination__link-title">
-                                            Next<span class="govuk-visually-hidden"> page</span>
-                                        </span>
-                                        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-                                            <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-                                        </svg>
-                                </a> 
-                                </div>
-                            }
-                        </nav> *@
                     </div>
 
             </div>
 
         </div>
 
-        <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
+        @if (Model?.SharedContents != null && Model.SharedContents.Count > 0 && Model.SharedContents[0]?.Content?.Html != null)
+        {
+            <div class="govuk-grid-row">
+                @Html.Raw(Model.SharedContents[0].Content.Html)
+            </div>
+        }
+        else
+        {
+            <div class="govuk-grid-row">
+                <p>No content available</p>
+            </div>
+        }
 </div>

@@ -221,5 +221,17 @@
         <p>No sector landing pages available.</p>
     }
 
-    <partial name="~/Views/Shared/_SpeakToAnAdvisor.cshtml" />
+    @if (Model?.SharedContents != null && Model.SharedContents.Count > 0 && Model.SharedContents[0]?.Content?.Html != null)
+    {
+        <div class="govuk-grid-row">
+            @Html.Raw(Model.SharedContents[0].Content.Html)
+        </div>
+    }
+    else
+    {
+        <div class="govuk-grid-row">
+            <p>No content available</p>
+        </div>
+    }
+
 </div>

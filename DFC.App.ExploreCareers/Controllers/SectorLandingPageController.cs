@@ -19,13 +19,16 @@ namespace DFC.App.ExploreCareers.Controllers
 
         private readonly ILogger<SectorLandingPageController> logger;
         private readonly IJobSectorService jobSectorService;
+        private readonly ISpeakToAnAdvisorService speakToAnAdvisorService;
 
         public SectorLandingPageController(
             ILogger<SectorLandingPageController> logger,
-            IJobSectorService jobSectorService)
+            IJobSectorService jobSectorService,
+            ISpeakToAnAdvisorService speakToAnAdvisorService)
         {
             this.logger = logger;
             this.jobSectorService = jobSectorService;
+            this.speakToAnAdvisorService = speakToAnAdvisorService;
         }
 
         [HttpGet]
@@ -101,11 +104,17 @@ namespace DFC.App.ExploreCareers.Controllers
                 sectorLandingPages = item.SectorLandingPageSearchResults;
             }
 
+            var speakToAnAdvisorKey = "Speak to an adviser";
+            var sharedContent = await speakToAnAdvisorService.GetItemByKey(speakToAnAdvisorKey);
+
             var viewModel = new DocumentViewModel
             {
                 //Head = GetHeadViewModel(sectorLandingPages[0].DisplayText),
                 Breadcrumb = BuildBreadcrumb(sectorLandingPages[0].DisplayText),
-                Body = new BodyViewModel { SectorLandingPage = sectorLandingPages }
+                Body = new BodyViewModel { 
+                    SectorLandingPage = sectorLandingPages,
+                    SharedContents = sharedContent, // speak to an adviser content
+                }
             };
 
             return viewModel;
