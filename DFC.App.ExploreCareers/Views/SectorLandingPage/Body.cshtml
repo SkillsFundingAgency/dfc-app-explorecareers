@@ -54,39 +54,36 @@
                             <div class="govuk-grid-row govuk-grid-row-sector-landing">
                                 @if (sectorLandingPage.JobProfile?.ContentItems != null && sectorLandingPage.JobProfile.ContentItems.Any())
                                 {
+                                   
+                                    <div class="dfe-card-container-grid">
+                                        @foreach (var item in sectorLandingPage.JobProfile.ContentItems)
+                                        {
 
-                                    @foreach (var item in sectorLandingPage.JobProfile.ContentItems)
-                                    {
+                                            <div class="dfe-card dfe-card-expolore-career">
+                                                <div class="dfe-card-container">
+                                                    <h2 class="govuk-heading-m">
+                                                        <a href="job-profiles@{
+                                                                     @item.PageLocation.FullUrl}" class="govuk-link--no-visited-state dfe-card-link--header">@item.DisplayText</a>
+                                                    </h2>
+                                                    <p class="dfe-card-description dfe-card-description-explore-career">@item.Overview</p>
 
-                                        <div class="govuk-width-container">
-                                            <div class="dfe-grid-container dfe-grid-container-expolore-career">
-                                                <div class="dfe-card dfe-card-expolore-career">
-                                                    {imgTag}
-                                                    <div class="dfe-card-container">
-                                                        <h2 class="govuk-heading-m">
-                                                            <a class="dfc-code-search-jpTitle" href="job-profiles@{
-                                                                 @item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a>
-                                                        </h2>
-
-                                                        <p class="dfe-card-description dfe-card-description-expolore-career">@item.Overview</p>
-
-                                                        <p class="dfe-card-description dfe-card-description-expolore-career">
-                                                            Salary:
-                                                            <span class="dfc-code-search-jpSalary">
-                                                                @((item.SalaryStarterPerYear == 0 && item.SalaryExperiencedPerYear == 0)
-                                                                    ? "Variable"
-                                                                    : ("£" + item.SalaryStarterPerYear.ToString("N0") + " to £" + item.SalaryExperiencedPerYear.ToString("N0")))
-                                                            </span>
-                                                        </p>
-
-
-                                                    </div>
+                                                    <p class="dfe-card-description dfe-card-description-explore-career">
+                                                        Salary:
+                                                        <span class="dfc-code-search-jpSalary">
+                                                            @((item.SalaryStarterPerYear == 0 && item.SalaryExperiencedPerYear == 0)
+                                                                ? "Variable"
+                                                                : ("£" + item.SalaryStarterPerYear.ToString("N0") + " to £" + item.SalaryExperiencedPerYear.ToString("N0")))
+                                                        </span>
+                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        }
+                                    </div>
 
-                                       
-                                    }
+
+
+
+
                                 }
                                 else
                                 {
@@ -113,46 +110,39 @@
                                     @Html.Raw(sectorLandingPage.FurtherInspiration?.Html ?? "No further inspiration available.")
                                 </div>
                             </div>
-                            <div class="govuk-grid-row govuk-grid-row-sector-landing">
+                          
                                 @if (sectorLandingPage.JobProfileInspiration?.ContentItems != null && sectorLandingPage.JobProfileInspiration.ContentItems.Any())
                                 {
-                                    @foreach (var item in sectorLandingPage.JobProfileInspiration.ContentItems)
-                                    {
+                                    <div class="dfe-card-container-grid">
+                                        @foreach (var item in sectorLandingPage.JobProfileInspiration.ContentItems)
+                                        {
 
-                                        <div class="govuk-width-container">
-                                            <div class="dfe-grid-container dfe-grid-container-expolore-career">
-                                                <div class="dfe-card dfe-card-expolore-career">
-                                                    {imgTag}
-                                                    <div class="dfe-card-container">
-                                                        <h2 class="govuk-heading-m">
-                                                            <a class="dfc-code-search-jpTitle" href="job-profiles@{
-                                                                     @item.PageLocation.FullUrl}" style="text-decoration: underline;">@item.DisplayText</a>
-                                                        </h2>
+                                            <div class="dfe-card dfe-card-expolore-career">
+                                                <div class="dfe-card-container">
+                                                    <h2 class="govuk-heading-m">
+                                                        <a href="job-profiles@{
+                                                                 @item.PageLocation.FullUrl}" class="govuk-link--no-visited-state dfe-card-link--header">@item.DisplayText</a>
+                                                    </h2>
+                                                    <p class="dfe-card-description dfe-card-description-explore-career">@item.Overview</p>
 
-                                                        <p class="dfe-card-description dfe-card-description-expolore-career">@item.Overview</p>
-
-                                                        <p class="dfe-card-description dfe-card-description-expolore-career">
-                                                            Salary:
-                                                            <span class="dfc-code-search-jpSalary">
-                                                                @((item.SalaryStarterPerYear == 0 && item.SalaryExperiencedPerYear == 0)
-                                                                    ? "Variable"
-                                                                    : ("£" + item.SalaryStarterPerYear.ToString("N0") + " to £" + item.SalaryExperiencedPerYear.ToString("N0")))
-                                                            </span>
-                                                        </p>
-
-
-                                                    </div>
+                                                    <p class="dfe-card-description dfe-card-description-explore-career">
+                                                        Salary:
+                                                        <span class="dfc-code-search-jpSalary">
+                                                            @((item.SalaryStarterPerYear == 0 && item.SalaryExperiencedPerYear == 0)
+                                                                ? "Variable"
+                                                                : ("£" + item.SalaryStarterPerYear.ToString("N0") + " to £" + item.SalaryExperiencedPerYear.ToString("N0")))
+                                                        </span>
+                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
+                                        }
+                                    </div>
                                 }
                                 else
                                 {
                                     <p>No job profiles available.</p>
                                 }
-                            </div>
-
+                           
                             <div class="govuk-grid-row govuk-!-margin-top-5">
                                 <div class="govuk-grid-column-two-thirds">
                                     @Html.Raw(sectorLandingPage.JobProfileInspirationDescription?.Html ?? "No inspiration description available.")

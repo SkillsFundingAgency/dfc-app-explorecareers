@@ -37,7 +37,7 @@ namespace DFC.App.ExploreCareers.Controllers
             await AddJobCategoriesRoutesAsync();
             AddJobSectorsRoutes();
             //AddJobSectorLandingPageRoutes();
-            AddExploreTestRoutes();
+            //AddExploreTestRoutes();
 
             if (!sitemap.Locations.Any())
             {
@@ -108,16 +108,16 @@ namespace DFC.App.ExploreCareers.Controllers
             //    });
             //}
 
-            void AddExploreTestRoutes()
-            {
-                var exploreCareersUrlPrefix = $"{Request.GetBaseAddress()}{TestController.SectorLandingPageViewCanonicalName}";
-                sitemap.Add(new SitemapLocation
-                {
-                    Url = exploreCareersUrlPrefix,
-                    ChangeFrequency = SitemapLocation.ChangeFrequencies.Monthly,
-                    Priority = 0.5,
-                });
-            }
+            //void AddExploreTestRoutes()
+            //{
+            //    var exploreCareersUrlPrefix = $"{Request.GetBaseAddress()}{TestController.SectorLandingPageViewCanonicalName}";
+            //    sitemap.Add(new SitemapLocation
+            //    {
+            //        Url = exploreCareersUrlPrefix,
+            //        ChangeFrequency = SitemapLocation.ChangeFrequencies.Monthly,
+            //        Priority = 0.5,
+            //    });
+            //}
         }
     }
 }

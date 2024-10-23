@@ -23,7 +23,7 @@ namespace DFC.App.ExploreCareers.Controllers
                     new IndexDocumentViewModel { Title = ExploreCareersController.ExploreCareersViewCanonicalName },
                     new IndexDocumentViewModel { Title = JobProfileSectorController.JobSectorsViewCanonicalName },
                     //new IndexDocumentViewModel { Title = SectorLandingPageController.SectorLandingPageViewCanonicalName },
-                    new IndexDocumentViewModel { Title = TestController.SectorLandingPageViewCanonicalName },
+                    //new IndexDocumentViewModel { Title = TestController.SectorLandingPageViewCanonicalName },
                 },
             };
 
