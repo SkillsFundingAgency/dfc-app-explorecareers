@@ -1,6 +1,204 @@
 ﻿@model DFC.App.ExploreCareers.ViewModels.AllCareersJobProfile.BodyViewModel
 
-<div class='govuk-width-container'>
+
+<div class="govuk-width-container">
+
+    <div class="govuk-main-wrapper">
+        <form method="get" action="/explore-careers/all-careers" class="find-a-course-page">
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <div class="govuk-form-group" id="location-block">
+                        <span class="fac-visually-hidden" aria-hidden="true">
+                            <input type="hidden" name="SideBar.Coordinates" id="sidebarCoordinates" value="">
+                            <input type="hidden" name="SideBar.SuggestedLocation" id="sidebarSuggestedLocation-input" value="">
+                            <input type="hidden" name="D" id="D-input" value="0" data-val="true" data-val-required="The D field is required.">
+                        </span>
+                        <div id="suggest-location" class="location-suggest" role="group">
+                            <summary class="govuk-heading-s" aria-describedby="suggested-locations-aria" role="button" aria-expanded="false" aria-controls="suggested-locations-text">
+                                <span>Did you mean:</span>
+                            </summary>
+                            <p class="visuallyhidden" aria-live="polite" id="suggested-locations-aria">There are multiple locations with similar names, tab down to the suggestions, or collapse this panel</p>
+                            <div class="suggest-locations-text" id="suggested-locations-text">
+                                <ul class="suggested-locations" id="suggested-locations">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                            <legend class="govuk-label govuk-!-font-weight-bold" id="CourseType-label">Job categories</legend>
+
+                            @if (Model.CategoryContentItems != null && Model.CategoryContentItems.Any())
+                            {
+                                int index = 0;
+
+                                foreach (var category in Model.CategoryContentItems)
+                                {
+
+                                    <div class="govuk-checkboxes--small">
+                                        <div class="govuk-checkboxes__item">
+                                            <input class="govuk-checkboxes__input"
+                                                   id="category_@index"
+                                                   name="selectedCategoryIds"
+                                                   type="checkbox"
+                                                   value="@category.ContentItemId"
+                                            @(Model.selectedCategoryIds != null && Model.selectedCategoryIds.Contains(category.ContentItemId) ? "checked" : "")>
+                                            <label class="govuk-label govuk-checkboxes__label" for="category_@index">
+                                                @category.DisplayText
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    index++;
+                                }
+                            }
+
+                            <div>
+                                <button type="submit" class="govuk-button dfc-app-triage-btn ncs-button__primary govuk-button--start ec-viewall-filter-button govuk-!-margin-bottom-1">
+                                    Apply filters
+                                </button>
+
+
+
+                                <button type="submit" class="govuk-button ncs-button__secondary triage-tool-clear-button ec-viewall-clear-button govuk-!-margin-bottom-1 govuk-!-margin-top-3" name="clearFilters" value="true">
+                                    Clear filters
+                                </button>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+
+
+                <div class="govuk-grid-column-two-thirds">
+                    <div id="fac-result-list">
+                        <div class="govuk-heading-s fac-show-courses-count ec-viewall-govuk-heading-s">
+                            Showing @Model.StartIndex to @Model.EndIndex of @Model.TotalResults job profiles
+                        </div>
+                        <div class="fac-search-results-list fac-govuk-list">
+                            <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
+
+                            @if (Model.JobProfile != null && Model.JobProfile.Any())
+                            {
+                                @foreach (var job in Model.JobProfile)
+                                {
+                                    <div class="course-item govuk-!-margin-top-6">
+                                        <div class="govuk-heading-m govuk-!-margin-bottom-1">
+                                            <a class="govuk-link" href="/job-profiles@{
+                                            @job.PageLocation.FullUrl
+}">
+                                                @job.DisplayText
+                                            </a>
+
+                                        </div>
+
+                                        @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
+                                        {
+                                            <span class="govuk-caption-m">@job.AlternativeTitle </span>
+
+                                        }
+
+                                        <p class="course-description govuk-body">@job.Overview</p>
+
+
+                                        <p class="results-salary salary-label">
+                                            Salary: <span class="dfc-code-search-jpSalary">
+                                                @((job.SalaryStarterPerYear == 0 && job.SalaryExperiencedPerYear == 0)
+                                                    ? "Variable"
+                                                    : ("£" + job.SalaryStarterPerYear?.ToString("N0") + " to £" + job.SalaryExperiencedPerYear?.ToString("N0")))
+                                            </span>
+                                        </p>
+
+
+                                        @if (job.JobProfileCategory != null && job.JobProfileCategory.ContentItems.Any())
+                                        {
+                                            <p class="results-categories govuk-caption-m">
+                                                Found in:
+                                                @Html.Raw(string.Join(", ", job.JobProfileCategory.ContentItems.Select(category => $"<sap>{category.DisplayText}</span>")))
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="results-categories">
+                                                Found in:
+                                            <p>No job profile sectors available.</p>
+                                            </p>
+                                        }
+
+
+                                    </div>
+
+                                }
+
+                            }
+                            else
+                            {
+                                <p>No job profile is available.</p>
+                            }
+                        </div>
+
+                        <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
+
+                        <nav class="hods-pagination__navigation govuk-!-margin-top-6" role="navigation" aria-label="Pagination Navigation">
+                            <div class="hods-pagination__navigation__summary">
+                                Showing @Model.StartIndex to @Model.EndIndex of @Model.TotalResults job profiles
+                            </div>
+
+                            <ul class="hods-pagination__navigation__list-items">
+                                @{
+                                    int totalPages = (int)Math.Ceiling((double)@Model.TotalResults / @Model.PageSize);
+                                    int startPage = Math.Max(1, @Model.PageNumber - 2);
+                                    int endPage = Math.Min(startPage + 4, totalPages);
+
+
+                                    if (Model.PageNumber > 1)
+                                    {
+                                        <li class="hods-pagination__navigation__item">
+                                            <a class="govuk-link hods-pagination__navigation__link" aria-label="Previous page" href="?page=@(Model.PageNumber - 1)" rel="prev">
+                                                <span aria-hidden="true" role="presentation">«</span> Previous
+                                            </a>
+                                        </li>
+                                    }
+
+
+                                    for (int i = startPage; i <= endPage; i++)
+                                    {
+                                        <li class="hods-pagination__navigation__item @(Model.PageNumber == i ? "hods-pagination__navigation__item--current" : "")">
+                                            <a class="hods-pagination__navigation__link @(Model.PageNumber == i ? "hods-pagination__navigation__link--current" : "")" href="?page=@i" aria-label="Page @i" @(Model.PageNumber == i ? "aria-current=\"page\"" : "")>
+                                                @i
+                                            </a>
+                                        </li>
+                                    }
+
+
+                                    if (Model.PageNumber < totalPages)
+                                    {
+                                        <li class="hods-pagination__navigation__item">
+                                            <a class="govuk-link hods-pagination__navigation__link" aria-label="Next page" href="?page=@(Model.PageNumber + 1)" rel="next">
+                                                Next <span aria-hidden="true" role="presentation">»</span>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </nav>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+@* <div class='govuk-width-container'>
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
                 <div id="results">
@@ -17,7 +215,7 @@
                                     {
                                         <div class="govuk-form-group">
                                             <fieldset class="govuk-fieldset">
-                                                <div class="govuk-checkboxes">
+                                                <div class="govuk-checkboxes--small">
                                                     <div class="govuk-checkboxes__item">
                                                         <input class="govuk-checkboxes__input"
                                                                id="category_@index"
@@ -37,17 +235,17 @@
                                     }
                                 }
 
-                                <p>
-                                    <button type="submit" class="govuk-link govuk-button ncs-button__primary govuk-!-margin-bottom-1">
+                                <div>
+                                    <button type="submit" class="govuk-button dfc-app-triage-btn ncs-button__primary govuk-button--start govuk-!-margin-bottom-1">
                                         Apply filters
                                     </button>
-                                </p>
 
-                                <p>
-                                    <button type="submit" class="govuk-link govuk-button ncs-button__secondary govuk-!-margin-bottom-1" name="clearFilters" value="true">
+
+
+                                <button type="submit" class="govuk-button ncs-button__secondary triage-tool-clear-button ec-viewall-clear-button govuk-!-margin-bottom-1 govuk-!-margin-top-3" name="clearFilters" value="true">
                                         Clear filters
                                     </button>
-                                </p>
+                                </div>
 
                             </form>
 
@@ -60,7 +258,7 @@
 
 
                  <div class="fac-result-list">
-          
+
 
                         <div class="inner-block govuk-heading-s">
                             <p class="govuk-heading-s">
@@ -83,10 +281,6 @@
                                             }
 
                                             <p class="result-description dfc-code-search-jpOverview">@job.Overview</p>
-
-                                           @*  <p class="results-salary">
-                                                Salary: <span class="dfc-code-search-jpSalary">£@job.SalaryStarterPerYear to £@job.SalaryExperiencedPerYear</span>
-                                            </p> *@
 
                                             <p class="results-salary">
                                                 Salary:   <span class="dfc-code-search-jpSalary">
@@ -120,14 +314,10 @@
                             }
                         </div>
 
-                        @*  <div class="govuk-grid-row"> *@
+
                             <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-                       @*  </div> *@
 
 
-
-
-                    <!-- Pagination -->
                     <nav class="hods-pagination__navigation govuk-!-margin-top-6" role="navigation" aria-label="Pagination Navigation">
                         <div class="hods-pagination__navigation__summary">
                             Showing @Model.StartIndex to @Model.EndIndex of @Model.TotalResults job profiles
@@ -139,7 +329,7 @@
                                 int startPage = Math.Max(1, @Model.PageNumber - 2);
                                 int endPage = Math.Min(startPage + 4, totalPages);
 
-                                // Previous Page
+
                                 if (Model.PageNumber > 1)
                                 {
                                     <li class="hods-pagination__navigation__item">
@@ -149,7 +339,7 @@
                                     </li>
                                 }
 
-                                // Page Numbers
+
                                 for (int i = startPage; i <= endPage; i++)
                                 {
                                     <li class="hods-pagination__navigation__item @(Model.PageNumber == i ? "hods-pagination__navigation__item--current" : "")">
@@ -159,7 +349,7 @@
                                     </li>
                                 }
 
-                                // Next Page
+
                                 if (Model.PageNumber < totalPages)
                                 {
                                     <li class="hods-pagination__navigation__item">
@@ -190,4 +380,4 @@
                 <p>No content available</p>
             </div>
         }
-</div>
+</div> *@

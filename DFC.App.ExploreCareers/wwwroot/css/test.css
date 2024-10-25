@@ -378,5 +378,25 @@ section[aria-label="Search"] {
     }
 }
 
+.ec-viewall-filter-button {
+    margin-top: 40px;
+}
+
+.ec-viewall-clear-button {
+    margin-left: auto !important; 
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.ec-viewall-govuk-heading-s {
+    margin-bottom: 40px !important;
+}
+
+.salary-label {
+    font-weight: bold;
+}
+
+
+
 
 
