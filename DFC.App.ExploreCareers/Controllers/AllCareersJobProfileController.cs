@@ -86,7 +86,9 @@ namespace DFC.App.ExploreCareers.Controllers
 
                 // Redirect back to the base URL without query parameters
                 //return RedirectToAction("Document", new { page = 0, pageSize = 20 });
-                //return Redirect("/explore-careers/all-careers");
+                //return Redirect($"../explore-careers/all-careers");
+
+                //return RedirectToAction("document", "explore-careers/all-careers");
             }
 
             if (selectedCategoryIds != null && selectedCategoryIds.Count > 0)
