@@ -19,7 +19,7 @@
                         @foreach (var job in Model.JobProfile)
                         {
                              <li class="dfc-code-search-resultitem">
-                                <h3><a class="dfc-code-search-jpTitle" href="/job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
+                                <h3><a class="dfc-code-search-jpTitle" href="../../job-profiles@{@job.PageLocation.FullUrl}" style="text-decoration: underline;">@job.DisplayText</a></h3>
 
                                 @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
                                 {
