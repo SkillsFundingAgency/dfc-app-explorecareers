@@ -42,19 +42,6 @@ namespace DFC.App.ExploreCareers.Controllers
                 if (breadcrumbItemModel.Route == "#")
                 {
 
-
-                    if (breadcrumbItemModel.Title == "View all careers")
-                    {
-                        var exploreCareeBreadCrumPath = new BreadcrumbItemViewModel()
-                        {
-                            Route = $"../../{ExploreCareersController.ExploreCareersViewCanonicalName}",
-                            Title = BradcrumbTitle,
-                        };
-
-                        viewModel.Breadcrumbs.Add(exploreCareeBreadCrumPath);
-                    }
-                    else
-                    {
                         var exploreCareeBreadCrumPath = new BreadcrumbItemViewModel()
                         {
                             Route = $"../{ExploreCareersController.ExploreCareersViewCanonicalName}",
@@ -62,8 +49,6 @@ namespace DFC.App.ExploreCareers.Controllers
                         };
 
                         viewModel.Breadcrumbs.Add(exploreCareeBreadCrumPath);
-                    }
-
                 }
 
                 if (breadcrumbItemModel.Route == "job-sector")
