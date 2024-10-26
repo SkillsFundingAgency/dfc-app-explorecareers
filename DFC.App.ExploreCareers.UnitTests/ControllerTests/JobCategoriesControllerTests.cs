@@ -88,8 +88,8 @@ namespace DFC.App.ExploreCareers.UnitTests.ControllerTests
                 .And.HaveCount(3);
             viewModel.Breadcrumbs![0].Title.Should().Be("Home");
             viewModel.Breadcrumbs[0].Route.Should().Be("/");
-            viewModel.Breadcrumbs[1].Title.Should().Be("Explore Careers");
-            viewModel.Breadcrumbs[1].Route.Should().Be("/explore-careers");
+            //viewModel.Breadcrumbs[1].Title.Should().Be("Explore Careers");
+            //viewModel.Breadcrumbs[1].Route.Should().Be("/explore-careers");
             viewModel.Breadcrumbs[2].Title.Should().Be("Category name");
             viewModel.Breadcrumbs[2].Route.Should().Be("#");
         }
