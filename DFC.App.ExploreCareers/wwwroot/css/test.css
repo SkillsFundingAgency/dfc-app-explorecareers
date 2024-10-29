@@ -396,7 +396,72 @@ section[aria-label="Search"] {
     font-weight: bold;
 }
 
+/*.ec-navigation-message {
+    font-family: "GDS Transport Website", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 300 !important;
+    line-height: 18.24px !important;
+    text-align: left !important;
+}*/
+
+
+.ec-navigation-message {
+    font-family: "GDS Transport Website", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 300 !important;
+    line-height: 18.24px !important;
+    text-align: left !important;
+}
+
+/* For tablets and smaller screens (up to 768px) */
+@media (max-width: 768px) {
+    .ec-navigation-message {
+        font-size: 14px !important;
+        line-height: 16px !important;
+        text-align: center !important; /* Centered alignment for better readability */
+        padding: 0 10px; /* Optional padding for screens with smaller width */
+    }
+}
+
+/* For small mobile screens (up to 480px) */
+@media (max-width: 480px) {
+    .ec-navigation-message {
+        font-size: 12px !important;
+        line-height: 14px !important;
+    }
+}
 
 
 
+/* Hide filter section by default */
+.filter-section {
+    display: none;
+}
 
+/* Show the filter section when the checkbox is checked */
+#toggle-filter-section:checked ~ .filter-section {
+    display: block;
+}
+
+/* Change button text when the filter section is visible */
+#toggle-filter-section:not(:checked) + #show-filters-button::after {
+    content: "Show filters";
+}
+
+#toggle-filter-section:checked + #show-filters-button::after {
+    content: "Hide filters";
+}
+
+/* Responsive Design: Show filters by default on larger screens */
+@media (min-width: 769px) {
+    /* Hide toggle button and checkbox on larger screens */
+    #toggle-filter-section,
+    #show-filters-button {
+        display: none;
+    }
+
+    /* Always display the filter section on larger screens */
+    .filter-section {
+        display: block;
+    }
+}

@@ -1,40 +1,38 @@
 ﻿@model DFC.App.ExploreCareers.ViewModels.AllCareersJobProfile.BodyViewModel
 
-
 <div class="govuk-width-container">
-
     <div class="govuk-main-wrapper">
+        <!-- Form with Apply and Clear Filters Buttons -->
         <form method="get" action="../../explore-careers/all-careers" class="find-a-course-page">
             <div class="govuk-grid-row">
-                <div class="govuk-grid-column-one-third">
+
+
+                <!-- Hidden Checkbox for Toggling Filter Section -->
+                <input type="checkbox" id="toggle-filter-section" hidden>
+
+                <!-- Show/Hide Button as Label for the Checkbox -->
+                <label for="toggle-filter-section" class="govuk-button ncs-button__primary" id="show-filters-button">
+                   @*  Show filters *@
+                </label>
+
+
+
+                <!-- Filter Section to Show/Hide -->
+                <div class="govuk-grid-column-one-third filter-section">
                     <div class="govuk-form-group" id="location-block">
-                        <span class="fac-visually-hidden" aria-hidden="true">
-                            <input type="hidden" name="SideBar.Coordinates" id="sidebarCoordinates" value="">
-                            <input type="hidden" name="SideBar.SuggestedLocation" id="sidebarSuggestedLocation-input" value="">
-                            <input type="hidden" name="D" id="D-input" value="0" data-val="true" data-val-required="The D field is required.">
-                        </span>
-                        <div id="suggest-location" class="location-suggest" role="group">
-                            <summary class="govuk-heading-s" aria-describedby="suggested-locations-aria" role="button" aria-expanded="false" aria-controls="suggested-locations-text">
-                                <span>Did you mean:</span>
-                            </summary>
-                            <p class="visuallyhidden" aria-live="polite" id="suggested-locations-aria">There are multiple locations with similar names, tab down to the suggestions, or collapse this panel</p>
-                            <div class="suggest-locations-text" id="suggested-locations-text">
-                                <ul class="suggested-locations" id="suggested-locations">
-                                </ul>
-                            </div>
-                        </div>
+                        <!-- Location-related inputs or elements can go here -->
                     </div>
+
                     <div class="govuk-form-group">
                         <fieldset class="govuk-fieldset">
                             <legend class="govuk-label govuk-!-font-weight-bold" id="CourseType-label">Job categories</legend>
 
+                            <!-- Checkboxes for Category Filters -->
                             @if (Model.CategoryContentItems != null && Model.CategoryContentItems.Any())
                             {
                                 int index = 0;
-
                                 foreach (var category in Model.CategoryContentItems)
                                 {
-
                                     <div class="govuk-checkboxes--small">
                                         <div class="govuk-checkboxes__item">
                                             <input class="govuk-checkboxes__input"
@@ -48,29 +46,28 @@
                                             </label>
                                         </div>
                                     </div>
-
-
                                     index++;
                                 }
                             }
 
+                            <!-- Apply Filters Button -->
                             <div>
                                 <button type="submit" class="govuk-button dfc-app-triage-btn ncs-button__primary govuk-button--start ec-viewall-filter-button govuk-!-margin-bottom-1">
                                     Apply filters
                                 </button>
+                            </div>
 
-
-
+                            <!-- Clear Filters Button -->
+                            <div>
                                 <button type="submit" class="govuk-button ncs-button__secondary triage-tool-clear-button ec-viewall-clear-button govuk-!-margin-bottom-1 govuk-!-margin-top-3" name="clearFilters" value="true">
                                     Clear filters
                                 </button>
                             </div>
-
                         </fieldset>
                     </div>
                 </div>
 
-
+                <!-- Job Profile List Section -->
                 <div class="govuk-grid-column-two-thirds">
                     <div id="fac-result-list">
                         <div class="govuk-heading-s fac-show-courses-count ec-viewall-govuk-heading-s">
@@ -78,7 +75,6 @@
                         </div>
                         <div class="fac-search-results-list fac-govuk-list">
                             <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
-
                             @if (Model.JobProfile != null && Model.JobProfile.Any())
                             {
                                 @foreach (var job in Model.JobProfile)
@@ -86,21 +82,16 @@
                                     <div class="course-item govuk-!-margin-top-6">
                                         <div class="govuk-heading-m govuk-!-margin-bottom-1">
                                             <a class="govuk-link" href="../../job-profiles@{
-                                            @job.PageLocation.FullUrl}">
+                                                @job.PageLocation.FullUrl
+}">
                                                 @job.DisplayText
                                             </a>
-
                                         </div>
-
                                         @if (!string.IsNullOrWhiteSpace(@job.DisplayText))
                                         {
                                             <span class="govuk-caption-m">@job.AlternativeTitle </span>
-
                                         }
-
                                         <p class="course-description govuk-body">@job.Overview</p>
-
-
                                         <p class="results-salary salary-label">
                                             Salary: <span class="dfc-code-search-jpSalary">
                                                 @((job.SalaryStarterPerYear == 0 && job.SalaryExperiencedPerYear == 0)
@@ -108,28 +99,20 @@
                                                     : ("£" + job.SalaryStarterPerYear?.ToString("N0") + " to £" + job.SalaryExperiencedPerYear?.ToString("N0")))
                                             </span>
                                         </p>
-
-
                                         @if (job.JobProfileCategory != null && job.JobProfileCategory.ContentItems.Any())
                                         {
                                             <p class="results-categories govuk-caption-m">
                                                 Found in:
-                                                @Html.Raw(string.Join(", ", job.JobProfileCategory.ContentItems.Select(category => $"<sap>{category.DisplayText}</span>")))
+                                                @Html.Raw(string.Join(", ", job.JobProfileCategory.ContentItems.Select(category => $"<span>{category.DisplayText}</span>")))
                                             </p>
                                         }
                                         else
                                         {
-                                            <p class="results-categories">
-                                                Found in:
+                                            <p class="results-categories">Found in:</p>
                                             <p>No job profile sectors available.</p>
-                                            </p>
                                         }
-
-
                                     </div>
-
                                 }
-
                             }
                             else
                             {
@@ -137,19 +120,17 @@
                             }
                         </div>
 
+                        <!-- Pagination Section -->
                         <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
-
                         <nav class="hods-pagination__navigation govuk-!-margin-top-6" role="navigation" aria-label="Pagination Navigation">
-                            <div class="hods-pagination__navigation__summary">
+                            <div class="hods-pagination__navigation__summary ec-navigation-message">
                                 Showing @Model.StartIndex to @Model.EndIndex of @Model.TotalResults job profiles
                             </div>
-
                             <ul class="hods-pagination__navigation__list-items">
                                 @{
                                     int totalPages = (int)Math.Ceiling((double)@Model.TotalResults / @Model.PageSize);
                                     int startPage = Math.Max(1, @Model.PageNumber - 2);
                                     int endPage = Math.Min(startPage + 4, totalPages);
-
 
                                     if (Model.PageNumber > 1)
                                     {
@@ -160,7 +141,6 @@
                                         </li>
                                     }
 
-
                                     for (int i = startPage; i <= endPage; i++)
                                     {
                                         <li class="hods-pagination__navigation__item @(Model.PageNumber == i ? "hods-pagination__navigation__item--current" : "")">
@@ -169,7 +149,6 @@
                                             </a>
                                         </li>
                                     }
-
 
                                     if (Model.PageNumber < totalPages)
                                     {
@@ -182,18 +161,9 @@
                                 }
                             </ul>
                         </nav>
-
                     </div>
-
-
-
                 </div>
             </div>
         </form>
     </div>
-
 </div>
-
-
-
-

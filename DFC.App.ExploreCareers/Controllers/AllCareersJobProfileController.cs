@@ -52,9 +52,7 @@ namespace DFC.App.ExploreCareers.Controllers
         }
 
         [HttpGet]
-        //[Route("")]
         [Route("document")]
-        //public async Task<IActionResult> DocumentAsync([FromQuery] int page = 0, int pageSize = 20)
         public async Task<IActionResult> DocumentAsync()
         {
             //int skip = (page - 1) * pageSize; // Calculate how many records to skip for pagination
@@ -83,12 +81,6 @@ namespace DFC.App.ExploreCareers.Controllers
                 selectedCategoryIds = null;
                 HttpContext.Session.Remove("selectedCategoryIds");
                 HttpContext.Session.Clear();
-
-                // Redirect back to the base URL without query parameters
-                //return RedirectToAction("Document", new { page = 0, pageSize = 20 });
-                //return Redirect($"../explore-careers/all-careers");
-
-                //return RedirectToAction("document", "explore-careers/all-careers");
             }
 
             if (selectedCategoryIds != null && selectedCategoryIds.Count > 0)
