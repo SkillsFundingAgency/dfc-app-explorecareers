@@ -1,6 +1,5 @@
 ﻿.explore-career-home-govuk-grid-row {
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-top: 20px;
 }
 
 .imag-explore-career {
@@ -41,7 +40,8 @@
 .explore-career-home-dfe-grid-container {
     display: flex; /* Use flexbox for layout */
     flex-wrap: wrap; /* Allow wrapping of items */
-    gap: 25px; /* Space between cards */
+    margin-top: 30px;
+    gap: 30px; /* Space between cards */
 }
 
 .explore-career-home-dfe-card {
@@ -60,4 +60,23 @@
     .explore-career-home-dfe-card {
         flex: 1 1 100%; /* Full width on smaller screens */
     }
+}
+
+
+.explore-heading-m {
+    margin-bottom: 15px !important;
+    padding-left: 20px !important;
+}
+
+
+.ec-grid-column-one-third {
+    padding: 0 15px 0 15px !important;
+}
+
+.ec-body {
+    padding-left: 20px !important;
+}
+
+.ec-content {
+    padding-top: 70px !important;
 }
